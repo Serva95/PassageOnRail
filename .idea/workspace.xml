@@ -2,326 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.browserslistrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/progetto.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ruby-version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Rakefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/config/manifest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/images/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/channels/application_cable/channel.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/chats_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/concerns/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/drivers_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/hitch_hikers_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/messagges_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/multi_trip_associations_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/multi_trips_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/passenger_associations_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/ratings_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/reviews_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/routes_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/single_trips_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/vehicles_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/javascript/channels/consumer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/javascript/channels/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/javascript/controllers/hello_controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/javascript/controllers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/jobs/application_job.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/mailers/application_mailer.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/application_record.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/chat.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/concerns/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/driver.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/hitch_hiker.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/messagge.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/multi_trip.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/multi_trip_association.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/passenger_association.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/rating.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/review.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/route.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/single_trip.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/vehicle.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/chats/_chat.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/chats/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/chats/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/chats/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/chats/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/chats/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/chats/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/chats/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/drivers/_driver.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/drivers/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/drivers/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/drivers/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/drivers/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/drivers/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/drivers/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/drivers/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hitch_hikers/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hitch_hikers/_hitch_hiker.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hitch_hikers/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hitch_hikers/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hitch_hikers/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hitch_hikers/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hitch_hikers/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/hitch_hikers/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/mailer.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/mailer.text.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/messagges/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/messagges/_messagge.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/messagges/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/messagges/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/messagges/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/messagges/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/messagges/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/messagges/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trip_associations/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trip_associations/_multi_trip_association.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trip_associations/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trip_associations/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trip_associations/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trip_associations/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trip_associations/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trip_associations/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trips/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trips/_multi_trip.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trips/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trips/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trips/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trips/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trips/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/multi_trips/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/passenger_associations/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/passenger_associations/_passenger_association.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/passenger_associations/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/passenger_associations/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/passenger_associations/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/passenger_associations/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/passenger_associations/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/passenger_associations/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/ratings/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/ratings/_rating.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/ratings/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/ratings/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/ratings/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/ratings/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/ratings/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/ratings/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/_review.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/reviews/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/routes/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/routes/_route.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/routes/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/routes/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/routes/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/routes/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/routes/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/routes/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/single_trips/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/single_trips/_single_trip.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/single_trips/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/single_trips/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/single_trips/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/single_trips/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/single_trips/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/single_trips/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/_user.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/users/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/_vehicle.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/index.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/vehicles/show.json.jbuilder" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/bundle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/rails" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/rake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/setup" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/webpack" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/webpack-dev-server" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/yarn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.ru" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/boot.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/cable.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/credentials.yml.enc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/environment.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/environments/production.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/environments/test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/assets.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/backtrace_silencers.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/content_security_policy.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/cookies_serializer.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/devise.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/inflections.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/mime_types.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/initializers/wrap_parameters.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/locales/devise.en.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/locales/en.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/puma.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/storage.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpack/development.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpack/environment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpack/production.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpack/test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpacker.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/development.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200214125848_create_users.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200214130059_create_reviews.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200214130211_create_ratings.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200214130401_create_vehicles.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200214152352_create_routes.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200214152526_create_chats.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200214152719_create_messagges.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200214152905_create_single_trips.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200214153126_create_multi_trips.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200216134020_add_route_ref_to_single_trips.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200216140805_add_chat_ref_to_messagges.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200216142612_create_multi_trip_associations.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200216143226_add_single_trip_ref_to_multi_trip_associations.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200216143315_add_multi_trip_ref_to_multi_trip_associations.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200216143628_create_drivers.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200216143736_create_hitch_hikers.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200216143930_add_email_to_drivers.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200216144046_add_email_to_hitch_hikers.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217102832_add_driver_ref_to_vehicles.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217103103_add_driver_ref_to_routes.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217103313_add_driver_ref_to_reviews.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217103447_add_driver_ref_to_ratings.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217103742_add_driver_ref_to_chats.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217104320_add_hitch_hiker_ref_to_ratings.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217105241_add_hitch_hiker_ref_to_chats.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217105705_add_hitch_hiker_ref_to_reviews.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217110404_add_vehicle_ref_to_routes.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217110953_create_passenger_associations.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217111630_add_hitch_hiker_ref_to_passenger_associations.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20200217112648_add_single_trip_ref_to_passenger_associations.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/test.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/assets/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/tasks/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/422.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/500.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/apple-touch-icon-precomposed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/application_system_test_case.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/channels/application_cable/connection_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/chats_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/drivers_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/hitch_hikers_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/messagges_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/multi_trip_associations_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/multi_trips_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/passenger_associations_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/ratings_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/reviews_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/routes_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/single_trips_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/users_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/vehicles_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/chats.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/drivers.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/files/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/hitch_hikers.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/messagges.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/multi_trip_associations.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/multi_trips.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/passenger_associations.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/ratings.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/reviews.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/routes.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/single_trips.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/users.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/vehicles.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/helpers/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/integration/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/mailers/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/chat_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/driver_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/hitch_hiker_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/messagge_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/multi_trip_association_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/multi_trip_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/passenger_association_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/rating_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/review_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/route_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/single_trip_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/user_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/vehicle_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/chats_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/drivers_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/hitch_hikers_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/messagges_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/multi_trip_associations_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/multi_trips_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/passenger_associations_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/ratings_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/reviews_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/routes_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/single_trips_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/users_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/system/vehicles_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/.keep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.generators" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/progetto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/progetto.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -330,6 +33,7 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -351,6 +55,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RunManager" selected="Rails.Development: progetto">
     <configuration name="Development: progetto" type="RailsRunConfigurationType" factoryName="Rails">
@@ -447,6 +152,7 @@
       <option name="presentableId" value="Default" />
       <updated>1583240604925</updated>
       <workItem from="1583240618050" duration="3453000" />
+      <workItem from="1583245722113" duration="85000" />
     </task>
     <servers />
   </component>
@@ -463,6 +169,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="315" y="23" key="#Deployment/0.0.1366.728@0.0.1366.728" timestamp="1583244676820" />
+    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583245794425">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1583245794425" />
     <state x="348" y="1" width="749" height="727" key="CommitChangelistDialog2" timestamp="1583244791687">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -503,6 +213,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1583244584061" />
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583245751975">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1583245751975" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/progetto@Development__progetto.rcov" NAME="Development: progetto Coverage Results" MODIFIED="1583243839704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="progetto" />
