@@ -1,0 +1,37 @@
+<%= form_with(model: messagge, local: true) do |form| %>
+  <% if messagge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(messagge.errors.count, "error") %> prohibited this messagge from being saved:</h2>
+
+      <ul>
+        <% messagge.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :data_ora %>
+    <%= form.datetime_select :data_ora %>
+  </div>
+
+  <div class="field">
+    <%= form.label :testo %>
+    <%= form.text_area :testo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mittente %>
+    <%= form.text_field :mittente %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destinatario %>
+    <%= form.text_field :destinatario %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

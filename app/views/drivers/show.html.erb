@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rating medio:</strong>
+  <%= @driver.rating_medio %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @driver.deleted %>
+</p>
+
+<%= link_to 'Edit', edit_driver_path(@driver) %> |
+<%= link_to 'Back', drivers_path %>

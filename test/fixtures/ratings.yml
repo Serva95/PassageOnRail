@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: 2020-02-14 14:02:11
+  rating: 1
+
+two:
+  data: 2020-02-14 14:02:11
+  rating: 1

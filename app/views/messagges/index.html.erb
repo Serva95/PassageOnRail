@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Messagges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data ora</th>
+      <th>Testo</th>
+      <th>Mittente</th>
+      <th>Destinatario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messagges.each do |messagge| %>
+      <tr>
+        <td><%= messagge.data_ora %></td>
+        <td><%= messagge.testo %></td>
+        <td><%= messagge.mittente %></td>
+        <td><%= messagge.destinatario %></td>
+        <td><%= link_to 'Show', messagge %></td>
+        <td><%= link_to 'Edit', edit_messagge_path(messagge) %></td>
+        <td><%= link_to 'Destroy', messagge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Messagge', new_messagge_path %>

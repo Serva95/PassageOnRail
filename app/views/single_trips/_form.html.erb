@@ -1,0 +1,22 @@
+<%= form_with(model: single_trip, local: true) do |form| %>
+  <% if single_trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(single_trip.errors.count, "error") %> prohibited this single_trip from being saved:</h2>
+
+      <ul>
+        <% single_trip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :n_passeggeri %>
+    <%= form.number_field :n_passeggeri %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

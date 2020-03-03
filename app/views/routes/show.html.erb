@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Citta partenza:</strong>
+  <%= @route.citta_partenza %>
+</p>
+
+<p>
+  <strong>Luogo ritrovo:</strong>
+  <%= @route.luogo_ritrovo %>
+</p>
+
+<p>
+  <strong>Data ora partenza:</strong>
+  <%= @route.data_ora_partenza %>
+</p>
+
+<p>
+  <strong>Citta arrivo:</strong>
+  <%= @route.citta_arrivo %>
+</p>
+
+<p>
+  <strong>Data ora arrivo:</strong>
+  <%= @route.data_ora_arrivo %>
+</p>
+
+<p>
+  <strong>Costo:</strong>
+  <%= @route.costo %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @route.deleted %>
+</p>
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>

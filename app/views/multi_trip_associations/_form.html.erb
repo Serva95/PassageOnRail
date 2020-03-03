@@ -1,0 +1,17 @@
+<%= form_with(model: multi_trip_association, local: true) do |form| %>
+  <% if multi_trip_association.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(multi_trip_association.errors.count, "error") %> prohibited this multi_trip_association from being saved:</h2>
+
+      <ul>
+        <% multi_trip_association.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

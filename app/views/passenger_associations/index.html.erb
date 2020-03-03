@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Passenger Associations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @passenger_associations.each do |passenger_association| %>
+      <tr>
+        <td><%= link_to 'Show', passenger_association %></td>
+        <td><%= link_to 'Edit', edit_passenger_association_path(passenger_association) %></td>
+        <td><%= link_to 'Destroy', passenger_association, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Passenger Association', new_passenger_association_path %>

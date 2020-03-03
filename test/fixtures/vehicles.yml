@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  targa: MyString
+  marca: MyString
+  modello: MyString
+  immatricolazione: 2020-02-14
+  comfort: 1
+  posti: 1
+  deleted: false
+
+two:
+  targa: MyString
+  marca: MyString
+  modello: MyString
+  immatricolazione: 2020-02-14
+  comfort: 1
+  posti: 1
+  deleted: false

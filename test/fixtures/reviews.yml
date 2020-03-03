@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: 2020-02-14 14:00:59
+  rating: 1
+  commento: MyText
+  deleted: false
+
+two:
+  data: 2020-02-14 14:00:59
+  rating: 1
+  commento: MyText
+  deleted: false

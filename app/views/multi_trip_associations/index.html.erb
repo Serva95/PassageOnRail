@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Multi Trip Associations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @multi_trip_associations.each do |multi_trip_association| %>
+      <tr>
+        <td><%= link_to 'Show', multi_trip_association %></td>
+        <td><%= link_to 'Edit', edit_multi_trip_association_path(multi_trip_association) %></td>
+        <td><%= link_to 'Destroy', multi_trip_association, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Multi Trip Association', new_multi_trip_association_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Multi Trips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data ora partenza</th>
+      <th>Citta partenza</th>
+      <th>Data ora arrivo</th>
+      <th>Citta arrivo</th>
+      <th>Costo totale</th>
+      <th>Comfort medio</th>
+      <th>Numero cambi</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @multi_trips.each do |multi_trip| %>
+      <tr>
+        <td><%= multi_trip.data_ora_partenza %></td>
+        <td><%= multi_trip.citta_partenza %></td>
+        <td><%= multi_trip.data_ora_arrivo %></td>
+        <td><%= multi_trip.citta_arrivo %></td>
+        <td><%= multi_trip.costo_totale %></td>
+        <td><%= multi_trip.comfort_medio %></td>
+        <td><%= multi_trip.numero_cambi %></td>
+        <td><%= link_to 'Show', multi_trip %></td>
+        <td><%= link_to 'Edit', edit_multi_trip_path(multi_trip) %></td>
+        <td><%= link_to 'Destroy', multi_trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Multi Trip', new_multi_trip_path %>

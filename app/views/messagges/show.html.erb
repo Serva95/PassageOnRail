@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data ora:</strong>
+  <%= @messagge.data_ora %>
+</p>
+
+<p>
+  <strong>Testo:</strong>
+  <%= @messagge.testo %>
+</p>
+
+<p>
+  <strong>Mittente:</strong>
+  <%= @messagge.mittente %>
+</p>
+
+<p>
+  <strong>Destinatario:</strong>
+  <%= @messagge.destinatario %>
+</p>
+
+<%= link_to 'Edit', edit_messagge_path(@messagge) %> |
+<%= link_to 'Back', messagges_path %>
