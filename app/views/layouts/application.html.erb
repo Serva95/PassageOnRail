@@ -7,9 +7,55 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <%= stylesheet_link_tag 'css/main.css' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="landing is-preload">
+    <div id="page-wrapper">
+
+      <header id="header" class="alt">
+        <h1><%= link_to 'Passage on Rails' , root_path%></h1>
+        <nav id="nav">
+          <ul>
+            <li><%= link_to 'Home', root_path %></li>
+            <li>
+              <a href="#" class="icon solid fa-angle-down">Layouts</a>
+              <ul>
+                <li><a href="generic.html">Generic</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="elements.html">Elements</a></li>
+                <li>
+                  <a href="#">Submenu</a>
+                  <ul>
+                    <li><a href="#">Option One</a></li>
+                    <li><a href="#">Option Two</a></li>
+                    <li><a href="#">Option Three</a></li>
+                    <li><a href="#">Option Four</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><%= link_to 'Sign Up', new_user_path, {class: 'button'}%></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section id="main" class="container">
+        <%= yield %>
+      </section>
+    </div>
+
+    <!-- Scripts -->
+    <%= javascript_include_tag 'jquery.min.js' %>
+    <%= javascript_include_tag 'jquery.dropotron.min.js' %>
+    <%= javascript_include_tag 'jquery.scrollex.min.js' %>
+    <%= javascript_include_tag 'browser.min.js' %>
+    <%= javascript_include_tag 'breakpoints.min.js' %>
+    <%= javascript_include_tag 'util.js' %>
+    <%= javascript_include_tag 'main.js' %>
+
   </body>
 </html>
