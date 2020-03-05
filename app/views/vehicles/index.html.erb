@@ -27,7 +27,7 @@
         <td><%= vehicle.posti %></td>
         <td><%= vehicle.deleted %></td>
         <td><%= link_to 'Show', vehicle %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+        <td><%= link_to 'Edit', edit_driver_vehicle_path(vehicle) %></td>
         <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Vehicle', new_vehicle_path %>
+<%= link_to 'New Vehicle', new_driver_vehicle_path %>
