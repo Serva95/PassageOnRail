@@ -4,7 +4,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.order(:targa)
   end
 
   # GET /vehicles/1
@@ -19,12 +19,14 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/1/edit
   def edit
+    @vehicle = Vehicle.find(params[:id])
   end
 
   # POST /vehicles
   # POST /vehicles.json
   def create
     @vehicle = Vehicle.new(vehicle_params)
+    # @vehicle.driver=
 
     respond_to do |format|
       if @vehicle.save
