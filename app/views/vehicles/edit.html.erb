@@ -2,5 +2,5 @@
 
 <%= render 'form', vehicle: @vehicle %>
 
-<%= link_to 'Show', @vehicle %> |
-<%= link_to 'Back', vehicles_path %>
+<%= link_to 'Show', [@driver, @vehicle] %> |
+<%= link_to 'Back', driver_vehicles_path(@driver) %>

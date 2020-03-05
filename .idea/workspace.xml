@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="!!">
+    <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/progetto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/progetto.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/vehicles_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/vehicles_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/driver.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/driver.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/drivers/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/drivers/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vehicles/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vehicles/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/vehicles/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/development.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/development.db" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +62,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RunDashboard">
@@ -163,7 +178,31 @@
       <updated>1583240604925</updated>
       <workItem from="1583240618050" duration="3453000" />
       <workItem from="1583245722113" duration="85000" />
+      <workItem from="1583411497858" duration="8369000" />
+      <workItem from="1583439996291" duration="2124000" />
     </task>
+    <task id="LOCAL-00001" summary="!?">
+      <created>1583246416560</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583246416560</updated>
+    </task>
+    <task id="LOCAL-00002" summary="controller veicolo e creazione nuovo multiviaggio">
+      <created>1583416624219</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583416624219</updated>
+    </task>
+    <task id="LOCAL-00003" summary="modifiche a path NON FUNZIONANTI">
+      <created>1583421460874</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1583421460874</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +213,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -184,7 +225,10 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Inizio" />
     <MESSAGE value="!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="!!" />
+    <MESSAGE value="!?" />
+    <MESSAGE value="controller veicolo e creazione nuovo multiviaggio" />
+    <MESSAGE value="modifiche a path NON FUNZIONANTI" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifiche a path NON FUNZIONANTI" />
   </component>
   <component name="WindowStateProjectService">
     <state x="315" y="23" key="#Deployment" timestamp="1583244676820">

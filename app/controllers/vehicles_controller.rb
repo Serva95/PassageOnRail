@@ -1,10 +1,11 @@
 class VehiclesController < ApplicationController
+  before_action :get_driver
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
 
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = Vehicle.order(:targa)
+    @vehicles = @driver.vehicles
   end
 
   # GET /vehicles/1
@@ -14,24 +15,21 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/new
   def new
-    @vehicle = Vehicle.new
+    @vehicle = @driver.vehicles.build
   end
 
   # GET /vehicles/1/edit
   def edit
-    @vehicle = Vehicle.find(params[:id])
   end
 
   # POST /vehicles
   # POST /vehicles.json
   def create
-    @driver = Driver.find(vehicle_params[:driver_id])
     @vehicle = @driver.vehicles.build(vehicle_params)
-   # @vehicle = Vehicle.new(vehicle_params)
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
+        format.html { redirect_to driver_vehicles_path(@driver), notice: 'Vehicle was successfully created.' }
         format.json { render :show, status: :created, location: @vehicle }
       else
         format.html { render :new }
@@ -45,7 +43,7 @@ class VehiclesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle.update(vehicle_params)
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
+        format.html { redirect_to driver_vehicles_path(@driver), notice: 'Vehicle was successfully updated.' }
         format.json { render :show, status: :ok, location: @vehicle }
       else
         format.html { render :edit }
@@ -59,7 +57,7 @@ class VehiclesController < ApplicationController
   def destroy
     @vehicle.destroy
     respond_to do |format|
-      format.html { redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.' }
+      format.html { redirect_to driver_vehicles_path(@driver), notice: 'Vehicle was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,11 +65,15 @@ class VehiclesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vehicle
-      @vehicle = Vehicle.find(params[:id])
+      @vehicle = @driver.vehicles.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def vehicle_params
       params.require(:vehicle).permit(:driver_id, :targa, :marca, :modello, :immatricolazione, :comfort, :posti, :deleted)
+    end
+
+    def get_driver
+      @driver = Driver.find(params[:driver_id])
     end
 end

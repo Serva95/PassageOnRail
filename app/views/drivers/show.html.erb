@@ -5,10 +5,18 @@
   <%= @driver.rating_medio %>
 </p>
 
+<h2>Veicoli</h2>
+<% for vehicle in @driver.vehicles %>
+  <ul>
+    <li><%= vehicle.targa %><li>
+  </ul>
+<% end %>
+
 <p>
   <strong>Deleted:</strong>
   <%= @driver.deleted %>
 </p>
 
 <%= link_to 'Edit', edit_driver_path(@driver) %> |
+<%= link_to 'Add Vehicle', driver_vehicles_path(@driver) %> |
 <%= link_to 'Back', drivers_path %>

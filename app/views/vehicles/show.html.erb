@@ -35,5 +35,5 @@
   <%= @vehicle.deleted %>
 </p>
 
-<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
-<%= link_to 'Back', vehicles_path %>
+<%= link_to 'Edit', edit_driver_vehicle_path(@driver, @vehicle) %> |
+<%= link_to 'Back', driver_vehicles_path(@driver) %>
