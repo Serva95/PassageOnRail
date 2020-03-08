@@ -1,4 +1,4 @@
-<%= form_with(model: route, local: true) do |form| %>
+<%= form_with(model: [@driver, route], local: true) do |form| %>
   <% if route.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(route.errors.count, "error") %> prohibited this route from being saved:</h2>
@@ -41,10 +41,14 @@
     <%= form.text_field :costo %>
   </div>
 
-  <div class="field">
-    <%= form.label :deleted %>
-    <%= form.check_box :deleted %>
-  </div>
+  <!--div class="field"-->
+    <!--%= form.label :veicolo %-->
+    <!--%= select_tag(:vehicle_id) do %-->
+      <!--% @vehicles.each do |vehicle| %-->
+        <!--%= content_tag(:option, vehicle.id, value: vehicle.targa) %-->
+      <!--% end %-->
+    <!--% end %>
+  </div-->
 
   <div class="actions">
     <%= form.submit %>

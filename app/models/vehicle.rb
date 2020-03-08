@@ -3,6 +3,6 @@ class Vehicle < ApplicationRecord
 	validates :posti, presence: true
 	validates :comfort, presence: true
 	
-	has_many :routes
+	has_many :routes, dependent: :destroy
 	belongs_to :driver
 end

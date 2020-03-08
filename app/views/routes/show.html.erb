@@ -30,10 +30,5 @@
   <%= @route.costo %>
 </p>
 
-<p>
-  <strong>Deleted:</strong>
-  <%= @route.deleted %>
-</p>
-
-<%= link_to 'Edit', edit_route_path(@route) %> |
-<%= link_to 'Back', routes_path %>
+<%= link_to 'Edit', edit_driver_route_path(@driver, @route) %> |
+<%= link_to 'Back', journey_driver_routes_path(@driver) %>

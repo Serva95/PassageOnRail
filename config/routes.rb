@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :hitch_hikers
   resources :drivers do
     resources :vehicles
-    resources :routes
+    resources :routes, only: [:show, :edit, :update, :new, :create, :destroy] do
+      get 'journey', actione: 'journey', on: :collection
+    end
   end
   resources :multi_trip_associations
   resources :multi_trips
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   resources :ratings
   resources :reviews
   resources :users
+  resources :routes, only: :index
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
 

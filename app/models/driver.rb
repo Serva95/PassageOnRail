@@ -4,7 +4,7 @@ class Driver < ApplicationRecord
 
 	has_many :vehicles, dependent: :destroy
 	has_many :reviews
-	has_many :routes
+	has_many :routes, dependent: :destroy
 	has_many :ratings
 	has_many :chats
 end
