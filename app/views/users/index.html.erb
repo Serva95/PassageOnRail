@@ -1,45 +1,5 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Users</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Username</th>
-      <th>Password</th>
-      <th>Nome</th>
-      <th>Cognome</th>
-      <th>Data di nascita</th>
-      <th>Cellulare</th>
-      <th>Indirizzo</th>
-      <th>Url foto</th>
-      <th>Deleted</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.username %></td>
-        <td><%= user.password %></td>
-        <td><%= user.nome %></td>
-        <td><%= user.cognome %></td>
-        <td><%= user.data_di_nascita %></td>
-        <td><%= user.cellulare %></td>
-        <td><%= user.indirizzo %></td>
-        <td><%= user.url_foto %></td>
-        <td><%= user.deleted %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Registrati', new_user_path %>
+<%= link_to 'Accedi', user_login_path %>
