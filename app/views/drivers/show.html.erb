@@ -5,13 +5,6 @@
   <%= @driver.rating_medio %>
 </p>
 
-<h2>Veicoli</h2>
-<% for vehicle in @driver.vehicles %>
-  <ul>
-    <li><%= vehicle.targa %><li>
-  </ul>
-<% end %>
-
 <h2>Tratte</h2>
 <% for route in @driver.routes%>
   <ul>
@@ -19,12 +12,7 @@
   </ul>
 <%end%>
 
-<p>
-  <strong>Deleted:</strong>
-  <%= @driver.deleted %>
-</p>
-
 <%= link_to 'Edit', edit_driver_path(@driver) %> |
-<%= link_to 'Show Vehicles', driver_vehicles_path(@driver) %> |
-<%= link_to 'Add Route', driver_route_path(@driver) %> |
 <%= link_to 'Back', drivers_path %>
+<%= button_to "Mostra Veicoli", driver_vehicles_path(@driver), :method => :get %>
+<%= button_to 'Add Route', new_driver_route_path(@driver), :method => :get %>
