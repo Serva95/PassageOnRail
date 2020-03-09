@@ -41,14 +41,10 @@
     <%= form.text_field :costo %>
   </div>
 
-  <!--div class="field"-->
-    <!--%= form.label :veicolo %-->
-    <!--%= select_tag(:vehicle_id) do %-->
-      <!--% @vehicles.each do |vehicle| %-->
-        <!--%= content_tag(:option, vehicle.id, value: vehicle.targa) %-->
-      <!--% end %-->
-    <!--% end %>
-  </div-->
+  <div class="field">
+    <%= form.label :vehicle_id %>
+    <%= form.collection_select(:vehicle_id, Vehicle.where(driver_id: @driver.id), :id, :targa) %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
