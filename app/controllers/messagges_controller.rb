@@ -10,6 +10,7 @@ class MessaggesController < ApplicationController
   # GET /messagges/1
   # GET /messagges/1.json
   def show
+    @messagge = Messagge.find(id)
   end
 
   # GET /messagges/new
@@ -25,7 +26,7 @@ class MessaggesController < ApplicationController
   # POST /messagges.json
   def create
     @messagge = Messagge.new(messagge_params)
-
+    @messagge.data_ora = DateTime.current
     respond_to do |format|
       if @messagge.save
         format.html { redirect_to @messagge, notice: 'Messagge was successfully created.' }
@@ -69,6 +70,6 @@ class MessaggesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def messagge_params
-      params.require(:messagge).permit(:data_ora, :testo, :mittente, :destinatario)
+      params.require(:messagge).permit(:data_ora, :testo, :mittente, :destinatario, :deleted)
     end
 end
