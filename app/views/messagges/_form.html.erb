@@ -12,24 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :data_ora %>
-    <%= form.datetime_select :data_ora %>
-  </div>
-
-  <div class="field">
     <%= form.label :testo %>
     <%= form.text_area :testo %>
   </div>
 
   <div class="field">
-    <%= form.label :mittente %>
-    <%= form.text_field :mittente %>
+    <%= form.hidden_field :mittente %>
   </div>
 
   <div class="field">
-    <%= form.label :destinatario %>
-    <%= form.text_field :destinatario %>
+    <%= form.hidden_field :destinatario %>
   </div>
+
+  <br>
 
   <div class="actions">
     <%= form.submit %>

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="Aggiunta della grafica adattiva">
+    <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="modifica grafica, inziata chat + messaggi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/messagges_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/messagges_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/messagge.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/messagge.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/homes/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/homes/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/messagges/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/messagges/_form.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/messagges/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/messagges/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/messagges/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/messagges/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/ratings/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/ratings/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/ratings/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/ratings/new.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/reviews/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/reviews/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/reviews/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/reviews/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/reviews/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/reviews/new.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/users/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/development.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/development.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +228,7 @@
       <workItem from="1583261430240" duration="258000" />
       <workItem from="1583512995032" duration="227000" />
       <workItem from="1583513612952" duration="187000" />
-      <workItem from="1583744545532" duration="7438000" />
+      <workItem from="1583744545532" duration="8422000" />
     </task>
     <task id="LOCAL-00001" summary="Inizio">
       <created>1583244817201</created>
@@ -249,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583261298113</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modifica grafica, inziata chat + messaggi">
+      <created>1583755989325</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583755989325</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +339,8 @@
     <MESSAGE value="Inizio" />
     <MESSAGE value="aggiunta .idea a gitignore" />
     <MESSAGE value="Aggiunta della grafica" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta della grafica" />
+    <MESSAGE value="modifica grafica, inziata chat + messaggi" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifica grafica, inziata chat + messaggi" />
   </component>
   <component name="WindowStateProjectService">
     <state x="315" y="23" key="#Deployment" timestamp="1583245331796">
@@ -341,10 +351,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1583254012875" />
-    <state x="348" y="1" width="749" height="727" key="CommitChangelistDialog2" timestamp="1583755955458">
+    <state x="348" y="1" width="749" height="727" key="CommitChangelistDialog2" timestamp="1583756814133">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="348" y="1" width="749" height="727" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1583755955458" />
+    <state x="348" y="1" width="749" height="727" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1583756814133" />
     <state x="596" y="217" key="Github.ShareDialog" timestamp="1583245275368">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -393,10 +403,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1583755834166" />
-    <state x="137" y="80" key="Vcs.Push.Dialog.v2" timestamp="1583261548193">
+    <state x="137" y="80" key="Vcs.Push.Dialog.v2" timestamp="1583755996875">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1583261548193" />
+    <state x="137" y="80" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1583755996875" />
     <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1583744996060">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
