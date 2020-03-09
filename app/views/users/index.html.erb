@@ -1,5 +1,13 @@
-<p id="notice"><%= notice %></p>
-<h1>Users</h1>
+<p id="notice" class="col-12"><%= notice %></p>
 
-<%= link_to 'Registrati', new_user_path %>
-<%= link_to 'Accedi', user_login_path %>
+<div class="col-12">
+  <h3>Users</h3>
+</div>
+
+<%= render 'formLogin', user: @user %>
+
+<div class="col-12">
+  <h4>Non sei ancora registrato ? <%= link_to 'Registrati cliccando qua', new_user_path %></h4>
+</div>
+
+<!--<= link_to 'Accedi', user_login_path, {class: 'button'} %>-->
