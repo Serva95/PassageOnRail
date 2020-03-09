@@ -1,67 +1,50 @@
 <%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <div class="row gtr-uniform">
+    <% if user.errors.any? %>
+      <div id="error_explanation" class="col-12">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="col-4 col-12-narrower">
+      <%= form.text_field :email, placeholder: "Email" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cognome %>
-    <%= form.text_field :cognome %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data_di_nascita %>
-    <%= form.date_field :data_di_nascita %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cellulare %>
-    <%= form.text_field :cellulare %>
-  </div>
-
-  <div class="field">
-    <%= form.label :indirizzo %>
-    <%= form.text_area :indirizzo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :url_foto %>
-    <%= form.text_field :url_foto %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deleted %>
-    <%= form.check_box :deleted %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="col-4 col-12-narrower">
+      <%= form.text_field :username, placeholder: "Username", :autocomplete => :off %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= form.password_field :password, placeholder: "Password", :autocomplete => :off %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= form.text_field :nome, placeholder: "Nome"  %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= form.text_field :cognome, placeholder: "Cognome"  %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= form.text_field :data_di_nascita, placeholder: "Data di Nascita", onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= form.text_field :cellulare, placeholder: "Cellulare"  %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= form.text_field :indirizzo, placeholder: "Indirizzo" %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= form.label :"Carica una foto" %>
+      <%= form.file_field :picture %>
+    </div>
+    <div class="col-12 col-12-narrower">
+      <%= form.hidden_field :deleted %>
+    </div>
+    <div class="actions col-6 col-12-narrower">
+      <%= form.submit "Registrati"%>
+    </div>
   </div>
 <% end %>

@@ -7,10 +7,15 @@ class UsersController < ApplicationController
 
   end
 
-  # GET /users/login
+  # login and logout da tortonesi
   def login
 
   end
+
+  def logout
+
+  end
+
 
   # GET /users/1
   # GET /users/1.json
