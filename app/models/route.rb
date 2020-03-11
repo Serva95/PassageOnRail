@@ -14,7 +14,15 @@ class Route < ApplicationRecord
   #  where('driver_id = ?', driver_id)
   #end
 
-  def self.search(cp,ca)
-    where('citta_partenza = ? AND citta_arrivo = ?', cp,ca)
+  #def self.search(cp,ca)
+   # where('citta_partenza = ? AND citta_arrivo = ?', cp,ca)
+  #end
+
+  def self.search(search)
+    if search
+      where(["citta_partenza LIKE ?" , "%#{search}%"])
+    else
+      all
+    end
   end
 end

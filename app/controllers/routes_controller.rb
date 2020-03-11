@@ -70,7 +70,8 @@ class RoutesController < ApplicationController
   end
 
   def search
-    @result= Route.search params[:citta_partenza], params[:citta_arrivo]
+    #@result= Route.search params[:citta_partenza], params[:citta_arrivo]
+    @result= Route.search(params[:search])
   end
 
   private
