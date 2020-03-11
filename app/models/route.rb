@@ -13,4 +13,8 @@ class Route < ApplicationRecord
   #scope :journey, ->(driver_id) do
   #  where('driver_id = ?', driver_id)
   #end
+
+  def self.search(cp,ca)
+    where('citta_partenza = ? AND citta_arrivo = ?', cp,ca)
+  end
 end

@@ -69,6 +69,10 @@ class RoutesController < ApplicationController
     end
   end
 
+  def search
+    @result= Route.search params[:citta_partenza], params[:citta_arrivo]
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_route

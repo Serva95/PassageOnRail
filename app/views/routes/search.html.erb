@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-12 col-12-narrower">
+<h2>
+    Cerca la tratta
+</h2>
+</div>
+
+<div class="col-6 col-12-narrower">
+<form action="/search" method="/get" >
+  <input type="text" name="citta_partenza">
+  <input type="text" name="citta_arrivo">
+  <input type="submit" value="Cerca tratta">
+</form>
+</div>
+
+<div class="col-12 col-12-narrower">
+<% if !@result.any? %>
+  Oh no! Sembra che nessuno percorra questa tratta :(
+<% end %>
+</div>
+
+<div class="col-12 col-12-narrower">
+<% @result.each do |r|%>
+  <%= r.citta_partenza %>
+  <%= r.luogo_ritrovo %>
+  <%= r.citta_arrivo %>
+  <%= r.data_ora_partenza %>
+  <%= r.data_ora_arrivo %>
+  <%= r.costo %>
+<% end %>
+</div>
