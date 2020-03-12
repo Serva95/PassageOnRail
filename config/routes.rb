@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :passenger_associations
   resources :hitch_hikers
   resources :drivers do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_134424) do
+ActiveRecord::Schema.define(version: 2020_03_12_220322) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -50,7 +50,9 @@ ActiveRecord::Schema.define(version: 2020_03_12_134424) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "multi_trip_id"
+    t.integer "single_trip_id"
     t.index ["multi_trip_id"], name: "index_multi_trip_associations_on_multi_trip_id"
+    t.index ["single_trip_id"], name: "index_multi_trip_associations_on_single_trip_id"
   end
 
   create_table "multi_trips", force: :cascade do |t|
@@ -69,7 +71,9 @@ ActiveRecord::Schema.define(version: 2020_03_12_134424) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "hitch_hiker_id"
+    t.integer "single_trip_id"
     t.index ["hitch_hiker_id"], name: "index_passenger_associations_on_hitch_hiker_id"
+    t.index ["single_trip_id"], name: "index_passenger_associations_on_single_trip_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -124,10 +128,14 @@ ActiveRecord::Schema.define(version: 2020_03_12_134424) do
     t.integer "comfort"
   end
 
+  create_table "single_trips", force: :cascade do |t|
+    t.integer "n_passeggeri"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string "email"
     t.string "username"
-    t.string "password"
     t.string "nome"
     t.string "cognome"
     t.date "data_di_nascita"
@@ -139,8 +147,22 @@ ActiveRecord::Schema.define(version: 2020_03_12_134424) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "drivers_id"
     t.integer "hitch_hikers_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.index ["drivers_id"], name: "index_users_on_drivers_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["hitch_hikers_id"], name: "index_users_on_hitch_hikers_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "vehicles", force: :cascade do |t|
@@ -161,7 +183,9 @@ ActiveRecord::Schema.define(version: 2020_03_12_134424) do
   add_foreign_key "chats", "hitch_hikers"
   add_foreign_key "messagges", "chats"
   add_foreign_key "multi_trip_associations", "multi_trips"
+  add_foreign_key "multi_trip_associations", "single_trips"
   add_foreign_key "passenger_associations", "hitch_hikers"
+  add_foreign_key "passenger_associations", "single_trips"
   add_foreign_key "ratings", "drivers"
   add_foreign_key "ratings", "hitch_hikers"
   add_foreign_key "reviews", "drivers"
