@@ -32,6 +32,11 @@
     <%= s.text_field :tipo_mezzo %>
   </div>
 
+  <div class="field">
+    <%= s.label :'Comfort minimo' %>
+    <%= s.number_field :comfort %>
+  </div>
+
   <div class="actions">
     <%= s.submit "Cerca tratta", class: "pure_button pure-button-primary" %>
   </div>

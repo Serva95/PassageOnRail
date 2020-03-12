@@ -16,6 +16,6 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.require(:search).permit(:c_partenza,:c_arrivo,:data_ora,:rating,:costo,:tipo_mezzo)
+    params.require(:search).permit(:c_partenza,:c_arrivo,:data_ora,:rating,:costo,:tipo_mezzo,:comfort)
   end
 end
