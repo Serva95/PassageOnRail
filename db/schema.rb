@@ -49,10 +49,8 @@ ActiveRecord::Schema.define(version: 2020_03_12_134424) do
   create_table "multi_trip_associations", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "single_trip_id"
     t.integer "multi_trip_id"
     t.index ["multi_trip_id"], name: "index_multi_trip_associations_on_multi_trip_id"
-    t.index ["single_trip_id"], name: "index_multi_trip_associations_on_single_trip_id"
   end
 
   create_table "multi_trips", force: :cascade do |t|
@@ -71,9 +69,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_134424) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "hitch_hiker_id"
-    t.integer "single_trip_id"
     t.index ["hitch_hiker_id"], name: "index_passenger_associations_on_hitch_hiker_id"
-    t.index ["single_trip_id"], name: "index_passenger_associations_on_single_trip_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -128,14 +124,6 @@ ActiveRecord::Schema.define(version: 2020_03_12_134424) do
     t.integer "comfort"
   end
 
-  create_table "single_trips", force: :cascade do |t|
-    t.integer "n_passeggeri"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "route_id"
-    t.index ["route_id"], name: "index_single_trips_on_route_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "username"
@@ -173,16 +161,13 @@ ActiveRecord::Schema.define(version: 2020_03_12_134424) do
   add_foreign_key "chats", "hitch_hikers"
   add_foreign_key "messagges", "chats"
   add_foreign_key "multi_trip_associations", "multi_trips"
-  add_foreign_key "multi_trip_associations", "single_trips"
   add_foreign_key "passenger_associations", "hitch_hikers"
-  add_foreign_key "passenger_associations", "single_trips"
   add_foreign_key "ratings", "drivers"
   add_foreign_key "ratings", "hitch_hikers"
   add_foreign_key "reviews", "drivers"
   add_foreign_key "reviews", "hitch_hikers"
   add_foreign_key "routes", "drivers"
   add_foreign_key "routes", "vehicles"
-  add_foreign_key "single_trips", "routes"
   add_foreign_key "users", "drivers", column: "drivers_id"
   add_foreign_key "users", "hitch_hikers", column: "hitch_hikers_id"
   add_foreign_key "vehicles", "drivers"
