@@ -2,6 +2,17 @@
 
 <h1>Routes</h1>
 
+<div class="col-6 col-12-narrower">
+  <%= form_tag routes_path, :method => 'get' do  %>
+    <%= label_tag :'citta di partenza' %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Cerca tratta" %>
+  <%end %>
+</div>
+
+<%= link_to "Ricerca semplice filtri", new_search_path %>
+
+
 <table>
   <thead>
     <tr>

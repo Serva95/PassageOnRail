@@ -1,18 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <div class="col-6 col-12-narrower">
   <strong>Rating medio:</strong>
+  </div>
+<div class="col-4 col-12-narrower">
   <%= @driver.rating_medio %>
+</div>
 </p>
 
-<h2>Tratte</h2>
-<% for route in @driver.routes%>
-  <ul>
-    <li><%= route.id %></li>
-  </ul>
-<%end%>
-
-<%= link_to 'Edit', edit_driver_path(@driver) %> |
-<%= link_to 'Back', drivers_path %>
+<div class="col-12 col-12-narrower">
 <%= button_to "Mostra Veicoli", driver_vehicles_path(@driver), :method => :get %>
 <%= button_to 'Mostra Tratte', new_driver_route_path(@driver), :method => :get %>
+</div>
+<div class="col-6 col-12-narrower">
+  <%= link_to 'Edit', edit_driver_path(@driver) %> |
+  <%= link_to 'Back', drivers_path %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_124801) do
+ActiveRecord::Schema.define(version: 2020_02_17_112648) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_124801) do
     t.boolean "deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
   create_table "hitch_hikers", force: :cascade do |t|
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_124801) do
     t.boolean "deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
   create_table "messagges", force: :cascade do |t|
@@ -137,10 +139,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_124801) do
     t.boolean "deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "drivers_id"
-    t.integer "hitch_hikers_id"
-    t.index ["drivers_id"], name: "index_users_on_drivers_id"
-    t.index ["hitch_hikers_id"], name: "index_users_on_hitch_hikers_id"
   end
 
   create_table "vehicles", force: :cascade do |t|
@@ -171,7 +169,5 @@ ActiveRecord::Schema.define(version: 2020_03_10_124801) do
   add_foreign_key "routes", "drivers"
   add_foreign_key "routes", "vehicles"
   add_foreign_key "single_trips", "routes"
-  add_foreign_key "users", "drivers", column: "drivers_id"
-  add_foreign_key "users", "hitch_hikers", column: "hitch_hikers_id"
   add_foreign_key "vehicles", "drivers"
 end

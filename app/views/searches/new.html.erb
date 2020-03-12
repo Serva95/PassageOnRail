@@ -1,0 +1,43 @@
+<h1>Ricerca semplice con filtri</h1>
+
+<%= form_for @search, html: {class: "pure-form"} do |s| %>
+
+  <div class="field">
+    <%= s.label :'Città di partenza' %>
+    <%= s.text_field :c_partenza %>
+  </div>
+
+  <div class="field">
+    <%= s.label :'Città di arrivo' %>
+    <%= s.text_field :c_arrivo %>
+  </div>
+
+  <div class="field">
+    <%= s.label :'Data e ora di partenza' %>
+    <%= s.datetime_field :data_ora %>
+  </div>
+
+  <div class="field">
+    <%= s.label :'Rating automobilista' %>
+    <%= s.number_field :rating %>
+  </div>
+
+  <div class="field">
+    <%= s.label :'Costo massimo' %>
+    <%= s.number_field :costo %>
+  </div>
+
+  <div class="field">
+    <%= s.label :'Marchio autoveicolo' %>
+    <%= s.text_field :tipo_mezzo %>
+  </div>
+
+  <div class="actions">
+    <%= s.submit "Cerca tratta", class: "pure_button pure-button-primary" %>
+  </div>
+
+<%end %>
+
+<p>
+<%= link_to 'Back', routes_path%>
+</p>
