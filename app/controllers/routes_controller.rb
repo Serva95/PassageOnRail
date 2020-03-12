@@ -8,6 +8,8 @@ class RoutesController < ApplicationController
     @routes = Route.search(params[:search])
   end
 
+  # GET drivers/:id_driver/routes/journey
+  # GET drivers/:id_driver/routes/journey
   def journey
     @routes = @driver.routes
   end
@@ -23,15 +25,16 @@ class RoutesController < ApplicationController
     @route = @driver.routes.build
   end
 
-  # GET /routes/1/edit
+  # GET driver/:id_driver/routes/1/edit
   def edit
   end
 
-  # POST /routes
-  # POST /routes.json
+  # POST driver/:id_driver/routes
+  # POST driver/:id_driver/routes.json
   def create
     #@driver = Driver.vehicles.find([:vehicles_id])
 	  @route = @driver.routes.build(route_params)
+    @route.n_passeggeri = 0
     #@route.vehicle = Vehicle.find_by_id(1)
 
     respond_to do |format|
@@ -45,8 +48,8 @@ class RoutesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /routes/1
-  # PATCH/PUT /routes/1.json
+  # PATCH/PUT driver/:id_driver/routes/1
+  # PATCH/PUT /routes//1.json
   def update
     respond_to do |format|
       if @route.update(route_params)
