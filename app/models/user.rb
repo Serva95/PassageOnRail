@@ -9,11 +9,16 @@ class UserDOBValidator < ActiveModel::Validator
 end
 
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
  # Include default devise modules. Others available are:
  #  :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-	 devise :registerable,
-         :recoverable, :rememberable, :validatable,
-          :database_authenticatable
+  devise :registerable, :recoverable, :rememberable, :validatable #, :database_authenticatable
 
   validates_with UserDOBValidator
+
+   belongs_to :driver
+   belongs_to :hitch_hiker
 end

@@ -4,7 +4,7 @@ class HitchHikersController < ApplicationController
   # GET /hitch_hikers
   # GET /hitch_hikers.json
   def index
-    @hitch_hikers = HitchHiker.all
+    # @hitch_hikers = HitchHiker.all
   end
 
   # GET /hitch_hikers/1
