@@ -32,7 +32,7 @@ class RoutesController < ApplicationController
   def create
     #@driver = Driver.vehicles.find([:vehicles_id])
 	  @route = @driver.routes.build(route_params)
-    @route.vehicle = Vehicle.find_by_id(1)
+    #@route.vehicle = Vehicle.find_by_id(1)
 
     respond_to do |format|
       if @route.save
