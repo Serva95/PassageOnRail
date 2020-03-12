@@ -5,7 +5,7 @@ class RoutesController < ApplicationController
   # GET /routes
   # GET /routes.json
   def index
-    @routes = Route.all
+    @routes = Route.search(params[:search])
   end
 
   def journey
@@ -67,11 +67,6 @@ class RoutesController < ApplicationController
       format.html { redirect_to journey_driver_routes_path(@driver), notice: 'Route was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def search
-    #@result= Route.search params[:citta_partenza], params[:citta_arrivo]
-    @result= Route.search(params[:search])
   end
 
   private

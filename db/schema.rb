@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_112648) do
+ActiveRecord::Schema.define(version: 2020_03_12_093819) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -116,6 +116,17 @@ ActiveRecord::Schema.define(version: 2020_02_17_112648) do
     t.integer "vehicle_id"
     t.index ["driver_id"], name: "index_routes_on_driver_id"
     t.index ["vehicle_id"], name: "index_routes_on_vehicle_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string "c_partenza"
+    t.string "c_arrivo"
+    t.datetime "data_ora"
+    t.float "rating"
+    t.float "costo"
+    t.string "tipo_mezzo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "single_trips", force: :cascade do |t|
