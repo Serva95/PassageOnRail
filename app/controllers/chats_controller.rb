@@ -1,10 +1,18 @@
 class ChatsController < ApplicationController
   before_action :set_chat, only: [:show, :edit, :update, :destroy]
+  #before_action :authenticate_user!
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
 
   # GET /chats
   # GET /chats.json
   def index
-    @chats = Chat.all
+    #@chats = Chat.joins(drivers: :users).where(users: {id: session[:id]})
+    #
+    # prova in cui vedo le chat del driver se è log come tale (mettere l'id al posto del 1) con gli autostop
+    @chats = Chat.joins(driver: :user, hitch_hiker: :user).where("users.id = '1'")
   end
 
   # GET /chats/1
