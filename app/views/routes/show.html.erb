@@ -30,5 +30,10 @@
   <%= @route.costo %>
 </p>
 
+<p>
+  <strong>Tempo di percorrenza:</strong>
+  <%= @route.tempo_percorrenza %>
+</p>
+
 <%= link_to 'Edit', edit_driver_route_path(@driver, @route) %> |
 <%= link_to 'Back', journey_driver_routes_path(@driver) %>
