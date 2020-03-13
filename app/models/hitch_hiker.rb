@@ -1,4 +1,5 @@
 class HitchHiker < ApplicationRecord
+	validates :email, presence: true, uniqueness: true
 
 	has_one :user
 	has_many :reviews
