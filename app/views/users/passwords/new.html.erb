@@ -4,7 +4,7 @@
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <div class="row gtr-uniform">
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
     <div class="col-12 col-12-narrower">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Inserisci la tua email" %>
@@ -18,5 +18,5 @@
 <% end %>
 
 <div class="row gtr-uniform">
-  <%= render "devise/shared/links" %>
+  <%= render "users/shared/links" %>
 </div>

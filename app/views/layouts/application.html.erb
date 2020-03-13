@@ -36,7 +36,7 @@
                 </li>
               </ul>
             </li>
-<!--            <li><%#= link_to 'Accedi', {:action => '/users/login'}, {class: 'button'}%></li>-->
+            <li><%= link_to 'Esci', '/user/sign_out', data: { confirm: 'Are you sure?' } %></li>
             <li><%= link_to 'Registrati/Accedi', new_user_session_url, {class: 'button'}%></li>
           </ul>
         </nav>
