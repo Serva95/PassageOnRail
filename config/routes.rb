@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :drivers do
     resources :vehicles
     resources :routes, only: [:show, :edit, :update, :new, :create, :destroy] do
-      get 'journey', actione: 'journey', on: :collection
+      get 'journey', action: 'journey', on: :collection
     end
   end
   resources :multi_trip_associations
