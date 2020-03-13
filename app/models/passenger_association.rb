@@ -1,4 +1,4 @@
 class PassengerAssociation < ApplicationRecord
-	#belongs_to :single_trip
+	belongs_to :route
 	belongs_to :hitch_hiker
 end
