@@ -1,25 +1,30 @@
 <p id="notice"><%= notice %></p>
+<div class="col-12 col-12-narrower">
+  <h2>Chats</h2>
+</div>
 
-<h1>Chats</h1>
+<% if @chats.present? %>
+  <% @chats.each do |chat| %>
+    <div class="col-10 col-9-mobile">
+      <h3><%= link_to 'Apri la chat con ' + chat.hitch_hiker.user.nome + ' ' + chat.hitch_hiker.user.cognome, chat %></h3>
+    </div>
+    <!--<td><= link_to 'Edit', edit_chat_path(chat) %></td>-->
+    <div class="col-2 col-3-mobile">
+      <%= link_to '', chat, method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt fa-3x', title: 'Elimina questa chat'%>
+    </div>
+    <div class="col-12 col-12-mobilep">
+      <hr>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% end
+     else %>
+  <div class="col-12 col-12-mobilep">
+    <h3>C'&egrave; troppo silenzio qua... inzia a chattare con qualcuno dalla sua pagina utente</h3>
+  </div>
+<% end %>
 
-  <tbody>
-    <% @chats.each do |chat| %>
-      <tr>
-        <td><%= link_to 'Show', chat %></td>
-        <td><%= link_to 'Edit', edit_chat_path(chat) %></td>
-        <td><%= link_to 'Destroy', chat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Chat', new_chat_path %>
+<!--
+<div class="col-12 col-12-mobilep">
+  <= link_to 'New Chat', new_chat_path %>
+</div>
+-->
