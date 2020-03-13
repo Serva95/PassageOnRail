@@ -19,6 +19,6 @@ class User < ApplicationRecord
 
   validates_with UserDOBValidator
 
-   belongs_to :driver
-   belongs_to :hitch_hiker
+   belongs_to :driver, optional: true
+   belongs_to :hitch_hiker, optional: true
 end

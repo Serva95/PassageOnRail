@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_225021) do
+ActiveRecord::Schema.define(version: 2020_03_12_134424) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -50,9 +50,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_225021) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "multi_trip_id"
-    t.integer "route_id"
     t.index ["multi_trip_id"], name: "index_multi_trip_associations_on_multi_trip_id"
-    t.index ["route_id"], name: "index_multi_trip_associations_on_route_id"
   end
 
   create_table "multi_trips", force: :cascade do |t|
@@ -71,9 +69,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_225021) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "hitch_hiker_id"
-    t.integer "route_id"
     t.index ["hitch_hiker_id"], name: "index_passenger_associations_on_hitch_hiker_id"
-    t.index ["route_id"], name: "index_passenger_associations_on_route_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -112,7 +108,6 @@ ActiveRecord::Schema.define(version: 2020_03_12_225021) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "driver_id"
     t.integer "vehicle_id"
-    t.integer "n_passeggeri"
     t.index ["driver_id"], name: "index_routes_on_driver_id"
     t.index ["vehicle_id"], name: "index_routes_on_vehicle_id"
   end
@@ -166,9 +161,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_225021) do
   add_foreign_key "chats", "hitch_hikers"
   add_foreign_key "messagges", "chats"
   add_foreign_key "multi_trip_associations", "multi_trips"
-  add_foreign_key "multi_trip_associations", "routes"
   add_foreign_key "passenger_associations", "hitch_hikers"
-  add_foreign_key "passenger_associations", "routes"
   add_foreign_key "ratings", "drivers"
   add_foreign_key "ratings", "hitch_hikers"
   add_foreign_key "reviews", "drivers"
