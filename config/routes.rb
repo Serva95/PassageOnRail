@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :passenger_associations
   resources :hitch_hikers
   resources :drivers do
@@ -21,6 +22,5 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
-  get 'user/login/', action: 'login', controller: 'users'
 
 end
