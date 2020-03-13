@@ -1,4 +1,5 @@
 class Driver < ApplicationRecord
+	validates :email, presence: true, uniqueness: true
 
 	has_one :user
 	has_many :vehicles, dependent: :destroy
