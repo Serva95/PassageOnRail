@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_161028) do
+ActiveRecord::Schema.define(version: 2020_03_13_202922) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -132,6 +132,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_161028) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "comfort"
+    t.string "sort_attribute"
+    t.string "sort_order"
   end
 
   create_table "single_trips", force: :cascade do |t|
