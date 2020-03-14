@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions', registration: 'users/registration' }
+  devise_for :users, controllers: { sessions: 'users/sessions', registration: 'users/registration', password: 'users/password'}
 
   resources :passenger_associations
   resources :hitch_hikers
