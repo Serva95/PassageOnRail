@@ -1,7 +1,7 @@
 class Search < ApplicationRecord
 
   def define_order(s_order)
-    s_order='DECRESCENTE' ? :asc : :desc
+    s_order=='Crescente' ? :asc : :desc
   end
 
   def search_routes
@@ -16,9 +16,11 @@ class Search < ApplicationRecord
     routes = Route.joins(:vehicle).where(["vehicles.marca LIKE ?","%#{tipo_mezzo}"]) if tipo_mezzo.present?
     routes = Route.joins(:vehicle).where(["vehicles.comfort >= ?",comfort]) if comfort.present?
 
-    routes = routes.order(:costo) if sort_attribute='Costo'
-    routes = routes.order(:tempo_percorrenza) if sort_attribute='Tempo di percorrenza'
+    order=define_order(sort_order)
 
+    routes = routes.order(costo: order) if sort_attribute.eql?('Costo')
+    routes = routes.order(tempo_percorrenza: order) if sort_attribute.eql?('Tempo di percorrenza')
+    routes = Route.joins(:vehicle).order(comfort: order) if sort_attribute.eql?('Comfort')
 
     return routes
 
