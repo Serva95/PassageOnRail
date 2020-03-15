@@ -1,39 +1,73 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Citta partenza:</strong>
-  <%= @route.citta_partenza %>
-</p>
+<table>
+  <h1 class="routes">Dettagli tratta</h1>
+</table>
 
-<p>
-  <strong>Luogo ritrovo:</strong>
-  <%= @route.luogo_ritrovo %>
-</p>
+    <div class="col-6 col-12-narrower">
+      <th>
+      <p>
+        <strong>Citta partenza:</strong>
+        <%= @route.citta_partenza %>
+      </p>
+    </div>
 
-<p>
-  <strong>Data ora partenza:</strong>
-  <%= @route.data_ora_partenza %>
-</p>
 
-<p>
-  <strong>Citta arrivo:</strong>
-  <%= @route.citta_arrivo %>
-</p>
+    <div class="col-6 col-12-narrower">
+      <p>
+        <strong>Luogo ritrovo:</strong>
+        <%= @route.luogo_ritrovo %>
+      </p>
+    </div>
 
-<p>
-  <strong>Data ora arrivo:</strong>
-  <%= @route.data_ora_arrivo %>
-</p>
 
-<p>
-  <strong>Costo:</strong>
-  <%= @route.costo %>
-</p>
+    <div class="col-6 col-12-narrower" >
+      <p>
+        <strong>Data ora partenza:</strong>
+        <%= @route.data_ora_partenza %>
+      </p>
+    </div>
 
-<p>
-  <strong>Tempo di percorrenza:</strong>
-  <%= @route.tempo_percorrenza %>
-</p>
+
+      <div class="col-6 col-12-narrower">
+        <p>
+          <strong>Citta arrivo:</strong>
+          <%= @route.citta_arrivo %>
+        </p>
+      </div>
+
+
+    <div class="col-6 col-12-narrower">
+      <p>
+        <strong>Data ora arrivo:</strong>
+        <%= @route.data_ora_arrivo %>
+      </p>
+    </div>
+
+    <div class="col-6 col-12-narrower">
+      <p>
+        <strong>Costo:</strong>
+        <%= @route.costo %>
+      </p>
+    </div>
+
+
+    <div class="col-6 col-12-narrower">
+      <p>
+        <strong>Tempo di percorrenza:</strong>
+        <%= @route.tempo_percorrenza %>
+      </p>
+    </div>
+
+
+    <div class="col-6 col-12-narrower">
+      <p>
+        <strong>Numero di passeggeri attuali:</strong>
+        <%= @route.n_passeggeri %>
+      </p>
+    </div>
+</table>
+
 
 <%= link_to 'Edit', edit_driver_route_path(@driver, @route) %> |
 <%= link_to 'Back', journey_driver_routes_path(@driver) %>

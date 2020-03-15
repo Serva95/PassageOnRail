@@ -8,31 +8,31 @@ class RoutesController < ApplicationController
     @routes = Route.search(params[:search])
   end
 
+  # GET /drivers/1/routes/journey
   def journey
     @routes = @driver.routes
   end
 
-  # GET /routes/1
-  # GET /routes/1.json
+  # GET /drivers/1/routes/1
+  # GET /drivers/1/routes/1.json
   def show
     @route = @driver.routes.find(params[:id])
   end
 
-  # GET /routes/new
+  # GET /drivers/1/routes/new
   def new
     @route = @driver.routes.build
   end
 
-  # GET /routes/1/edit
+  # GET /drivers/1/routes/1/edit
   def edit
   end
 
-  # POST /routes
-  # POST /routes.json
+  # POST /drivers/1/routes
+  # POST /drivers/1/routes.json
   def create
-    #@driver = Driver.vehicles.find([:vehicles_id])
 	  @route = @driver.routes.build(route_params)
-    #@route.vehicle = Vehicle.find_by_id(1)
+    #@route.n_passeggeri = 0
 
     respond_to do |format|
       if @route.save
@@ -45,8 +45,8 @@ class RoutesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /routes/1
-  # PATCH/PUT /routes/1.json
+  # PATCH/PUT /drivers/1/routes/1
+  # PATCH/PUT /drivers/1/routes/1.json
   def update
     respond_to do |format|
       if @route.update(route_params)
@@ -59,8 +59,8 @@ class RoutesController < ApplicationController
     end
   end
 
-  # DELETE /routes/1
-  # DELETE /routes/1.json
+  # DELETE /drivers/1/routes/1
+  # DELETE /drivers/1/routes/1.json
   def destroy
     @route.destroy
     respond_to do |format|
