@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Rails progetto: development" uuid="a730ec6c-bf2b-440f-8188-1aedea2a2d24">
+    <data-source source="LOCAL" name="Rails PassageOnRail: test" uuid="d046131b-8d66-422e-a6da-3d50ab7cbfd1">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\alice\OneDrive\Documents\GitHub\PassageOnRail\db\development.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\alice\Desktop\PassageOnRail\db\test.db</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="Rails progetto: test" uuid="1ee7cd3b-f864-4858-9b08-3bb23a22c232">
+    <data-source source="LOCAL" name="Rails PassageOnRail: development" uuid="88d956f9-8872-4992-96ea-d9beec04a0f3">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\alice\OneDrive\Documents\GitHub\PassageOnRail\db\test.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.db</jdbc-url>
     </data-source>
   </component>
 </project>
