@@ -26,4 +26,14 @@ class Search < ApplicationRecord
 
   end
 
+  def multi_routes_search
+
+    select_clause = 'DISTINCT routes.*'
+    from_clause = 'routes, routes as other_routes'
+    where_clause = "routes.citta_arrivo = other_routes.citta_partenza"
+
+    @routes = Route.select(select_clause).where(where_clause).from(from_clause)
+
+  end
+
 end
