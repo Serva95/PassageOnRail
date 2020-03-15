@@ -7,6 +7,6 @@ class MultiTrip < ApplicationRecord
     validates :comfort_medio, presence: true
     validates :numero_cambi, presence: true
 	
-	has_many :multi_trip_associations
-	has_many :single_trips, :through => :multi_trip_associations
+	has_many :multi_trip_associations, dependent: :destroy
+	has_many :single_trips, :through => :multi_trip_associations, dependent: :destroy
 end

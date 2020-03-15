@@ -1,9 +1,9 @@
 class HitchHiker < ApplicationRecord
 
 	has_one :user
-	has_many :reviews
-	has_many :ratings
-	has_many :chats
-	has_many :passenger_associations
-	has_many :single_trips, :through => :passenger_associations
+	has_many :reviews, dependent: :destroy
+	has_many :ratings, dependent: :destroy
+	has_many :chats, dependent: :destroy
+	has_many :passenger_associations, dependent: :destroy
+	has_many :single_trips, :through => :passenger_associations, dependent: :destroy
 end
