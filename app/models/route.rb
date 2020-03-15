@@ -10,10 +10,10 @@ class Route < ApplicationRecord
 	belongs_to :driver
 	belongs_to :vehicle
 
-  has_many :multi_trip_associations
-  has_many :multi_trips, :through => :multi_trip_associations
-  has_many :passenger_associations
-  has_many :hitch_hikers, :through => :passenger_associations
+  has_many :multi_trip_associations, dependent: :destroy
+  has_many :multi_trips, :through => :multi_trip_associations, dependent: :destroy
+  has_many :passenger_associations, dependent: :destroy
+  has_many :hitch_hikers, :through => :passenger_associations, dependent: :destroy
 
   #scope :journey, ->(driver_id) do
   #  where('driver_id = ?', driver_id)

@@ -20,6 +20,7 @@
           <ul>
             <% if user_signed_in? %>
               <li><%= link_to 'Home', root_path %></li>
+              <li><%= link_to 'Cerca Tratta', routes_path %></li>
               <li>
                 <a href="#" class="icon solid fa-angle-down">Welcome <%= current_user.nome %></a>
                 <ul>
