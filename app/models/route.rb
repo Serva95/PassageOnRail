@@ -6,8 +6,7 @@ class Route < ApplicationRecord
   validates :data_ora_arrivo, presence: true
   validates :costo, presence: true
   validates :n_passeggeri, presence: true
-	
-	has_one :single_trip
+
 	belongs_to :driver
 	belongs_to :vehicle
 

@@ -8,6 +8,11 @@ class RoutesController < ApplicationController
     @routes = Route.search(params[:search])
   end
 
+  # GET /routes/booking
+  def booking
+    @route = Route.find(params[:id])
+  end
+
   # GET /drivers/1/routes/journey
   def journey
     @routes = @driver.routes
@@ -50,7 +55,11 @@ class RoutesController < ApplicationController
   def update
     respond_to do |format|
       if @route.update(route_params)
-        format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
+        if Driver.exists?(@driver)
+          format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
+        else
+          format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
+        end
         format.json { render :show, status: :ok, location: @route }
       else
         format.html { render :edit }
@@ -78,10 +87,10 @@ class RoutesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def route_params
       params.require(:route).permit(:citta_partenza, :luogo_ritrovo, :data_ora_partenza, :citta_arrivo, :data_ora_arrivo, :costo, :deleted, :driver_id, :vehicle_id, :tempo_percorrenza, :n_passeggeri)
-    end
+      end
 
-  def get_driver
-    @driver = Driver.find(params[:driver_id])
-  end
+    def get_driver
+      @driver = Driver.find(params[:driver_id])
+    end
 
 end

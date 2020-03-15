@@ -8,5 +8,5 @@ class MultiTrip < ApplicationRecord
     validates :numero_cambi, presence: true
 	
 	has_many :multi_trip_associations
-	has_many :single_trips, :through => :multi_trip_associations
+	has_many :routes, :through => :multi_trip_associations
 end
