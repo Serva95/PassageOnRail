@@ -1,6 +1,6 @@
 class RoutesController < ApplicationController
   before_action :get_driver, only: [:journey, :show, :edit, :update, :destroy, :new, :create]
-  before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_route, only: [:show, :edit, :destroy]
 
   # GET /routes
   # GET /routes.json
@@ -54,10 +54,20 @@ class RoutesController < ApplicationController
   # PATCH/PUT /drivers/1/routes/1.json
   def update
     respond_to do |format|
-      if @route.update(route_params)
-        if Driver.exists?(@driver)
+      if current_user.driver_id?
+        @driver = Driver.find(params[:driver_id])
+
+        if @route.update(route_params)
           format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
+          format.json { render :show, status: :ok, location: @route }
         else
+          format.html { render :edit }
+          format.json { render json: @route.errors, status: :unprocessable_entity }
+        end
+      else
+        n_passeggeri = params[:n_passeggeri]
+
+
           format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
         end
         format.json { render :show, status: :ok, location: @route }
