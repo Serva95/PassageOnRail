@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions', registration: 'users/registration' }
-
+  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations'}
+  devise_scope :user do
+    get '/user/sign_out', to: 'users/sessions#destroy'
+  end
   resources :passenger_associations
   resources :hitch_hikers
   resources :drivers do
@@ -11,7 +13,6 @@ Rails.application.routes.draw do
   end
   resources :multi_trip_associations
   resources :multi_trips
-  resources :single_trips
   resources :messagges
   resources :chats
   resources :ratings
@@ -23,8 +24,5 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
-  devise_scope :user do
-    get '/user/sign_out', to: 'users/sessions#destroy'
-  end
 
 end

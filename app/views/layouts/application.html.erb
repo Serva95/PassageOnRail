@@ -36,8 +36,11 @@
                 </li>
               </ul>
             </li>
-            <li><%= link_to 'Esci', '/user/sign_out', data: { confirm: 'Are you sure?' } %></li>
+            <%if user_signed_in? %>
+              <li><%= link_to 'Esci', '/user/sign_out', data: { confirm: 'Are you sure?' } %></li>
+            <%else%>
             <li><%= link_to 'Registrati/Accedi', new_user_session_url, {class: 'button'}%></li>
+            <% end %>
           </ul>
         </nav>
       </header>

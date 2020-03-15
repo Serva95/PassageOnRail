@@ -10,10 +10,7 @@
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
     </div>
     <div class="col-4 col-12-narrower">
-      <%# if @minimum_password_length %>
-      <!--    <em>(<%#= @minimum_password_length %> characters minimum)</em>-->
-      <!--    <%# end %><br />-->
-      <%= f.password_field :password, autocomplete: "new-password", placeholder:"Password" %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder:"Password (minimo 6 caratteri)" %>
     </div>
     <div class="col-4 col-12-narrower">
       <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Confirm Password" %>
