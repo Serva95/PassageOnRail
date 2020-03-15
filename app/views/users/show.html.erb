@@ -1,54 +1,42 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Nome:</strong>
-  <%= @user.nome %>
-</p>
-
-<p>
-  <strong>Cognome:</strong>
-  <%= @user.cognome %>
-</p>
-
-<p>
-  <strong>Data di nascita:</strong>
-  <%= @user.data_di_nascita %>
-</p>
-
-<p>
-  <strong>Cellulare:</strong>
-  <%= @user.cellulare %>
-</p>
-
-<p>
-  <strong>Indirizzo:</strong>
-  <%= @user.indirizzo %>
-</p>
-
-<p>
-  <strong>Url foto:</strong>
-  <%= @user.url_foto %>
-</p>
-
-<p>
-  <strong>Deleted:</strong>
-  <%= @user.deleted %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="row gtr-uniform">
+  <div class="col-4 col-12-narrower">
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </div>
+  <div class="col-4 col-12-narrower">
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </div>
+  <div class="col-4 col-12-narrower">
+    <strong>Nome:</strong>
+    <%= @user.nome %>
+  </div>
+  <div class="col-4 col-12-narrower">
+    <strong>Cognome:</strong>
+    <%= @user.cognome %>
+  </div>
+  <div class="col-4 col-12-narrower">
+    <strong>Data di nascita:</strong>
+    <%= @user.data_di_nascita %>
+  </div>
+  <div class="col-4 col-12-narrower">
+    <strong>Cellulare:</strong>
+    <%= @user.cellulare %>
+  </div>
+  <div class="col-4 col-12-narrower">
+    <strong>Indirizzo:</strong>
+    <%= @user.indirizzo %>
+  </div>
+  <div class="col-4 col-12-narrower">
+    <strong>Url foto:</strong>
+    <%= @user.url_foto %>
+  </div>
+</div>
+<hr>
+<div class="col-4 col-12-narrower">
+  <%= link_to 'Edit', edit_user_registration_path(@user) %> |
+</div>
+<div class="col-4 col-12-narrower">
+  <%= link_to 'Back', users_path %>
+</div>
