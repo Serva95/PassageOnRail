@@ -18,28 +18,25 @@
         <h1><%= link_to 'Passage on Rails' , root_path%></h1>
         <nav id="nav">
           <ul>
-            <li><%= link_to 'Home', root_path %></li>
-            <li>
-              <a href="#" class="icon solid fa-angle-down">Layouts</a>
-              <ul>
-                <li><a href="generic.html">Generic</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="elements.html">Elements</a></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Home', root_path %></li>
+              <li><%= link_to 'Cerca Tratta', routes_path %></li>
+              <li>
+                <a href="#" class="icon solid fa-angle-down">Welcome <%= current_user.nome %></a>
+                <ul>
+                <li><%= link_to 'Il tuo profilo', user_path(current_user.id)%></li>
                 <li>
-                  <a href="#">Submenu</a>
-                  <ul>
-                    <li><a href="#">Option One</a></li>
-                    <li><a href="#">Option Two</a></li>
-                    <li><a href="#">Option Three</a></li>
-                    <li><a href="#">Option Four</a></li>
+                  <%if current_user.driver_id? %>
+                    <li><%= link_to 'Le tue tratte',  journey_driver_routes_path(current_user.driver_id)%></li>
+                    <li><%= link_to 'I tuoi veicoli',  driver_vehicles_path(current_user.driver_id)%></li>
+                  <%else %>
+                    <li><%= link_to 'Diventa driver!',  'DA AGGIUNGERE LINK PER CREARE NUOVO DRIVER, bisogna fare associazione con user'%></li>
+                  <%end %>
+                  <li><%= link_to 'Esci', '/user/sign_out', data: { confirm: 'Are you sure?' } %></li>
                   </ul>
-                </li>
-              </ul>
-            </li>
-            <%if user_signed_in? %>
-              <li><%= link_to 'Esci', '/user/sign_out', data: { confirm: 'Are you sure?' } %></li>
+              </li>
             <%else%>
-            <li><%= link_to 'Registrati/Accedi', new_user_session_url, {class: 'button'}%></li>
+              <li><%= link_to 'Registrati/Accedi', new_user_session_url, {class: 'button'}%></li>
             <% end %>
           </ul>
         </nav>

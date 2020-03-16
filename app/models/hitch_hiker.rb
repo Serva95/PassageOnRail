@@ -5,5 +5,5 @@ class HitchHiker < ApplicationRecord
 	has_many :ratings
 	has_many :chats
 	has_many :passenger_associations
-	has_many :single_trips, :through => :passenger_associations
+	has_many :routes, :through => :passenger_associations
 end

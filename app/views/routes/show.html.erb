@@ -35,5 +35,10 @@
   <%= @route.tempo_percorrenza %>
 </p>
 
+<p>
+  <strong>Posti prenotati</strong>
+  <%= @route.n_passeggeri %>
+</p>
+
 <%= link_to 'Edit', edit_driver_route_path(@driver, @route) %> |
 <%= link_to 'Back', journey_driver_routes_path(@driver) %>

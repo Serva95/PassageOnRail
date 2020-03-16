@@ -1,6 +1,6 @@
 class RoutesController < ApplicationController
   before_action :get_driver, only: [:journey, :show, :edit, :update, :destroy, :new, :create]
-  before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_route, only: [:show, :edit, :destroy]
 
   # GET /routes
   # GET /routes.json
@@ -8,31 +8,36 @@ class RoutesController < ApplicationController
     @routes = Route.search(params[:search])
   end
 
+  # GET /routes/booking
+  def booking
+    @route = Route.find(params[:id])
+  end
+
+  # GET /drivers/1/routes/journey
   def journey
     @routes = @driver.routes
   end
 
-  # GET /routes/1
-  # GET /routes/1.json
+  # GET /drivers/1/routes/1
+  # GET /drivers/1/routes/1.json
   def show
     @route = @driver.routes.find(params[:id])
   end
 
-  # GET /routes/new
+  # GET /drivers/1/routes/new
   def new
     @route = @driver.routes.build
   end
 
-  # GET /routes/1/edit
+  # GET /drivers/1/routes/1/edit
   def edit
   end
 
-  # POST /routes
-  # POST /routes.json
+  # POST /drivers/1/routes
+  # POST /drivers/1/routes.json
   def create
-    #@driver = Driver.vehicles.find([:vehicles_id])
 	  @route = @driver.routes.build(route_params)
-    #@route.vehicle = Vehicle.find_by_id(1)
+    #@route.n_passeggeri = 0
 
     respond_to do |format|
       if @route.save
@@ -45,22 +50,36 @@ class RoutesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /routes/1
-  # PATCH/PUT /routes/1.json
+  # PATCH/PUT /drivers/1/routes/1
+  # PATCH/PUT /drivers/1/routes/1.json
   def update
     respond_to do |format|
-      if @route.update(route_params)
-        format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
-        format.json { render :show, status: :ok, location: @route }
+      if current_user.driver_id?
+        @driver = Driver.find(params[:driver_id])
+
+        if @route.update(route_params)
+          format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
+          format.json { render :show, status: :ok, location: @route }
+        else
+          format.html { render :edit }
+          format.json { render json: @route.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @route.errors, status: :unprocessable_entity }
+        n_passeggeri = params[:n_passeggeri]
+        if @route.update(route_params)
+          format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
+          format.json { render :show, status: :ok, location: @route }
+        else
+          format.html { render :edit }
+          format.json { render json: @route.errors, status: :unprocessable_entity }
+        end
+
       end
     end
   end
 
-  # DELETE /routes/1
-  # DELETE /routes/1.json
+  # DELETE /drivers/1/routes/1
+  # DELETE /drivers/1/routes/1.json
   def destroy
     @route.destroy
     respond_to do |format|
@@ -78,10 +97,10 @@ class RoutesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def route_params
       params.require(:route).permit(:citta_partenza, :luogo_ritrovo, :data_ora_partenza, :citta_arrivo, :data_ora_arrivo, :costo, :deleted, :driver_id, :vehicle_id, :tempo_percorrenza, :n_passeggeri)
-    end
+      end
 
-  def get_driver
-    @driver = Driver.find(params[:driver_id])
-  end
+    def get_driver
+      @driver = Driver.find(params[:driver_id])
+    end
 
 end
