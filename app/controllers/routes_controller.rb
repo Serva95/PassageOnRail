@@ -66,14 +66,14 @@ class RoutesController < ApplicationController
         end
       else
         n_passeggeri = params[:n_passeggeri]
-
-
-          format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
+        if @route.update(route_params)
+          format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
+          format.json { render :show, status: :ok, location: @route }
+        else
+          format.html { render :edit }
+          format.json { render json: @route.errors, status: :unprocessable_entity }
         end
-        format.json { render :show, status: :ok, location: @route }
-      else
-        format.html { render :edit }
-        format.json { render json: @route.errors, status: :unprocessable_entity }
+
       end
     end
   end

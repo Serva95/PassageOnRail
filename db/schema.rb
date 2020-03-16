@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_112715) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "driver_id"
     t.integer "vehicle_id"
-    t.integer "n_passeggeri"
     t.integer "tempo_percorrenza"
+    t.integer "n_passeggeri", default: 0
     t.index ["driver_id"], name: "index_routes_on_driver_id"
     t.index ["vehicle_id"], name: "index_routes_on_vehicle_id"
   end

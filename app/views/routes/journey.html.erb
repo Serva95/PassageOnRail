@@ -12,6 +12,7 @@
     <th>Data ora arrivo</th>
     <th>Costo</th>
     <th>Tempo di percorrenza</th>
+    <th>Persone prenotate</th>
     <th colspan="3"></th>
   </tr>
   </thead>
@@ -26,6 +27,7 @@
       <td><%= route.data_ora_arrivo %></td>
       <td><%= route.costo %></td>
       <td><%= route.tempo_percorrenza %></td>
+      <td><%= route.n_passeggeri %></td>
       <td><%= link_to 'Show', driver_route_path(@driver, route) %></td>
       <td><%= link_to 'Edit', edit_driver_route_path(@driver, route) %></td>
       <td><%= link_to 'Destroy', [@driver, route], method: :delete, data: { confirm: 'Are you sure?' } %></td>
