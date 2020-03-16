@@ -38,7 +38,14 @@ class Search < ApplicationRecord
     routes1 =Route.select(select_clause1).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
    # routes2=Route.select(select_clause2).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
     # routes=Route.select(select_clause1).where([routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND routes.id=?","%#{c_partenza}","%#{c_arrivo}",routes1.id]).from(from_clause)
-   routeprima=routes1.ids #PARE che ci metta dentro gli id di tutte le prime tratte
+
+
+    #routeprima=routes1.ids #PARE che ci metta dentro gli id di tutte le prime tratte
+    #routeprima.each do |rp|
+    #  routes=Route.select(select_clause1).where([routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND routes.id=?","%#{c_partenza}","%#{c_arrivo}",rp]).from(from_clause)
+     #MAGARI SE LO METTO IN UN'ALTRA FUNZIONE FUNZIONA (DEVO AVERE LA CERTEZZA DI POTERGLI PASSARE routeprima)
+
+
     #routes1=Route.find_by_id(routes1.id) però come fare se routes1 ne tira fuori di più?
     return routes1 #, routes2
 
