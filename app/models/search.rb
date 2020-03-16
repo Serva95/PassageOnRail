@@ -28,7 +28,7 @@ class Search < ApplicationRecord
 
   def multi_routes_search
 
-    #tutto ciò che è commentato sono tentativi disperati o bozze di idee
+    #tutto ciò che è commentato sono tentativi disperati o bozze di idee...COME FACCIO A TIRAR FUORI DUE ROUTE ACCOPPIATE????
     select_clause1 = 'DISTINCT routes.*'
     #select_clause1= 'SELECT routes.route_id AS R1, other_routes.route_id AS R2'
     #select_clause2 = 'DISTINCT routes.*, other_routes.*'
@@ -38,7 +38,8 @@ class Search < ApplicationRecord
     routes1 =Route.select(select_clause1).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
    # routes2=Route.select(select_clause2).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
     # routes=Route.select(select_clause1).where([routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND routes.id=?","%#{c_partenza}","%#{c_arrivo}",routes1.id]).from(from_clause)
-    #routes1=Route.find_by_id(routes2)
+   routeprima=routes1.ids #PARE che ci metta dentro gli id di tutte le prime tratte
+    #routes1=Route.find_by_id(routes1.id) però come fare se routes1 ne tira fuori di più?
     return routes1 #, routes2
 
   end
