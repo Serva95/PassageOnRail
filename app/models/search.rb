@@ -28,11 +28,15 @@ class Search < ApplicationRecord
 
   def multi_routes_search
 
-    select_clause = 'DISTINCT routes.*'
+    select_clause1 = 'DISTINCT routes.*'
+    #select_clause2 = 'DISTINCT routes.*, other_routes.*'
     from_clause = 'routes, routes as other_routes'
-    where_clause = "routes.citta_arrivo = other_routes.citta_partenza"
+    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ?"
 
-    @routes = Route.select(select_clause).where(where_clause).from(from_clause)
+    routes1 =Route.select(select_clause1).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
+   # routes2=Route.select(select_clause2).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
+
+    return routes1 #, routes2
 
   end
 
