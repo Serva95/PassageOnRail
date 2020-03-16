@@ -6,7 +6,7 @@
 <% if @chats.present? %>
   <% @chats.each do |chat| %>
     <div class="col-10 col-9-mobile">
-      <h3><%= link_to 'Apri la chat con ' + chat.hitch_hiker.user.nome + ' ' + chat.hitch_hiker.user.cognome, chat %></h3>
+      <h3><%= link_to 'Apri la chat con ' + chat.driver.user.nome + ' ' + chat.driver.user.cognome, chat %></h3>
     </div>
     <!--<td><= link_to 'Edit', edit_chat_path(chat) %></td>-->
     <div class="col-2 col-3-mobile">
@@ -19,7 +19,7 @@
   <% end
      else %>
   <div class="col-12 col-12-mobilep">
-    <h3>C'&egrave; troppo silenzio qua... inzia a chattare con qualcuno dalla sua pagina utente</h3>
+    <h3>Non c'&egrave; alcuna chat, se hai bisogno di parlare con qualcuno puoi farlo dalla sua pagina utente</h3>
   </div>
 <% end %>
 
