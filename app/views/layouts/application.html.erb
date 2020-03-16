@@ -31,7 +31,7 @@
                 <li><%= link_to 'Le tue tratte',  journey_driver_routes_path(current_user.driver_id)%></li>
                 <li><%= link_to 'I tuoi veicoli',  driver_vehicles_path(current_user.driver_id)%></li>
               <%else %>
-                <li><%= link_to 'Diventa driver!',  'DA AGGIUNGERE LINK PER CREARE NUOVO DRIVER, bisogna fare associazione con user'%></li>
+                <li><%= link_to 'Diventa driver!',  new_driver_path%></li>
               <%end %>
               <li><%= link_to 'Esci', '/user/sign_out', data: { confirm: 'Are you sure?' } %></li>
             </ul>
@@ -42,7 +42,17 @@
       </ul>
     </nav>
   </header>
+
   <section id="main" class="container">
+    <% if user_signed_in? %>
+      <%if current_user.driver_id? and Vehicle.find_by_driver_id(current_user.driver_id)==nil %>
+        <div class="box">
+          Non hai un veicolo ceffo! <br/>
+          <%= link_to 'Aggiungi veicolo', new_driver_vehicle_url(current_user.driver_id)%>
+        </div>
+      <%end %>
+    <%end %>
+
     <div class="row">
       <div class="col-12">
         <section class="box">
