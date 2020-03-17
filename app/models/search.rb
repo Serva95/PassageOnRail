@@ -16,11 +16,11 @@ class Search < ApplicationRecord
     routes = Route.joins(:vehicle).where(["vehicles.marca LIKE ?","%#{tipo_mezzo}"]) if tipo_mezzo.present?
     routes = Route.joins(:vehicle).where(["vehicles.comfort >= ?",comfort]) if comfort.present?
 
-    order=define_order(sort_order)
+    sorder=define_order(sort_order)
 
-    routes = routes.order(costo: order) if sort_attribute.eql?('Costo')
-    routes = routes.order(tempo_percorrenza: order) if sort_attribute.eql?('Tempo di percorrenza')
-    routes = Route.joins(:vehicle).order(comfort: order) if sort_attribute.eql?('Comfort')
+    routes = routes.order(costo: sorder) if sort_attribute.eql?('Costo')
+    routes = routes.order(tempo_percorrenza: sorder) if sort_attribute.eql?('Tempo di percorrenza')
+    routes = routes.joins(:vehicle).order(comfort: sorder) if sort_attribute.eql?('Comfort')
 
     return routes
 
@@ -35,13 +35,17 @@ class Search < ApplicationRecord
     from_clause = 'routes, routes as other_routes'
     where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ?"
 
-    routes1 =Route.select(select_clause1).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
+   # if (c_partenza.present? and c_arrivo.present?)
+      routes1 =Route.select(select_clause1).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
+    #else
+     # routes1.new.empty?
+    #end
    # routes2=Route.select(select_clause2).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
     # routes=Route.select(select_clause1).where([routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND routes.id=?","%#{c_partenza}","%#{c_arrivo}",routes1.id]).from(from_clause)
 
 
-    #routeprima=routes1.ids #PARE che ci metta dentro gli id di tutte le prime tratte
-    #routeprima.each do |rp|
+    #$routeprima=routes1.ids #PARE che ci metta dentro gli id di tutte le prime tratte -> provare a sfruttarla per tirare fuori coppie di id
+    #$routeprima.each do |rp|
     #  routes=Route.select(select_clause1).where([routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND routes.id=?","%#{c_partenza}","%#{c_arrivo}",rp]).from(from_clause)
      #MAGARI SE LO METTO IN UN'ALTRA FUNZIONE FUNZIONA (DEVO AVERE LA CERTEZZA DI POTERGLI PASSARE routeprima)
 
