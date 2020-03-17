@@ -1,42 +1,43 @@
 
 <div class="row gtr-uniform">
-  <div class="col-4 col-12-narrower">
+  <h4 class="col-6 col-12-narrower">
     <strong>Email:</strong>
     <%= @user.email %>
-  </div>
-  <div class="col-4 col-12-narrower">
+  </h4>
+  <h4 class="col-6 col-12-narrower">
     <strong>Username:</strong>
     <%= @user.username %>
-  </div>
-  <div class="col-4 col-12-narrower">
+  </h4>
+  <h4 class="col-6 col-12-narrower">
     <strong>Nome:</strong>
     <%= @user.nome %>
-  </div>
-  <div class="col-4 col-12-narrower">
+  </h4>
+  <h4 class="col-6 col-12-narrower">
     <strong>Cognome:</strong>
     <%= @user.cognome %>
-  </div>
-  <div class="col-4 col-12-narrower">
+  </h4>
+  <h4 class="col-6 col-12-narrower">
     <strong>Data di nascita:</strong>
     <%= @user.data_di_nascita %>
-  </div>
-  <div class="col-4 col-12-narrower">
+  </h4>
+  <h4 class="col-6 col-12-narrower">
     <strong>Cellulare:</strong>
     <%= @user.cellulare %>
-  </div>
-  <div class="col-4 col-12-narrower">
+  </h4>
+  <h4 class="col-6 col-12-narrower">
     <strong>Indirizzo:</strong>
     <%= @user.indirizzo %>
-  </div>
-  <div class="col-4 col-12-narrower">
+  </h4>
+  <h4 class="col-6 col-12-narrower">
     <strong>Url foto:</strong>
     <%= @user.url_foto %>
-  </div>
+  </h4>
 </div>
 <hr>
-<div class="col-4 col-12-narrower">
-  <%= link_to 'Edit', edit_user_registration_path(@user) %> |
+<div class="col-7 col-0-narrower"></div>
+<div class="col-2 col-12-narrower">
+  <%= link_to 'Edit', edit_user_registration_path(@user) , class:'button'%>
 </div>
-<div class="col-4 col-12-narrower">
-  <%= link_to 'Back', users_path %>
+<div class="col-1 col-12-narrower">
+  <%= link_to 'Back', users_path, class:'button' %>
 </div>

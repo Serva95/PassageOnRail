@@ -15,14 +15,24 @@
   </section>
 </div>
 <div class="col-6 col-12-narrower">
-  <section class="box special">
-    <span class="image featured"><%= image_tag 'images/home2.jpg' %></span>
-    <h3>Vuoi condividere le spese?</h3>
-    <p>3 mesi di galera per te incivile!</p>
-    <ul class="actions special">
-      <li><a href="#" class="button alt">bottone</a></li>
-    </ul>
-  </section>
+  <% if user_signed_in? %>
+    <%if current_user.driver_id?%>
+      <section class="box special">
+        <span class="image featured"><%= image_tag 'images/home2.jpg' %></span>
+        <h3>Hai un nuovo viaggio?</h3>
+        <p>Aggiungi una nuova tratta!</p>
+        <div class="button alt"><%= link_to 'Aggiungi!', new_driver_route_path(current_user.driver_id)%></div>
+      </section>
+    <%else %>
+      <section class="box special">
+        <span class="image featured"><%= image_tag 'images/home2.jpg' %></span>
+        <h3>Hai posti liberi in auto?</h3>
+        <p>Condividi il viaggio e dimezza le spese!</p>
+        <div class="button alt"><%= link_to 'Diventa Driver!', new_driver_path%></div>
+      </section>
+    <%end %>
+  <%end %>
+
 </div>
 </body>
 </html>

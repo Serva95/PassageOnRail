@@ -45,10 +45,15 @@
 
   <section id="main" class="container">
     <% if user_signed_in? %>
-      <%if current_user.driver_id? and Vehicle.find_by_driver_id(current_user.driver_id)==nil %>
+      <%if current_user.driver_id? and Vehicle.find_by_driver_id(current_user.driver_id)==nil and controller_name != 'vehicles' %>
+
         <div class="box">
-          Non hai un veicolo ceffo! <br/>
-          <%= link_to 'Aggiungi veicolo', new_driver_vehicle_url(current_user.driver_id)%>
+          <h3>Ciao <%= current_user.nome %>, attualmente sei un driver ma non hai nessun veicolo inserito!<br/></h3>
+          <p>
+            <%= link_to 'Aggiungi veicolo', new_driver_vehicle_url(current_user.driver_id), class: "button"%>
+            &nbsp;
+            <%= link_to 'Non essere più driver', driver_url(current_user.driver_id), method: :delete, class: "button" %>
+          </p>
         </div>
       <%end %>
     <%end %>
