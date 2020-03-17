@@ -9,7 +9,7 @@ class Search < ApplicationRecord
     routes = Route.all
 
     routes = routes.where(["citta_partenza LIKE ?","%#{c_partenza}"])
-    routes = routes.where(["citta_arrivo LIKE ?","%#{c_arrivo}"]) if c_arrivo.present?
+    routes = routes.where(["citta_arrivo LIKE ?","%#{c_arrivo}"])
     routes = routes.where(["data_ora_partenza >= ?", data_ora]) if data_ora.present?
     routes = Route.joins(:driver).where(["drivers.rating_medio >= ?",rating]) if rating.present?
     routes = routes.where(["costo <= ?",costo]) if costo.present?
@@ -29,17 +29,14 @@ class Search < ApplicationRecord
   def multi_routes_search
 
     #tutto ciò che è commentato sono tentativi disperati o bozze di idee...COME FACCIO A TIRAR FUORI DUE ROUTE ACCOPPIATE????
-    select_clause1 = 'DISTINCT routes.*'
+    #select_clause1 = 'routes.*'
     #select_clause1= 'SELECT routes.route_id AS R1, other_routes.route_id AS R2'
-    #select_clause2 = 'DISTINCT routes.*, other_routes.*'
+    select_clause2 = 'routes.*, other_routes.*'
     from_clause = 'routes, routes as other_routes'
     where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ?"
 
-   # if (c_arrivo.present?)
-      routes1 =Route.select(select_clause1).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
-    #else
-     # routes1.new.empty?
-    #end
+      routes1 =Route.select(select_clause2).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
+
    # routes2=Route.select(select_clause2).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
     # routes=Route.select(select_clause1).where([routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND routes.id=?","%#{c_partenza}","%#{c_arrivo}",routes1.id]).from(from_clause)
 

@@ -11,7 +11,7 @@
 
   <div class="col-4 col-12-narrower">
     <%= s.label :'Città di arrivo' %>
-    <%= s.text_field :c_arrivo %>
+    <%= s.text_field :c_arrivo, :required => true %>
   </div>
 
   <div class="col-4 col-12-narrower">
@@ -45,12 +45,19 @@
     <%= s.select :sort_order, ['Crescente','Decrescente'] %>
   </div>
 
+  <div class="col-4 col-12-narrower">
+      <%= s.label :"Cerca anche viaggi con cambi" %>
+      <%= s.check_box :multitrip %>
+  </div>
+
   <div class="action col-12 col-12-narrower">
     <%= s.submit "Cerca tratta", class: "pure_button pure-button-primary" %>
   </div>
 
 <%end %>
 
+  <div class="action col-12 col-12-narrower">
 <p>
 <%= link_to 'Back', routes_path%>
 </p>
+  </div>
