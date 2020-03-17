@@ -1,49 +1,51 @@
-<h1>Ricerca semplice con filtri</h1>
+<div class="col-12 col-12-narrower">
+  <strong>Trova il tuo passaggio!</strong>
+  <%= form_for @search, html: {class: "pure-form"} do |s| %>
+</div>
 
-<%= form_for @search, html: {class: "pure-form"} do |s| %>
 
-  <div class="field">
+  <div class="col-4 col-12-narrower">
     <%= s.label :'Città di partenza' %>
-    <%= s.text_field :c_partenza %>
+    <%= s.text_field :c_partenza, :required => true%>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-narrower">
     <%= s.label :'Città di arrivo' %>
     <%= s.text_field :c_arrivo %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-narrower">
     <%= s.label :'Data e ora di partenza' %>
     <%= s.datetime_field :data_ora %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-narrower">
     <%= s.label :'Rating automobilista' %>
     <%= s.number_field :rating %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-narrower">
     <%= s.label :'Costo massimo' %>
     <%= s.number_field :costo %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-narrower">
     <%= s.label :'Marchio autoveicolo' %>
     <%= s.text_field :tipo_mezzo %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-narrower">
     <%= s.label :'Comfort minimo' %>
     <%= s.number_field :comfort %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-narrower">
     <%= s.label :'Ordina per' %>
     <%= s.select :sort_attribute, ['Costo','Comfort','Tempo di percorrenza'] %>
     <%= s.select :sort_order, ['Crescente','Decrescente'] %>
   </div>
 
-  <div class="actions">
+  <div class="action col-12 col-12-narrower">
     <%= s.submit "Cerca tratta", class: "pure_button pure-button-primary" %>
   </div>
 

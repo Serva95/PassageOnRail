@@ -8,7 +8,7 @@ class Search < ApplicationRecord
 
     routes = Route.all
 
-    routes = routes.where(["citta_partenza LIKE ?","%#{c_partenza}"]) if c_partenza.present?
+    routes = routes.where(["citta_partenza LIKE ?","%#{c_partenza}"])
     routes = routes.where(["citta_arrivo LIKE ?","%#{c_arrivo}"]) if c_arrivo.present?
     routes = routes.where(["data_ora_partenza >= ?", data_ora]) if data_ora.present?
     routes = Route.joins(:driver).where(["drivers.rating_medio >= ?",rating]) if rating.present?
@@ -35,7 +35,7 @@ class Search < ApplicationRecord
     from_clause = 'routes, routes as other_routes'
     where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ?"
 
-   # if (c_partenza.present? and c_arrivo.present?)
+   # if (c_arrivo.present?)
       routes1 =Route.select(select_clause1).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause)
     #else
      # routes1.new.empty?
