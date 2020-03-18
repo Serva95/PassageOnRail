@@ -1,63 +1,58 @@
 <div class="col-12 col-12-narrower">
   <h2><strong>Trova il tuo passaggio!</strong></h2>
-  <%= form_for @search, html: {class: "pure-form"} do |s| %>
 </div>
+<%= form_for @search, html: {class: "pure-form"} do |s| %>
+  <div class="row gtr-uniform">
 
 
-  <div class="col-4 col-12-narrower">
-    <%= s.label :'Città di partenza' %>
-    <%= s.text_field :c_partenza, :required => true%>
-  </div>
+    <div class="col-4 col-12-narrower">
+      <%= s.text_field :c_partenza, :required => true, placeholder: "Città di partenza" %>
+    </div>
 
-  <div class="col-4 col-12-narrower">
-    <%= s.label :'Città di arrivo' %>
-    <%= s.text_field :c_arrivo, :required => true %>
-  </div>
+    <div class="col-4 col-12-narrower">
+      <%= s.text_field :c_arrivo, :required => true, placeholder: "Città di arrivo" %>
+    </div>
 
-  <div class="col-4 col-12-narrower">
-    <%= s.label :'Data e ora di partenza' %>
-    <%= s.datetime_field :data_ora %>
-  </div>
+    <div class="col-4 col-12-narrower">
+      <%= s.text_field :data_ora, placeholder: "Data e ora di partenza", onfocus: "(this.type='datetime-local')", onblur: "(this.type='text')"  %>
+    </div>
 
-  <div class="col-4 col-12-narrower">
-    <%= s.label :'Rating automobilista' %>
-    <%= s.number_field :rating %>
-  </div>
+    <div class="col-4 col-12-narrower">
+      <%= s.number_field :rating, placeholder: "Rating automobilista" %>
+    </div>
 
-  <div class="col-4 col-12-narrower">
-    <%= s.label :'Costo massimo' %>
-    <%= s.number_field :costo %>
-  </div>
+    <div class="col-4 col-12-narrower">
+      <%= s.number_field :costo, placeholder: "Costo massimo" %>
+    </div>
 
-  <div class="col-4 col-12-narrower">
-    <%= s.label :'Marchio autoveicolo' %>
-    <%= s.text_field :tipo_mezzo %>
-  </div>
+    <div class="col-4 col-12-narrower">
+      <%= s.text_field :tipo_mezzo, placeholder: "marchio autoveicolo" %>
+    </div>
 
-  <div class="col-4 col-12-narrower">
-    <%= s.label :'Comfort minimo' %>
-    <%= s.number_field :comfort %>
-  </div>
+    <div class="col-4 col-12-narrower">
+      <%= s.number_field :comfort , placeholder: "Comfort minimo" %>
+    </div>
 
-  <div class="col-4 col-12-narrower">
-    <%= s.label :'Ordina per' %>
-    <%= s.select :sort_attribute, ['Costo','Comfort','Tempo di percorrenza'] %>
-    <%= s.select :sort_order, ['Crescente','Decrescente'] %>
-  </div>
+    <div class="col-4 col-12-narrower">
+      <%= s.label :'Ordina per' %>
+      <%= s.select :sort_attribute, ['Costo','Comfort','Tempo di percorrenza'] %>
+      <%= s.select :sort_order, ['Crescente','Decrescente'] %>
+    </div>
 
-  <div class="field">
-  <%= s.check_box :multitrip , {}, true, false %>
-  <%= s.label :'senza cambi' %>
-</div>
+    <div class="col-4 col-12-narrower">
+      <%= s.check_box :multitrip , {}, true, false %>
+      <%= s.label :multitrip, 'senza cambi' %>
+    </div>
 
-  <div class="action col-12 col-12-narrower">
-    <%= s.submit "Cerca tratta", class: "pure_button pure-button-primary" %>
+    <div class="action col-12 col-12-narrower">
+      <%= s.submit "Cerca tratta", class: "pure_button pure-button-primary" %>
+    </div>
   </div>
 
 <%end %>
 
-  <div class="action col-12 col-12-narrower">
-<p>
-<%= link_to 'Back', routes_path%>
-</p>
-  </div>
+<div class="action col-12 col-12-narrower">
+  <p>
+    <%= link_to 'Back', routes_path%>
+  </p>
+</div>

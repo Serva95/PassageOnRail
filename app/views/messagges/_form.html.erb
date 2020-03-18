@@ -1,32 +1,9 @@
-<%= form_with(model: messagge, local: true) do |form| %>
-  <% if messagge.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(messagge.errors.count, "error") %> prohibited this messagge from being saved:</h2>
-
-      <ul>
-        <% messagge.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :testo %>
-    <%= form.text_area :testo %>
+<%= form_with(model: messagge, local: true, class: "col-12 col-12-narrower") do |form| %>
+  <div class="col-12 col-12-narrower">
+    <%= form.text_area :testo, autofocus: true, placeholder: "Scrivi il messaggio qua" %>
   </div>
-
-  <div class="field">
-    <%= form.hidden_field :mittente %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :destinatario %>
-  </div>
-
   <br>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-12 col-12-narrower">
+    <%= form.submit "Invia messaggio"%>
   </div>
 <% end %>
