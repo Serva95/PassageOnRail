@@ -6,15 +6,17 @@ class Search < ApplicationRecord
 
   def search_routes
 
-    routes = Route.all
+    select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min'
+
+    routes = Route.select(select_clause)
 
     routes = routes.where(["citta_partenza LIKE ?","%#{c_partenza}"])
     routes = routes.where(["citta_arrivo LIKE ?","%#{c_arrivo}"])
     routes = routes.where(["data_ora_partenza >= ?", data_ora]) if data_ora.present?
-    routes = Route.joins(:driver).where(["drivers.rating_medio >= ?",rating]) if rating.present?
+    routes = routes.joins(:driver).where(["drivers.rating_medio >= ?",rating]) if rating.present?
     routes = routes.where(["costo <= ?",costo]) if costo.present?
-    routes = Route.joins(:vehicle).where(["vehicles.marca LIKE ?","%#{tipo_mezzo}"]) if tipo_mezzo.present?
-    routes = Route.joins(:vehicle).where(["vehicles.comfort >= ?",comfort]) if comfort.present?
+    routes = routes.joins(:vehicle).where(["vehicles.marca LIKE ?","%#{tipo_mezzo}"]) if tipo_mezzo.present?
+    routes = routes.joins(:vehicle).where(["vehicles.comfort >= ?",comfort]) if comfort.present?
 
     sorder=define_order(sort_order)
 
@@ -27,6 +29,8 @@ class Search < ApplicationRecord
   end
 
   def multi_routes_search
+
+    #bisogna valutare se applicare tutti i filtri del singolo viaggio (es marchio veicolo, cambiando auto non ha molto senso) e terminare ordinamento per comfort
 
     select_clause= 'routes.id AS id1, routes.citta_partenza AS c_part, routes.data_ora_partenza AS part, routes.citta_arrivo AS tappa, other_routes.id AS id2, other_routes.citta_arrivo AS c_arr,
                     SUM(routes.costo+other_routes.costo) AS c_tot, SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza) AS t_tot, (SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza)/60) AS ore,(SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza)%60) AS min'
