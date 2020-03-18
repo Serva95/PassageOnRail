@@ -4,6 +4,10 @@ class Search < ApplicationRecord
     s_order=='Crescente' ? :asc : :desc
   end
 
+  def hide_multitrip
+    multitrip=='true' ? true : false
+  end
+
   def search_routes
 
     select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min'

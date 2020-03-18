@@ -45,10 +45,10 @@
     <%= s.select :sort_order, ['Crescente','Decrescente'] %>
   </div>
 
-  <div class="col-4 col-12-narrower">
-      <%= s.label :"Cerca anche viaggi con cambi" %>
-      <%= s.check_box :multitrip %>
-  </div>
+  <div class="field">
+  <%= s.check_box :multitrip , {}, true, false %>
+  <%= s.label :'senza cambi' %>
+</div>
 
   <div class="action col-12 col-12-narrower">
     <%= s.submit "Cerca tratta", class: "pure_button pure-button-primary" %>

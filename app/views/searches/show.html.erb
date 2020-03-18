@@ -41,6 +41,8 @@
 
 <% end %>
 
+<% if !@search.hide_multitrip %>
+
 <h2>Risultati ricerca viaggi multi tratta</h2>
 
 <% if @search.multi_routes_search.empty? %>
@@ -77,3 +79,4 @@
 
 <% end %>
 
+<% end %>
