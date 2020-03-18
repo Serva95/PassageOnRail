@@ -1,4 +1,4 @@
-<h3>Messagges</h3>
+<h3>Chat con <%=  %></h3>
 
 <table>
   <thead>
@@ -18,9 +18,8 @@
         <td><%= messagge.testo %></td>
         <td><%= messagge.mittente %></td>
         <td><%= messagge.destinatario %></td>
-        <td><%= link_to 'Show', messagge %></td>
-        <td><%= link_to 'Edit', edit_messagge_path(messagge) %></td>
-        <td><%= link_to 'Destroy', messagge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_chat_messagge_path(messagge.chat_id, messagge.id) %></td>
+        <td><%= link_to 'Destroy', chat_messagge_path(messagge.chat_id, messagge.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Messagge', new_messagge_path, {class: 'button'}%>
+<%= link_to 'New Messagge', new_chat_messagge_path, {class: 'button'}%>

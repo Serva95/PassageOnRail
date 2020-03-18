@@ -10,7 +10,6 @@ class MessaggesController < ApplicationController
   # GET /messagges/1
   # GET /messagges/1.json
   def show
-    @messagge = Messagge.find(id)
   end
 
   # GET /messagges/new
@@ -20,6 +19,7 @@ class MessaggesController < ApplicationController
 
   # GET /messagges/1/edit
   def edit
+    @messagges = Messagge.find(params[:id])
   end
 
   # POST /messagges

@@ -14,6 +14,7 @@ class ChatsController < ApplicationController
   # GET /chats/1
   # GET /chats/1.json
   def show
+    @messagge = Messagge.where()
   end
 
   # GET /chats/new
