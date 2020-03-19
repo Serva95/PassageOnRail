@@ -5,7 +5,11 @@ class Search < ApplicationRecord
   end
 
   def hide_multitrip
-    multitrip=='true' ? true : false
+    if multitrip
+      return true
+    else
+      return false
+    end
   end
 
   def search_routes
@@ -36,14 +40,16 @@ class Search < ApplicationRecord
 
     #bisogna valutare se applicare tutti i filtri del singolo viaggio (es marchio veicolo, cambiando auto non ha molto senso) e terminare ordinamento per comfort
 
-    select_clause= 'routes.id AS id1, routes.citta_partenza AS c_part, routes.data_ora_partenza AS part, routes.citta_arrivo AS tappa, other_routes.id AS id2, other_routes.citta_arrivo AS c_arr,
+    select_clause= 'routes.id AS id1, routes.citta_partenza AS c_part, routes.data_ora_partenza AS part, routes.citta_arrivo AS tappa, routes.vehicle_id,
+                    other_routes.id AS id2, other_routes.citta_arrivo AS c_arr,
+                    first_vehicle.comfort AS comf,
                     SUM(routes.costo+other_routes.costo) AS c_tot, SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza) AS t_tot, (SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza)/60) AS ore,(SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza)%60) AS min'
-    from_clause = 'routes, routes as other_routes'
+    from_clause = 'routes, routes as other_routes, vehicles AS first_vehicle'
     where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ?"
     group_clause = 'routes.id,other_routes.id'
 
     routes=Route.all
-    routes =routes.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause).group(group_clause)
+    routes =routes.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).joins(:vehicle).from(from_clause).group(group_clause)
 
     sorder=define_order(sort_order)
 
