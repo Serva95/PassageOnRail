@@ -42,10 +42,9 @@ class Search < ApplicationRecord
 
     select_clause= 'routes.id AS id1, routes.citta_partenza AS c_part, routes.data_ora_partenza AS part, routes.citta_arrivo AS tappa, routes.vehicle_id,
                     other_routes.id AS id2, other_routes.citta_arrivo AS c_arr,
-                    first_vehicle.comfort AS comf,
-                    SUM(routes.costo+other_routes.costo) AS c_tot, SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza) AS t_tot, (SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza)/60) AS ore,(SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza)%60) AS min'
-    from_clause = 'routes, routes as other_routes, vehicles AS first_vehicle'
-    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ?"
+                    SUM(routes.costo+other_routes.costo) AS c_tot, (SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza+CAST((julianday(other_routes.data_ora_partenza) - julianday(routes.data_ora_arrivo))*24*60+1 AS Integer))/60) AS ore,(SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza+CAST((julianday(other_routes.data_ora_partenza) - julianday(routes.data_ora_arrivo))*24*60+1 AS Integer))%60) AS min'
+    from_clause = 'routes, routes as other_routes'
+    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND other_routes.data_ora_partenza >= routes.data_ora_arrivo"
     group_clause = 'routes.id,other_routes.id'
 
     routes=Route.all
