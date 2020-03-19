@@ -8,7 +8,9 @@ class ChatsController < ApplicationController
     #@chats = Chat.joins(drivers: :users).where(users: {id: session[:id]})
     #
     # prova in cui vedo le chat del autostop se è log come tale (mettere l'id al posto del 1) coi driver
-    @chats = Chat.joins(driver: :user, hitch_hiker: :user).where("users_hitch_hikers.hitch_hiker_id = ?", current_user.id)
+    @chats = Chat.joins(:user_1, :user_2).where("user_1_id = ?", current_user.id).or(Chat.joins(:user_1, :user_2).where("user_2_id = ?", current_user.id ))
+
+      #.where("users_hitch_hikers.hitch_hiker_id = ?", current_user.id)
   end
 
   # GET /chats/1

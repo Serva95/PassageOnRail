@@ -11,7 +11,7 @@ class Messagge < ApplicationRecord
 	validates :mittente, presence: true
 
 	belongs_to :chat, required: true
-	has_one :user, required: true
+	belongs_to :user, required: true
 
 	validates_with (MessaggeDOBValidator)
 end

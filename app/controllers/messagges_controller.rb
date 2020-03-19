@@ -5,11 +5,12 @@ class MessaggesController < ApplicationController
   # GET /messagges.json
   def index
     #versione autostop che legge driver
-    @messagges = Messagge.joins(chat: {driver: :user, hitch_hiker: :user}).where("chat_id = ?", params[:chat_id])
-    if !@messagges.present?
-      @chatter = @messagges[0].chat.driver.user.nome + ' ' + @messagges[0].chat.driver.user.cognome
+    @messagges = Messagge.joins(:user).where("chat_id = ?", params[:chat_id])
+    if !@messagges.present? && @messagges[0].user_id != current_user.id
+      @chatter_name = @messagges[0].nome
+      @chatter_surn = @messagges[0].cognome
     else
-      @chatter = Chat.joins(driver: :user).where("chats.id = ?", params[:chat_id]).limit(1).select(:nome, :cognome).first
+      #@chatter = Chat.joins(:user_1, :user_2).where("chats.id = ?", params[:chat_id]).limit(1).select(:nome, :cognome).first
     end
   end
 
