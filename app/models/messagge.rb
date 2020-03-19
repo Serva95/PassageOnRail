@@ -9,9 +9,9 @@ end
 class Messagge < ApplicationRecord
 	validates :data_ora, presence: true
 	validates :mittente, presence: true
-	validates :destinatario, presence: true
 
-	belongs_to :chat
+	belongs_to :chat, required: true
+	has_one :user, required: true
 
 	validates_with (MessaggeDOBValidator)
 end
