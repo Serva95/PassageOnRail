@@ -16,7 +16,7 @@ class Search < ApplicationRecord
 
     select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min'
 
-    routes = Route.select(select_clause)
+    routes = Route.select(select_clause).where('data_ora_partenza > datetime("now","localtime")')
 
     routes = routes.where(["citta_partenza LIKE ?","%#{c_partenza}"])
     routes = routes.where(["citta_arrivo LIKE ?","%#{c_arrivo}"])
@@ -47,7 +47,7 @@ class Search < ApplicationRecord
     where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND other_routes.data_ora_partenza >= routes.data_ora_arrivo"
     group_clause = 'routes.id,other_routes.id'
 
-    routes=Route.all
+    routes=Route.where('routes.data_ora_partenza > datetime("now","localtime")')
     routes =routes.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).joins(:vehicle).from(from_clause).group(group_clause)
 
     sorder=define_order(sort_order)
