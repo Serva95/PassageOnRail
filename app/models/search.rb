@@ -42,13 +42,14 @@ class Search < ApplicationRecord
 
     select_clause= 'routes.id AS id1, routes.citta_partenza AS c_part, routes.data_ora_partenza AS part, routes.citta_arrivo AS tappa, routes.vehicle_id,
                     other_routes.id AS id2, other_routes.citta_arrivo AS c_arr,
-                    SUM(routes.costo+other_routes.costo) AS c_tot, (EXTRACT(DAY FROM routes.data_ora_partenza - routes.data_ora_arrivo) * 24 +
-                                                                   EXTRACT(HOUR FROM routes.data_ora_partenza - routes.data_ora_arrivo)) AS ore,
-                                                                  ((EXTRACT(DAY FROM routes.data_ora_partenza - routes.data_ora_arrivo) * 24 +
-                                                                  EXTRACT(HOUR FROM routes.data_ora_partenza - routes.data_ora_arrivo))*60)+
-                                                                  EXTRACT(MINUTE FROM routes.data_ora_partenza - routes.data_ora_arrivo)AS min'
+                    SUM(routes.costo+other_routes.costo) AS c_tot, (EXTRACT(DAY FROM other_routes.data_ora_arrivo - routes.data_ora_partenza) * 24 +
+                                                                   EXTRACT(HOUR FROM other_routes.data_ora_arrivo - routes.data_ora_partenza)) AS ore,
+                                                                  ((EXTRACT(DAY FROM other_routes.data_ora_arrivo - routes.data_ora_partenza) * 24 +
+                                                                  EXTRACT(HOUR FROM other_routes.data_ora_arrivo - routes.data_ora_partenza))*60)+
+                                                                  EXTRACT(MINUTE FROM other_routes.data_ora_arrivo - routes.data_ora_partenza) AS min'
     from_clause = 'routes, routes as other_routes'
-    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND other_routes.data_ora_partenza >= routes.data_ora_arrivo"
+    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ?
+                    AND other_routes.data_ora_partenza >= routes.data_ora_arrivo AND (EXTRACT(DAY FROM other_routes.data_ora_partenza - routes.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM other_routes.data_ora_partenza - routes.data_ora_arrivo)) <= 5"
     group_clause = 'routes.id,other_routes.id'
 
     routes=Route.where('routes.data_ora_partenza > NOW()')

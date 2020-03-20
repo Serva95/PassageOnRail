@@ -30,4 +30,6 @@ class Route < ApplicationRecord
       all
     end
   end
+
+
 end
