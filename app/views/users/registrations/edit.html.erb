@@ -1,72 +1,75 @@
 <div class="row gtr-uniform">
   <div class="col-12 col-12-narrower">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
     <%= render "users/shared/error_messages", resource: resource %>
 
-    <div class="col-4 col-12-narrower">
+    <div class="col-6 col-12-narrower">
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
+      <div class="col-6 col-12-narrower">
+        <%= f.label :username %>
+        <%= f.text_field :username, placeholder: "Username", :autocomplete => :off %>
+      </div>
+      <div class="col-6 col-12-narrower">
+        <%= f.label :nome %>
+        <%= f.text_field :nome, placeholder: "Nome"  %>
+      </div>
+      <div class="col-6 col-12-narrower">
+        <%= f.label :cognome %>
+        <%= f.text_field :cognome, placeholder: "Cognome"  %>
+      </div>
 
-    <div class="col-4 col-12-narrower">
-      <br/><%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
-    </div>
-
-    <div class="col-4 col-12-narrower">      <br/><%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="col-4 col-12-narrower">
-      <br/><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-    </div>
-    <div class="col-4 col-12-narrower">
-      <br/><%= f.label :username %>
-      <%= f.text_field :username, placeholder: "Username", :autocomplete => :off %>
-    </div>
-    <div class="col-4 col-12-narrower">
-      <br/><%= f.label :nome %>
-      <%= f.text_field :nome, placeholder: "Nome"  %>
-    </div>
-    <div class="col-4 col-12-narrower">
-      <br/><%= f.label :cognome %>
-      <%= f.text_field :cognome, placeholder: "Cognome"  %>
-    </div>
-    <div class="col-4 col-12-narrower">
-      <br/><%= f.label :data_di_nascita %>
+    <div class="col-6 col-12-narrower">
+      <%= f.label :data_di_nascita %>
       <%= f.text_field :data_di_nascita, placeholder: "Data di Nascita", onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
     </div>
-    <div class="col-4 col-12-narrower">
-      <br/><%= f.label :cellulare %>
+    <div class="col-6 col-12-narrower">
+      <%= f.label :cellulare %>
       <%= f.text_field :cellulare, placeholder: "Cellulare"  %>
     </div>
-    <div class="col-4 col-12-narrower">
-      <br/><%= f.label :indirizzo %>
+    <div class="col-6 col-12-narrower">
+      <%= f.label :indirizzo %>
       <%= f.text_field :indirizzo, placeholder: "Indirizzo" %>
     </div>
-    <div class="col-4 col-12-narrower">
+    <div class="col-6 col-12-narrower">
       <%= f.label :"Carica una foto" %>
       <%= f.file_field :picture %>
     </div>
+      <div class="col-4 col-12-narrower">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+        <i>(leave blank if you don't want to change it)</i>
+        <% if @minimum_password_length %>
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+
+      <div class="col-4 col-12-narrower">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="col-4 col-12-narrower">
+        <%= f.label :current_password %>
+        <%= f.password_field :current_password, autocomplete: "current-password" %>
+        <i>(we need your current password to confirm your changes)</i>
+      </div>
 
 
     <div class="actions">
       <%= f.submit "Update" %>
     </div>
   <% end %>
-  <div class="col-12 col-12-narrower">
+    <div class="col-4 col-12-narrower">
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= link_to "Back", :back %>
+    </div>
 
-    <h3>Cancel my account</h3>
-
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-    <%= link_to "Back", :back %>
-  </div>
 </div>

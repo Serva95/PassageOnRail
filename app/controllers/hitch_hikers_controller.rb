@@ -4,21 +4,23 @@ class HitchHikersController < ApplicationController
   # GET /hitch_hikers
   # GET /hitch_hikers.json
   def index
-    # @hitch_hikers = HitchHiker.all
+    redirect_to root_path
   end
 
   # GET /hitch_hikers/1
   # GET /hitch_hikers/1.json
   def show
+    redirect_to user_path(current_user.id)
   end
 
   # GET /hitch_hikers/new
   def new
-    @hitch_hiker = HitchHiker.new
+    redirect_to root_path
   end
 
   # GET /hitch_hikers/1/edit
   def edit
+    redirect_to edit_user_path(current_user.id)
   end
 
   # POST /hitch_hikers
