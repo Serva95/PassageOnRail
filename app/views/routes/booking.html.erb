@@ -1,6 +1,6 @@
 <h1>Prenota</h1>
 
-<%= form_for @route do |f| %>
+<%= form_with(url: make_booking_route_path(@route), method: "patch") do |f| %>
   <!--% if route.errors.any? %-->
     <!--div id="error_explanation"-->
       <!--h2><--%= pluralize(route.errors.count, "error") %--prohibited this route from being saved:<--/h2-->
@@ -13,14 +13,13 @@
     <!--/--div>
   <--% end %-->
 
-
   <div class="field">
-    <%= f.label :numero_persone %>
+    <%= f.label :n_passeggeri, "Numero Passeggeri" %>
     <%= f.number_field(:n_passeggeri, in: 1..4)%>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Prenota" %>
   </div>
 
 <% end %>

@@ -20,8 +20,10 @@ Rails.application.routes.draw do
   resources :reviews
   resources :users
   resources :searches
-  resources :routes, only: [:index, :update] do
+  resources :routes, only: [:index] do
     get 'booking', action: 'booking', on: :member
+    patch 'make_booking', action: 'make_booking', on: :member
+    put 'make_booking', action: 'make_booking', on: :member
   end
 
 
