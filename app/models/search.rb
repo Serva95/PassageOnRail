@@ -16,7 +16,7 @@ class Search < ApplicationRecord
 
     select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min'
 
-    routes = Route.select(select_clause).where('data_ora_partenza > datetime("now","localtime")')
+    routes = Route.select(select_clause).where('data_ora_partenza > NOW()')
 
     routes = routes.where(["citta_partenza LIKE ?","%#{c_partenza}"])
     routes = routes.where(["citta_arrivo LIKE ?","%#{c_arrivo}"])
@@ -42,13 +42,17 @@ class Search < ApplicationRecord
 
     select_clause= 'routes.id AS id1, routes.citta_partenza AS c_part, routes.data_ora_partenza AS part, routes.citta_arrivo AS tappa, routes.vehicle_id,
                     other_routes.id AS id2, other_routes.citta_arrivo AS c_arr,
-                    SUM(routes.costo+other_routes.costo) AS c_tot, (SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza+CAST((julianday(other_routes.data_ora_partenza) - julianday(routes.data_ora_arrivo))*24*60+1 AS Integer))/60) AS ore,(SUM(routes.tempo_percorrenza+other_routes.tempo_percorrenza+CAST((julianday(other_routes.data_ora_partenza) - julianday(routes.data_ora_arrivo))*24*60+1 AS Integer))%60) AS min'
+                    SUM(routes.costo+other_routes.costo) AS c_tot, (DATE_PART(''DAY'', routes.data_ora_partenza - routes.data_ora_arrivo) * 24 +
+                                                                   DATE_PART(''HOUR'',routes.data_ora_partenza - routes.data_ora_arrivo)) AS ore,
+                                                                  ((DATE_PART(''DAY'', routes.data_ora_partenza - routes.data_ora_arrivo) * 24 +
+                                                                  DATE_PART(''HOUR'',routes.data_ora_partenza - routes.data_ora_arrivo))*60)+
+                                                                  DATE_PART(''MINUTE'', routes.data_ora_partenza - routes.data_ora_arrivo)AS min'
     from_clause = 'routes, routes as other_routes'
     where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND other_routes.data_ora_partenza >= routes.data_ora_arrivo"
     group_clause = 'routes.id,other_routes.id'
 
-    routes=Route.where('routes.data_ora_partenza > datetime("now","localtime")')
-    routes =routes.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).joins(:vehicle).from(from_clause).group(group_clause)
+    routes=Route.where('routes.data_ora_partenza > NOW()')
+    routes =routes.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause).group(group_clause)
 
     sorder=define_order(sort_order)
 
