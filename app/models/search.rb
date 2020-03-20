@@ -48,7 +48,8 @@ class Search < ApplicationRecord
                                                                   EXTRACT(HOUR FROM other_routes.data_ora_arrivo - routes.data_ora_partenza))*60)+
                                                                   EXTRACT(MINUTE FROM other_routes.data_ora_arrivo - routes.data_ora_partenza) AS min'
     from_clause = 'routes, routes as other_routes'
-    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ? AND other_routes.data_ora_partenza >= routes.data_ora_arrivo"
+    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ?
+                    AND other_routes.data_ora_partenza >= routes.data_ora_arrivo AND (EXTRACT(DAY FROM other_routes.data_ora_partenza - routes.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM other_routes.data_ora_partenza - routes.data_ora_arrivo)) <= 5"
     group_clause = 'routes.id,other_routes.id'
 
     routes=Route.where('routes.data_ora_partenza > NOW()')
