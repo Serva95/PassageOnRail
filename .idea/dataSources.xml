@@ -17,5 +17,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - @localhost" uuid="4fe4e2ae-5708-41fe-acb3-2cfbb6d9e257">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/passageonrails</jdbc-url>
+    </data-source>
   </component>
 </project>
