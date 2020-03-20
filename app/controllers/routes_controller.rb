@@ -1,6 +1,6 @@
 class RoutesController < ApplicationController
-  before_action :get_driver, only: [:journey, :show, :edit, :update, :destroy, :new, :create]
-  before_action :set_route, only: [:show, :edit, :destroy]
+  before_action :get_driver, only: [:journey, :show, :edit, :destroy, :new, :create, :update]
+  before_action :set_route, only: [:show, :edit, :destroy, :update]
 
   # GET /routes
   # GET /routes.json
@@ -11,6 +11,22 @@ class RoutesController < ApplicationController
   # GET /routes/booking
   def booking
     @route = Route.find(params[:id])
+  end
+
+  # PATCH/PUT /routes/1/make_booking
+  def make_booking
+    respond_to do |format|
+      @route = Route.find(params[:id])
+      @route.n_passeggeri = params[:n_passeggeri]
+      @route.passenger_associations.create(hitch_hiker_id: current_user.id)
+      if @route.update(n_passeggeri: params[:n_passeggeri])
+        format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
+        format.json { render :show, status: :ok, location: @route }
+      else
+        format.html { render :show }
+        format.json { render json: @route.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /drivers/1/routes/journey
@@ -54,26 +70,12 @@ class RoutesController < ApplicationController
   # PATCH/PUT /drivers/1/routes/1.json
   def update
     respond_to do |format|
-      if current_user.driver_id?
-        @driver = Driver.find(params[:driver_id])
-
-        if @route.update(route_params)
-          format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
-          format.json { render :show, status: :ok, location: @route }
-        else
-          format.html { render :edit }
-          format.json { render json: @route.errors, status: :unprocessable_entity }
-        end
+      if @route.update(route_params)
+        format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
+        format.json { render :show, status: :ok, location: @route }
       else
-        n_passeggeri = params[:n_passeggeri]
-        if @route.update(route_params)
-          format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
-          format.json { render :show, status: :ok, location: @route }
-        else
-          format.html { render :edit }
-          format.json { render json: @route.errors, status: :unprocessable_entity }
-        end
-
+        format.html { render :edit }
+        format.json { render json: @route.errors, status: :unprocessable_entity }
       end
     end
   end
