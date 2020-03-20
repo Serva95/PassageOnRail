@@ -1,30 +1,44 @@
-<h3>Chat con <%=  %></h3>
+<div class="col-12 col-12-narrower">
+  <h3>Chat con <%=@chatter_name+' '+@chatter_surn %></h3>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Data ora</th>
-      <th>Testo</th>
-      <th>Mittente</th>
-      <th>Destinatario</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @messagges.each do |messagge| %>
+  <%if messagge.user_id == current_user.id %>
+    <div class="col-5 col-4-mobilep"></div>
+    <div class="col-6 col-6-mobilep">
+      <div class="message-content">
+        <div class="align-right">
+          <p>
+            <%= messagge.testo %>
+          </p>
+          <div>
+            <p>
+              <%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1 col-2-mobilep">
+      <%= link_to '', edit_chat_messagge_path(messagge.chat_id, messagge.id), class: 'fas fa-edit fa-2x' %>
+      <%= link_to '', chat_messagge_path(messagge.chat_id, messagge.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt fa-2x' %>
+    </div>
+  <%else %>
+    <div class="col-6 col-6-mobilep">
+      <div class="message-content">
+        <p>
+          <%=@chatter_name+': '+messagge.testo %>
+        </p>
+        <div class="align-right">
+          <small>
+            <%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %>
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-6-mobilep"></div>
+  <%end %>
+<% end %>
+<div class="col-12 col-12-mobilep"><hr></div>
 
-  <tbody>
-    <% @messagges.each do |messagge| %>
-      <tr>
-        <td><%= messagge.data_ora %></td>
-        <td><%= messagge.testo %></td>
-        <td><%= messagge.mittente %></td>
-        <td><%= messagge.destinatario %></td>
-        <td><%= link_to 'Edit', edit_chat_messagge_path(messagge.chat_id, messagge.id) %></td>
-        <td><%= link_to 'Destroy', chat_messagge_path(messagge.chat_id, messagge.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Messagge', new_chat_messagge_path, {class: 'button'}%>
+<%= render 'form', messagge: @messagge %>

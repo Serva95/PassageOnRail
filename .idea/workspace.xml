@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d2569da-3695-4947-a42c-828ec2011eff" name="Default Changelist" comment="Registrazione Autostoppista">
-      <change afterPath="$PROJECT_DIR$/app/assets/images/images/sfondo2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/css/images/sfondo.jpg" afterDir="false" />
+    <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="modifiche al DB e ai models per la chat">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/development.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/development.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/search.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/search.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/credentials.yml.enc" beforeDir="false" afterPath="$PROJECT_DIR$/config/credentials.yml.enc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,42 +26,48 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Rails PassageOnRail: development" type="feb32156:DbDataSourceImpl" />
+        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Rails PassageOnRail: development" type="feb32156:DbDataSourceImpl" />
+        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Rails PassageOnRail: development" type="feb32156:DbDataSourceImpl" />
+        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Rails PassageOnRail: development" type="feb32156:DbDataSourceImpl" />
+        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="hitch_hikers: table" type="3d80ac25:SqliteImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Rails PassageOnRail: development" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="multi_trip_associations: table" type="3d80ac25:SqliteImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Rails PassageOnRail: development" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="routes: table" type="3d80ac25:SqliteImplModel$Table" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
     </expand>
     <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="PassageOnRail" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,6 +81,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1Z8WURXaE7TzJXHw0CeUuQZRLDW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -83,18 +89,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/assets/images/images" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\alice\OneDrive\Documents\GitHub\PassageOnRail\app\views\users\registrations" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\alice\OneDrive\Documents\GitHub\PassageOnRail\app\assets\images\images" />
-      <recent name="C:\Users\alice\OneDrive\Documents\GitHub\PassageOnRail\app\assets\stylesheets\css\images" />
-    </key>
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Set Language" value="SQLite" />
+    <property name="last_opened_file_path" value="E:/Download" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Rails.Development: PassageOnRail">
     <configuration name="Development: PassageOnRail" type="RailsRunConfigurationType" factoryName="Rails">
@@ -109,10 +110,10 @@
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
       <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="80" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="development" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
       <method v="2" />
@@ -129,11 +130,31 @@
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
       <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="80" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="production" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test" type="RailsRunConfigurationType" factoryName="Rails">
+      <module name="PassageOnRail" />
+      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="80" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="test" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
       <method v="2" />
     </configuration>
@@ -178,6 +199,44 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Rails.Development: PassageOnRail" />
+      <item itemvalue="Rails.Production: PassageOnRail" />
+      <item itemvalue="Rails.Test" />
+      <item itemvalue="Rake.spec: PassageOnRail" />
+      <item itemvalue="Rake.test: PassageOnRail" />
+    </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@624d8376" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@3217b5fa" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
@@ -185,7 +244,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8d2569da-3695-4947-a42c-828ec2011eff" name="Default Changelist" comment="" />
+      <changelist id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="finta pagina login e sistemati campi form" />
       <created>1584221217873</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -193,8 +252,17 @@
       <workItem from="1584221225601" duration="916000" />
       <workItem from="1584222802105" duration="1650000" />
       <workItem from="1584224475979" duration="565000" />
-      <workItem from="1584268607927" duration="21508000" />
-      <workItem from="1584304408673" duration="5815000" />
+      <workItem from="1584268607927" duration="6192000" />
+      <workItem from="1584354393642" duration="402000" />
+      <workItem from="1584354813854" duration="273000" />
+      <workItem from="1584355098628" duration="1573000" />
+      <workItem from="1584377073060" duration="342000" />
+      <workItem from="1584452985823" duration="84000" />
+      <workItem from="1584453111464" duration="2070000" />
+      <workItem from="1584458320668" duration="60000" />
+      <workItem from="1584520750427" duration="26593000" />
+      <workItem from="1584606543889" duration="24641000" />
+      <workItem from="1584695700235" duration="7068000" />
     </task>
     <task id="LOCAL-00001" summary="Log in FUNZIONA.">
       <created>1584224138518</created>
@@ -203,131 +271,221 @@
       <option name="project" value="LOCAL" />
       <updated>1584224138518</updated>
     </task>
-    <task id="LOCAL-00002" summary="Registrazione Autostoppista">
-      <created>1584276935786</created>
+    <task id="LOCAL-00002" summary="pagina chat per autostoppista disponibile">
+      <created>1584356612423</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1584276935787</updated>
+      <updated>1584356612423</updated>
     </task>
-    <task id="LOCAL-00003" summary="Sistemato menu home, aggiunta modifica utente con anche cambio password. Layout un po' da sistemare">
-      <created>1584284274713</created>
+    <task id="LOCAL-00003" summary="db + chats">
+      <created>1584538857858</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1584284274713</updated>
+      <updated>1584538857858</updated>
     </task>
-    <task id="LOCAL-00004" summary="aggiunto delete e ricerca nella home.                         &#10;le nuove immagini sono a solo scopo illustrativo.">
-      <created>1584301644168</created>
+    <task id="LOCAL-00004" summary="vista chat terminata, update DB, risolto checkbox">
+      <created>1584565094392</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1584301644169</updated>
+      <updated>1584565094392</updated>
     </task>
-    <task id="LOCAL-00005" summary="magari se le immagini le agigungo le vedete anche">
-      <created>1584301678245</created>
+    <task id="LOCAL-00005" summary="modifiche al DB e ai models per la chat">
+      <created>1584616193550</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1584301678245</updated>
+      <updated>1584616193551</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="cambio da sqlite a postgres">
+      <created>1584649826006</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1584649826006</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Log in FUNZIONA." />
-    <MESSAGE value="Registrazione Autostoppista" />
-    <MESSAGE value="Sistemato menu home, aggiunta modifica utente con anche cambio password. Layout un po' da sistemare" />
-    <MESSAGE value="aggiunto delete e ricerca nella home.                         &#10;le nuove immagini sono a solo scopo illustrativo." />
-    <MESSAGE value="magari se le immagini le agigungo le vedete anche" />
-    <option name="LAST_COMMIT_MESSAGE" value="magari se le immagini le agigungo le vedete anche" />
+    <MESSAGE value="pagina chat per autostoppista disponibile" />
+    <MESSAGE value="db + chats" />
+    <MESSAGE value="vista chat terminata, update DB, risolto checkbox" />
+    <MESSAGE value="modifiche al DB e ai models per la chat" />
+    <MESSAGE value="cambio da sqlite a postgres" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambio da sqlite a postgres" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584273213047">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="309" y="25" width="1086" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584696352962">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1584273213047" />
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584282616748">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="309" y="25" width="1086" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1584696352962" />
+    <state x="539" y="184" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584354741333">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1584282616748" />
-    <state x="331" y="0" key="CommitChangelistDialog2" timestamp="1584301677295">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="539" y="184" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1584354741333" />
+    <state x="500" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584697622387">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="331" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1584301677295" />
-    <state x="186" y="153" key="FileChooserDialogImpl" timestamp="1584273209703">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="500" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584697622387" />
+    <state x="336" y="0" key="CommitChangelistDialog2" timestamp="1584703032550">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="299" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1584224136412" />
+    <state x="336" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584703032550" />
+    <state x="209" y="173" key="FileChooserDialogImpl" timestamp="1584631275552">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="186" y="153" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584273209703" />
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1584310478603">
+    <state x="209" y="173" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584631275552" />
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1584702548350">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="661" height="238" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
+    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1584702548349">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="661" height="238" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
+    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584702548349" />
+    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1584702548349">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="661" height="238" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584273992526" />
+    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584702548349" />
+    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1584702548350">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="661" height="238" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
+    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom" timestamp="1584702548350">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="661" height="238" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
+    <state width="1493" height="211" key="GridCell.Tab.1.center" timestamp="1584702548350">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="661" height="238" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
+    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
+    <state width="1493" height="211" key="GridCell.Tab.1.left" timestamp="1584702548350">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="661" height="238" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
+    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
+    <state width="1493" height="211" key="GridCell.Tab.1.right" timestamp="1584702548350">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="661" height="238" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
+    <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
+    <state width="1323" height="211" key="GridCell.Tab.2.bottom" timestamp="1584273510715">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584310478603" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1584310478603">
+    <state width="1323" height="211" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584273510715" />
+    <state width="1323" height="211" key="GridCell.Tab.2.center" timestamp="1584273510714">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584310478603" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1584310478588">
+    <state width="1323" height="211" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1584273510714" />
+    <state width="1323" height="211" key="GridCell.Tab.2.left" timestamp="1584273510714">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584310478588" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1584310478603">
+    <state width="1323" height="211" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1584273510714" />
+    <state width="1323" height="211" key="GridCell.Tab.2.right" timestamp="1584273510714">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584310478603" />
-    <state width="1323" height="182" key="GridCell.Tab.1.bottom" timestamp="1584310478603">
+    <state width="1323" height="211" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1584273510714" />
+    <state width="200" height="457" key="HiddenNamespacesPopup" timestamp="1584696364336">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="200" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1584696364336" />
+    <state x="483" y="129" key="MultipleFileMergeDialog" timestamp="1584538404218">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="483" y="129" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1584538404218" />
+    <state x="560" y="124" key="RollbackChangesDialog" timestamp="1584701153811">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="560" y="124" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584701153811" />
+    <state x="279" y="56" key="SettingsEditor" timestamp="1584524019798">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="279" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584524019798" />
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1584649828357">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1584224170276" />
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584649828357" />
+    <state x="553" y="318" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584701161545">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1584273973218" />
+    <state x="553" y="318" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1584701161545" />
+    <state x="379" y="96" width="607" height="536" key="find.popup" timestamp="1584225021603">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584310478603" />
-    <state width="1323" height="182" key="GridCell.Tab.1.center" timestamp="1584310478603">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1584310478603" />
-    <state width="1323" height="182" key="GridCell.Tab.1.left" timestamp="1584310478603">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1584310478603" />
-    <state width="1323" height="182" key="GridCell.Tab.1.right" timestamp="1584310478603">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="182" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1584310478603" />
-    <state width="1323" height="211" key="GridCell.Tab.2.bottom" timestamp="1584304249001">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="211" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584304249001" />
-    <state width="1323" height="211" key="GridCell.Tab.2.center" timestamp="1584304249000">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="211" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1584304249000" />
-    <state width="1323" height="211" key="GridCell.Tab.2.left" timestamp="1584304249000">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="211" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1584304249000" />
-    <state width="1323" height="211" key="GridCell.Tab.2.right" timestamp="1584304249001">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="211" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1584304249001" />
-    <state x="395" y="80" key="MultipleFileMergeDialog" timestamp="1584301821287">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="395" y="80" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1584301821287" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1584301681848">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1584301681848" />
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584302414404">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1584302414404" />
-    <state x="121" y="92" width="607" height="536" key="find.popup" timestamp="1584306909283">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="121" y="92" width="607" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1584306909283" />
+    <state x="379" y="96" width="607" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1584225021603" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PassageOnRail@Development__PassageOnRail.rcov" NAME="Development: PassageOnRail Coverage Results" MODIFIED="1584304451503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
+    <SUITE FILE_PATH="coverage/PassageOnRail@Production__progetto.rcov" NAME="Production: progetto Coverage Results" MODIFIED="1584347594227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="passageonrail" />
+    <SUITE FILE_PATH="coverage/progetto@Development__progetto.rcov" NAME="Development: progetto Coverage Results" MODIFIED="1583243839704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="progetto" />
+    <SUITE FILE_PATH="coverage/PassageOnRail@Production__PassageOnRail.rcov" NAME="Production: PassageOnRail Coverage Results" MODIFIED="1584636817033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
+    <SUITE FILE_PATH="coverage/PassageOnRail@Test.rcov" NAME="Test Coverage Results" MODIFIED="1584635732501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
+    <SUITE FILE_PATH="coverage/PassageOnRail@Development__PassageOnRail.rcov" NAME="Development: PassageOnRail Coverage Results" MODIFIED="1584702548337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
+    <SUITE FILE_PATH="coverage/PassageOnRail@Development__progetto.rcov" NAME="Development: progetto Coverage Results" MODIFIED="1584347875944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="passageonrail" />
   </component>
 </project>

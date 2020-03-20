@@ -1,10 +1,19 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
-pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset,
-form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
+/*per la chat*/
+.message-content {
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+    background: royalblue;
+    color: white;
+}
+
+/*fine chat*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
     margin: 0;
@@ -125,9 +134,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 		font-style: italic;
 	}
 
-	p {
+	/*p {
 		margin: 0 0 2em 0;
-	}
+	}*/
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #646464;
@@ -2065,6 +2074,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	input[type="password"],
 	input[type="email"],
     input[type="date"],
+    input[type="datetime-local"],
     input[type="number"],
     input[type="time"],
     input[type="tel"],
@@ -2089,6 +2099,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
         input[type="date"]:invalid,
+        input[type="datetime-local"]:invalid,
         input[type="number"]:invalid,
         input[type="time"]:invalid,
         input[type="tel"]:invalid,
@@ -2101,6 +2112,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 		input[type="password"]:focus,
 		input[type="email"]:focus,
         input[type="date"]:focus,
+        input[type="datetime-local"]:focus,
         input[type="number"]:focus,
         input[type="time"]:focus,
         input[type="tel"]:focus,
@@ -2137,6 +2149,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	input[type="password"],
     input[type="email"],
     input[type="date"],
+    input[type="datetime-local"],
     input[type="number"],
     input[type="time"],
     input[type="tel"],

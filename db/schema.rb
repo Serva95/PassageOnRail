@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_122824) do
+ActiveRecord::Schema.define(version: 2020_03_19_094448) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "chats", force: :cascade do |t|
+    t.integer "user_1_id"
+    t.integer "user_2_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "driver_id"
-    t.integer "hitch_hiker_id"
-    t.index ["driver_id"], name: "index_chats_on_driver_id"
-    t.index ["hitch_hiker_id"], name: "index_chats_on_hitch_hiker_id"
+    t.index ["user_1_id"], name: "index_chats_on_user_1_id"
+    t.index ["user_2_id"], name: "index_chats_on_user_2_id"
   end
 
   create_table "drivers", force: :cascade do |t|
@@ -38,12 +41,12 @@ ActiveRecord::Schema.define(version: 2020_03_17_122824) do
   create_table "messagges", force: :cascade do |t|
     t.datetime "data_ora"
     t.text "testo"
-    t.string "mittente"
-    t.string "destinatario"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "chat_id"
+    t.integer "user_id"
     t.index ["chat_id"], name: "index_messagges_on_chat_id"
+    t.index ["user_id"], name: "index_messagges_on_user_id"
   end
 
   create_table "multi_trip_associations", force: :cascade do |t|
@@ -171,9 +174,10 @@ ActiveRecord::Schema.define(version: 2020_03_17_122824) do
     t.index ["driver_id"], name: "index_vehicles_on_driver_id"
   end
 
-  add_foreign_key "chats", "drivers"
-  add_foreign_key "chats", "hitch_hikers"
+  add_foreign_key "chats", "users", column: "user_1_id"
+  add_foreign_key "chats", "users", column: "user_2_id"
   add_foreign_key "messagges", "chats"
+  add_foreign_key "messagges", "users"
   add_foreign_key "multi_trip_associations", "multi_trips"
   add_foreign_key "multi_trip_associations", "routes"
   add_foreign_key "passenger_associations", "hitch_hikers"

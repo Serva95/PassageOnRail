@@ -4,13 +4,22 @@ class MessaggesController < ApplicationController
   # GET /messagges
   # GET /messagges.json
   def index
-    @messagges = Messagge.all
+    #versione autostop che legge driver
+    @messagges = Messagge.joins(:user).where("chat_id = ?", params[:chat_id])
+    if !@messagges.present? && @messagges[0].user_id != current_user.id
+      @chatter_name = @messagges[0].nome
+      @chatter_surn = @messagges[0].cognome
+    else
+      #@chatter = Chat.joins(:user_1, :user_2).where("chats.id = ?", params[:chat_id]).limit(1).select(:nome, :cognome).first
+    end
   end
 
   # GET /messagges/1
   # GET /messagges/1.json
   def show
   end
+
+
 
   # GET /messagges/new
   def new

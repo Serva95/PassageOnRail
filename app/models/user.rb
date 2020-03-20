@@ -15,6 +15,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates_with UserDOBValidator
 
-   belongs_to :driver, optional: true, dependent: :destroy
-   belongs_to :hitch_hiker, optional: true, dependent: :destroy
+  belongs_to :driver, optional: true, dependent: :destroy
+  belongs_to :hitch_hiker, optional: true, dependent: :destroy
+  has_many :chats
+  has_many :messagges
 end
