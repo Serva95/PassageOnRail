@@ -26,12 +26,12 @@
     </div>
 
     <div class="col-4 col-12-narrower">
-      <%= s.label :tipo_mezzo, "Tipo di mezzo" %>
-      <%= s.collection_select :tipo_mezzo, Vehicle::TIPI, :to_s, :to_s %>
+      <%= s.number_field :comfort , placeholder: "Comfort minimo" %>
     </div>
 
     <div class="col-4 col-12-narrower">
-      <%= s.number_field :comfort , placeholder: "Comfort minimo" %>
+      <%= s.label :tipo_mezzo, "Tipo di mezzo" %>
+      <%= s.collection_select :tipo_mezzo, Vehicle::TIPI, :to_s, :to_s %>
     </div>
 
     <div class="col-4 col-12-narrower">
