@@ -53,6 +53,8 @@ class Search < ApplicationRecord
     group_clause = 'routes.id,other_routes.id'
 
     routes=Route.where('routes.data_ora_partenza > NOW()')
+    routes = routes.where(["routes.data_ora_partenza >= ?", data_ora]) if data_ora.present?
+
     routes =routes.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause).group(group_clause)
 
     sorder=define_order(sort_order)
