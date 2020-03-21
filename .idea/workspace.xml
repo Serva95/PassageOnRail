@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="modifiche al DB e ai models per la chat">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/search.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/search.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/credentials.yml.enc" beforeDir="false" afterPath="$PROJECT_DIR$/config/credentials.yml.enc" afterDir="false" />
+=======
+    <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="finta pagina login e sistemati campi form">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/registrations/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/registrations/edit.html.erb" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,29 +33,49 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+<<<<<<< Updated upstream
         <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+=======
+        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
+>>>>>>> Stashed changes
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+<<<<<<< Updated upstream
         <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+=======
+        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
+>>>>>>> Stashed changes
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+<<<<<<< Updated upstream
         <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+=======
+        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
+>>>>>>> Stashed changes
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+<<<<<<< Updated upstream
         <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+=======
+        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
+>>>>>>> Stashed changes
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
@@ -56,7 +83,11 @@
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+<<<<<<< Updated upstream
         <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
+=======
+        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
+>>>>>>> Stashed changes
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
@@ -215,6 +246,7 @@
             <expand>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+<<<<<<< Updated upstream
                 <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
               <path>
@@ -230,6 +262,14 @@
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
                 <item name="com.intellij.database.console.session.MessageBusSession@3217b5fa" type="9fbbdea:ServiceModel$ServiceNode" />
+=======
+                <item name="root:PostgreSQL - passageonrails@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:PostgreSQL - passageonrails@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@46488b2d" type="9fbbdea:ServiceModel$ServiceNode" />
+>>>>>>> Stashed changes
               </path>
             </expand>
             <select />
@@ -260,9 +300,14 @@
       <workItem from="1584452985823" duration="84000" />
       <workItem from="1584453111464" duration="2070000" />
       <workItem from="1584458320668" duration="60000" />
+<<<<<<< Updated upstream
       <workItem from="1584520750427" duration="26593000" />
       <workItem from="1584606543889" duration="24641000" />
       <workItem from="1584695700235" duration="7068000" />
+=======
+      <workItem from="1584520750427" duration="26316000" />
+      <workItem from="1584700663850" duration="1924000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="Log in FUNZIONA.">
       <created>1584224138518</created>
@@ -370,11 +415,19 @@
     <option name="LAST_COMMIT_MESSAGE" value="cambio da sqlite a postgres" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< Updated upstream
     <state x="309" y="25" width="1086" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584696352962">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1584273213047" />
     <state x="309" y="25" width="1086" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1584696352962" />
+=======
+    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584702209195">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1584702209195" />
+    <state x="309" y="25" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1584355402905" />
+>>>>>>> Stashed changes
     <state x="539" y="184" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584354741333">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -387,6 +440,7 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="299" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1584224136412" />
+<<<<<<< Updated upstream
     <state x="336" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584703032550" />
     <state x="209" y="173" key="FileChooserDialogImpl" timestamp="1584631275552">
       <screen x="0" y="0" width="1536" height="824" />
@@ -433,6 +487,57 @@
     </state>
     <state width="661" height="238" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
     <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
+=======
+    <state x="336" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584538856661" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1584702635372">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1584702635372" />
+    <state x="186" y="153" key="FileChooserDialogImpl" timestamp="1584273209703">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="186" y="153" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584273209703" />
+    <state width="1323" height="382" key="GridCell.Tab.0.bottom" timestamp="1584702623323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="382" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
+    <state width="1024" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
+    <state width="1323" height="382" key="GridCell.Tab.0.center" timestamp="1584702623323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="382" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
+    <state width="1024" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
+    <state width="1323" height="382" key="GridCell.Tab.0.left" timestamp="1584702623323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="382" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
+    <state width="1024" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
+    <state width="1323" height="382" key="GridCell.Tab.0.right" timestamp="1584702623323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="382" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
+    <state width="1024" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
+    <state width="1323" height="382" key="GridCell.Tab.1.bottom" timestamp="1584702623323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="382" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
+    <state width="1323" height="382" key="GridCell.Tab.1.center" timestamp="1584702623323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="382" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
+    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
+    <state width="1323" height="382" key="GridCell.Tab.1.left" timestamp="1584702623323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="382" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
+    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
+    <state width="1323" height="382" key="GridCell.Tab.1.right" timestamp="1584702623323">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="382" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
+    <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
+>>>>>>> Stashed changes
     <state width="1323" height="211" key="GridCell.Tab.2.bottom" timestamp="1584273510715">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -449,10 +554,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="211" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1584273510714" />
+<<<<<<< Updated upstream
     <state width="200" height="457" key="HiddenNamespacesPopup" timestamp="1584696364336">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="200" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1584696364336" />
+=======
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1584702420338">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1584702420338" />
+>>>>>>> Stashed changes
     <state x="483" y="129" key="MultipleFileMergeDialog" timestamp="1584538404218">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -469,23 +581,36 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1584224170276" />
+<<<<<<< Updated upstream
     <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584649828357" />
     <state x="553" y="318" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584701161545">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1584273973218" />
     <state x="553" y="318" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1584701161545" />
+=======
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584538860178" />
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584703310933">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1584703310933" />
+    <state x="553" y="318" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1584538387299" />
+>>>>>>> Stashed changes
     <state x="379" y="96" width="607" height="536" key="find.popup" timestamp="1584225021603">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="379" y="96" width="607" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1584225021603" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PassageOnRail@Production__progetto.rcov" NAME="Production: progetto Coverage Results" MODIFIED="1584347594227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="passageonrail" />
     <SUITE FILE_PATH="coverage/progetto@Development__progetto.rcov" NAME="Development: progetto Coverage Results" MODIFIED="1583243839704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="progetto" />
+<<<<<<< Updated upstream
     <SUITE FILE_PATH="coverage/PassageOnRail@Production__PassageOnRail.rcov" NAME="Production: PassageOnRail Coverage Results" MODIFIED="1584636817033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
     <SUITE FILE_PATH="coverage/PassageOnRail@Test.rcov" NAME="Test Coverage Results" MODIFIED="1584635732501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
     <SUITE FILE_PATH="coverage/PassageOnRail@Development__PassageOnRail.rcov" NAME="Development: PassageOnRail Coverage Results" MODIFIED="1584702548337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
+=======
+    <SUITE FILE_PATH="coverage/PassageOnRail@Development__PassageOnRail.rcov" NAME="Development: PassageOnRail Coverage Results" MODIFIED="1584702430545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
+    <SUITE FILE_PATH="coverage/PassageOnRail@Production__progetto.rcov" NAME="Production: progetto Coverage Results" MODIFIED="1584347594227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="passageonrail" />
+>>>>>>> Stashed changes
     <SUITE FILE_PATH="coverage/PassageOnRail@Development__progetto.rcov" NAME="Development: progetto Coverage Results" MODIFIED="1584347875944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="passageonrail" />
   </component>
 </project>

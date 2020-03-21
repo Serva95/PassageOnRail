@@ -38,9 +38,9 @@
     </div>
     <div class="col-6 col-12-narrower">
       <%= f.label :"Carica una foto" %>
-      <%= f.file_field :picture %>
+      <%= f.file_field :avatar %>
     </div>
-      <div class="col-4 col-12-narrower">
+      <div class="col-6 col-12-narrower">
         <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "new-password" %>
         <i>(leave blank if you don't want to change it)</i>
@@ -49,12 +49,12 @@
         <% end %>
       </div>
 
-      <div class="col-4 col-12-narrower">
+      <div class="col-6 col-12-narrower">
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
-      <div class="col-4 col-12-narrower">
+      <div class="col-12 col-12-narrower">
         <%= f.label :current_password %>
         <%= f.password_field :current_password, autocomplete: "current-password" %>
         <i>(we need your current password to confirm your changes)</i>

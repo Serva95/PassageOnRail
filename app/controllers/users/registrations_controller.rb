@@ -12,7 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    resource.save
+    resource.avatar = params[:avatar]
+    resource.save!
     @hitch_hiker= HitchHiker.create!
     resource.update_attributes(hitch_hiker_id: @hitch_hiker.id)
     yield resource if block_given?
@@ -62,13 +63,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nome, :cognome, :username, :data_di_nascita, :cellulare,
-                                                       :indirizzo, :utl_foto])
+                                                       :indirizzo, :avatar])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:nome, :cognome, :username, :data_di_nascita, :cellulare,
-                                                              :indirizzo, :utl_foto, :current_password])
+                                                              :indirizzo, :current_password, :avatar])
   end
 
   # The path used after sign up.

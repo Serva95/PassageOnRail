@@ -1,39 +1,64 @@
 
 <div class="row gtr-uniform">
-  <h4 class="col-6 col-12-narrower">
+  <%if @user.avatar.url != nil%>
+    <h4 class="image col-12 col-12-narrower">
+      <%=image_tag(@user.avatar.url, size: "160") %>
+    </h4>
+  <%else %>
+    <h4 class="col-12 col-12-narrower">
+      Nessuna immagine inserita
+    </h4>
+  <%end %>
+  <h4 class="col-4 col-12-narrower">
     <strong>Email:</strong>
     <%= @user.email %>
   </h4>
-  <h4 class="col-6 col-12-narrower">
+  <h4 class="col-4 col-12-narrower">
     <strong>Username:</strong>
     <%= @user.username %>
   </h4>
-  <h4 class="col-6 col-12-narrower">
+  <h4 class="col-4 col-12-narrower">
     <strong>Nome:</strong>
     <%= @user.nome %>
   </h4>
-  <h4 class="col-6 col-12-narrower">
+  <h4 class="col-4 col-12-narrower">
     <strong>Cognome:</strong>
     <%= @user.cognome %>
   </h4>
-  <h4 class="col-6 col-12-narrower">
+  <h4 class="col-4 col-12-narrower">
     <strong>Data di nascita:</strong>
     <%= @user.data_di_nascita %>
   </h4>
-  <h4 class="col-6 col-12-narrower">
+  <h4 class="col-4 col-12-narrower">
     <strong>Cellulare:</strong>
     <%= @user.cellulare %>
   </h4>
-  <h4 class="col-6 col-12-narrower">
+  <h4 class="col-4 col-12-narrower">
     <strong>Indirizzo:</strong>
     <%= @user.indirizzo %>
   </h4>
-  <h4 class="col-6 col-12-narrower">
-    <strong>Url foto:</strong>
-    <%= @user.url_foto %>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Rating medio autostoppista<br/></strong>
+    <%rating= @user.find_rating_hitch%>
+    <%if rating==nil %>
+      Non hai ancora nessun rating!
+    <%else %>
+      <%=rating%>
+    <%end %>
   </h4>
+  <%if @user.driver_id? %>
+    <h4 class="col-4 col-12-narrower">
+      <strong>Rating medio Automobilista<br/></strong>
+      <%ratingDriver= @user.find_rating_driver%>
+      <%if ratingDriver==nil %>
+        Non hai ancora nessun rating!
+      <%else %>
+        <%=ratingDriver%>
+      <%end %>
+
+    </h4>
+  <%end %>
 </div>
-<hr>
 <div class="col-7 col-0-narrower"></div>
 <div class="col-2 col-12-narrower">
   <%= link_to 'Edit', edit_user_registration_path(@user) , class:'button'%>
