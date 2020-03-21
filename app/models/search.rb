@@ -18,12 +18,12 @@ class Search < ApplicationRecord
 
     routes = Route.select(select_clause).where('data_ora_partenza > NOW()')
 
-    routes = routes.where(["citta_partenza LIKE ?","%#{c_partenza}"])
-    routes = routes.where(["citta_arrivo LIKE ?","%#{c_arrivo}"])
+    routes = routes.where(["citta_partenza ILIKE ?","%#{c_partenza}"])
+    routes = routes.where(["citta_arrivo ILIKE ?","%#{c_arrivo}"])
     routes = routes.where(["data_ora_partenza >= ?", data_ora]) if data_ora.present?
     routes = routes.joins(:driver).where(["drivers.rating_medio >= ?",rating]) if rating.present?
     routes = routes.where(["costo <= ?",costo]) if costo.present?
-    routes = routes.joins(:vehicle).where(["vehicles.tipo_mezzo LIKE ?","%#{tipo_mezzo}"]) if !tipo_mezzo.eql?('Altro')
+    routes = routes.joins(:vehicle).where(["vehicles.tipo_mezzo ILIKE ?","%#{tipo_mezzo}"]) if !tipo_mezzo.eql?('Altro')
     routes = routes.joins(:vehicle).where(["vehicles.comfort >= ?",comfort]) if comfort.present?
 
     sorder=define_order(sort_order)
@@ -48,11 +48,13 @@ class Search < ApplicationRecord
                                                                   EXTRACT(HOUR FROM other_routes.data_ora_arrivo - routes.data_ora_partenza))*60)+
                                                                   EXTRACT(MINUTE FROM other_routes.data_ora_arrivo - routes.data_ora_partenza) AS min'
     from_clause = 'routes, routes as other_routes'
-    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza LIKE ? AND other_routes.citta_arrivo LIKE ?
+    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza ILIKE ? AND other_routes.citta_arrivo ILIKE ?
                     AND other_routes.data_ora_partenza >= routes.data_ora_arrivo AND (EXTRACT(DAY FROM other_routes.data_ora_partenza - routes.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM other_routes.data_ora_partenza - routes.data_ora_arrivo)) <= 5"
     group_clause = 'routes.id,other_routes.id'
 
     routes=Route.where('routes.data_ora_partenza > NOW()')
+    routes = routes.where(["routes.data_ora_partenza >= ?", data_ora]) if data_ora.present?
+
     routes =routes.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause).group(group_clause)
 
     sorder=define_order(sort_order)

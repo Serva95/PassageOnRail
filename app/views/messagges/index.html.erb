@@ -1,5 +1,9 @@
 <div class="col-12 col-12-narrower">
-  <h3>Chat con <%=@chatter_name+' '+@chatter_surn %></h3>
+  <%if @chatter.id1 == current_user.id %>
+    <h3>Chat con <%=@chatter.n2%> <%= @chatter.cn2 %></h3>
+  <%else %>
+    <h3>Chat con <%=@chatter.n1%> <%= @chatter.cn1 %></h3>
+  <%end %>
 </div>
 
 <% @messagges.each do |messagge| %>
@@ -27,7 +31,7 @@
     <div class="col-6 col-6-mobilep">
       <div class="message-content">
         <p>
-          <%=@chatter_name+': '+messagge.testo %>
+          <%=@chatter.n1+': '+messagge.testo %>
         </p>
         <div class="align-right">
           <small>
