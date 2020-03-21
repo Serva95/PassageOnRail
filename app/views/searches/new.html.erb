@@ -26,7 +26,8 @@
     </div>
 
     <div class="col-4 col-12-narrower">
-      <%= s.text_field :tipo_mezzo, placeholder: "Marchio autoveicolo" %>
+      <%= s.label :tipo_mezzo, "Tipo di mezzo" %>
+      <%= s.collection_select :tipo_mezzo, Vehicle::TIPI, :to_s, :to_s %>
     </div>
 
     <div class="col-4 col-12-narrower">

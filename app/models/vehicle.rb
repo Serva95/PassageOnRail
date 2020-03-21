@@ -5,4 +5,7 @@ class Vehicle < ApplicationRecord
 	
 	has_many :routes, dependent: :destroy
 	belongs_to :driver
+
+	TIPI = ['Altro','Berlina', 'Cabriolet', 'Camper', 'Coupé', 'Fuoristrada', 'Monovolume', 'Pick up', 'Pulmino', 'Roadster', 'Station wagon', 'SUV']
+
 end

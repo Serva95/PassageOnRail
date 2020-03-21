@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :tipo_mezzo, 'Tipo di mezzo' %>
+    <%= form.collection_select :tipo_mezzo, Vehicle::TIPI, :to_s, :to_s %>
+  </div>
+
+  <div class="field">
     <%= form.label :immatricolazione %>
     <%= form.date_select :immatricolazione %>
   </div>
@@ -39,11 +44,6 @@
   <div class="field">
     <%= form.label :posti %>
     <%= form.number_field :posti %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deleted %>
-    <%= form.check_box :deleted %>
   </div>
 
   <div class="actions">

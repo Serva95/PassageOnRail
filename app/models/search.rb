@@ -23,7 +23,7 @@ class Search < ApplicationRecord
     routes = routes.where(["data_ora_partenza >= ?", data_ora]) if data_ora.present?
     routes = routes.joins(:driver).where(["drivers.rating_medio >= ?",rating]) if rating.present?
     routes = routes.where(["costo <= ?",costo]) if costo.present?
-    routes = routes.joins(:vehicle).where(["vehicles.marca LIKE ?","%#{tipo_mezzo}"]) if tipo_mezzo.present?
+    routes = routes.joins(:vehicle).where(["vehicles.tipo_mezzo LIKE ?","%#{tipo_mezzo}"]) if !tipo_mezzo.eql?('Altro')
     routes = routes.joins(:vehicle).where(["vehicles.comfort >= ?",comfort]) if comfort.present?
 
     sorder=define_order(sort_order)
@@ -58,7 +58,7 @@ class Search < ApplicationRecord
     sorder=define_order(sort_order)
 
     routes = routes.order(c_tot: sorder) if sort_attribute.eql?('Costo')
-    routes = routes.order(t_tot: sorder) if sort_attribute.eql?('Tempo di percorrenza')
+    routes = routes.order(min: sorder) if sort_attribute.eql?('Tempo di percorrenza')
 
     return routes
 
