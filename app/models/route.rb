@@ -2,6 +2,7 @@ class RouteNPValidator < ActiveModel::Validator
   def validate(record)
     if record.n_passeggeri.blank?
       record.errors[:n_passeggeri] << "Non può essere nil"
+      #non si possono aggiungere più passeggeri dei posti diponibili nella macchina
       elsif record.n_passeggeri > Vehicle.estrai_posti(record.vehicle_id)
         record.errors[:n_passeggeri] << "La macchina è piena"
     end
@@ -26,13 +27,22 @@ class Route < ApplicationRecord
   has_many :passenger_associations, dependent: :destroy
   has_many :hitch_hikers, :through => :passenger_associations, dependent: :destroy, inverse_of: :route
 
+  #estrae il numero di passeggeri attualmente prenotati
   scope :current_passengers, -> (route_id) do
     select('n_passeggeri').where('id = ?', route_id)
   end
 
+  #somma i passeggeri prenotati con quelli che si vogliono prenotare
   def self.sum_passengers(route_id, n_passeggeri)
     route = Route.current_passengers(route_id)
     route.first.n_passeggeri + n_passeggeri
+  end
+
+  #estrai il massimo numero di posti che si possono aggiungere
+  def self.posti_disponibili(route_id,vehicle_id)
+    v = Vehicle.estrai_posti(vehicle_id)
+    r = Route.current_passengers(route_id)
+    v - r.first.n_passeggeri
   end
 
   def self.search(search)

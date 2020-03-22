@@ -1,21 +1,21 @@
 <h1>Prenota</h1>
 
 <%= form_with(url: make_booking_route_path(@route), method: "patch") do |f| %>
-  <!--% if route.errors.any? %-->
-    <!--div id="error_explanation"-->
-      <!--h2><--%= pluralize(route.errors.count, "error") %--prohibited this route from being saved:<--/h2-->
+  <% if @route.errors.any?%>
+    <div id="error_explanation">
+      <h2><%= pluralize(@route.errors.count, "error") %>prohibited this route from being saved:</h2>
 
-      <!--ul-->
-        <!--% route.errors.full_messages.each do |message| %-->
-          <!--li><--%= message %></--li-->
-        <!--% end %-->
-      <!--/--ul-->
-    <!--/--div>
-  <--% end %-->
+      <ul>
+        <% @route.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end%>
 
   <div class="field">
     <%= f.label :n_passeggeri, "Numero Passeggeri" %>
-    <%= f.number_field(:n_passeggeri, in: 1..4)%>
+    <%= f.number_field(:n_passeggeri, in: 1..@posti)%>
   </div>
 
   <div class="actions">

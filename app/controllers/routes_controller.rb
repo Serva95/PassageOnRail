@@ -11,14 +11,19 @@ class RoutesController < ApplicationController
   # GET /routes/booking
   def booking
     @route = Route.find(params[:id])
+    @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
   end
 
   # PATCH/PUT /routes/1/make_booking
   def make_booking
     respond_to do |format|
+      #trova la route da aggiornare
       @route = Route.find(params[:id])
+      #somma i passeggeri gia' prenotati con quelli che si vogliono prenotare
       p = Route.sum_passengers(params[:id], params[:n_passeggeri].to_i)
+      #se e' possibile aggiornare
       if @route.update(id: params[:id], n_passeggeri: p)
+        #aggiungo l'associazione alla tratta-passeggero
         @route.passenger_associations.create(hitch_hiker_id: current_user.id)
         format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
         format.json { render :show, status: :ok, location: @route }
