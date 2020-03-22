@@ -17,13 +17,13 @@ class RoutesController < ApplicationController
   def make_booking
     respond_to do |format|
       @route = Route.find(params[:id])
-      @route.n_passeggeri = params[:n_passeggeri]
-      @route.passenger_associations.create(hitch_hiker_id: current_user.id)
-      if @route.update(n_passeggeri: params[:n_passeggeri])
+      p = Route.sum_passengers(params[:id], params[:n_passeggeri].to_i)
+      if @route.update(id: params[:id], n_passeggeri: p)
+        @route.passenger_associations.create(hitch_hiker_id: current_user.id)
         format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
         format.json { render :show, status: :ok, location: @route }
       else
-        format.html { render :show }
+        format.html { render :booking }
         format.json { render json: @route.errors, status: :unprocessable_entity }
       end
     end

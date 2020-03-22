@@ -8,4 +8,12 @@ class Vehicle < ApplicationRecord
 
 	TIPI = ['Altro','Berlina', 'Cabriolet', 'Camper', 'Coupé', 'Fuoristrada', 'Monovolume', 'Pick up', 'Pulmino', 'Roadster', 'Station wagon', 'SUV']
 
+	scope :max_passeggeri, -> (vehicle_id)  do
+		select('posti').where('id = ?', vehicle_id)
+	end
+
+	def self.estrai_posti(veh)
+		vehicle = Vehicle.max_passeggeri(veh)
+		vehicle.first.posti
+	end
 end
