@@ -32,7 +32,7 @@
       <tr>
         <td><%= c.citta_partenza %></td>
         <td><%= c.luogo_ritrovo %></td>
-        <td><%= c.data_ora_partenza %></td>
+        <td><%= c.data_ora_partenza.strftime("%d/%m/%y %R") %></td>
         <td><%= c.citta_arrivo %></td>
         <td><%= c.ore %> ore <%=c.min %> minuti</td>
         <td><%= c.costo %></td>
@@ -73,7 +73,7 @@
     <% @search.multi_routes_search.each do |c| %>
       <tr>
         <td><%= c.c_part %></td>
-        <td><%= c.part %></td>
+        <td><%= c.part.strftime("%d/%m/%y %R") %></td>
         <td><%= c.tappa %></td>
         <td><%= c.c_arr %></td>
         <td><%= c.c_tot %></td>
