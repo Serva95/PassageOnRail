@@ -14,9 +14,9 @@ class Search < ApplicationRecord
 
   def search_routes
 
-    select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min'
+    select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min, vehicles.comfort, drivers.rating_medio'
 
-    routes = Route.select(select_clause).where('data_ora_partenza > NOW()')
+    routes = Route.select(select_clause).joins(:vehicle).joins(:driver).where('data_ora_partenza > NOW()').joins(:vehicle)
 
     routes = routes.where(["citta_partenza ILIKE ?","%#{c_partenza}"])
     routes = routes.where(["citta_arrivo ILIKE ?","%#{c_arrivo}"])
@@ -61,6 +61,7 @@ class Search < ApplicationRecord
     routes = routes. where(['Ms1.n_passeggeri < Ms1.posti AND Ms2.n_passeggeri < Ms2.posti'])
     routes = routes.where(['comfort_medio >= ?', comfort]) if comfort.present?
     routes = routes.where(['rat >= ?', rating]) if rating.present?
+    routes = routes.where(["Ms1.tipo_mezzo ILIKE ? AND Ms2.tipo_mezzo=Ms1.tipo_mezzo","%#{tipo_mezzo}"]) if !tipo_mezzo.eql?('Altro')
 
     sorder=define_order(sort_order)
 
