@@ -40,27 +40,28 @@ class Search < ApplicationRecord
 
     #bisogna valutare se applicare tutti i filtri del singolo viaggio (es marchio veicolo, cambiando auto non ha molto senso) e terminare ordinamento per comfort
 
-    select_clause= 'routes.id AS id1, routes.citta_partenza AS c_part, routes.data_ora_partenza AS part, routes.citta_arrivo AS tappa, routes.vehicle_id,
-                    other_routes.id AS id2, other_routes.citta_arrivo AS c_arr,
-                    SUM(routes.costo+other_routes.costo) AS c_tot, (EXTRACT(DAY FROM other_routes.data_ora_arrivo - routes.data_ora_partenza) * 24 +
-                                                                   EXTRACT(HOUR FROM other_routes.data_ora_arrivo - routes.data_ora_partenza)) AS ore,
-                                                                  ((EXTRACT(DAY FROM other_routes.data_ora_arrivo - routes.data_ora_partenza) * 24 +
-                                                                  EXTRACT(HOUR FROM other_routes.data_ora_arrivo - routes.data_ora_partenza))*60)+
-                                                                  EXTRACT(MINUTE FROM other_routes.data_ora_arrivo - routes.data_ora_partenza) AS min'
-    from_clause = 'routes, routes as other_routes'
-    where_clause = "routes.citta_arrivo = other_routes.citta_partenza AND routes.citta_partenza ILIKE ? AND other_routes.citta_arrivo ILIKE ?
-                    AND other_routes.data_ora_partenza >= routes.data_ora_arrivo AND (EXTRACT(DAY FROM other_routes.data_ora_partenza - routes.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM other_routes.data_ora_partenza - routes.data_ora_arrivo)) <= 5"
-    group_clause = 'routes.id,other_routes.id'
+    select_clause= 'Ms1.id AS id1, Ms1.citta_partenza AS c_part, Ms1.data_ora_partenza AS part,Ms1.citta_arrivo AS tappa,
+                   Ms2.id AS id2,Ms2.citta_arrivo AS c_arr,
+                  SUM(Ms1.costo+Ms2.costo) AS c_tot, (EXTRACT(DAY FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza) * 24 +
+                                                      EXTRACT(HOUR FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza)) AS ore,
+                                                      ((EXTRACT(DAY FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza) * 24 +
+                                                      EXTRACT(HOUR FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza))*60)+
+                                                      EXTRACT(MINUTE FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza) AS min'
+    from_clause = 'multitrip_search_results Ms1, multitrip_search_results as Ms2'
+    where_clause = 'Ms1.citta_partenza ILIKE ? AND Ms2.citta_arrivo ILIKE ? AND Ms1.citta_arrivo = Ms2.citta_partenza
+                   AND Ms2.data_ora_partenza >= Ms1.data_ora_arrivo AND (EXTRACT(DAY FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo)) <= 5'
+   group_clause = 'Ms1.id,Ms2.id,Ms1.citta_partenza,Ms1.data_ora_partenza,Ms1.citta_arrivo,Ms2.citta_arrivo,Ms2.data_ora_arrivo'
 
-    routes=Route.where('routes.data_ora_partenza > NOW()')
-    routes = routes.where(["routes.data_ora_partenza >= ?", data_ora]) if data_ora.present?
 
-    routes =routes.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause).group(group_clause)
+    routes =MultitripSearchResult.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause).group(group_clause)
+    routes=routes.where('Ms1.data_ora_partenza > NOW()')
+    routes = routes.where(["Ms1.data_ora_partenza >= ?", data_ora]) if data_ora.present?
+
 
     sorder=define_order(sort_order)
 
-    routes = routes.order(c_tot: sorder) if sort_attribute.eql?('Costo')
-    routes = routes.order(min: sorder) if sort_attribute.eql?('Tempo di percorrenza')
+   routes = routes.order(c_tot: sorder) if sort_attribute.eql?('Costo')
+   routes = routes.order(min: sorder) if sort_attribute.eql?('Tempo di percorrenza')
 
     return routes
 
