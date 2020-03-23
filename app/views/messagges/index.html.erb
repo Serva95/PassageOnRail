@@ -1,9 +1,5 @@
 <div class="col-12 col-12-narrower">
-  <%if @chatter.id1 == current_user.id %>
-    <h3>Chat con <%=@chatter.n2%> <%= @chatter.cn2 %></h3>
-  <%else %>
-    <h3>Chat con <%=@chatter.n1%> <%= @chatter.cn1 %></h3>
-  <%end %>
+  <h3>Chat con <%=@chatter[0]+' '+@chatter[1] %></h3>
 </div>
 
 <% @messagges.each do |messagge| %>
@@ -24,14 +20,14 @@
       </div>
     </div>
     <div class="col-1 col-2-mobilep">
-      <%= link_to '', edit_chat_messagge_path(messagge.chat_id, messagge.id), class: 'fas fa-edit fa-2x' %>
-      <%= link_to '', chat_messagge_path(messagge.chat_id, messagge.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt fa-2x' %>
+      <%= link_to '', edit_chat_messagge_path(messagge.chat_id, messagge.id), class: 'fas fa-edit' %>
+      <%= link_to '', chat_messagge_path(messagge.chat_id, messagge.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt' %>
     </div>
   <%else %>
     <div class="col-6 col-6-mobilep">
       <div class="message-content">
         <p>
-          <%=@chatter.n1+': '+messagge.testo %>
+          <%=@chatter[0]+': '+messagge.testo %>
         </p>
         <div class="align-right">
           <small>

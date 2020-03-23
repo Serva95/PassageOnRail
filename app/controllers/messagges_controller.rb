@@ -6,16 +6,14 @@ class MessaggesController < ApplicationController
   def index
     #versione autostop che legge driver
     @messagges = Messagge.find_chats(params[:chat_id])
-    @chatter = Messagge.find_chatters(params[:chat_id])
-
+    @chatter = Messagge.find_chatters(params[:chat_id], current_user.id)
+    @messagge = Messagge.new
   end
 
   # GET /messagges/1
   # GET /messagges/1.json
   def show
   end
-
-
 
   # GET /messagges/new
   def new
@@ -32,12 +30,17 @@ class MessaggesController < ApplicationController
   def create
     @messagge = Messagge.new(messagge_params)
     @messagge.data_ora = DateTime.current
+    @messagge.created_at = DateTime.current
+    @messagge.updated_at = DateTime.current
+    @messagge.chat_id = params[:chat_id]
+    @messagge.user_id = current_user.id
     respond_to do |format|
       if @messagge.save
-        format.html { redirect_to @messagge, notice: 'Messagge was successfully created.' }
-        format.json { render :show, status: :created, location: @messagge }
+        @chatter = Messagge.find_chatters(@messagge.chat_id, current_user.id)
+        format.html { redirect_to chat_messagges_path(params[:chat_id]), notice: 'Messagge sent.' }
+        format.json { render :index, status: :created, location: @messagge }
       else
-        format.html { render :new }
+        format.html { redirect_to chat_messagges_path(params[:chat_id]), notice: 'Messagge sent.' }
         format.json { render json: @messagge.errors, status: :unprocessable_entity }
       end
     end
@@ -62,7 +65,7 @@ class MessaggesController < ApplicationController
   def destroy
     @messagge.destroy
     respond_to do |format|
-      format.html { redirect_to messagges_url, notice: 'Messagge was successfully destroyed.' }
+      format.html { redirect_to chats_path, notice: 'Messagge was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -75,6 +78,6 @@ class MessaggesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def messagge_params
-    params.require(:messagge).permit(:data_ora, :testo, :mittente, :destinatario, :deleted)
+    params.require(:messagge).permit(:data_ora, :testo, :chat_id, :user_id)
   end
 end

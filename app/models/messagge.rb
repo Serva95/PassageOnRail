@@ -8,7 +8,7 @@ end
 
 class Messagge < ApplicationRecord
 	validates :data_ora, presence: true
-	validates :mittente, presence: true
+	validates :user_id, presence: true
 
 	belongs_to :chat, required: true
 	belongs_to :user, required: true
@@ -19,8 +19,15 @@ class Messagge < ApplicationRecord
 		Messagge.joins(:user).where("chat_id = ?", chat_id)
 	end
 
-	def self.find_chatters(chat_id)
-		Chat.joins(:user_1, :user_2).where("chats.id = ?", chat_id).limit(1).select("users.id as id1", "users.nome as n1", "users.cognome as cn1", "user_2s_chats.id as id2", "user_2s_chats.nome as n2", "user_2s_chats.cognome as cn2").first
+	def self.find_chatters(chat_id, current_user_id)
+		chatter_params = Chat.joins(:user_1, :user_2).where("chats.id = ?", chat_id).limit(1).select("users.id as id1", "users.nome as n1", "users.cognome as cn1", "user_2s_chats.id as id2", "user_2s_chats.nome as n2", "user_2s_chats.cognome as cn2").first
+
+		if chatter_params.id1 == current_user_id
+			chatter = [chatter_params.n2, chatter_params.cn2]
+		else
+			chatter = [chatter_params.n1, chatter_params.cn1]
+		end
+		return chatter
 	end
 
 end
