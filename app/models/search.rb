@@ -25,6 +25,7 @@ class Search < ApplicationRecord
     routes = routes.where(["costo <= ?",costo]) if costo.present?
     routes = routes.joins(:vehicle).where(["vehicles.tipo_mezzo ILIKE ?","%#{tipo_mezzo}"]) if !tipo_mezzo.eql?('Altro')
     routes = routes.joins(:vehicle).where(["vehicles.comfort >= ?",comfort]) if comfort.present?
+    routes = routes.joins(:vehicle).where(["n_passeggeri < vehicles.posti"])
 
     sorder=define_order(sort_order)
 
@@ -46,7 +47,8 @@ class Search < ApplicationRecord
                                                       EXTRACT(HOUR FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza)) AS ore,
                                                       ((EXTRACT(DAY FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza) * 24 +
                                                       EXTRACT(HOUR FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza))*60)+
-                                                      EXTRACT(MINUTE FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza) AS min'
+                                                      EXTRACT(MINUTE FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza) AS min,
+                  SUM(Ms1.comfort+Ms2.comfort)/2 AS comfort_medio, SUM(Ms1.rating_medio+Ms2.rating_medio)/2 AS rat'
     from_clause = 'multitrip_search_results Ms1, multitrip_search_results as Ms2'
     where_clause = 'Ms1.citta_partenza ILIKE ? AND Ms2.citta_arrivo ILIKE ? AND Ms1.citta_arrivo = Ms2.citta_partenza
                    AND Ms2.data_ora_partenza >= Ms1.data_ora_arrivo AND (EXTRACT(DAY FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo)) <= 5'
@@ -56,12 +58,15 @@ class Search < ApplicationRecord
     routes =MultitripSearchResult.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause).group(group_clause)
     routes=routes.where('Ms1.data_ora_partenza > NOW()')
     routes = routes.where(["Ms1.data_ora_partenza >= ?", data_ora]) if data_ora.present?
-
+    routes = routes. where(['Ms1.n_passeggeri < Ms1.posti AND Ms2.n_passeggeri < Ms2.posti'])
+    routes = routes.where(['comfort_medio >= ?', comfort]) if comfort.present?
+    routes = routes.where(['rat >= ?', rating]) if rating.present?
 
     sorder=define_order(sort_order)
 
    routes = routes.order(c_tot: sorder) if sort_attribute.eql?('Costo')
    routes = routes.order(min: sorder) if sort_attribute.eql?('Tempo di percorrenza')
+   routes = routes.order(comfort_medio: sorder) if sort_attribute.eql?('Comfort')
 
     return routes
 
