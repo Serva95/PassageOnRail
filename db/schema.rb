@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_152135) do
+ActiveRecord::Schema.define(version: 2020_03_23_095437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,4 +192,27 @@ ActiveRecord::Schema.define(version: 2020_03_21_152135) do
   add_foreign_key "users", "drivers"
   add_foreign_key "users", "hitch_hikers"
   add_foreign_key "vehicles", "drivers"
+
+  create_view "multitrip_search_results", sql_definition: <<-SQL
+      SELECT routes.id,
+      routes.citta_partenza,
+      routes.luogo_ritrovo,
+      routes.data_ora_partenza,
+      routes.citta_arrivo,
+      routes.data_ora_arrivo,
+      routes.costo,
+      routes.deleted,
+      routes.created_at,
+      routes.updated_at,
+      routes.driver_id,
+      routes.vehicle_id,
+      routes.tempo_percorrenza,
+      routes.n_passeggeri,
+      vehicles.comfort,
+      vehicles.tipo_mezzo,
+      drivers.rating_medio
+     FROM ((routes
+       JOIN vehicles ON ((routes.vehicle_id = vehicles.id)))
+       JOIN drivers ON ((routes.driver_id = drivers.id)));
+  SQL
 end
