@@ -1,14 +1,17 @@
-
-<h1>Driver's Routes</h1>
+<div class="col-12 col-12-narrower">
+  <h2>
+    <strong>Ecco le tue tratte!</strong>
+  </h2>
+</div>
 
 <table>
   <thead>
   <tr>
-    <th>Citta partenza</th>
-    <th>Luogo ritrovo</th>
-    <th>Data ora partenza</th>
-    <th>Citta arrivo</th>
-    <th>Data ora arrivo</th>
+    <th>Citta di partenza</th>
+    <th>Luogo di ritrovo</th>
+    <th>Data e ora di partenza</th>
+    <th>Citta di arrivo</th>
+    <th>Data e ora di arrivo</th>
     <th>Costo</th>
     <th>Tempo di percorrenza</th>
     <th>Persone prenotate</th>
@@ -21,9 +24,9 @@
     <tr>
       <td><%= route.citta_partenza %></td>
       <td><%= route.luogo_ritrovo %></td>
-      <td><%= route.data_ora_partenza %></td>
+      <td><%= route.data_ora_partenza.strftime("%d/%m/%y %R") %></td>
       <td><%= route.citta_arrivo %></td>
-      <td><%= route.data_ora_arrivo %></td>
+      <td><%= route.data_ora_arrivo.strftime("%d/%m/%y %R") %></td>
       <td><%= route.costo %></td>
       <td><%= route.tempo_percorrenza %></td>
       <td><%= route.n_passeggeri %></td>

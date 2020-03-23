@@ -5,7 +5,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles
   # GET /vehicles.json
   def index
-    @vehicles = @driver.vehicles
+    @vehicles = @driver.vehicles.order(targa: :asc)
   end
 
   # GET /vehicles/1

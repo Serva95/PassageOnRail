@@ -1,5 +1,8 @@
-
-<h1>Vehicles</h1>
+<div class="col-12 col-12-narrower">
+  <h2>
+    <strong>Ecco i tuoi veicoli!</strong>
+  </h2>
+</div>
 
 <table>
   <thead>
@@ -22,7 +25,7 @@
         <td><%= vehicle.marca %></td>
         <td><%= vehicle.modello %></td>
         <td><%= vehicle.tipo_mezzo %></td>
-        <td><%= vehicle.immatricolazione %></td>
+        <td><%= vehicle.immatricolazione.strftime("%d/%m/%y") %></td>
         <td><%= vehicle.comfort %></td>
         <td><%= vehicle.posti %></td>
         <td><%= link_to 'Show', driver_vehicle_path(@driver, vehicle) %></td>
@@ -35,5 +38,5 @@
 
 <br>
 
-<%= link_to 'New Vehicle', new_driver_vehicle_path %>
+<%= link_to 'Aggiungi un veicolo', new_driver_vehicle_path %>
 <%= link_to 'Back', driver_path(@driver) %>
