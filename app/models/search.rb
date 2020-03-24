@@ -14,7 +14,7 @@ class Search < ApplicationRecord
 
   def search_routes
 
-    select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min, vehicles.comfort, drivers.rating_medio'
+    select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min, vehicles.comfort, vehicles.tipo_mezzo, drivers.rating_medio'
 
     routes = Route.select(select_clause).joins(:vehicle).joins(:driver).where('data_ora_partenza > NOW()').joins(:vehicle)
 
@@ -41,8 +41,8 @@ class Search < ApplicationRecord
 
     #bisogna valutare se applicare tutti i filtri del singolo viaggio (es marchio veicolo, cambiando auto non ha molto senso) e terminare ordinamento per comfort
 
-    select_clause= 'Ms1.id AS id1, Ms1.citta_partenza AS c_part, Ms1.data_ora_partenza AS part,Ms1.citta_arrivo AS tappa,
-                   Ms2.id AS id2,Ms2.citta_arrivo AS c_arr,
+    select_clause= 'Ms1.id AS id1, Ms1.citta_partenza AS c_part, Ms1.data_ora_partenza AS part,Ms1.citta_arrivo AS tappa,Ms1.n_passeggeri, Ms1.posti,
+                   Ms2.id AS id2,Ms2.citta_arrivo AS c_arr,Ms2.n_passeggeri,Ms2.posti,
                   SUM(Ms1.costo+Ms2.costo) AS c_tot, (EXTRACT(DAY FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza) * 24 +
                                                       EXTRACT(HOUR FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza)) AS ore,
                                                       ((EXTRACT(DAY FROM Ms2.data_ora_arrivo - Ms1.data_ora_partenza) * 24 +
@@ -52,15 +52,15 @@ class Search < ApplicationRecord
     from_clause = 'multitrip_search_results Ms1, multitrip_search_results as Ms2'
     where_clause = 'Ms1.citta_partenza ILIKE ? AND Ms2.citta_arrivo ILIKE ? AND Ms1.citta_arrivo = Ms2.citta_partenza
                    AND Ms2.data_ora_partenza >= Ms1.data_ora_arrivo AND (EXTRACT(DAY FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo)) <= 5'
-   group_clause = 'Ms1.id,Ms2.id,Ms1.citta_partenza,Ms1.data_ora_partenza,Ms1.citta_arrivo,Ms2.citta_arrivo,Ms2.data_ora_arrivo'
+   group_clause = 'Ms1.id,Ms2.id,Ms1.citta_partenza,Ms1.data_ora_partenza,Ms1.citta_arrivo,Ms2.citta_arrivo,Ms2.data_ora_arrivo,Ms2.n_passeggeri,Ms2.posti,Ms1.n_passeggeri, Ms1.posti'
 
 
     routes =MultitripSearchResult.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}"]).from(from_clause).group(group_clause)
     routes=routes.where('Ms1.data_ora_partenza > NOW()')
     routes = routes.where(["Ms1.data_ora_partenza >= ?", data_ora]) if data_ora.present?
     routes = routes. where(['Ms1.n_passeggeri < Ms1.posti AND Ms2.n_passeggeri < Ms2.posti'])
-    routes = routes.where(['comfort_medio >= ?', comfort]) if comfort.present?
-    routes = routes.where(['rat >= ?', rating]) if rating.present?
+    routes = routes.where(['Ms1.comfort >= ? AND Ms2.comfort >= ?', comfort,comfort]) if comfort.present?
+    routes = routes.where(['Ms1.rating_medio >= ? AND Ms2.rating_medio >= ?', rating,rating]) if rating.present?
     routes = routes.where(["Ms1.tipo_mezzo ILIKE ? AND Ms2.tipo_mezzo=Ms1.tipo_mezzo","%#{tipo_mezzo}"]) if !tipo_mezzo.eql?('Altro')
 
     sorder=define_order(sort_order)
