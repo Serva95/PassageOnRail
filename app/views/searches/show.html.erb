@@ -1,17 +1,22 @@
 <p><%= link_to 'Back', new_search_path %></p>
 
-<div class="col-12 col-12-narrower">
-  <h2>
-  <strong>Che fortuna! Ecco le tratte dirette per te:</strong>
-  </h2>
-</div>
+
 
 
 <% if @search.search_routes.empty? %>
 
+  <div class="col-12 col-12-narrower">
   <p>Oh no, non sembrano esserci tratte dirette con questi requisiti :( </p>
+  </div>
 
 <%else %>
+
+  <div class="col-12 col-12-narrower">
+    <h2>
+      <strong>Che fortuna! Ecco le tratte dirette per te:</strong>
+    </h2>
+  </div>
+
   <table>
     <thead>
     <tr>
@@ -47,17 +52,20 @@
 
 <% if !@search.hide_multitrip %>
 
-<div class="col-12 col-12-narrower">
-  <h3>
-    <strong>Abbiamo trovato anche tratte indirette per la tua meta! Guarda qui: </strong>
-  </h3>
-</div>
-
 <% if @search.multi_routes_search.empty? %>
 
-  <p>Non sono disponibili viaggi multi tratta</p>
+    <div class="col-12 col-12-narrower">
+  <p>Oh no! Non sono disponibili viaggi multi tratta :(</p>
+    </div>
 
 <%else %>
+
+    <div class="col-12 col-12-narrower">
+      <h3>
+        <strong>Abbiamo trovato anche tratte indirette per la tua meta! Guarda qui: </strong>
+      </h3>
+    </div>
+
   <table>
     <thead>
     <tr>
