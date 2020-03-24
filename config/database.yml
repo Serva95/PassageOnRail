@@ -43,3 +43,12 @@ test:
   username: postgres
   password: password
   timeout: 5000
+  
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: passageonrails
+  pool: 5
+  username: postgres
+  password: password
+  timeout: 5000

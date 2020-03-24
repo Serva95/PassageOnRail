@@ -5,7 +5,7 @@ class MessaggesController < ApplicationController
   # GET /messagges.json
   def index
     #versione autostop che legge driver
-    @messagges = Messagge.find_chats(params[:chat_id])
+    @messagges = Messagge.find_messages(params[:chat_id], current_user.id)
     @chatter = Messagge.find_chatters(params[:chat_id], current_user.id)
     @messagge = Messagge.new
   end
@@ -30,8 +30,6 @@ class MessaggesController < ApplicationController
   def create
     @messagge = Messagge.new(messagge_params)
     @messagge.data_ora = DateTime.current
-    @messagge.created_at = DateTime.current
-    @messagge.updated_at = DateTime.current
     @messagge.chat_id = params[:chat_id]
     @messagge.user_id = current_user.id
     respond_to do |format|

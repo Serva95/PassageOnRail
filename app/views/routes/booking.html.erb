@@ -1,27 +1,36 @@
-<h1>Prenota</h1>
+<div class="col-12 col-12-mobilep">
+  <h3>Prenota</h3>
+</div>
 
-<%= form_with(url: make_booking_route_path(@route), method: "patch") do |f| %>
-  <% if @route.errors.any?%>
-    <div id="error_explanation">
-      <h2><%= pluralize(@route.errors.count, "error") %>prohibited this route from being saved:</h2>
+<div class="col-12 col-12-mobilep">
+  <%= form_with(url: make_booking_route_path(@route), method: "patch") do |f| %>
+    <div class="row gtr-uniform">
+      <div class="col-12 col-12-mobilep">
+        <% if @route.errors.any?%>
+          <div id="error_explanation">
+            <h2><%= pluralize(@route.errors.count, "error") %>prohibited this route from being saved:</h2>
 
-      <ul>
-        <% @route.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+            <ul>
+              <% @route.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end%>
+      </div>
+
+      <div class="col-4 col-12-mobilep">
+        <%= f.number_field(:n_passeggeri, in: 1..@posti, placeholder: "Numero Passeggeri") %>
+      </div>
+
+      <div class="col-4 col-12-mobilep">
+        <%= f.submit "Prenota"%>
+      </div>
     </div>
-  <% end%>
+  <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :n_passeggeri, "Numero Passeggeri" %>
-    <%= f.number_field(:n_passeggeri, in: 1..@posti)%>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Prenota" %>
-  </div>
-
-<% end %>
-
-<%= link_to 'Back', routes_path %>
+<div class="col-12 col-12-mobilep"><hr></div>
+<div class="col-12 col-12-mobilep">
+  <%= link_to 'Annulla', routes_path, class: "button special" %>
+</div>

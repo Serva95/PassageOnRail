@@ -1,6 +1,18 @@
-<%= form_with(model: messagge, local: true, class: "col-12 col-12-narrower") do |form| %>
+<%= form_for @messagge, url: chat_messagges_path, method: "post", html: {class: "col-12 col-12-narrower"} do |form| %>
+
+  <% if @messagge.errors.any? %>
+    <div id="col-12 col-12-narrower">
+      <h2><%= pluralize(@messagge.errors.count, "error") %> ERROR:</h2>
+      <ul>
+        <% @messagge.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="col-12 col-12-narrower">
-    <%= form.text_area :testo, autofocus: true, placeholder: "Scrivi il messaggio qua" %>
+    <%= form.text_field :testo, autofocus: true, placeholder: "Scrivi il messaggio qua", required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un messaggio vuoto')"  %>
   </div>
   <br>
   <div class="col-12 col-12-narrower">

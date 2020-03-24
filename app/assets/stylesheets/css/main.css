@@ -2828,6 +2828,28 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 			line-height: 2.7em;
 		}
 
+input[type="submit"].special,
+input[type="reset"].special,
+input[type="button"].special,
+.button.special {
+    background-color: #e89980;
+    color: #ffffff !important;
+}
+
+input[type="submit"].special:hover,
+input[type="reset"].special:hover,
+input[type="button"].special:hover,
+.button.special:hover {
+    background-color: #ecaa96;
+}
+
+input[type="submit"].special:active,
+input[type="reset"].special:active,
+input[type="button"].special:active,
+.button.special:active {
+    background-color: #e4886a;
+}
+
 		input[type="submit"].alt,
 		input[type="reset"].alt,
 		input[type="button"].alt,

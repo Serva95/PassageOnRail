@@ -1,44 +1,62 @@
-<div class="col-12 col-12-narrower">
-  <h3>Chat con <%=@chatter[0]+' '+@chatter[1] %></h3>
-</div>
+<%if !@messagges.is_a?(String) && !@messagges.nil?%>
+  <div class="col-12 col-12-narrower">
+    <h3>Chat con <%=@chatter[0]+' '+@chatter[1] %></h3>
+  </div>
 
-<% @messagges.each do |messagge| %>
-  <%if messagge.user_id == current_user.id %>
-    <div class="col-5 col-4-mobilep"></div>
-    <div class="col-6 col-6-mobilep">
-      <div class="message-content">
-        <div class="align-right">
-          <p>
-            <%= messagge.testo %>
-          </p>
-          <div>
-            <p>
-              <%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %>
-            </p>
+  <% if @messagges.present?
+       @messagges.each do |messagge| %>
+      <%if messagge.user_id == current_user.id %>
+        <div class="col-6 col-5-mobilep"></div>
+        <div class="col-6 col-7-mobilep">
+          <div class="message-content">
+            <div class="align-right">
+              <p>
+                <%= messagge.testo %>
+              </p>
+              <div>
+                <p>
+                  <%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+        <!--<div class="col-1 col-2-mobilep">
+          <= link_to '', chat_messagge_path(messagge.chat_id, messagge.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt' %>
+        </div>-->
+      <%else %>
+        <div class="col-6 col-7-mobilep">
+          <div class="message-content">
+            <p>
+              <%=@chatter[0]+': '+messagge.testo %>
+            </p>
+            <div class="align-right">
+              <small>
+                <%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %>
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-5-mobilep"></div>
+      <%end
+        end
+        else%>
+    <div class="col-12 col-12-mobilep">
+      <h3>Non c'&egrave; ancora nessun messaggio qua <i class="far fa-sad-tear fa-3x"></i></h3>
     </div>
-    <div class="col-1 col-2-mobilep">
-      <%= link_to '', edit_chat_messagge_path(messagge.chat_id, messagge.id), class: 'fas fa-edit' %>
-      <%= link_to '', chat_messagge_path(messagge.chat_id, messagge.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt' %>
+  <%end %>
+  <div class="col-12 col-12-mobilep"><hr></div>
+
+  <%= render 'form', messagge: @messagge %>
+<% else
+     if @messagges.is_a?(String) && @messagges == "nothing"%>
+    <div class="col-12 col-12-mobilep align-center">
+      <h2>Chat id not in DB, what are you trying to do?</h2>
     </div>
   <%else %>
-    <div class="col-6 col-6-mobilep">
-      <div class="message-content">
-        <p>
-          <%=@chatter[0]+': '+messagge.testo %>
-        </p>
-        <div class="align-right">
-          <small>
-            <%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %>
-          </small>
-        </div>
-      </div>
+    <div class="col-12 col-12-mobilep align-center">
+      <i class="fas fa-ban fa-7x"></i>
+      <h2>Forbidden, what are you trying to do?</h2>
     </div>
-    <div class="col-6 col-6-mobilep"></div>
-  <%end %>
-<% end %>
-<div class="col-12 col-12-mobilep"><hr></div>
-
-<%= render 'form', messagge: @messagge %>
+  <% end
+     end%>

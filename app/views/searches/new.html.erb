@@ -1,9 +1,9 @@
 <div class="col-12 col-12-narrower">
   <h2><strong>Trova il tuo passaggio!</strong></h2>
 </div>
+
 <%= form_for @search, html: {class: "pure-form"} do |s| %>
   <div class="row gtr-uniform">
-
 
     <div class="col-4 col-12-narrower">
       <%= s.text_field :c_partenza, :required => true, placeholder: "Città di partenza" %>
@@ -49,11 +49,8 @@
       <%= s.submit "Cerca tratta", class: "pure_button pure-button-primary" %>
     </div>
   </div>
-
 <%end %>
-
+<div class="action col-12 col-12-narrower"><hr></div>
 <div class="action col-12 col-12-narrower">
-  <p>
-    <%= link_to 'Back', routes_path%>
-  </p>
+  <%= link_to 'Back', routes_path, class: "button special"%>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_095437) do
+ActiveRecord::Schema.define(version: 2020_03_23_230541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,8 @@ ActiveRecord::Schema.define(version: 2020_03_23_095437) do
   end
 
   create_table "messagges", force: :cascade do |t|
-    t.datetime "data_ora"
-    t.text "testo"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "data_ora", null: false
+    t.text "testo", null: false
     t.integer "chat_id"
     t.integer "user_id"
     t.index ["chat_id"], name: "index_messagges_on_chat_id"
@@ -210,7 +208,8 @@ ActiveRecord::Schema.define(version: 2020_03_23_095437) do
       routes.n_passeggeri,
       vehicles.comfort,
       vehicles.tipo_mezzo,
-      drivers.rating_medio
+      drivers.rating_medio,
+      vehicles.posti
      FROM ((routes
        JOIN vehicles ON ((routes.vehicle_id = vehicles.id)))
        JOIN drivers ON ((routes.driver_id = drivers.id)));
