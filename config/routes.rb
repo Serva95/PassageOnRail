@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/user/sign_out', to: 'users/sessions#destroy'
   end
   resources :passenger_associations
-  resources :hitch_hikers
+  resources :hitch_hikers, only: [:create, :update, :destroy]
   resources :drivers do
     resources :vehicles
     resources :routes, only: [:show, :edit, :update, :new, :create, :destroy] do
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   resources :ratings
   resources :reviews
-  resources :users
+  resources :users, only: [:show]
   resources :searches
   resources :routes, only: [:index] do
     get 'booking', action: 'booking', on: :member

@@ -1,28 +1,6 @@
 class HitchHikersController < ApplicationController
   before_action :set_hitch_hiker, only: [:show, :edit, :update, :destroy]
 
-  # GET /hitch_hikers
-  # GET /hitch_hikers.json
-  def index
-    redirect_to root_path
-  end
-
-  # GET /hitch_hikers/1
-  # GET /hitch_hikers/1.json
-  def show
-    redirect_to user_path(current_user.id)
-  end
-
-  # GET /hitch_hikers/new
-  def new
-    redirect_to root_path
-  end
-
-  # GET /hitch_hikers/1/edit
-  def edit
-    redirect_to edit_user_path(current_user.id)
-  end
-
   # POST /hitch_hikers
   # POST /hitch_hikers.json
   def create

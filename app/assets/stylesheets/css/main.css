@@ -12,6 +12,16 @@
 
 /*fine chat*/
 
+/*info box up*/
+.info {
+    background-color: rgba(255,255,255,0.95);
+    border-radius: 6px;
+    box-shadow: 0 2px 0 0 #e5e5e5;
+    margin: 0 0 2em 0;
+    padding: 1.5em;
+}
+/*end info box up*/
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby,
@@ -2031,7 +2041,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	}
 
 	header h4 + p,
-	header h5 + p,
+	header h5 + p,box
 	header h6 + p {
 		font-size: 0.8em;
 		margin-top: -0.5em;

@@ -30,11 +30,11 @@
               <%if current_user.driver_id? %>
                 <li><%= link_to 'Le tue tratte',  journey_driver_routes_path(current_user.driver_id)%></li>
                 <li><%= link_to 'I tuoi veicoli',  driver_vehicles_path(current_user.driver_id)%></li>
-                <i><%= link_to 'Non essere più driver', driver_url(current_user.driver_id), method: :delete%></i>
+                <li><%= link_to 'Non essere più driver', driver_url(current_user.driver_id)%></li>
               <%else %>
                 <li><%= link_to 'Diventa driver!',  new_driver_path%></li>
               <%end %>
-              <li><%= link_to 'Esci', '/user/sign_out', data: { confirm: 'Are you sure?' } %></li>
+              <li><%= link_to 'Esci', '/user/sign_out'%></li>
             </ul>
           </li>
         <%else%>
@@ -48,13 +48,13 @@
     <% if user_signed_in? %>
       <%if current_user.driver_id? and Vehicle.find_by_driver_id(current_user.driver_id)==nil and controller_name != 'vehicles' %>
 
-        <div class="box">
-          <h3>Ciao <%= current_user.nome %>, attualmente sei un driver ma non hai nessun veicolo inserito!<br/></h3>
-          <p>
-            <%= link_to 'Aggiungi veicolo', new_driver_vehicle_url(current_user.driver_id), class: "button"%>
-            &nbsp;
-            <%= link_to 'Non essere più driver', driver_url(current_user.driver_id), method: :delete, class: "button" %>
-          </p>
+        <div class="info">
+          <div class="col-12 col-12-narrower">
+        <i>Ciao <%= current_user.nome %>, attualmente sei un driver ma non hai nessun veicolo inserito!</i>
+
+            |<%= link_to ' Aggiungi veicolo ', new_driver_vehicle_url(current_user.driver_id)%>|
+            |<%= link_to ' Non essere più driver ', driver_url(current_user.driver_id)%>|
+          </div>
         </div>
       <%end %>
     <%end %>
