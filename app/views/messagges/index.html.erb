@@ -1,7 +1,11 @@
 <%if !@messagges.is_a?(String) && !@messagges.nil?%>
-  <div class="col-12 col-12-narrower">
+  <div class="col-2 col-12-mobilep ">
+    <%= link_to 'Back', chats_path, class: "button icon solid fa-chevron-left"%>
+  </div>
+  <div class="col-10 col-12-mobilep">
     <h3>Chat con <%=@chatter[0]+' '+@chatter[1] %></h3>
   </div>
+  <div class="col-12 col-12-mobilep"><hr></div>
 
   <% if @messagges.present?
        @messagges.each do |messagge| %>
@@ -21,9 +25,6 @@
             </div>
           </div>
         </div>
-        <!--<div class="col-1 col-2-mobilep">
-          <= link_to '', chat_messagge_path(messagge.chat_id, messagge.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt' %>
-        </div>-->
       <%else %>
         <div class="col-6 col-7-mobilep">
           <div class="message-content">

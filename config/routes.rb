@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   end
   resources :multi_trip_associations
   resources :multi_trips
-  resources :chats, only: [:index, :show] do
-    resources :messagges
+  resources :chats, only: [:index, :show, :create, :new] do
+    resources :messagges, only: [:index, :create]
   end
   resources :ratings
   resources :reviews

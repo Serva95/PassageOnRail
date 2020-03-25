@@ -2,6 +2,12 @@
   <h2>Chats</h2>
 </div>
 
+<% if !@chat_message.nil? %>
+  <div id="error_explanation" class="col-12 col-12-narrower">
+    <h2 style="color: #B00100"><%= @chat_message %></h2>
+  </div>
+<% end %>
+
 <% if @chats.present? %>
   <% @chats.each do |chat| %>
     <div class="col-10 col-9-mobile">
@@ -11,7 +17,6 @@
         <h3><%= link_to 'Apri la chat con ' + chat.user_2.nome + ' ' + chat.user_2.cognome, chat_messagges_path(chat) %></h3>
       <%end %>
     </div>
-    <!--<td><= link_to 'Edit', edit_chat_path(chat) %></td>-->
     <div class="col-2 col-3-mobile">
       <%= link_to '', chat, method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt fa-3x', title: 'Elimina questa chat'%>
     </div>
@@ -26,8 +31,8 @@
   </div>
 <% end %>
 
-<!--
+<!-
 <div class="col-12 col-12-mobilep">
-  <= link_to 'New Chat', new_chat_path %>
+  <%= link_to 'New Chat', new_chat_path %> <p>Temporaneo da rimuovere</p>
 </div>
 -->

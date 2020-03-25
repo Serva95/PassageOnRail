@@ -27,13 +27,20 @@ class ChatsController < ApplicationController
   # POST /chats.json
   def create
     @chat = Chat.new(chat_params)
-
+    @chat.user_1_id = current_user.id
+    exists = Chat.exists(current_user.id, @chat.user_2_id)
     respond_to do |format|
-      if @chat.save
+      if exists.nil? && @chat.save
         format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
         format.json { render :show, status: :created, location: @chat }
       else
-        format.html { render :new }
+        #redirect alla chat se già esiste
+        format.html { redirect_to chat_messagges_path(exists)}
+
+        #eventuale errore da far vedere nella pagina con le chat
+        #format.html { render :index }
+        #@chat_message = "Errore, chat già esistente"
+        #@chats = Chat.find_chats(current_user.id)
         format.json { render json: @chat.errors, status: :unprocessable_entity }
       end
     end
@@ -66,12 +73,11 @@ class ChatsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_chat
-      @chat = Chat.find(params[:id])
+      #@chat = Chat.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def chat_params
-      params.require(:user)
-      params.fetch(:chat, {})
+      params.require(:chat).permit(:user_2_id)
     end
 end

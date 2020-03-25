@@ -1,6 +1,6 @@
-<%= form_with(model: chat, local: true) do |form| %>
+<%= form_with(model: chat, local: true, method: "post") do |form| %>
   <% if chat.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="col-12 col-12-narrower">
       <h2><%= pluralize(chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
 
       <ul>
@@ -11,7 +11,11 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="col-12 col-12-narrower">
+    <%= form.text_field :user_2_id, autofocus: true, placeholder: "id 2", required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un messaggio vuoto')"  %>
+  </div>
+
+  <div class="col-12 col-12-narrower">
     <%= form.submit %>
   </div>
 <% end %>

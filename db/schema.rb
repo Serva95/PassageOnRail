@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_230541) do
+ActiveRecord::Schema.define(version: 2020_03_25_012126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_230541) do
   create_table "chats", force: :cascade do |t|
     t.integer "user_1_id"
     t.integer "user_2_id"
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "opened_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_1_id"], name: "index_chats_on_user_1_id"
     t.index ["user_2_id"], name: "index_chats_on_user_2_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_230541) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "hitch_hiker_id"
     t.integer "route_id"
+    t.integer "n_prenotati"
     t.index ["hitch_hiker_id"], name: "index_passenger_associations_on_hitch_hiker_id"
     t.index ["route_id"], name: "index_passenger_associations_on_route_id"
   end

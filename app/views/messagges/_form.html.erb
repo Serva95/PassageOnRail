@@ -1,7 +1,7 @@
 <%= form_for @messagge, url: chat_messagges_path, method: "post", html: {class: "col-12 col-12-narrower"} do |form| %>
 
   <% if @messagge.errors.any? %>
-    <div id="col-12 col-12-narrower">
+    <div id="error_explanation" class="col-12 col-12-narrower">
       <h2><%= pluralize(@messagge.errors.count, "error") %> ERROR:</h2>
       <ul>
         <% @messagge.errors.full_messages.each do |message| %>
