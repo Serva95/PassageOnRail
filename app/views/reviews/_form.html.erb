@@ -1,6 +1,7 @@
-<%= form_with(model: review, local: true) do |form| %>
-  <% if review.errors.any? %>
-    <div id="error_explanation">
+<%= form_with(model: review, local: true, method: "post", class: "col-12 col-12-narrower") do |form| %>
+  <%unless review.nil?
+    if review.errors.any? %>
+    <div id="error_explanation" class="col-12 col-12-mobilep">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
@@ -9,19 +10,27 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end
+  end%>
 
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.number_field :rating %>
+  <div class="col-12 col-12-mobilep">
+    <%= radio_button_tag(:rating, "1") %>
+    <%= label_tag(:rating_1, "1") %>
+    <%= radio_button_tag(:rating, "2") %>
+    <%= label_tag(:rating_2, "2") %>
+    <%= radio_button_tag(:rating, "3") %>
+    <%= label_tag(:rating_3, "3") %>
+    <%= radio_button_tag(:rating, "4") %>
+    <%= label_tag(:rating_4, "4") %>
+    <%= radio_button_tag(:rating, "5") %>
+    <%= label_tag(:rating_5, "5") %>
   </div>
 
-  <div class="field">
-    <%= form.label :commento %>
-    <%= form.text_area :commento %>
+  <div class="col-12 col-12-mobilep">
+    <%= form.text_area :commento, placeholder: "Scrivi qua un commento per il guidatore, ricorda che lo leggeranno anche altri autostoppisti" %>
   </div>
 
-  <div class="actions">
+  <div class="col-12 col-12-mobilep">
     <%= form.submit %>
   </div>
 <% end %>

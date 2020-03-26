@@ -1,12 +1,18 @@
-<div class="col-12 col-12-narrower">
+<div class="col-2 col-4-mobilep ">
+  <%= link_to 'Back', root_path, class: "button icon solid fa-chevron-left"%>
+</div>
+<div class="col-10 col-8-mobilep">
   <h2>Chats</h2>
 </div>
+<div class="col-12 col-12-mobilep">
+  <br>
+</div>
 
-<% if !@chat_message.nil? %>
-  <div id="error_explanation" class="col-12 col-12-narrower">
-    <h2 style="color: #B00100"><%= @chat_message %></h2>
-  </div>
-<% end %>
+<% unless @chat_message.nil? %>
+<div id="error_explanation" class="col-12 col-12-narrower">
+      <h2 style="color: #B00100"><%=  @chat_message  %></h2>
+</div>
+<%  end %>
 
 <% if @chats.present? %>
   <% @chats.each do |chat| %>

@@ -14,7 +14,8 @@
   </thead>
 
   <tbody>
-    <% @reviews.each do |review| %>
+    <% unless @reviews.nil?
+         @reviews.each do |review| %>
       <tr>
         <td><%= review.data %></td>
         <td><%= review.rating %></td>
@@ -24,7 +25,8 @@
         <td><%= link_to 'Edit', edit_review_path(review) %></td>
         <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <% end
+    end%>
   </tbody>
 </table>
 

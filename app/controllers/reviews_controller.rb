@@ -62,13 +62,14 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_review
+    @review = Review.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def review_params
-      params.require(:review).permit(:data, :rating, :commento, :deleted)
-    end
+  # Only allow a list of trusted parameters through.
+  def review_params
+    params[:rating] = params[:rating].to_i
+    params.require(:review).permit(:data, :rating, :commento, :deleted)
+  end
 end

@@ -62,13 +62,15 @@ class RatingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_rating
-      @rating = Rating.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def rating_params
-      params.require(:rating).permit(:data, :rating)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_rating
+    @rating = Rating.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def rating_params
+    params[:rating] = params[:rating].to_i
+    params.require(:rating).permit(:rating)
+  end
 end

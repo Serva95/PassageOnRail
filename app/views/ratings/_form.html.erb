@@ -1,6 +1,7 @@
-<%= form_with(model: rating, local: true) do |form| %>
-  <% if rating.errors.any? %>
-    <div id="error_explanation">
+<%= form_with(model: rating, local: true, method: "post", class: "col-12 col-12-narrower") do |form| %>
+  <%unless rating.nil?
+    if rating.errors.any? %>
+    <div id="error_explanation" class="col-12 col-12-mobilep">
       <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
 
       <ul>
@@ -9,19 +10,18 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end
+  end%>
 
-  <div class="field">
-    <%= form.label :data %>
-    <%= form.datetime_select :data %>
+  <div class="col-12 col-12-mobilep">
+    <% 1.upto(5) do |i| %>
+      <%= radio_button_tag :rating, i %>
+      <%= label_tag("rating_"+i.to_s, i) %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.number_field :rating %>
-  </div>
-
-  <div class="actions">
+  <div class="col-12 col-12-mobilep"><br></div>
+  <div class="col-12 col-12-mobilep">
     <%= form.submit %>
   </div>
 <% end %>
