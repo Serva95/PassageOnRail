@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_012126) do
+ActiveRecord::Schema.define(version: 2020_03_27_144716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,10 +79,8 @@ ActiveRecord::Schema.define(version: 2020_03_25_012126) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.datetime "data"
-    t.integer "rating"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "data", null: false
+    t.integer "vote", null: false
     t.integer "driver_id"
     t.integer "hitch_hiker_id"
     t.index ["driver_id"], name: "index_ratings_on_driver_id"
@@ -90,12 +88,10 @@ ActiveRecord::Schema.define(version: 2020_03_25_012126) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.datetime "data"
-    t.integer "rating"
+    t.datetime "data", null: false
+    t.integer "vote", null: false
     t.text "commento"
     t.boolean "deleted"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "driver_id"
     t.integer "hitch_hiker_id"
     t.index ["driver_id"], name: "index_reviews_on_driver_id"
