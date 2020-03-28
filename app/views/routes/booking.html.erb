@@ -19,13 +19,17 @@
         <% end%>
       </div>
 
-      <div class="col-4 col-12-mobilep">
-        <%= f.number_field(:n_passeggeri, in: 1..@posti, placeholder: "Numero Passeggeri") %>
-      </div>
+      <% if @route.driver_id == current_user.id %>
+        <p>Ehi, ma sei tu il guidatore!</p>
+      <% else %>
+        <div class="col-4 col-12-mobilep">
+          <%= f.number_field(:n_passeggeri, in: 1..@posti, placeholder: "Numero Passeggeri") %>
+        </div>
 
-      <div class="col-4 col-12-mobilep">
-        <%= f.submit "Prenota"%>
-      </div>
+        <div class="col-4 col-12-mobilep">
+          <%= f.submit "Prenota"%>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

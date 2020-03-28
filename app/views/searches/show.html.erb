@@ -92,6 +92,7 @@
         <td><%= c.ore %> ore <%= c.min % 60 %> minuti</td>
         <td><%= c.comfort_medio %></td>
         <td><%= c.rat %></td>
+        <td><%= link_to "Dettagli", detail_route_path(c), class: "button"%></td>
       </tr>
     <% end %>
     </tbody>

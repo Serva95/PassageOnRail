@@ -14,6 +14,12 @@ class RoutesController < ApplicationController
     @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
   end
 
+  # GET /routes/detail
+  def detail
+    @route1 = Route.find(params[:id])
+      #@route2 = Route.find(params[:id2])
+  end
+
   # PATCH/PUT /routes/1/make_booking
   def make_booking
     respond_to do |format|
