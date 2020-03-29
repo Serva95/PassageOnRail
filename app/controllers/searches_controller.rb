@@ -8,6 +8,7 @@ class SearchesController < ApplicationController
     redirect_to @search
   end
 
+  # GET /seraches/46
   def show
     @search = Search.find(params[:id])
   end

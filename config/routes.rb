@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get 'booking', action: 'booking', on: :member
     patch 'make_booking', action: 'make_booking', on: :member
     put 'make_booking', action: 'make_booking', on: :member
-    get 'detail', action: 'detail', on: :member
+    get 'detail', action: 'detail', on: :collection
   end
 
 

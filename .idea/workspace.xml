@@ -5,8 +5,6 @@
     <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="modifiche al DB e ai models per la chat">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/search.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/search.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/credentials.yml.enc" beforeDir="false" afterPath="$PROJECT_DIR$/config/credentials.yml.enc" afterDir="false" />
 =======
     <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="finta pagina login e sistemati campi form">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
