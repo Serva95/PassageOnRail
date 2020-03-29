@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_144716) do
+ActiveRecord::Schema.define(version: 2020_03_29_095338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 2020_03_27_144716) do
   end
 
   create_table "drivers", force: :cascade do |t|
-    t.float "rating_medio"
-    t.boolean "deleted"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "hitch_hikers", force: :cascade do |t|
     t.float "rating_medio"
     t.boolean "deleted"
     t.datetime "created_at", precision: 6, null: false
@@ -142,16 +135,15 @@ ActiveRecord::Schema.define(version: 2020_03_27_144716) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "driver_id"
-    t.integer "hitch_hiker_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "avatar"
+    t.float "hitch_hiker_rating"
     t.index ["driver_id"], name: "index_users_on_driver_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["hitch_hiker_id"], name: "index_users_on_hitch_hiker_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -176,16 +168,12 @@ ActiveRecord::Schema.define(version: 2020_03_27_144716) do
   add_foreign_key "messagges", "users"
   add_foreign_key "multi_trip_associations", "multi_trips"
   add_foreign_key "multi_trip_associations", "routes"
-  add_foreign_key "passenger_associations", "hitch_hikers"
   add_foreign_key "passenger_associations", "routes"
   add_foreign_key "ratings", "drivers"
-  add_foreign_key "ratings", "hitch_hikers"
   add_foreign_key "reviews", "drivers"
-  add_foreign_key "reviews", "hitch_hikers"
   add_foreign_key "routes", "drivers"
   add_foreign_key "routes", "vehicles"
   add_foreign_key "users", "drivers"
-  add_foreign_key "users", "hitch_hikers"
   add_foreign_key "vehicles", "drivers"
 
   create_view "multitrip_search_results", sql_definition: <<-SQL

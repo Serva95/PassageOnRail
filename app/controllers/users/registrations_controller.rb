@@ -14,8 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     resource.avatar = params[:avatar]
     resource.save!
-    @hitch_hiker= HitchHiker.create!
-    resource.update_attributes(hitch_hiker_id: @hitch_hiker.id)
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?

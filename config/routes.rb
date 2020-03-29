@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     get '/user/sign_out', to: 'users/sessions#destroy'
   end
   resources :passenger_associations
-  resources :hitch_hikers, only: [:create, :update, :destroy]
   resources :drivers do
     resources :vehicles
     resources :routes, only: [:show, :edit, :update, :new, :create, :destroy] do

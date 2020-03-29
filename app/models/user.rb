@@ -19,11 +19,6 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  def find_rating_hitch()
-    hitch=HitchHiker.find(self.hitch_hiker_id)
-    rating=hitch.rating_medio
-    return rating
-  end
   def find_rating_driver()
     driver=Driver.find(self.driver_id)
     rating=driver.rating_medio
@@ -34,7 +29,6 @@ class User < ApplicationRecord
 
 
   belongs_to :driver, optional: true, dependent: :destroy
-  belongs_to :hitch_hiker, optional: true, dependent: :destroy
   has_many :chats
   has_many :messagges
 end
