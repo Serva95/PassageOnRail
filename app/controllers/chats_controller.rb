@@ -10,9 +10,8 @@ class ChatsController < ApplicationController
 
   # GET /chats/1
   # GET /chats/1.json
-  def show
-    @messagge = Messagge.where()
-  end
+  #def show
+  #end
 
   # GET /chats/new
   def new
@@ -20,8 +19,8 @@ class ChatsController < ApplicationController
   end
 
   # GET /chats/1/edit
-  def edit
-  end
+  #def edit
+  #end
 
   # POST /chats
   # POST /chats.json
@@ -62,13 +61,13 @@ class ChatsController < ApplicationController
 
   # DELETE /chats/1
   # DELETE /chats/1.json
-  def destroy
-    @chat.destroy
-    respond_to do |format|
-      format.html { redirect_to chats_url, notice: 'Chat was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  #def destroy
+  # @chat.destroy
+  # respond_to do |format|
+  #   format.html { redirect_to chats_url, notice: 'Chat was successfully destroyed.' }
+  #   format.json { head :no_content }
+  # end
+  #end
 
   private
   # Use callbacks to share common setup or constraints between actions.

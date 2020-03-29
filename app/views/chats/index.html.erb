@@ -27,6 +27,9 @@
       <%= link_to '', chat, method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt fa-3x', title: 'Elimina questa chat'%>
     </div>
     <div class="col-12 col-12-mobilep">
+      Ultimo aggiornamento il <%= chat.updated_at.strftime("%d-%m-%Y alle %H:%M:%S") %>
+    </div>
+    <div class="col-12 col-12-mobilep">
       <hr>
     </div>
 
