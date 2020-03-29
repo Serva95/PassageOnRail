@@ -30,7 +30,7 @@ class RoutesController < ApplicationController
       #se e' possibile aggiornare
       if @route.update(id: params[:id], n_passeggeri: p)
         #aggiungo l'associazione alla tratta-passeggero
-        @route.passenger_associations.create(hitch_hiker_id: current_user.id)
+        @route.passenger_associations.create(current_user.id)
         format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
         format.json { render :show, status: :ok, location: @route }
       else

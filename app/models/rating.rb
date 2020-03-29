@@ -9,5 +9,5 @@ class Rating < ApplicationRecord
 	validates :data, presence: true
 	
 	belongs_to :driver
-	belongs_to :hitch_hiker
+	belongs_to :user
 end

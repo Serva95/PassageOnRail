@@ -25,7 +25,7 @@ class Route < ApplicationRecord
   has_many :multi_trip_associations, dependent: :destroy
   has_many :multi_trips, :through => :multi_trip_associations, dependent: :destroy, inverse_of: :route
   has_many :passenger_associations, dependent: :destroy
-  has_many :hitch_hikers, :through => :passenger_associations, dependent: :destroy, inverse_of: :route
+  has_many :users, :through => :passenger_associations, dependent: :destroy, inverse_of: :route
 
   #estrae il numero di passeggeri attualmente prenotati
   scope :current_passengers, -> (route_id) do

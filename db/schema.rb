@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_095338) do
+ActiveRecord::Schema.define(version: 2020_03_29_123125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,20 +64,20 @@ ActiveRecord::Schema.define(version: 2020_03_29_095338) do
   create_table "passenger_associations", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "hitch_hiker_id"
     t.integer "route_id"
     t.integer "n_prenotati"
-    t.index ["hitch_hiker_id"], name: "index_passenger_associations_on_hitch_hiker_id"
+    t.bigint "user_id"
     t.index ["route_id"], name: "index_passenger_associations_on_route_id"
+    t.index ["user_id"], name: "index_passenger_associations_on_user_id"
   end
 
   create_table "ratings", force: :cascade do |t|
     t.datetime "data", null: false
     t.integer "vote", null: false
     t.integer "driver_id"
-    t.integer "hitch_hiker_id"
+    t.bigint "user_id"
     t.index ["driver_id"], name: "index_ratings_on_driver_id"
-    t.index ["hitch_hiker_id"], name: "index_ratings_on_hitch_hiker_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 2020_03_29_095338) do
     t.text "commento"
     t.boolean "deleted"
     t.integer "driver_id"
-    t.integer "hitch_hiker_id"
+    t.bigint "user_id"
     t.index ["driver_id"], name: "index_reviews_on_driver_id"
-    t.index ["hitch_hiker_id"], name: "index_reviews_on_hitch_hiker_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -169,8 +169,11 @@ ActiveRecord::Schema.define(version: 2020_03_29_095338) do
   add_foreign_key "multi_trip_associations", "multi_trips"
   add_foreign_key "multi_trip_associations", "routes"
   add_foreign_key "passenger_associations", "routes"
+  add_foreign_key "passenger_associations", "users"
   add_foreign_key "ratings", "drivers"
+  add_foreign_key "ratings", "users"
   add_foreign_key "reviews", "drivers"
+  add_foreign_key "reviews", "users"
   add_foreign_key "routes", "drivers"
   add_foreign_key "routes", "vehicles"
   add_foreign_key "users", "drivers"
