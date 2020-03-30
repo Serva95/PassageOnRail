@@ -10,7 +10,11 @@ class SearchesController < ApplicationController
 
   # GET /seraches/46
   def show
-    @search = Search.find(params[:id])
+    search = Search.find(params[:id])
+    # cerca se esistono tratte dirette
+    @single_search = search.search_routes
+    @hide = search.hide_multitrip
+    @multi_search = search.multi_routes_search
   end
 
 

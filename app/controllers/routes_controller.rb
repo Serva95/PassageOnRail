@@ -8,7 +8,7 @@ class RoutesController < ApplicationController
     @routes = Route.search(params[:search])
   end
 
-  # GET /routes/booking
+  # GET /routes/1/booking
   def booking
     @route = Route.find(params[:id])
     @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
@@ -16,8 +16,23 @@ class RoutesController < ApplicationController
 
   # GET /routes/detail
   def detail
-    @route1 = Route.find(params[:id])
-      #@route2 = Route.find(params[:id2])
+    @multi_trip = true?(params[:multitrip])
+    if @multi_trip
+      # se si richiedono i dettagli di un viaggio con due tratte
+      @route1 = Route.find(params[:id1])
+      @route2 = Route.find(params[:id2])
+      # cerca le due tratte
+
+      @posti1 = Route.posti_disponibili(params[:id1], @route1.vehicle_id)
+      @posti2 = Route.posti_disponibili(params[:id2], @route2.vehicle_id)
+      #cerchi i posti disponibili per ciascuno
+    else
+      # se si richiedono i dettagli di un viaggio con tratta diretta
+      @route = Route.find(params[:id])
+      # cerca la tratta
+      @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
+      # cerca i posti disponibili
+    end
   end
 
   # PATCH/PUT /routes/1/make_booking
@@ -114,6 +129,10 @@ class RoutesController < ApplicationController
 
     def get_driver
       @driver = Driver.find(params[:driver_id])
+    end
+
+    def true?(obj)
+      obj.to_s.downcase == "true"
     end
 
 end

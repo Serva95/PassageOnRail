@@ -3,7 +3,7 @@
 
 
 
-<% if @search.search_routes.empty? %>
+<% if @single_search.empty? %>
 
   <div class="col-12 col-12-narrower">
   <p>Oh no, non sembrano esserci tratte dirette con questi requisiti :( </p>
@@ -33,7 +33,7 @@
     </thead>
 
     <tbody>
-  <% @search.search_routes.each do |c| %>
+  <% @single_search.each do |c| %>
       <tr>
         <td><%= c.citta_partenza %></td>
         <td><%= c.luogo_ritrovo %></td>
@@ -43,6 +43,7 @@
         <td><%= c.costo %></td>
         <td><%= c.comfort %></td>
         <td><%= c.rating_medio %></td>
+        <td><%= link_to "Dettagli", detail_routes_path(:multitrip => false, :id => c.id), class: "button"%></td>
        </tr>
     <% end %>
     </tbody>
@@ -50,9 +51,9 @@
 
 <% end %>
 
-<% if !@search.hide_multitrip %>
+<% if !@hide %>
 
-<% if @search.multi_routes_search.empty? %>
+<% if @multi_search.empty? %>
 
     <div class="col-12 col-12-narrower">
   <p>Oh no! Non sono disponibili viaggi multi tratta :(</p>
@@ -82,7 +83,7 @@
     </thead>
 
     <tbody>
-    <% @search.multi_routes_search.each do |c| %>
+    <% @multi_search.each do |c| %>
       <tr>
         <td><%= c.c_part %></td>
         <td><%= c.part.strftime("%d/%m/%y %R") %></td>
@@ -92,7 +93,7 @@
         <td><%= c.ore %> ore <%= c.min % 60 %> minuti</td>
         <td><%= c.comfort_medio %></td>
         <td><%= c.rat %></td>
-        <td><%= link_to "Dettagli", detail_routes_path, class: "button"%></td>
+        <td><%= link_to "Dettagli", detail_routes_path(:multitrip => true, :id1 => c.id1, :id2 => c.id2), class: "button"%></td>
       </tr>
     <% end %>
     </tbody>

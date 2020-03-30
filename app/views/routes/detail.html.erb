@@ -1,0 +1,15 @@
+<div class="col-12 col-12-narrower">
+  <h2><strong>Dettagli prenotazione</strong></h2>
+</div>
+
+
+<% if @multi_trip%>
+  <div class="col-12 col-12-narrower">
+    <%= render 'detail_route', route: @route1 %>
+  </div>
+  <div class="col-12 col-12-narrower">
+    <%= render 'detail_route', route: @route2 %>
+  </div>
+<% else %>
+  <%= render 'detail_route', route: @route %>
+<% end %>
