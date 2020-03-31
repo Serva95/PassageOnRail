@@ -1,9 +1,4 @@
-<div class="col-12 col-12-mobilep">
-  <h3>Prenota</h3>
-</div>
-
-<div class="col-12 col-12-mobilep">
-  <%= form_with(url: make_booking_route_path(@route), method: "patch") do |f| %>
+<%= form_with(url: make_booking_route_path(@route), method: "patch") do |f| %>
     <div class="row gtr-uniform">
       <div class="col-12 col-12-mobilep">
         <% if @route.errors.any?%>
@@ -31,8 +26,7 @@
         </div>
       <% end %>
     </div>
-  <% end %>
-</div>
+<% end %>
 
 <div class="col-12 col-12-mobilep"><hr></div>
 <div class="col-12 col-12-mobilep">

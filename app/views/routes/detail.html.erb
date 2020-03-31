@@ -4,12 +4,68 @@
 
 
 <% if @multi_trip%>
+  <!-- mostra prima tratta -->
   <div class="col-12 col-12-narrower">
     <%= render 'detail_route', route: @route1 %>
   </div>
+  <br/>
+
+  <!-- mostra seconda tratta -->
   <div class="col-12 col-12-narrower">
     <%= render 'detail_route', route: @route2 %>
   </div>
+  <br/>
+
+
+  <%= form_with(url: m_booking_routes_path, method: "patch", route1: @route1, route2: @route2) do |f| %>
+    <div class="row gtr-uniform">
+      <div class="col-12 col-12-mobilep">
+        <% if @route.errors.any?%>
+          <div id="error_explanation">
+            <h2><%= pluralize(@route.errors.count, "error") %>prohibited this route from being saved:</h2>
+
+            <ul>
+              <% @route.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end%>
+      </div>
+
+      <% if @route1.driver_id == current_user.id || @route2.driver_id == current_user.id %>
+        <p>Ehi, ma sei tu il guidatore!</p>
+      <% else %>
+        <div class="col-4 col-12-mobilep">
+          <% if @posti1 < @posti2 %>
+            <%= f.number_field(:n_passeggeri, in: 1.. @posti1, placeholder: "Numero Passeggeri") %>
+          <% else %>
+            <%= f.number_field(:n_passeggeri, in: 1.. @posti2, placeholder: "Numero Passeggeri") %>
+          <% end %>
+        </div>
+        <div class="col-4 col-12-mobilep">
+          <%= f.submit "Prenota"%>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="col-12 col-12-mobilep"><hr></div>
+  <div class="col-12 col-12-mobilep">
+    <%= link_to 'Annulla', routes_path, class: "button special" %>
+  </div>
+
+  <!-- mancano i dati generali, tipo costo complessivo -->
+
 <% else %>
-  <%= render 'detail_route', route: @route %>
+  <!-- mostra tratta unica -->
+  <div class="col-12 col-12-narrower">
+    <%= render 'detail_route', route: @route %>
+  </div>
+
+  <!-- scegli il numero di posti -->
+  <div class="col-12 col-12-mobilep">
+    <%= render 'booking', route: @route %>
+  </div>
 <% end %>
+

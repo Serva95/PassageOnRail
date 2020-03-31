@@ -43,11 +43,42 @@ class RoutesController < ApplicationController
       #somma i passeggeri gia' prenotati con quelli che si vogliono prenotare
       p = Route.sum_passengers(params[:id], params[:n_passeggeri].to_i)
       #se e' possibile aggiornare
-      if @route.update(id: params[:id], n_passeggeri: p)
+      if @route.update(id: params[:id], n_passeggeri: p) && @route.passenger_associations.create(user_id: current_user.id, n_prenotati: params[:n_passeggeri])
         #aggiungo l'associazione alla tratta-passeggero
-        @route.passenger_associations.create(current_user.id)
+        #if @route.passenger_associations.create(user_id: current_user.id)
         format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
         format.json { render :show, status: :ok, location: @route }
+          #else
+          #format.html { render :booking }
+          #format.json { render json: @route.errors, status: :unprocessable_entity }
+        #end
+      else
+        format.html { render :booking }
+        format.json { render json: @route.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /routes/m_booking
+  def m_booking
+    respond_to do |format|
+      #trova la route da aggiornare
+      @route1 = Route.find(params[:route1])
+      @route2 = Route.find(params[:route2])
+      #somma i passeggeri gia' prenotati con quelli che si vogliono prenotare
+      p1 = Route.sum_passengers(params[:route1], params[:n_passeggeri].to_i)
+      p2 = Route.sum_passengers(params[:route2], params[:n_passeggeri].to_i)
+      #se e' possibile aggiornare
+      if @route1.update(id: params[:route1], n_passeggeri: p) && @route2.update(id: params[:route2], n_passeggeri: p)
+        #aggiungo l'associazione alla tratta-passeggero
+        @route.passenger_associations.create(user_id: current_user.id, n_prenotati: params[:n_passeggeri])
+        @route1.multi_trip_associations.create()
+        format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
+        format.json { render :show, status: :ok, location: @route }
+        #else
+        #format.html { render :booking }
+        #format.json { render json: @route.errors, status: :unprocessable_entity }
+        #end
       else
         format.html { render :booking }
         format.json { render json: @route.errors, status: :unprocessable_entity }
