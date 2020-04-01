@@ -27,6 +27,8 @@ class ChatsController < ApplicationController
   def create
     @chat = Chat.new(chat_params)
     @chat.user_1_id = current_user.id
+    @chat.opened_at = DateTime.current
+    @chat.updated_at = DateTime.current
     exists = Chat.exists(current_user.id, @chat.user_2_id)
     respond_to do |format|
       if exists.nil? && @chat.save

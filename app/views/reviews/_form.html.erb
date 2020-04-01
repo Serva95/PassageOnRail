@@ -1,11 +1,11 @@
-<%= form_with(model: review, local: true, method: "post", class: "col-12 col-12-narrower") do |form| %>
-  <%unless review.nil?
-    if review.errors.any? %>
+<%= form_for @review, url:reviews_path, method: "post", html: {class: "col-12 col-12-narrower"} do |form| %>
+  <%unless @review.nil?
+    if @review.errors.any? %>
     <div id="error_explanation" class="col-12 col-12-mobilep">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
-        <% review.errors.full_messages.each do |message| %>
+        <% @review.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -14,17 +14,21 @@
   end%>
 
   <div class="col-12 col-12-mobilep">
+    Assegna un voto da 1 a 5 al guidatore, dove 1 è il minimo e 5 il massimo
+  </div>
+  <div class="col-12 col-12-mobilep">
     <% 1.upto(5) do |i| %>
-      <%= radio_button_tag :vote, i %>
-      <%= label_tag("vote_"+i.to_s, i) %>
+      <%= form.radio_button :vote, i %>
+      <%= form.label("vote_"+i.to_s, i) %>
     <% end %>
   </div>
-
+  <%= form.hidden_field :driver_id, :value => params[:format] %>
   <div class="col-12 col-12-mobilep">
-    <%= form.text_area :commento, placeholder: "Scrivi qua un commento per il guidatore, ricorda che lo leggeranno anche altri autostoppisti" %>
+    <%= form.text_area :commento, placeholder: "Scrivi qua un commento per il guidatore, ricorda che lo leggeranno anche altri autostoppisti", required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un commento vuoto')", oninput: "this.setCustomValidity('')" %>
   </div>
 
+  <br>
   <div class="col-12 col-12-mobilep">
-    <%= form.submit %>
+    <%= form.submit "Conferma Recensione"%>
   </div>
 <% end %>

@@ -4,7 +4,8 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @user = User.joins(:driver).find(params[:format])
+    @reviews = Review.joins(:user).where("reviews.driver_id = ?", @user.driver_id).order(data: :desc)
   end
 
   # GET /reviews/1
@@ -15,19 +16,24 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    @user = User.joins(:driver).find(params[:format])
   end
 
   # POST /reviews
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-
+    user = User.find(@review.driver_id)
+    @review.driver_id = user.driver_id
+    @review.data = DateTime.current
+    @review.user_id = current_user.id
+    @review.deleted = false
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
+        format.html { redirect_to reviews_path(user.id), notice: 'Review was successfully created.' }
+        format.json { render :index, status: :created, location: @review }
       else
-        format.html { render :new }
+        format.html { redirect_to new_review_path(user.id), notice: "Errore nella recensione, controlla tutti i campi e prova ancora" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
@@ -65,7 +71,7 @@ class ReviewsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def review_params
-    params[:rating] = params[:rating].to_i
-    params.require(:review).permit(:data, :rating, :commento, :deleted)
+    params[:vote] = params[:vote].to_i
+    params.require(:review).permit( :vote, :commento, :driver_id)
   end
 end

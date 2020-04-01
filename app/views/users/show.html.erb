@@ -10,14 +10,6 @@
     </h4>
   <%end %>
   <h4 class="col-4 col-12-narrower">
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </h4>
-  <h4 class="col-4 col-12-narrower">
-    <strong>Username:</strong>
-    <%= @user.username %>
-  </h4>
-  <h4 class="col-4 col-12-narrower">
     <strong>Nome:</strong>
     <%= @user.nome %>
   </h4>
@@ -25,43 +17,67 @@
     <strong>Cognome:</strong>
     <%= @user.cognome %>
   </h4>
-  <h4 class="col-4 col-12-narrower">
-    <strong>Data di nascita:</strong>
-    <%= @user.data_di_nascita %>
-  </h4>
-  <h4 class="col-4 col-12-narrower">
-    <strong>Cellulare:</strong>
-    <%= @user.cellulare %>
-  </h4>
-  <h4 class="col-4 col-12-narrower">
-    <strong>Indirizzo:</strong>
-    <%= @user.indirizzo %>
-  </h4>
-  <h4 class="col-4 col-12-narrower">
-    <strong>Rating medio autostoppista<br/></strong>
+  <%if @user.id == current_user.id %>
+    <h4 class="col-4 col-12-narrower">
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </h4>
+    <h4 class="col-4 col-12-narrower">
+      <strong>Username:</strong>
+      <%= @user.username %>
+    </h4>
+    <h4 class="col-4 col-12-narrower">
+      <strong>Data di nascita:</strong>
+      <%= @user.data_di_nascita %>
+    </h4>
+    <h4 class="col-4 col-12-narrower">
+      <strong>Cellulare:</strong>
+      <%= @user.cellulare %>
+    </h4>
+    <h4 class="col-4 col-12-narrower">
+      <strong>Indirizzo:</strong>
+      <%= @user.indirizzo %>
+    </h4>
+  <%end %>
+  <hr class="col-12 col-12-mobilep">
+  <div class="col-12 col-12-narrower">
+    <h4><strong>Rating medio autostoppista</strong></h4>
     <%if @user.hitch_hiker_rating==nil %>
-      Non hai ancora nessun rating!
+      Nessuna valutazione presente!
     <%else %>
       <%=@user.hitch_hiker_rating%>
     <%end %>
-  </h4>
+  </div>
   <%if @user.driver_id? %>
-    <h4 class="col-4 col-12-narrower">
-      <strong>Rating medio Automobilista<br/></strong>
+    <div class="col-6 col-12-narrower">
+      <h4><strong>Rating medio Automobilista</strong></h4>
       <%ratingDriver= @user.find_rating_driver%>
       <%if ratingDriver==nil %>
-        Non hai ancora nessun rating!
+        Nessuna valutazione presente!
+        </div>
+        <div class="col-6 col-12-narrower"></div>
       <%else %>
         <%=ratingDriver%>
+        </div>
+        <div class="col-6 col-12-narrower">
+          <%= link_to 'Guarda le recensioni di questo guidatore', reviews_path(@user), class:'button' %>
+        </div>
       <%end %>
 
-    </h4>
   <%end %>
-</div>
-<div class="col-7 col-0-narrower"></div>
-<div class="col-2 col-12-narrower">
-  <%= link_to 'Edit', edit_user_registration_path(@user) , class:'button'%>
-</div>
-<div class="col-1 col-12-narrower">
-  <%= link_to 'Back', :back, class:'button special' %>
-</div>
+  </div>
+  <hr class="col-12 col-12-mobilep">
+  <%if @user.id == current_user.id %>
+    <div class="col-7 col-0-mobilep"></div>
+    <div class="col-2 col-12-mobilep">
+      <%= link_to 'Edit', edit_user_registration_path(@user) , class:'button'%>
+    </div>
+    <div class="col-3 col-12-mobilep">
+      <%= link_to 'Back', :back, class:'button special' %>
+    </div>
+  <%else %>
+    <div class="col-7 col-0-mobilep"></div>
+    <div class="col-1 col-12-mobilep">
+      <%= link_to 'Back', :back, class:'button special' %>
+    </div>
+  <%end %>

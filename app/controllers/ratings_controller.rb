@@ -25,7 +25,8 @@ class RatingsController < ApplicationController
   # POST /ratings.json
   def create
     @rating = Rating.new(rating_params)
-
+    @rating.data = DateTime.current
+    @rating.driver_id = current_user.driver_id
     respond_to do |format|
       if @rating.save
         format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
@@ -70,7 +71,7 @@ class RatingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def rating_params
-    params[:rating] = params[:rating].to_i
+    params[:vote] = params[:vote].to_i
     params.require(:rating).permit(:vote)
   end
 end

@@ -36,7 +36,7 @@ class MessaggesController < ApplicationController
         format.html { redirect_to chat_messagges_path(params[:chat_id]), notice: 'Messagge sent.' }
         format.json { render :index, status: :created, location: @messagge }
       else
-        format.html { redirect_to chat_messagges_path(params[:chat_id]), notice: 'Messagge sent.' }
+        format.html { redirect_to chat_messagges_path(params[:chat_id]), notice: 'Messagge error' }
         format.json { render json: @messagge.errors, status: :unprocessable_entity }
       end
     end

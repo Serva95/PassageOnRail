@@ -1,11 +1,11 @@
-<%= form_with(model: rating, local: true, method: "post", class: "col-12 col-12-narrower") do |form| %>
-  <%unless rating.nil?
-    if rating.errors.any? %>
+<%= form_for @rating, url:ratings_path ,  method: "post", html: {class: "col-12 col-12-narrower"} do |form| %>
+  <%unless @rating.nil?
+    if @rating.errors.any? %>
     <div id="error_explanation" class="col-12 col-12-mobilep">
-      <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+      <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
 
       <ul>
-        <% rating.errors.full_messages.each do |message| %>
+        <% @rating.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -15,8 +15,8 @@
 
   <div class="col-12 col-12-mobilep">
     <% 1.upto(5) do |i| %>
-      <%= radio_button_tag :vote, i %>
-      <%= label_tag("vote_"+i.to_s, i) %>
+      <%= form.radio_button :vote, i %>
+      <%= form.label("vote_"+i.to_s, i) %>
     <% end %>
   </div>
 
