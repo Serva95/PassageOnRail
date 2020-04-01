@@ -3,7 +3,7 @@
 
 
 
-<% if @single_search.empty? %>
+<% if @empty_s %>
 
   <div class="col-12 col-12-narrower">
   <p>Oh no, non sembrano esserci tratte dirette con questi requisiti :( </p>
@@ -53,7 +53,7 @@
 
 <% if !@hide %>
 
-<% if @multi_search.empty? %>
+<% if @empty_m %>
 
     <div class="col-12 col-12-narrower">
   <p>Oh no! Non sono disponibili viaggi multi tratta :(</p>
