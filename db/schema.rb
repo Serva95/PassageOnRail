@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_123125) do
+ActiveRecord::Schema.define(version: 2020_04_01_194057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,22 +43,14 @@ ActiveRecord::Schema.define(version: 2020_03_29_123125) do
   create_table "multi_trip_associations", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "multi_trip_id"
-    t.integer "route_id"
-    t.index ["multi_trip_id"], name: "index_multi_trip_associations_on_multi_trip_id"
-    t.index ["route_id"], name: "index_multi_trip_associations_on_route_id"
-  end
-
-  create_table "multi_trips", force: :cascade do |t|
-    t.datetime "data_ora_partenza"
-    t.string "citta_partenza"
-    t.datetime "data_ora_arrivo"
-    t.string "citta_arrivo"
-    t.integer "costo_totale"
-    t.float "comfort_medio"
-    t.integer "numero_cambi"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "route_id1"
+    t.integer "route_id2"
+    t.bigint "user_id"
+    t.integer "posti_prenotati"
+    t.float "prezzo_t"
+    t.datetime "tempo_t"
+    t.index ["route_id1"], name: "index_multi_trip_associations_on_route_id1"
+    t.index ["user_id"], name: "index_multi_trip_associations_on_user_id"
   end
 
   create_table "passenger_associations", force: :cascade do |t|
@@ -166,8 +158,9 @@ ActiveRecord::Schema.define(version: 2020_03_29_123125) do
   add_foreign_key "chats", "users", column: "user_2_id"
   add_foreign_key "messagges", "chats"
   add_foreign_key "messagges", "users"
-  add_foreign_key "multi_trip_associations", "multi_trips"
-  add_foreign_key "multi_trip_associations", "routes"
+  add_foreign_key "multi_trip_associations", "routes", column: "route_id1"
+  add_foreign_key "multi_trip_associations", "routes", column: "route_id2"
+  add_foreign_key "multi_trip_associations", "users"
   add_foreign_key "passenger_associations", "routes"
   add_foreign_key "passenger_associations", "users"
   add_foreign_key "ratings", "drivers"
