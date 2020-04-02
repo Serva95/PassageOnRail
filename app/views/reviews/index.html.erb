@@ -9,7 +9,7 @@
 </div>
 <hr class="col-12 col-12-mobilep">
 
-<% unless @reviews.nil?
+<% if @reviews.present?
      @reviews.each do |review| %>
     <div class="col-12 col-12-mobilep">
       <%= review.user.nome %> in data: <%= review.data.strftime("%d-%m-%Y alle: %H:%M:%S") %>
@@ -25,4 +25,9 @@
     <td><= link_to 'Edit', edit_review_path(review) %></td>
     <td><= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
   <% end
-     end%>
+     else%>
+  <div class="col-12 col-12-mobilep">
+    <h3>Non c'&egrave; ancora nessuna recensione qua <i class="far fa-sad-tear fa-3x"></i></h3>
+    <h3>Scrivi tu la prima cliccando sul bottone in alto</h3>
+  </div>
+<%end%>

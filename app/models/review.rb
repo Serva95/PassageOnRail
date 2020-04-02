@@ -21,3 +21,11 @@ class Review < ApplicationRecord
   belongs_to :driver
   belongs_to :user
 end
+
+def self.error_one
+  return "Errore nella recensione, controlla tutti i campi e prova ancora"
+end
+
+def self.error_two
+  return "Errore nella recensione, controlla tutti i campi e prova ancora"
+end

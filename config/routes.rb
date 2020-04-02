@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   resources :chats, only: [:index, :show, :create, :update ,:new] do
     resources :messagges, only: [:index, :create]
   end
-  resources :ratings, only: [:index, :create, :new, :destroy, :show]
-  resources :reviews, only: [:index, :create, :new, :destroy, :show]
+  resources :ratings, only: [:index, :create, :new]
+  resources :reviews, only: [:index, :create, :new, :destroy]
   resources :users, only: [:show]
   resources :searches
   resources :routes, only: [:index] do

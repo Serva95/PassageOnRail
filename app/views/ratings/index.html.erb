@@ -1,27 +1,22 @@
-<h3>Ratings</h3>
+<div class="col-2 col-4-mobilep ">
+  <%= link_to 'Back', user_path(params[:format]), class: "button icon solid fa-chevron-left"%>
+</div>
+<div class="col-3 col-8-mobilep">
+  <h2>Valutazioni</h2>
+</div>
+<div class="col-7 col-12-mobilep">
+  <%= link_to 'Dai un voto a '+@user.nome + ' ' + @user.cognome, new_review_path(params[:format]), {class: 'button'} %>
+</div>
+<hr class="col-12 col-12-mobilep">
 
-<table>
-  <thead>
-    <tr>
-      <th>Data</th>
-      <th>Rating</th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% unless @ratings.nil?
          @ratings.each do |rating| %>
-      <tr>
-        <td><%= rating.data %></td>
-        <td><%= rating.vote %></td>
-        <!--<td><= link_to 'Show', rating %></td>
-        <td><= link_to 'Edit', edit_rating_path(rating) %></td>
-        <td><= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-      </tr>
+
+        <%= rating.data %>
+        <%= rating.vote %>
+
     <% end
     end%>
-  </tbody>
-</table>
 
 <br>
 

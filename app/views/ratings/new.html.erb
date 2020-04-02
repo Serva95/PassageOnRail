@@ -1,5 +1,16 @@
-<h3>New Rating</h3>
+<div class="col-2 col-4-mobilep ">
+  <%= link_to 'Back', ratings_path(@user), class: "button icon solid fa-chevron-left"%>
+</div>
+<div class="col-10 col-8-mobilep">
+  <h2>Dai un voto a <%= @user.nome + ' ' + @user.cognome%></h2>
+</div>
+<%unless notice.nil?
+    if notice[0..22] == "Errore nella recensione"%>
+    <div class="col-12 col-12-mobilep">
+      <h2 style="color: #B00100"><%=notice %></h2>
+    </div>
+  <%end
+    end%>
+<hr class="col-12 col-12-mobilep">
 
 <%= render 'form', rating: @rating %>
-
-<%= link_to 'Back', ratings_path %>
