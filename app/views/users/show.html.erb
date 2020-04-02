@@ -17,14 +17,14 @@
     <strong>Cognome:</strong>
     <%= @user.cognome %>
   </h4>
-  <%if @user.id == current_user.id %>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </h4>
+  <%if current_user.id == @user.id %>
     <h4 class="col-4 col-12-narrower">
       <strong>Email:</strong>
       <%= @user.email %>
-    </h4>
-    <h4 class="col-4 col-12-narrower">
-      <strong>Username:</strong>
-      <%= @user.username %>
     </h4>
     <h4 class="col-4 col-12-narrower">
       <strong>Data di nascita:</strong>
@@ -48,9 +48,11 @@
       <%=@user.hitch_hiker_rating%>
     <%end %>
   </div>
+ <%if @user.id != current_user.id %>
   <div class="col-6 col-12-narrower">
     <%= link_to 'Dai un voto a questo autostoppista', root_path, class:'button' %>
   </div>
+    <%end %>
   <%if @user.driver_id? %>
     <div class="col-6 col-12-narrower">
       <h4><strong>Rating medio Automobilista</strong></h4>
@@ -61,11 +63,12 @@
         <%=ratingDriver%>
       <%end %>
     </div>
+    <%if @user.id != current_user.id %>
     <div class="col-6 col-12-narrower">
       <%= link_to 'Guarda le recensioni di questo guidatore', reviews_path(@user), class:'button' %>
     </div>
-
-  <%end %>
+  <%end%>
+  <%end%>
 </div>
 <hr class="col-12 col-12-mobilep">
 <%if @user.id == current_user.id %>
