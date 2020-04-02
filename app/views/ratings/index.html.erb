@@ -1,23 +1,27 @@
 <div class="col-2 col-4-mobilep ">
   <%= link_to 'Back', user_path(params[:format]), class: "button icon solid fa-chevron-left"%>
 </div>
-<div class="col-3 col-8-mobilep">
-  <h2>Valutazioni</h2>
+<div class="col-5 col-8-mobilep">
+  <h2>Valutazioni autostoppista</h2>
 </div>
-<div class="col-7 col-12-mobilep">
-  <%= link_to 'Dai un voto a '+@user.nome + ' ' + @user.cognome, new_review_path(params[:format]), {class: 'button'} %>
+<div class="col-5 col-12-mobilep">
+  <%= link_to 'Dai un voto a '+@user.nome + ' ' + @user.cognome, new_rating_path(params[:format]), {class: 'button'} %>
 </div>
 <hr class="col-12 col-12-mobilep">
 
-    <% unless @ratings.nil?
-         @ratings.each do |rating| %>
-
-        <%= rating.data %>
-        <%= rating.vote %>
-
-    <% end
-    end%>
-
-<br>
-
-<%= link_to 'New Rating', new_rating_path, {class: 'button'} %>
+<% if @ratings.present?
+     @ratings.each do |rating| %>
+    <div class="col-12 col-12-mobilep">
+      <%= rating.user.nome %> in data: <%= rating.data.strftime("%d-%m-%Y alle: %H:%M:%S") %>
+    </div>
+    <div class="col-12 col-12-mobilep">
+      voto: <%= rating.vote %> su 5
+    </div>
+    <div class="col-12 col-12-mobilep"><br></div>
+  <% end
+     else%>
+  <div class="col-12 col-12-mobilep">
+    <h3>Non c'&egrave; ancora nessun voto qua <i class="far fa-sad-tear fa-3x"></i></h3>
+    <h3>Dai tu la prima valutazione a questo autostoppista cliccando sul bottone in alto</h3>
+  </div>
+<%end%>

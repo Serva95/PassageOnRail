@@ -1,16 +1,11 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:update, :destroy]
 
   # GET /reviews
   # GET /reviews.json
   def index
     @user = User.joins(:driver).find(params[:format])
     @reviews = Review.joins(:user).where("reviews.driver_id = ?", @user.driver_id).order(data: :desc)
-  end
-
-  # GET /reviews/1
-  # GET /reviews/1.json
-  def show
   end
 
   # GET /reviews/new
@@ -21,7 +16,6 @@ class ReviewsController < ApplicationController
 
   # POST /reviews
   # POST /reviews.json
-
   def create
     @review = Review.new(review_params)
     user = User.find(@review.driver_id)
@@ -46,17 +40,17 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
-  def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-        format.json { render :show, status: :ok, location: @review }
-      else
-        format.html { render :edit }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #def update
+  # respond_to do |format|
+  #   if @review.update(review_params)
+  #     format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+  #     format.json { render :show, status: :ok, location: @review }
+  #   else
+  #     format.html { render :edit }
+  #     format.json { render json: @review.errors, status: :unprocessable_entity }
+  #   end
+  # end
+  #end
 
   # DELETE /reviews/1
   # DELETE /reviews/1.json
@@ -69,12 +63,10 @@ class ReviewsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_review
     @review = Review.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def review_params
     params[:vote] = params[:vote].to_i
     params.require(:review).permit( :vote, :commento, :driver_id)

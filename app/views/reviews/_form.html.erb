@@ -14,20 +14,21 @@
   end%>
 
   <div class="col-12 col-12-mobilep">
-    Assegna un voto da 1 a 5 al guidatore, dove 1 è il minimo e 5 il massimo
+    Assegna un voto da 1 a 5 al guidatore, dove 1 &egrave; il minimo e 5 il massimo, ricorda che poi tutti potranno vedere il tuo voto e la tua recensione
   </div>
+  <div class="col-12 col-12-mobilep"><br></div>
   <div class="col-12 col-12-mobilep">
     <% 1.upto(5) do |i| %>
       <%= form.radio_button :vote, i %>
       <%= form.label("vote_"+i.to_s, i) %>
     <% end %>
   </div>
+  <div class="col-12 col-12-mobilep"><br></div>
   <%= form.hidden_field :driver_id, :value => params[:format] %>
   <div class="col-12 col-12-mobilep">
     <%= form.text_area :commento, placeholder: "Scrivi qua un commento per il guidatore, ricorda che lo leggeranno anche altri autostoppisti", required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un commento vuoto')", oninput: "this.setCustomValidity('')" %>
   </div>
-
-  <br>
+  <div class="col-12 col-12-mobilep"><br></div>
   <div class="col-12 col-12-mobilep">
     <%= form.submit "Conferma Recensione"%>
   </div>

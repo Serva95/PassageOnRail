@@ -1,10 +1,10 @@
 <div class="col-2 col-4-mobilep ">
   <%= link_to 'Back', user_path(params[:format]), class: "button icon solid fa-chevron-left"%>
 </div>
-<div class="col-3 col-8-mobilep">
-  <h2>Recensioni</h2>
+<div class="col-5 col-8-mobilep">
+  <h2>Recensioni guidatore</h2>
 </div>
-<div class="col-7 col-12-mobilep">
+<div class="col-5 col-12-mobilep">
   <%= link_to 'Scrivi una recensione a '+@user.nome + ' ' + @user.cognome, new_review_path(params[:format]), {class: 'button'} %>
 </div>
 <hr class="col-12 col-12-mobilep">
@@ -21,13 +21,10 @@
       <h4><strong><%= review.commento %></strong></h4>
     </div>
     <div class="col-12 col-12-mobilep"><br></div>
-    <!--<td><= link_to 'Show', review %></td>
-    <td><= link_to 'Edit', edit_review_path(review) %></td>
-    <td><= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
   <% end
      else%>
   <div class="col-12 col-12-mobilep">
     <h3>Non c'&egrave; ancora nessuna recensione qua <i class="far fa-sad-tear fa-3x"></i></h3>
-    <h3>Scrivi tu la prima cliccando sul bottone in alto</h3>
+    <h3>Scrivi tu la prima recensione per questo guidatore cliccando sul bottone in alto</h3>
   </div>
 <%end%>

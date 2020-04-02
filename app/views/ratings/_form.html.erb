@@ -1,4 +1,4 @@
-<%= form_for @rating, url:ratings_path ,  method: "post", html: {class: "col-12 col-12-narrower"} do |form| %>
+<%= form_for @rating, url:ratings_path, method: "post", html: {class: "col-12 col-12-narrower"} do |form| %>
   <%unless @rating.nil?
     if @rating.errors.any? %>
     <div id="error_explanation" class="col-12 col-12-mobilep">
@@ -14,14 +14,18 @@
   end%>
 
   <div class="col-12 col-12-mobilep">
+    Assegna un voto da 1 a 5 all'autostoppista, dove 1 &egrave; il minimo e 5 il massimo, ricorda che poi tutti potranno vedere il tuo voto
+  </div>
+  <div class="col-12 col-12-mobilep"><br></div>
+  <div class="col-12 col-12-mobilep">
     <% 1.upto(5) do |i| %>
       <%= form.radio_button :vote, i %>
       <%= form.label("vote_"+i.to_s, i) %>
     <% end %>
   </div>
-
   <div class="col-12 col-12-mobilep"><br></div>
+  <%= form.hidden_field :user_id, :value => params[:format] %>
   <div class="col-12 col-12-mobilep">
-    <%= form.submit %>
+    <%= form.submit "Conferma il voto" %>
   </div>
 <% end %>
