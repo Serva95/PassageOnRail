@@ -35,4 +35,5 @@ class User < ApplicationRecord
   belongs_to :driver, optional: true, dependent: :destroy
   has_many :chats
   has_many :messagges
+  has_many :journey
 end

@@ -3,14 +3,14 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/user/sign_out', to: 'users/sessions#destroy'
   end
-  resources :passenger_associations, only: :create
+  resources :journeys, only: :create
   resources :drivers do
     resources :vehicles
     resources :routes, only: [:show, :edit, :update, :new, :create, :destroy] do
       get 'journey', action: 'journey', on: :collection
     end
   end
-  resources :multi_trip_associations, only: :create
+  resources :stages, only: :create
   resources :chats, only: [:index, :show, :create, :update ,:new] do
     resources :messagges, only: [:index, :create]
   end

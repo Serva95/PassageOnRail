@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_133114) do
+ActiveRecord::Schema.define(version: 2020_04_03_130549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2020_04_02_133114) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "journeys", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "n_prenotati"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_journeys_on_user_id"
+  end
+
   create_table "messagges", force: :cascade do |t|
     t.datetime "data_ora", null: false
     t.text "testo", null: false
@@ -38,30 +46,6 @@ ActiveRecord::Schema.define(version: 2020_04_02_133114) do
     t.integer "user_id"
     t.index ["chat_id"], name: "index_messagges_on_chat_id"
     t.index ["user_id"], name: "index_messagges_on_user_id"
-  end
-
-  create_table "multi_trip_associations", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "route_id1"
-    t.integer "route_id2"
-    t.bigint "user_id"
-    t.integer "posti_prenotati"
-    t.float "prezzo_t"
-    t.datetime "tempo_t"
-    t.index ["route_id1"], name: "index_multi_trip_associations_on_route_id1"
-    t.index ["user_id"], name: "index_multi_trip_associations_on_user_id"
-  end
-
-  create_table "passenger_associations", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "route_id"
-    t.integer "n_prenotati"
-    t.bigint "user_id"
-    t.index ["route_id", "user_id"], name: "index_passenger_associations_on_route_id_and_user_id", unique: true
-    t.index ["route_id"], name: "index_passenger_associations_on_route_id"
-    t.index ["user_id"], name: "index_passenger_associations_on_user_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -117,6 +101,15 @@ ActiveRecord::Schema.define(version: 2020_04_02_133114) do
     t.boolean "multitrip"
   end
 
+  create_table "stages", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "route_id"
+    t.bigint "journey_id"
+    t.index ["journey_id"], name: "index_stages_on_journey_id"
+    t.index ["route_id"], name: "index_stages_on_route_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "nome"
@@ -157,19 +150,17 @@ ActiveRecord::Schema.define(version: 2020_04_02_133114) do
 
   add_foreign_key "chats", "users", column: "user_1_id"
   add_foreign_key "chats", "users", column: "user_2_id"
+  add_foreign_key "journeys", "users"
   add_foreign_key "messagges", "chats"
   add_foreign_key "messagges", "users"
-  add_foreign_key "multi_trip_associations", "routes", column: "route_id1"
-  add_foreign_key "multi_trip_associations", "routes", column: "route_id2"
-  add_foreign_key "multi_trip_associations", "users"
-  add_foreign_key "passenger_associations", "routes"
-  add_foreign_key "passenger_associations", "users"
   add_foreign_key "ratings", "drivers"
   add_foreign_key "ratings", "users"
   add_foreign_key "reviews", "drivers"
   add_foreign_key "reviews", "users"
   add_foreign_key "routes", "drivers"
   add_foreign_key "routes", "vehicles"
+  add_foreign_key "stages", "journeys"
+  add_foreign_key "stages", "routes"
   add_foreign_key "users", "drivers"
   add_foreign_key "vehicles", "drivers"
 

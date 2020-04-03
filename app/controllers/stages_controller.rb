@@ -1,4 +1,4 @@
-class MultiTripAssociationsController < ApplicationController
+class StagesController < ApplicationController
   before_action :set_multi_trip_association, only: [:show, :edit, :update, :destroy]
 
   # GET /multi_trip_associations
@@ -64,11 +64,11 @@ class MultiTripAssociationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_multi_trip_association
-      @multi_trip_association = MultiTripAssociation.find(params[:id])
+      @multi_trip_association = Stage.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def multi_trip_association_params
-      params.fetch(:multi_trip_association, {})
+      params.fetch(:stage, {})
     end
 end

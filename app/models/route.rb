@@ -22,10 +22,8 @@ class Route < ApplicationRecord
 	belongs_to :driver
 	belongs_to :vehicle
 
-  has_many :multi_trip_associations, dependent: :destroy
-  has_many :multi_trips, :through => :multi_trip_associations, dependent: :destroy, inverse_of: :route
-  has_many :passenger_associations, dependent: :destroy
-  has_many :users, :through => :passenger_associations, dependent: :destroy, inverse_of: :route
+  has_many :journeys
+  has_many :stages, :through => :journeys
 
   #estrae il numero di passeggeri attualmente prenotati
   scope :current_passengers, -> (route_id) do

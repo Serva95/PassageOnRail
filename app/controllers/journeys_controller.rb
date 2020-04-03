@@ -1,20 +1,20 @@
-class PassengerAssociationsController < ApplicationController
+class JourneysController < ApplicationController
   before_action :set_passenger_association, only: [:show, :edit, :update, :destroy]
 
-  # GET /passenger_associations
-  # GET /passenger_associations.json
+  # GET /journey
+  # GET /journey.json
   def index
-    @passenger_associations = PassengerAssociation.all
+    @journeys = Journey.all
   end
 
-  # GET /passenger_associations/1
-  # GET /passenger_associations/1.json
+  # GET /journeys/1
+  # GET /journeys/1.json
   def show
   end
 
   # GET /passenger_associations/new
   def new
-    @passenger_association = PassengerAssociation.new
+    @journey = Journey.new
   end
 
   # GET /passenger_associations/1/edit
@@ -24,7 +24,7 @@ class PassengerAssociationsController < ApplicationController
   # POST /passenger_associations
   # POST /passenger_associations.json
   def create
-    @passenger_association = PassengerAssociation.new(passenger_association_params)
+    @passenger_association = Path.new(passenger_association_params)
 
     respond_to do |format|
       if @passenger_association.save
@@ -64,11 +64,11 @@ class PassengerAssociationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_passenger_association
-      @passenger_association = PassengerAssociation.find(params[:id])
+      @passenger_association = Journey.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def passenger_association_params
-      params.fetch(:passenger_association, {})
+      params.fetch(:journey, {})
     end
 end
