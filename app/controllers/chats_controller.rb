@@ -3,32 +3,23 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!
 
   # GET /chats
-  # GET /chats.json
   def index
     @chats = Chat.find_chats(current_user.id)
   end
-
-  # GET /chats/1
-  # GET /chats/1.json
-  #def show
-  #end
 
   # GET /chats/new
   def new
     @chat = Chat.new
   end
 
-  # GET /chats/1/edit
-  #def edit
-  #end
-
   # POST /chats
-  # POST /chats.json
   def create
+    #mettere notifiche, inserire opened at per entrambi gli user e notifica in pagina
     @chat = Chat.new(chat_params)
     @chat.user_1_id = current_user.id
     @chat.opened_at = DateTime.current
     @chat.updated_at = DateTime.current
+    #mettere dentro una transaction self.transaction ??? cercare
     exists = Chat.exists(current_user.id, @chat.user_2_id)
     respond_to do |format|
       if exists.nil? && @chat.save
@@ -37,25 +28,6 @@ class ChatsController < ApplicationController
       else
         #redirect alla chat se già esiste
         format.html { redirect_to chat_messagges_path(exists)}
-
-        #eventuale errore da far vedere nella pagina con le chat
-        #format.html { render :index }
-        #@chat_message = "Errore, chat già esistente"
-        #@chats = Chat.find_chats(current_user.id)
-        format.json { render json: @chat.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /chats/1
-  # PATCH/PUT /chats/1.json
-  def update
-    respond_to do |format|
-      if @chat.update(chat_params)
-        format.html { redirect_to @chat, notice: 'Chat was successfully updated.' }
-        format.json { render :show, status: :ok, location: @chat }
-      else
-        format.html { render :edit }
         format.json { render json: @chat.errors, status: :unprocessable_entity }
       end
     end
@@ -77,7 +49,6 @@ class ChatsController < ApplicationController
     #@chat = Chat.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def chat_params
     params.require(:chat).permit(:user_2_id)
   end

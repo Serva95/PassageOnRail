@@ -65,7 +65,7 @@
     </div>
     <%if @user.id != current_user.id %>
     <div class="col-6 col-12-narrower">
-      <%= link_to 'Guarda le recensioni di questo guidatore', reviews_path(@user), class:'button' %>
+      <%= link_to 'Guarda le recensioni di questo guidatore', reviews_path(user_id: @user.id), class:'button' %>
     </div>
   <%end%>
   <%end%>

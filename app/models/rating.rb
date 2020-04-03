@@ -12,6 +12,14 @@ class Rating < ApplicationRecord
 	belongs_to :user
 end
 
+def self.find_ratings(user_id)
+	Rating.joins(:user).where("ratings.user_id = ?", user_id).order(data: :desc)
+end
+
+def self.exists(user_id, driver_id)
+	Rating.where("user_id = ? and driver_id = ?", user_id, driver_id).exists?
+end
+
 def self.error_one
 	return "Errore nel voto, non puoi dare un voto se ne hai già dato uno in precedenza"
 end
