@@ -8,12 +8,6 @@ class RoutesController < ApplicationController
     @routes = Route.search(params[:search])
   end
 
-  # GET /routes/1/booking
-  def booking
-    @route = Route.find(params[:id])
-    @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
-  end
-
   # GET /routes/detail
   def detail
     @multi_trip = true?(params[:multitrip])

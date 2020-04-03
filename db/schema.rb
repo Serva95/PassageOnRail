@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_194057) do
+ActiveRecord::Schema.define(version: 2020_04_02_133114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_04_01_194057) do
     t.integer "route_id"
     t.integer "n_prenotati"
     t.bigint "user_id"
+    t.index ["route_id", "user_id"], name: "index_passenger_associations_on_route_id_and_user_id", unique: true
     t.index ["route_id"], name: "index_passenger_associations_on_route_id"
     t.index ["user_id"], name: "index_passenger_associations_on_user_id"
   end

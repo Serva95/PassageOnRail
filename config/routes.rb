@@ -3,15 +3,14 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/user/sign_out', to: 'users/sessions#destroy'
   end
-  resources :passenger_associations
+  resources :passenger_associations, only: :create
   resources :drivers do
     resources :vehicles
     resources :routes, only: [:show, :edit, :update, :new, :create, :destroy] do
       get 'journey', action: 'journey', on: :collection
     end
   end
-  resources :multi_trip_associations
-  resources :multi_trips
+  resources :multi_trip_associations, only: :create
   resources :chats, only: [:index, :show, :create, :update ,:new] do
     resources :messagges, only: [:index, :create]
   end
@@ -20,12 +19,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :searches
   resources :routes, only: [:index] do
-    get 'booking', action: 'booking', on: :member
-    patch 'make_booking', action: 'make_booking', on: :member
-    put 'make_booking', action: 'make_booking', on: :member
+    # patch 'make_booking', action: 'make_booking', on: :member
+    # put 'make_booking', action: 'make_booking', on: :member
     get 'detail', action: 'detail', on: :collection
-    patch 'm_booking', action: 'make_booking', on: :collection
-    put 'm_booking', action: 'make_booking', on: :collection
+    # patch 'm_booking', action: 'make_booking', on: :collection
+    # put 'm_booking', action: 'make_booking', on: :collection
   end
 
 
