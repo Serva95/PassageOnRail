@@ -5,7 +5,7 @@
   <h2>Scrivi una recensione a <%= @user.nome + ' ' + @user.cognome%></h2>
 </div>
 <%unless notice.nil?
-  if notice == "Errore nella recensione, controlla tutti i campi e prova ancora"%>
+  if notice[0..22] == "Errore nella recensione"%>
   <div class="col-12 col-12-mobilep">
     <h2 style="color: #B00100"><%=notice %></h2>
   </div>

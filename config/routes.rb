@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'users/registrations'}
+  devise_for :users, controllers: {sessions:'users/sessions', registrations: 'users/registrations'}
   devise_scope :user do
     get '/user/sign_out', to: 'users/sessions#destroy'
   end
@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   resources :chats, only: [:index, :show, :create, :update ,:new] do
     resources :messagges, only: [:index, :create]
   end
-  resources :ratings, only: [:index, :create, :new, :destroy, :show]
-  resources :reviews, only: [:index, :create, :new, :destroy, :show]
+  resources :ratings, only: [:index, :create, :new]
+  resources :reviews, only: [:index, :create, :new, :destroy]
   resources :users, only: [:show]
   resources :searches
   resources :routes, only: [:index] do
@@ -29,5 +29,5 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
-
+  get '/users/:id/bookings', to: 'users#bookings', as: 'user_bookings'
 end

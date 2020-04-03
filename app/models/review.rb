@@ -21,3 +21,11 @@ class Review < ApplicationRecord
   belongs_to :driver
   belongs_to :user
 end
+
+def self.error_one
+  return "Errore nella recensione, non puoi scrivere una nuova recensione se ne esiste già una a nome tuo"
+end
+
+def self.error_two
+  return "Errore nella recensione, controlla tutti i campi e prova ancora"
+end

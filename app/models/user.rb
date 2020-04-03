@@ -25,8 +25,12 @@ class User < ApplicationRecord
     return rating
   end
 
-
-
+  def find_bookings(user_id)
+    where_clause = 'passenger_associations.user_id = ?'
+    routes = Route.all
+    routes = routes.joins(:passenger_associations).where([where_clause, user_id])
+    return routes
+  end
 
   belongs_to :driver, optional: true, dependent: :destroy
   has_many :chats
