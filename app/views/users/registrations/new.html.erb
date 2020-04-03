@@ -4,7 +4,7 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <div class="row gtr-uniform">
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
     <div class="col-4 col-12-narrower">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
@@ -48,4 +48,4 @@
   <hr>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "users/shared/links" %>
