@@ -1,25 +1,26 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:update, :destroy]
+  before_action :set_review, only: [:destroy]
+
+  #nuova recensione possibile solo dopo la fine stimata del viaggio
+  #recensione inseribeile solo se esiste un viaggio tra guid e autost
 
   # GET /reviews
-  # GET /reviews.json
   def index
-    @user = User.joins(:driver).find(params[:format])
-    @reviews = Review.joins(:user).where("reviews.driver_id = ?", @user.driver_id).order(data: :desc)
+    @user = Review.find_user(params[:user_id])
+    @reviews = Review.find_reviews(@user.driver_id)
   end
 
   # GET /reviews/new
   def new
     @review = Review.new
-    @user = User.joins(:driver).find(params[:format])
+    @user = Review.find_user(params[:user_id])
   end
 
   # POST /reviews
-  # POST /reviews.json
   def create
     @review = Review.new(review_params)
     user = User.find(@review.driver_id)
-    exist = Review.where("user_id = ? and driver_id = ?", current_user.id, user.driver_id).exists?
+    exist = Review.exists(current_user.id, user.driver_id)
     @review.driver_id = user.driver_id
     @review.data = DateTime.current
     @review.user_id = current_user.id
@@ -29,31 +30,16 @@ class ReviewsController < ApplicationController
         format.html { redirect_to reviews_path(user.id), notice: 'Review was successfully created.' }
         format.json { render :index, status: :created, location: @review }
       elsif exist
-        format.html { redirect_to new_review_path(user.id), notice: error_one }
+        format.html { redirect_to new_review_path(user.id), notice: Review.error_one }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       else
-        format.html { redirect_to new_review_path(user.id), notice: error_two }
+        format.html { redirect_to new_review_path(user.id), notice: Review.error_two }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /reviews/1
-  # PATCH/PUT /reviews/1.json
-  #def update
-  # respond_to do |format|
-  #   if @review.update(review_params)
-  #     format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-  #     format.json { render :show, status: :ok, location: @review }
-  #   else
-  #     format.html { render :edit }
-  #     format.json { render json: @review.errors, status: :unprocessable_entity }
-  #   end
-  # end
-  #end
-
   # DELETE /reviews/1
-  # DELETE /reviews/1.json
   def destroy
     @review.destroy
     respond_to do |format|

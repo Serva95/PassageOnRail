@@ -31,6 +31,7 @@ class MessaggesController < ApplicationController
     @messagge.user_id = current_user.id
     @chat = Chat.find(params[:chat_id])
     respond_to do |format|
+      #aggiungere notifica nuovo messaggio nella chat
       if @messagge.save && @chat.update_column(:updated_at, DateTime.current)
         @chatter = Messagge.find_chatters(@messagge.chat_id, current_user.id)
         format.html { redirect_to chat_messagges_path(params[:chat_id]), notice: 'Messagge sent.' }

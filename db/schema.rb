@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_130549) do
+ActiveRecord::Schema.define(version: 2020_04_03_210239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 2020_04_03_130549) do
   create_table "chats", force: :cascade do |t|
     t.integer "user_1_id"
     t.integer "user_2_id"
-    t.datetime "opened_at", precision: 6, null: false
+    t.datetime "open_time_user_1", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "open_time_user_2", precision: 6, null: false
     t.index ["user_1_id"], name: "index_chats_on_user_1_id"
     t.index ["user_2_id"], name: "index_chats_on_user_2_id"
   end
@@ -40,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_130549) do
   end
 
   create_table "messagges", force: :cascade do |t|
-    t.datetime "data_ora", null: false
+    t.datetime "data_ora", precision: 6, null: false
     t.text "testo", null: false
     t.integer "chat_id"
     t.integer "user_id"
@@ -49,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_130549) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.datetime "data", null: false
+    t.datetime "data", precision: 6, null: false
     t.integer "vote", null: false
     t.integer "driver_id"
     t.bigint "user_id"
@@ -58,10 +59,10 @@ ActiveRecord::Schema.define(version: 2020_04_03_130549) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.datetime "data", null: false
+    t.datetime "data", precision: 6, null: false
     t.integer "vote", null: false
-    t.text "commento"
-    t.boolean "deleted"
+    t.text "commento", null: false
+    t.boolean "deleted", default: false, null: false
     t.integer "driver_id"
     t.bigint "user_id"
     t.index ["driver_id"], name: "index_reviews_on_driver_id"

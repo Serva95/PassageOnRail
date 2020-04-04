@@ -1,11 +1,11 @@
 <div class="col-2 col-4-mobilep ">
-  <%= link_to 'Back', user_path(params[:format]), class: "button icon solid fa-chevron-left"%>
+  <%= link_to 'Back', user_path(params[:user_id]), class: "button icon solid fa-chevron-left"%>
 </div>
 <div class="col-5 col-8-mobilep">
   <h2>Recensioni guidatore</h2>
 </div>
 <div class="col-5 col-12-mobilep">
-  <%= link_to 'Scrivi una recensione a '+@user.nome + ' ' + @user.cognome, new_review_path(params[:format]), {class: 'button'} %>
+  <%= link_to 'Scrivi una recensione a '+@user.nome + ' ' + @user.cognome, new_review_path(user_id: params[:user_id]), {class: 'button'} %>
 </div>
 <hr class="col-12 col-12-mobilep">
 
