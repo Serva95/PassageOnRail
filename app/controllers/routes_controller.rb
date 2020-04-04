@@ -26,6 +26,9 @@ class RoutesController < ApplicationController
       # cerca la tratta
       @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
       # cerca i posti disponibili
+      @journey = Journey.new(user_id: current_user.id)
+      1.times {@journey.stages.build(route_id: @route)}
+      # crea gli oggetti per il form
     end
   end
 

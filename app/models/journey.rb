@@ -3,7 +3,7 @@ class Journey < ApplicationRecord
 	validates :n_prenotati, presence: true
 
 	has_many :stages, dependent: :destroy
-
+	accepts_nested_attributes_for :stages
 	# transazione che aggiorna il numero di passeggeri in tratte e inserisce un'associazione
 	# tra utente e tratta
 	def self.on_create(id, passeggeri, user_id)

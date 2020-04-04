@@ -19,13 +19,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :searches
   resources :routes, only: [:index] do
-    # patch 'make_booking', action: 'make_booking', on: :member
-    # put 'make_booking', action: 'make_booking', on: :member
     get 'detail', action: 'detail', on: :collection
-    # patch 'm_booking', action: 'make_booking', on: :collection
-    # put 'm_booking', action: 'make_booking', on: :collection
   end
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
