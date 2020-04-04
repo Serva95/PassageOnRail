@@ -43,6 +43,10 @@ class Route < ApplicationRecord
     v - r.first.n_passeggeri
   end
 
+  def self.already_booked(route_id,hitch_hiker_id)
+    a = Passenger_association.where('hitch_hiker_id = ? AND route_id = ?', route_id,hitch_hiker_id)
+  end
+
   def self.search(search)
     if search
       where(["citta_partenza LIKE ?" , "%#{search}%"])

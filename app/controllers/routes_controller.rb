@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  before_action :get_driver, only: [:journey, :show, :edit, :destroy, :new, :create, :update]
+  before_action :get_driver, only: [:journey, :show, :edit, :destroy, :new, :create, :update, :booking]
   before_action :set_route, only: [:show, :edit, :destroy, :update]
 
   # GET /routes
