@@ -28,6 +28,15 @@
         <div class="col-4 col-12-mobilep">
           <%= f.submit "Prenota"%>
         </div>
+          <%else %>
+          <%= form_with(model: chat, local: true, method: "post") do |form| %>
+            <div class="col-12 col-12-narrower">
+              <%= form.hidden_field :@route.driver_id, autofocus: true, required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un messaggio vuoto')"  %>
+            </div>
+
+            <div class="col-12 col-12-narrower">
+              <%= form.submit %>
+            </div>
       <% end %>
     </div>
  <% end %>
