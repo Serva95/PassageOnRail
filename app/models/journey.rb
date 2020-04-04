@@ -3,14 +3,15 @@ class Journey < ApplicationRecord
 	validates :n_prenotati, presence: true
 
 	has_many :stages, dependent: :destroy
-	accepts_nested_attributes_for :stages
-	# transazione che aggiorna il numero di passeggeri in tratte e inserisce un'associazione
-	# tra utente e tratta
-	def self.on_create(id, passeggeri, user_id)
+	accepts_nested_attributes_for :stages, reject_if: lambda {|attributes| attributes['route_id'].blank?}
+
+	# transazione che aggiorna il numero di passeggeri, crea l'associazione user-journey e
+	# le associazioni journey-stages
+	def self.booking(journey, p)
 		self.transaction do
-			@route = Route.find(id)
-			@route.update!(n_passeggeri: passeggeri)
-			@route.passenger_associations.create!(user_id: user_id, n_prenotati: passeggeri)
+			route = Route.find(journey.stages.route_id)
+			route.update!(n_passeggeri: p)
+			journey.save!
 		end
 	end
 

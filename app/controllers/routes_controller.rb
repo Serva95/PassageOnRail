@@ -19,7 +19,7 @@ class RoutesController < ApplicationController
 
       @posti1 = Route.posti_disponibili(params[:id1], @route1.vehicle_id)
       @posti2 = Route.posti_disponibili(params[:id2], @route2.vehicle_id)
-      #cerchi i posti disponibili per ciascuno
+      #cerchi i posti disponibili per ciascuna tratta
     else
       # se si richiedono i dettagli di un viaggio con tratta diretta
       @route = Route.find(params[:id])

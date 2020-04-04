@@ -24,10 +24,11 @@
           <%= stages_form.hidden_field @route.id %>
         <% end %>
 
-      <% if @route.already_booked(:id,current_user.id).empty? %>
-        <div class="col-4 col-12-mobilep">
-          <%= f.submit "Prenota"%>
-        </div>
+        <% if @route.already_booked(:id,current_user.id).empty? %>
+          <div class="col-4 col-12-mobilep">
+            <%= f.submit "Prenota"%>
+          </div>
+        <% end %>
       <% end %>
     </div>
  <% end %>

@@ -4,22 +4,22 @@ class JourneysController < ApplicationController
   # POST /journey
   # POST /journey.json
   def create
-    @passenger_association = Path.new(passenger_association_params)
-
+    @journey = Journey.new(journey_params)
+    p = Route.sum_passengers(@journey.stages.route_id, params[:n_prenotati].to_i)
     respond_to do |format|
-      if @passenger_association.save
-        format.html { redirect_to @passenger_association, notice: 'Passenger association was successfully created.' }
-        format.json { render :show, status: :created, location: @passenger_association }
+      if Journey.booking(@journey, p)
+        format.html { redirect_to user_bookings(current_user.id), notice: 'Passenger association was successfully created.' }
+        format.json { render :show, status: :created, location: @journey }
       else
         format.html { render :new }
-        format.json { render json: @passenger_association.errors, status: :unprocessable_entity }
+        format.json { render json: @journey.errors, status: :unprocessable_entity }
       end
     end
   end
 
 
-  # DELETE /passenger_associations/1
-  # DELETE /passenger_associations/1.json
+  # DELETE /journeys/1
+  # DELETE /journeys/1.json
   def destroy
     @passenger_association.destroy
     respond_to do |format|
@@ -30,12 +30,16 @@ class JourneysController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_passenger_association
+    def set_journey
       @journey = Journey.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def passenger_association_params
-      params.fetch(:journey, {})
+    def journey_params
+      params.require(:journey).permit(:user_id, :n_prenotati, steges_attributes: [:id, :route_id, :journey_id])
+    end
+
+    def true?(obj)
+      obj.to_s.downcase == "true"
     end
 end
