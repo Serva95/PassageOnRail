@@ -29,6 +29,7 @@ class RoutesController < ApplicationController
       @journey = Journey.new(user_id: current_user.id)
       1.times {@journey.stages.build(route_id: @route)}
       # crea gli oggetti per il form
+      @booked_route = Route.already_booked(params[:id],current_user.id).empty?
     end
   end
 
