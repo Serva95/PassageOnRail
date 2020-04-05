@@ -29,9 +29,9 @@
             <%= f.submit "Prenota"%>
           </div>
         <%else %>
-          <%= form_with(model: chat, local: true, method: "post") do |form| %>
+          <%= form_with(model: Chat, local: true, method: "post") do |form| %>
             <div class="col-12 col-12-narrower">
-              <%= form.hidden_field :@route.driver_id, autofocus: true, required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un messaggio vuoto')"  %>
+              <%= form.hidden_field @route.driver_id, autofocus: true, required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un messaggio vuoto')"  %>
             </div>
 
             <div class="col-12 col-12-narrower">
