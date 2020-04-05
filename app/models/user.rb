@@ -19,21 +19,20 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  def find_rating_driver()
+  def find_rating_driver
     driver=Driver.find(self.driver_id)
     rating=driver.rating_medio
     return rating
   end
 
   def find_bookings(user_id)
-    where_clause = 'passenger_associations.user_id = ?'
-    routes = Route.all
-    routes = routes.joins(:passenger_associations).where([where_clause, user_id])
+    where_clause = 'routes.id = ?'
+    routes = Stage.joins(:route).joins(:journey).select('routes.*').where(where_clause, user_id)
     return routes
   end
 
   belongs_to :driver, optional: true, dependent: :destroy
   has_many :chats
   has_many :messagges
-  has_many :journey
+  has_many :journeys
 end
