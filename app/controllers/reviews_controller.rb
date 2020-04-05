@@ -19,21 +19,20 @@ class ReviewsController < ApplicationController
   # POST /reviews
   def create
     @review = Review.new(review_params)
-    user = User.find(@review.driver_id)
+    user = User.find(@review.user_id)
     exist = Review.exists(current_user.id, user.driver_id)
     @review.driver_id = user.driver_id
     @review.data = DateTime.current
     @review.user_id = current_user.id
-    @review.deleted = false
     respond_to do |format|
       if !exist && @review.save
-        format.html { redirect_to reviews_path(user.id), notice: 'Review was successfully created.' }
+        format.html { redirect_to reviews_path(user_id: user.id), notice: 'Review was successfully created.' }
         format.json { render :index, status: :created, location: @review }
       elsif exist
-        format.html { redirect_to new_review_path(user.id), notice: Review.error_one }
+        format.html { redirect_to new_review_path(user_id: user.id), notice: Review.error_one }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       else
-        format.html { redirect_to new_review_path(user.id), notice: Review.error_two }
+        format.html { redirect_to new_review_path(user_id: user.id), notice: Review.error_two }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
@@ -55,6 +54,6 @@ class ReviewsController < ApplicationController
 
   def review_params
     params[:vote] = params[:vote].to_i
-    params.require(:review).permit( :vote, :commento, :driver_id)
+    params.require(:review).permit( :vote, :commento, :user_id)
   end
 end

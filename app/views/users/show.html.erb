@@ -50,7 +50,7 @@
   </div>
  <%if @user.id != current_user.id %>
   <div class="col-6 col-12-narrower">
-    <%= link_to 'Dai un voto a questo autostoppista', root_path, class:'button' %>
+    <%= link_to 'Guarda i voti di questo autostoppista', ratings_path(user_id: @user.id), class:'button' %>
   </div>
     <%end %>
   <%if @user.driver_id? %>

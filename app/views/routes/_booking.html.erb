@@ -1,54 +1,54 @@
- <%=form_with model: @journey do |f| %>
-    <div class="row gtr-uniform">
-      <div class="col-12 col-12-mobilep">
-        <% if @route.errors.any?%>
-          <div id="error_explanation">
-            <h2><%= pluralize(@route.errors.count, "error") %>prohibited this route from being saved:</h2>
+<%=form_with model: @journey do |f| %>
+  <div class="row gtr-uniform">
+    <div class="col-12 col-12-mobilep">
+      <% if @route.errors.any?%>
+        <div id="error_explanation">
+          <h2><%= pluralize(@route.errors.count, "error") %>prohibited this route from being saved:</h2>
 
-            <ul>
-              <% @route.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end%>
-      </div>
-      <div class="col-12 col-12-mobilep">
-        <%= link_to 'Visualizza profilo Driver', user_path(@route.driver_id) %>
-      </div>
-      <% if @route.driver_id == current_user.id %>
-        <p>Ehi, ma sei tu il guidatore!</p>
-      <% else %>
-        <div class="col-4 col-12-mobilep">
-          <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
+          <ul>
+            <% @route.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         </div>
-        <%= f.hidden_field :user_id, :value => current_user.id%>
+      <% end%>
+    </div>
+    <div class="col-12 col-12-mobilep">
+      <%= link_to 'Visualizza profilo Driver', user_path(@route.driver_id) %>
+    </div>
+    <% if @route.driver_id == current_user.id %>
+      <p>Ehi, ma sei tu il guidatore!</p>
+    <% else %>
+      <div class="col-4 col-12-mobilep">
+        <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
+      </div>
+      <%= f.hidden_field :user_id, :value => current_user.id%>
 
-        <%= f.fields_for :stages do |f_stage| %>
-          <%= f_stage.hidden_field :route_id %>
-          <%= f_stage.hidden_field :journey_id %>
-        <% end %>
+      <%= f.fields_for :stages do |f_stage| %>
+        <%= f_stage.hidden_field :route_id %>
+        <%= f_stage.hidden_field :journey_id %>
+      <% end %>
 
-        <% if @booked_route %>
-          <div class="col-4 col-12-mobilep">
-            <%= f.submit "Prenota"%>
+      <% if @booked_route %>
+        <div class="col-4 col-12-mobilep">
+          <%= f.submit "Prenota"%>
+        </div>
+
+        <!--<else %>
+          <= form_with(model: Chat, local: true, method: "post") do |form| %>
+
+          <div class="col-12 col-12-narrower">
+            <= form.hidden_field :user_2_id, :value => @route.driver_id %>
           </div>
 
-        <%#else %>
-          <%#= form_with(model: Chat, local: true, method: "post") do |form| %>
-
-<!--            <div class="col-12 col-12-narrower">-->
-              <%#= form.hidden_field @route.driver_id, autofocus: true, required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un messaggio vuoto')"  %>
-<!--            </div>-->
-
-<!--            <div class="col-12 col-12-narrower">-->
-              <%#= form.submit %>
-<!--            </div>-->
-          <%# end %>
-        <% end %>
+          <div class="col-12 col-12-narrower">
+            <= form.submit "Chatta con Il nome va qua"%>
+          </div>
+          < end %>-->
       <% end %>
-    </div>
- <% end %>
+    <% end %>
+  </div>
+<% end %>
 
 <div class="col-12 col-12-mobilep"><hr></div>
 <div class="col-12 col-12-mobilep">

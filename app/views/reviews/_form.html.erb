@@ -24,7 +24,7 @@
     <% end %>
   </div>
   <div class="col-12 col-12-mobilep"><br></div>
-  <%= form.hidden_field :driver_id, :value => params[:format] %>
+  <%= form.hidden_field :user_id, :value => params[:user_id] %>
   <div class="col-12 col-12-mobilep">
     <%= form.text_area :commento, placeholder: "Scrivi qua un commento per il guidatore, ricorda che lo leggeranno anche altri autostoppisti", required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un commento vuoto')", oninput: "this.setCustomValidity('')" %>
   </div>

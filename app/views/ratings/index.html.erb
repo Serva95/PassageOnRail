@@ -1,21 +1,21 @@
 <div class="col-2 col-4-mobilep ">
-  <%= link_to 'Back', user_path(params[:format]), class: "button icon solid fa-chevron-left"%>
+  <%= link_to 'Back', user_path(@user.id), class: "button icon solid fa-chevron-left"%>
 </div>
 <div class="col-5 col-8-mobilep">
   <h2>Valutazioni autostoppista</h2>
 </div>
 <div class="col-5 col-12-mobilep">
-  <%= link_to 'Dai un voto a '+@user.nome + ' ' + @user.cognome, new_rating_path(params[:format]), {class: 'button'} %>
+  <%= link_to 'Dai un voto a '+@user.nome + ' ' + @user.cognome, new_rating_path(user_id: @user.id), {class: 'button'} %>
 </div>
 <hr class="col-12 col-12-mobilep">
 
 <% if @ratings.present?
      @ratings.each do |rating| %>
     <div class="col-12 col-12-mobilep">
-      <%= rating.user.nome %> in data: <%= rating.data.strftime("%d-%m-%Y alle: %H:%M:%S") %>
+      <%= rating.nome %> in data: <%= rating.data.strftime("%d-%m-%Y alle: %H:%M:%S") %>
     </div>
     <div class="col-12 col-12-mobilep">
-      voto: <%= rating.vote %> su 5
+      <h4><strong>voto: <%= rating.vote %> su 5</strong></h4>
     </div>
     <div class="col-12 col-12-mobilep"><br></div>
   <% end
