@@ -44,7 +44,7 @@ class Route < ApplicationRecord
   end
 
   def self.already_booked(route_id,hitch_hiker_id)
-    a = Passenger_association.where('hitch_hiker_id = ? AND route_id = ?', route_id,hitch_hiker_id)
+    stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ?", route_id,hitch_hiker_id)
   end
 
   def self.search(search)
