@@ -4,10 +4,12 @@ class JourneysController < ApplicationController
   # POST /journey
   # POST /journey.json
   def create
+    byebug
     @journey = Journey.new(journey_params)
-    p = Route.sum_passengers(@journey.stages.first.route_id, @journey.n_prenotati)
+    # crea un nuovo journey e uno o due stage settando i parametri
+    # passati dalla form
     respond_to do |format|
-      if Journey.booking(@journey, p)
+      if Journey.booking(@journey)
         format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Passenger association was successfully created.' }
         format.json { render :show, status: :created, location: @journey }
       else

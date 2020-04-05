@@ -30,12 +30,6 @@ class Route < ApplicationRecord
     select('n_passeggeri').where('id = ?', route_id)
   end
 
-  #somma i passeggeri prenotati con quelli che si vogliono prenotare
-  def self.sum_passengers(route_id, n_prenotati)
-    route = Route.current_passengers(route_id)
-    route.first.n_passeggeri + n_prenotati
-  end
-
   #estrai il massimo numero di posti che si possono aggiungere
   def self.posti_disponibili(route_id,vehicle_id)
     v = Vehicle.estrai_posti(vehicle_id)

@@ -19,9 +19,12 @@ class RoutesController < ApplicationController
 
       @posti1 = Route.posti_disponibili(params[:id1], @route1.vehicle_id)
       @posti2 = Route.posti_disponibili(params[:id2], @route2.vehicle_id)
-      #cerchi i posti disponibili per ciascuna tratta
+      # cerchi i posti disponibili per ciascuna tratta
+
       @journey = Journey.new
-      @journ
+      @journey.stages.build(route_id: @route1.id)
+      @journey.stages.build(route_id: @route2.id)
+      # crea gli oggetti per la form
     else
       # se si richiedono i dettagli di un viaggio con tratta diretta
       @route = Route.find(params[:id])
@@ -32,6 +35,7 @@ class RoutesController < ApplicationController
       @journey.stages.build(route_id: @route.id)
       # crea gli oggetti per il form
       @booked_route = Route.already_booked(params[:id],current_user.id).empty?
+      # controllo se la route è stata già prenotata
     end
   end
 
@@ -111,6 +115,7 @@ class RoutesController < ApplicationController
       @driver = Driver.find(params[:driver_id])
     end
 
+  # trasforma un parametro da stringa a boolean
     def true?(obj)
       obj.to_s.downcase == "true"
     end

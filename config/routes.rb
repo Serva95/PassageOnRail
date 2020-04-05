@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index, :create, :new, :destroy]
   resources :users, only: [:show]
   resources :searches
-  resources :routes, only: [:index] do
+  resources :routes, only: [] do
     get 'detail', action: 'detail', on: :collection
   end
 

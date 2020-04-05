@@ -8,10 +8,13 @@ class Journey < ApplicationRecord
 
 	# transazione che aggiorna il numero di passeggeri, crea l'associazione user-journey e
 	# le associazioni journey-stages
-	def self.booking(journey, p)
+	def self.booking(journey)
 		self.transaction do
-			route = Route.find(journey.stages.first.route_id)
-			route.update!(n_passeggeri: p)
+			for stage in journey.stages do
+				route = Route.find(stage.route_id)
+				p = route.n_passeggeri + journey.n_prenotati
+				route.update!(n_passeggeri: p)
+			end
 			journey.save!
 		end
 	end
