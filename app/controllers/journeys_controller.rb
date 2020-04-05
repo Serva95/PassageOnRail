@@ -5,10 +5,11 @@ class JourneysController < ApplicationController
   # POST /journey.json
   def create
     @journey = Journey.new(journey_params)
-    p = Route.sum_passengers(@journey.stages.route_id, params[:n_prenotati].to_i)
+    p = Route.sum_passengers(@journey.stages.first.route_id, @journey.n_prenotati)
     respond_to do |format|
+      byebug
       if Journey.booking(@journey, p)
-        format.html { redirect_to user_bookings(current_user.id), notice: 'Passenger association was successfully created.' }
+        format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Passenger association was successfully created.' }
         format.json { render :show, status: :created, location: @journey }
       else
         format.html { render :new }
@@ -36,7 +37,7 @@ class JourneysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def journey_params
-      params.require(:journey).permit(:user_id, :n_prenotati, steges_attributes: [:id, :route_id, :journey_id])
+      params.require(:journey).permit(:user_id, :n_prenotati, stages_attributes: [:id, :route_id, :journey_id])
     end
 
     def true?(obj)
