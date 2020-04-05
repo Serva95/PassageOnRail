@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def find_bookings(user_id)
-    where_clause = 'routes.id = ?'
+    where_clause = 'user_id = ?'
     routes = Stage.joins(:route).joins(:journey).select('routes.*').where(where_clause, user_id)
     return routes
   end

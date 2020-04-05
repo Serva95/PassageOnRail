@@ -1,4 +1,4 @@
- <%=form_with(model: Journey.new(user_id: current_user.id), data:{multi_trip: @multi_trip}, method: "post") do |f| %>
+ <%=form_with model: @journey do |f| %>
     <div class="row gtr-uniform">
       <div class="col-12 col-12-mobilep">
         <% if @route.errors.any?%>
@@ -20,18 +20,23 @@
         <p>Ehi, ma sei tu il guidatore!</p>
       <% else %>
         <div class="col-4 col-12-mobilep">
-          <%= f.number_field(:n_passeggeri, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
+          <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
         </div>
-        <%=f.fields_for :stage do |stages_form|%>
-          <%= stages_form.hidden_field @route.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id%>
+
+        <%= f.fields_for :stages do |f_stage| %>
+          <%= f_stage.hidden_field :route_id %>
+          <%= f_stage.hidden_field :journey_id %>
         <% end %>
 
-        <% if @booked_route %>
+        <%= if @booked_route %>
           <div class="col-4 col-12-mobilep">
             <%= f.submit "Prenota"%>
           </div>
+
         <%else %>
           <%= form_with(model: Chat, local: true, method: "post") do |form| %>
+
             <div class="col-12 col-12-narrower">
               <%= form.hidden_field @route.driver_id, autofocus: true, required: true, oninvalid:"this.setCustomValidity('Non puoi inviare un messaggio vuoto')"  %>
             </div>

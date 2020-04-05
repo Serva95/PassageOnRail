@@ -22,8 +22,8 @@ class Route < ApplicationRecord
 	belongs_to :driver
 	belongs_to :vehicle
 
-  has_many :journeys
-  has_many :stages, :through => :journeys
+  has_many :stages
+  has_many :journeys, :through => :stages
 
   #estrae il numero di passeggeri attualmente prenotati
   scope :current_passengers, -> (route_id) do
@@ -31,9 +31,9 @@ class Route < ApplicationRecord
   end
 
   #somma i passeggeri prenotati con quelli che si vogliono prenotare
-  def self.sum_passengers(route_id, n_passeggeri)
+  def self.sum_passengers(route_id, n_prenotati)
     route = Route.current_passengers(route_id)
-    route.first.n_passeggeri + n_passeggeri
+    route.first.n_passeggeri + n_prenotati
   end
 
   #estrai il massimo numero di posti che si possono aggiungere

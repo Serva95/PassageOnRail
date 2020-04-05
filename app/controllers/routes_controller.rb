@@ -20,67 +20,18 @@ class RoutesController < ApplicationController
       @posti1 = Route.posti_disponibili(params[:id1], @route1.vehicle_id)
       @posti2 = Route.posti_disponibili(params[:id2], @route2.vehicle_id)
       #cerchi i posti disponibili per ciascuna tratta
+      @journey = Journey.new
+      @journ
     else
       # se si richiedono i dettagli di un viaggio con tratta diretta
       @route = Route.find(params[:id])
       # cerca la tratta
       @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
       # cerca i posti disponibili
-      @journey = Journey.new(user_id: current_user.id)
-      1.times {@journey.stages.build(route_id: @route)}
+      @journey = Journey.new
+      @journey.stages.build(route_id: @route.id)
       # crea gli oggetti per il form
-      @booked_route = Route.already_booked(params[:id],current_user.id).empty?
-    end
-  end
-
-  # PATCH/PUT /routes/1/make_booking
-  def make_booking
-    respond_to do |format|
-      #trova la route da aggiornare
-      @route = Route.find(params[:id])
-      #somma i passeggeri gia' prenotati con quelli che si vogliono prenotare
-      p = Route.sum_passengers(params[:id], params[:n_passeggeri].to_i)
-      #se e' possibile aggiornare
-      if @route.update(id: params[:id], n_passeggeri: p) && @route.passenger_associations.create(user_id: current_user.id, n_prenotati: params[:n_passeggeri])
-        #aggiungo l'associazione alla tratta-passeggero
-        #if @route.passenger_associations.create(user_id: current_user.id)
-        format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
-        format.json { render :show, status: :ok, location: @route }
-          #else
-          #format.html { render :booking }
-          #format.json { render json: @route.errors, status: :unprocessable_entity }
-        #end
-      else
-        format.html { render :booking }
-        format.json { render json: @route.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /routes/m_booking
-  def m_booking
-    respond_to do |format|
-      #trova la route da aggiornare
-      @route1 = Route.find(params[:route1])
-      @route2 = Route.find(params[:route2])
-      #somma i passeggeri gia' prenotati con quelli che si vogliono prenotare
-      p1 = Route.sum_passengers(params[:route1], params[:n_passeggeri].to_i)
-      p2 = Route.sum_passengers(params[:route2], params[:n_passeggeri].to_i)
-      #se e' possibile aggiornare
-      if @route1.update(id: params[:route1], n_passeggeri: p) && @route2.update(id: params[:route2], n_passeggeri: p)
-        #aggiungo l'associazione alla tratta-passeggero
-        @route.passenger_associations.create(user_id: current_user.id, n_prenotati: params[:n_passeggeri])
-        @route1.multi_trip_associations.create()
-        format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
-        format.json { render :show, status: :ok, location: @route }
-        #else
-        #format.html { render :booking }
-        #format.json { render json: @route.errors, status: :unprocessable_entity }
-        #end
-      else
-        format.html { render :booking }
-        format.json { render json: @route.errors, status: :unprocessable_entity }
-      end
+      #@booked_route = Route.already_booked(params[:id],current_user.id).empty?
     end
   end
 

@@ -13,7 +13,7 @@
     <th>Città di arrivo</th>
     <th>Data e ora arrivo</th>
     <th>Costo</th>
-    <th colspan="3"></th>
+    <th colspan="1"></th>
   </tr>
   </thead>
 
@@ -27,9 +27,7 @@
       <td><%= route.citta_arrivo %></td>
       <td><%= route.data_ora_arrivo.strftime("%d/%m/%y") %></td>
       <td><%= route.costo %></td>
-      <td><%= link_to 'Visualizza profilo Driver', user_path(route.driver_id)%></td>
-<!--      <td><%#= link_to 'Modifica', edit_driver_vehicle_path(@driver, vehicle) %></td>-->
-<!--      <td><%#= link_to 'Annulla Prenotazione', [@driver, vehicle], method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+      <td><%= link_to 'Dettagli', detail_routes_path(:multitrip => false, :id => route.id)%></td>
     </tr>
   <% end %>
   </tbody>
