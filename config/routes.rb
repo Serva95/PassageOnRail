@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   resources :journeys, only: :create
   resources :drivers do
     resources :vehicles
-    resources :routes, only: [:show, :edit, :update, :new, :create, :destroy] do
-      get 'journey', action: 'journey', on: :collection
-    end
+    resources :routes
   end
   resources :stages, only: :create
   resources :chats, only: [:index, :show, :create, :update ,:new] do

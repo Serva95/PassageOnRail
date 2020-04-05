@@ -1,12 +1,7 @@
 class RoutesController < ApplicationController
-  before_action :get_driver, only: [:journey, :show, :edit, :destroy, :new, :create, :update, :booking]
+  before_action :get_driver, only: [:journey, :index, :show, :edit, :destroy, :new, :create, :update, :booking]
   before_action :set_route, only: [:show, :edit, :destroy, :update]
 
-  # GET /routes
-  # GET /routes.json
-  def index
-    @routes = Route.search(params[:search])
-  end
 
   # GET /routes/detail
   def detail
@@ -39,8 +34,9 @@ class RoutesController < ApplicationController
     end
   end
 
-  # GET /drivers/1/routes/journey
-  def journey
+  # GET /drivers/1/routes
+  # GET /drivers/1/routes.json
+  def index
     @routes = @driver.routes
   end
 

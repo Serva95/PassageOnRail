@@ -28,7 +28,7 @@
               <li><%= link_to 'Le tue chat', chats_path%></li>
               <li><%= link_to 'Le tue prenotazioni', user_bookings_path(current_user.id)%></li>
               <%if current_user.driver_id? %>
-                <li><%= link_to 'Le tue tratte',  journey_driver_routes_path(current_user.driver_id)%></li>
+                <li><%= link_to 'Le tue tratte',  driver_routes_path(current_user.driver_id)%></li>
                 <li><%= link_to 'I tuoi veicoli',  driver_vehicles_path(current_user.driver_id)%></li>
                 <li><%= link_to 'Non essere più driver', driver_url(current_user.driver_id)%></li>
               <%else %>

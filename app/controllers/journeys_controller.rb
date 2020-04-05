@@ -4,7 +4,6 @@ class JourneysController < ApplicationController
   # POST /journey
   # POST /journey.json
   def create
-    byebug
     @journey = Journey.new(journey_params)
     # crea un nuovo journey e uno o due stage settando i parametri
     # passati dalla form
