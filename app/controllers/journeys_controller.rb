@@ -7,7 +7,6 @@ class JourneysController < ApplicationController
     @journey = Journey.new(journey_params)
     p = Route.sum_passengers(@journey.stages.first.route_id, @journey.n_prenotati)
     respond_to do |format|
-      byebug
       if Journey.booking(@journey, p)
         format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Passenger association was successfully created.' }
         format.json { render :show, status: :created, location: @journey }

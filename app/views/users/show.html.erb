@@ -74,14 +74,14 @@
 <%if @user.id == current_user.id %>
   <div class="col-7 col-0-mobilep"></div>
   <div class="col-2 col-12-mobilep">
-    <%= link_to 'Edit', edit_user_registration_path(@user) , class:'button'%>
+    <%= link_to 'Edit', edit_user_registration_path , class:'button'%>
   </div>
   <div class="col-3 col-12-mobilep">
-    <%= link_to 'Back', :back, class:'button special' %>
+    <%= link_to 'Back', root_path, class:'button special' %>
   </div>
 <%else %>
   <div class="col-7 col-0-mobilep"></div>
   <div class="col-1 col-12-mobilep">
-    <%= link_to 'Back', :back, class:'button special' %>
+    <%= link_to 'Back', root_path, class:'button special' %>
   </div>
 <%end %>

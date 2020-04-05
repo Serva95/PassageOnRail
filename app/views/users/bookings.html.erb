@@ -23,7 +23,7 @@
     <tr>
       <td><%= route.citta_partenza %></td>
       <td><%= route.luogo_ritrovo %></td>
-      <td><%= route.data_ora_partenza %></td>
+      <td><%= route.data_ora_partenza.strftime("%d/%m/%y") %></td>
       <td><%= route.citta_arrivo %></td>
       <td><%= route.data_ora_arrivo.strftime("%d/%m/%y") %></td>
       <td><%= route.costo %></td>
@@ -38,5 +38,5 @@
   <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
 </div>
 <div class="col-2 col-12-mobilep">
-  <%= link_to 'Back', :back, class:"button special" %>
+  <%= link_to 'Back', root_path, class:"button special" %>
 </div>
