@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
+  # mostro la pagina dell'utente
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
   end
 
+  # mostro tutte le route prenotate dall'utente loggato
   # GET /users/1/bookings
   def bookings
     @user=User.find(params[:id])

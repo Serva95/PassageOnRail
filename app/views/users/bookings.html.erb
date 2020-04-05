@@ -1,3 +1,5 @@
+<!--Pagina di visualizzazione delle tratte prenotate da utente loggato-->
+
 <div class="col-12 col-12-narrower">
   <h2>
     <strong>Ecco le tue prenotazioni!</strong>
@@ -20,6 +22,8 @@
   <tbody>
   <% routes=@user.find_bookings(current_user.id)
      routes.each do |route| %>
+  <%if Routes.is_multitrip(route)%>
+
     <tr>
       <td><%= route.citta_partenza %></td>
       <td><%= route.luogo_ritrovo %></td>
@@ -29,7 +33,18 @@
       <td><%= route.costo %></td>
       <td><%= link_to 'Dettagli', detail_routes_path(:multitrip => false, :id => route.id)%></td>
     </tr>
-  <% end %>
+  <%else %>
+    <tr>
+      <td><%= route.citta_partenza %></td>
+      <td><%= route.luogo_ritrovo %></td>
+      <td><%= route.data_ora_partenza.strftime("%d/%m/%y") %></td>
+      <td><%= route.citta_arrivo %></td>
+      <td><%= route.data_ora_arrivo.strftime("%d/%m/%y") %></td>
+      <td><%= route.costo %></td>
+      <td><%= link_to 'Dettagli', detail_routes_path(:multitrip => false, :id => route.id)%></td>
+    </tr>
+  <%end%>
+ <% end %>
   </tbody>
 </table>
 <br>

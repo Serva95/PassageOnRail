@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     get '/users/:id/bookings', to: 'users#bookings', as: 'user_bookings'
   end
   resources :journeys, only: :create
-  resources :drivers do
+  resources :drivers, only: [:new, :edit, :create, :update, :destroy] do
+    get 'confirm_destroy', to: 'drivers#confirm_destroy', as: 'confirm_destroy'
     resources :vehicles
     resources :routes
   end

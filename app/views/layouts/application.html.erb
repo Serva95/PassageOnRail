@@ -30,7 +30,7 @@
               <%if current_user.driver_id? %>
                 <li><%= link_to 'Le tue tratte',  driver_routes_path(current_user.driver_id)%></li>
                 <li><%= link_to 'I tuoi veicoli',  driver_vehicles_path(current_user.driver_id)%></li>
-                <li><%= link_to 'Non essere più driver', driver_url(current_user.driver_id)%></li>
+                <li><%= link_to 'Non essere più driver', driver_confirm_destroy_url(current_user.driver_id)%></li>
               <%else %>
                 <li><%= link_to 'Diventa driver!',  new_driver_path%></li>
               <%end %>

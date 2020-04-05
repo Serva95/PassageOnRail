@@ -19,12 +19,14 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  #recupero il rating medio del driver
   def find_rating_driver
     driver=Driver.find(self.driver_id)
     rating=driver.rating_medio
     return rating
   end
 
+  #recupero tutte le tratte prenotate dall'utente
   def find_bookings(user_id)
     where_clause = 'user_id = ?'
     routes = Stage.joins(:route).joins(:journey).select('routes.*').where(where_clause, user_id)

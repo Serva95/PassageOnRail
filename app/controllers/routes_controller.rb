@@ -63,7 +63,7 @@ class RoutesController < ApplicationController
 
     respond_to do |format|
       if @route.save
-        format.html { redirect_to journey_driver_routes_path(@driver), notice: 'Route was successfully created.' }
+        format.html { redirect_to driver_routes_path(@driver), notice: 'Route was successfully created.' }
         format.json { render :show, status: :created, location: @route }
       else
         format.html { render :new  }
@@ -91,7 +91,7 @@ class RoutesController < ApplicationController
   def destroy
     @route.destroy
     respond_to do |format|
-      format.html { redirect_to journey_driver_routes_path(@driver), notice: 'Route was successfully destroyed.' }
+      format.html { redirect_to driver_routes_path(@driver), notice: 'Route was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
