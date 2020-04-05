@@ -12,10 +12,10 @@ class SearchesController < ApplicationController
   def show
     search = Search.find(params[:id])
     # cerca se esistono tratte dirette
-    @single_search = search.search_routes
+    @single_search = search.search_routes(current_user.id)
     @empty_s = @single_search.empty?
     @hide = search.hide_multitrip
-    @multi_search = search.multi_routes_search
+    @multi_search = search.multi_routes_search(current_user.id)
     @empty_m = @multi_search.empty?
   end
 
