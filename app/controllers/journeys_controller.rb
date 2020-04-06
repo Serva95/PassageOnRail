@@ -20,7 +20,7 @@ class JourneysController < ApplicationController
 
 
   # DELETE /journeys/1
-  # DELETE /journeys/1.json
+  # fare l'eliminazione del viaggio solo 48 ore prima, oppure sempre se ci sono modifiche da parte del guidatore
   def destroy
     @passenger_association.destroy
     respond_to do |format|

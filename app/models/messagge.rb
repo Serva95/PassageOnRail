@@ -15,6 +15,20 @@ class Messagge < ApplicationRecord
 
 	validates_with (MessaggeDOBValidator)
 
+	def self.new_msg_transaction(msg, update_time, chat, user_id)
+		if chat.user_1_id == user_id
+			ActiveRecord::Base.transaction do
+				msg.save!
+				chat.update!(updated_at: update_time, open_time_user_1: update_time)
+			end
+		else
+			ActiveRecord::Base.transaction do
+				msg.save!
+				chat.update!(updated_at: update_time, open_time_user_2: update_time)
+			end
+		end
+	end
+
 	def self.find_messages(chat_id, user_id)
 		exists_one = Chat.exists?(chat_id)
 		if exists_one

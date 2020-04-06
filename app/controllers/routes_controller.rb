@@ -31,17 +31,16 @@ class RoutesController < ApplicationController
       # crea gli oggetti per il form
       @booked_route = Route.already_booked(params[:id],current_user.id).empty?
       # controllo se la route è stata già prenotata
+      @user = Route.find_user_name_for_chat(@route.driver_id)
     end
   end
 
   # GET /drivers/1/routes
-  # GET /drivers/1/routes.json
   def index
     @routes = @driver.routes
   end
 
   # GET /drivers/1/routes/1
-  # GET /drivers/1/routes/1.json
   def show
     @route = @driver.routes.find(params[:id])
   end
@@ -56,7 +55,6 @@ class RoutesController < ApplicationController
   end
 
   # POST /drivers/1/routes
-  # POST /drivers/1/routes.json
   def create
 	  @route = @driver.routes.build(route_params)
     #@route.n_passeggeri = 0

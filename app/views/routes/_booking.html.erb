@@ -19,7 +19,7 @@
     <% if @route.driver_id == current_user.id %>
       <p>Ehi, ma sei tu il guidatore!</p>
     <% else %>
-      <div class="col-4 col-12-mobilep">
+      <div class="col-6 col-12-mobilep">
         <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
       </div>
       <%= f.hidden_field :user_id, :value => current_user.id%>
@@ -33,22 +33,22 @@
         <div class="col-4 col-12-mobilep">
           <%= f.submit "Prenota"%>
         </div>
-
-        <!--<else %>
-          <= form_with(model: Chat, local: true, method: "post") do |form| %>
-
-          <div class="col-12 col-12-narrower">
-            <= form.hidden_field :user_2_id, :value => @route.driver_id %>
-          </div>
-
-          <div class="col-12 col-12-narrower">
-            <= form.submit "Chatta con Il nome va qua"%>
-          </div>
-          < end %>-->
       <% end %>
     <% end %>
   </div>
-<% end %>
+<%end%>
+<%unless @booked_route %>
+    <%= form_with(model: Chat, local: true, method: "post") do |form| %>
+
+      <div class="col-12 col-12-mobilep">
+        <%= form.hidden_field :user_2_id, :value => @user.id %>
+      </div>
+
+      <div class="col-12 col-12-mobilep">
+        <%= form.submit "Chatta con " + @user.nome%>
+      </div>
+  <%end%>
+<%end%>
 
 <div class="col-12 col-12-mobilep"><hr></div>
 <div class="col-12 col-12-mobilep">

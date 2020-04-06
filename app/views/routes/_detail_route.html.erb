@@ -10,7 +10,7 @@
 
 <p>
   <strong>Data ora partenza:</strong>
-  <%= route.data_ora_partenza %>
+  <%= route.data_ora_partenza.strftime("il %d-%m-%Y alle %H:%M:%S") %>
 </p>
 
 <p>
@@ -20,7 +20,7 @@
 
 <p>
   <strong>Data ora arrivo:</strong>
-  <%= route.data_ora_arrivo %>
+  <%= route.data_ora_arrivo.strftime("il %d-%m-%Y alle %H:%M:%S") %>
 </p>
 
 <p>

@@ -24,7 +24,7 @@
       <%end %>
     </div>
     <div class="col-2 col-3-mobile">
-      <%= link_to '', chat, method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt fa-3x', title: 'Elimina questa chat'%>
+      <%= link_to '', chat_path(id: chat), method: :delete, data: { confirm: 'Sicuro di voler eliminare questa chat? Verranno eliminati anche tutti i messaggi' }, class: 'far fa-trash-alt fa-3x', title: 'Elimina questa chat'%>
     </div>
     <div class="col-12 col-12-mobilep">
       Ultimo aggiornamento il <%= chat.updated_at.strftime("%d-%m-%Y alle %H:%M:%S") %>
@@ -39,9 +39,3 @@
     <h3>Non c'&egrave; alcuna chat, se hai bisogno di parlare con qualcuno puoi farlo dalla sua pagina utente</h3>
   </div>
 <% end %>
-
-<!-
-<div class="col-12 col-12-mobilep">
-  <%= link_to 'New Chat', new_chat_path %> <p>Temporaneo da rimuovere</p>
-</div>
--->

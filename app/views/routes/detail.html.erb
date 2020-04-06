@@ -1,59 +1,59 @@
-<div class="col-12 col-12-narrower">
+<div class="col-12 col-12-mobilep">
   <h2><strong>Dettagli prenotazione</strong></h2>
 </div>
 
 
 <% if @multi_trip%>
   <!-- mostra prima tratta -->
-  <div class="col-12 col-12-narrower">
+  <div class="col-12 col-12-mobilep">
     <%= render 'detail_route', route: @route1 %>
   </div>
-  <br/>
+
+  <div class="col-12 col-12-mobilep"><br></div>
 
   <!-- mostra seconda tratta -->
-  <div class="col-12 col-12-narrower">
+  <div class="col-12 col-12-mobilep">
     <%= render 'detail_route', route: @route2 %>
   </div>
-  <br/>
 
+  <div class="col-12 col-12-mobilep"><br></div>
 
-  <%= form_with model: @journey do |f| %>
-    <div class="row gtr-uniform">
-      <div class="col-12 col-12-mobilep">
-        <% if @route1.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@route1.errors.count, "error") %>prohibited this route from being saved:</h2>
-
-            <ul>
-              <% @route1.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end%>
-      </div>
-
-      <% if @route1.driver_id == current_user.id || @route2.driver_id == current_user.id %>
-        <p>Ehi, ma sei tu il guidatore!</p>
-      <% else %>
-        <div class="col-4 col-12-mobilep">
-          <% if @posti1 < @posti2 %>
-            <%= f.number_field(:n_prenotati, in: 1.. @posti1, placeholder: "Numero Passeggeri") %>
-          <% else %>
-            <%= f.number_field(:n_prenotati, in: 1.. @posti2, placeholder: "Numero Passeggeri") %>
+  <%= form_with model: @journey, html: {class: "row col-12 col-12-mobilep"} do |f| %>
+    <% if @route1.errors.any? %>
+      <div id="error_explanation" class="col-12 col-12-mobilep">
+        <h2><%= pluralize(@route1.errors.count, "error") %>prohibited this route from being saved:</h2>
+        <ul>
+          <% @route1.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
           <% end %>
-        </div>
-        <%= f.hidden_field :user_id, :value => current_user.id%>
+        </ul>
+      </div>
+    <% end%>
 
+    <% if @route1.driver_id == current_user.id || @route2.driver_id == current_user.id %>
+      <div class="col-12 col-12-mobilep">
+        <p>Ehi, ma sei tu il guidatore!</p>
+      </div>
+    <% else %>
+      <div class="col-12 col-12-mobilep">
+        <%= f.hidden_field :user_id, :value => current_user.id%>
         <%= f.fields_for :stages do |f_stage| %>
           <%= f_stage.hidden_field :route_id %>
           <%= f_stage.hidden_field :journey_id %>
         <% end %>
-        <div class="col-4 col-12-mobilep">
-          <%= f.submit "Prenota"%>
-        </div>
-      <% end %>
-    </div>
+      </div>
+      <div class="col-4 col-12-mobilep">
+        <% if @posti1 < @posti2 %>
+          <%= f.number_field(:n_prenotati, in: 1.. @posti1, placeholder: "Numero Passeggeri") %>
+        <% else %>
+          <%= f.number_field(:n_prenotati, in: 1.. @posti2, placeholder: "Numero Passeggeri") %>
+        <% end %>
+      </div>
+
+      <div class="col-4 col-12-mobilep">
+        <%= f.submit "Prenota"%>
+      </div>
+    <% end %>
   <% end %>
 
   <div class="col-12 col-12-mobilep"><hr></div>
