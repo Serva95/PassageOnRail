@@ -26,11 +26,23 @@ class User < ApplicationRecord
     return rating
   end
 
-  #recupero tutte le tratte prenotate dall'utente
-  def find_bookings(user_id)
-    where_clause = 'user_id = ?'
-    routes = Stage.joins(:route).joins(:journey).select('routes.*').where(where_clause, user_id)
-    return routes
+  #recupero tutte le tratte singole prenotate dall'utente
+  def find_bookings(user_id, multitrip)
+    if multitrip
+      where_clause = 'journeys.user_id = ? AND stages.journey_id IN
+                                                            (SELECT journey_id
+                                                              FROM stages
+                                                              GROUP BY journey_id
+                                                              HAVING COUNT(*) > 1)'
+
+    else
+      where_clause = 'journeys.user_id = ? AND stages.journey_id IN
+                                                            (SELECT journey_id
+                                                              FROM stages
+                                                              GROUP BY journey_id
+                                                              HAVING COUNT(*) = 1)'
+    end
+    Stage.joins(:route).joins(:journey).select('routes.*, stages.journey_id').where(where_clause, user_id)
   end
 
   belongs_to :driver, optional: true, dependent: :destroy
