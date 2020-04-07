@@ -26,9 +26,12 @@ class User < ApplicationRecord
     return rating
   end
 
-  def find_journey(id)
-    Journey.where('user_id = ?', id)
+  #recupero tutte le tratte singole prenotate dall'utente
+  def find_bookings(user_id)
+     where_clause = 'journeys.user_id = ?'
+    Stage.joins(:route).joins(:journey).select('routes.*, stages.journey_id').where(where_clause, user_id).order(data_ora_partenza: 'DESC')
   end
+
 
   belongs_to :driver, optional: true, dependent: :destroy
   has_many :chats, dependent: :destroy
