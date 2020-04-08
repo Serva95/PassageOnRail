@@ -21,6 +21,18 @@ class Review < ApplicationRecord
   belongs_to :driver
   belongs_to :user
 
+  def self.has_previous_journey_done(user_id, driver_id)
+    journeys = Stage.joins(:journey, :route).where('journeys.user_id = ? and routes.driver_id=?', user_id, driver_id).order('routes.data_ora_arrivo')
+    if journeys.present?
+      journeys.each do |j|
+        if j.route.data_ora_arrivo.utc < DateTime.now.utc
+          return true
+        end
+      end
+      return false
+    end
+  end
+
   def self.exists(current_user_id, user_driver_id)
     Review.where("user_id = ? and driver_id = ?", current_user_id, user_driver_id).exists?
   end

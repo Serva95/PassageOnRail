@@ -5,12 +5,14 @@
   <h2>Scrivi una recensione a <%= @user.nome + ' ' + @user.cognome%></h2>
 </div>
 <%unless notice.nil?
-  if notice[0..22] == "Errore nella recensione"%>
-  <div class="col-12 col-12-mobilep">
-    <h2 style="color: #B00100"><%=notice %></h2>
-  </div>
-<%end
-end%>
+    if notice[0..22] == "Errore nella recensione"%>
+    <div class="col-12 col-12-mobilep">
+      <h2 style="color: #B00100"><%=notice %></h2>
+    </div>
+  <%elsif notice[0..14] == "Errore not done"%>
+    <h2><p style="color: #B00100">Errore nella recensione, prima di recensire un guidatore, almeno viaggiaci assieme... no ?</p><i class='far fa-meh fa-3x'></i></h2>
+  <%end%>
+<%end%>
 <hr class="col-12 col-12-mobilep">
 
 <%= render 'form', review: @review %>

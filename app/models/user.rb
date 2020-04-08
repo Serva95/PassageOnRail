@@ -22,8 +22,7 @@ class User < ApplicationRecord
   #recupero il rating medio del driver
   def find_rating_driver
     driver=Driver.find(self.driver_id)
-    rating=driver.rating_medio
-    return rating
+    driver.rating_medio
   end
 
   #recupero tutte le tratte singole prenotate dall'utente
