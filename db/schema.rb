@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_210239) do
+ActiveRecord::Schema.define(version: 2020_04_07_130403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_210239) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "route_id"
     t.bigint "journey_id"
+    t.boolean "accepted"
     t.index ["journey_id"], name: "index_stages_on_journey_id"
     t.index ["route_id"], name: "index_stages_on_route_id"
   end
