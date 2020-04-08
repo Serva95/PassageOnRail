@@ -46,7 +46,7 @@
 
   <section id="main" class="container">
     <% if user_signed_in? %>
-      <%if current_user.driver_id? and current_user.driver.vehicles != nil and controller_name != 'vehicles' %>
+      <%if current_user.driver_id? and current_user.driver.vehicles.empty? and controller_name != 'vehicles' %>
 
         <div class="info">
           <div class="col-12 col-12-narrower">
