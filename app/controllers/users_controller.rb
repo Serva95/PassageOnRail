@@ -12,19 +12,19 @@ class UsersController < ApplicationController
   # GET /users/1/bookings
   def bookings
     @user=User.find(params[:id])
-    routes=@user.find_bookings(current_user.id)
+    journeys=@user.find_bookings(current_user.id)
     #distinguo tra tratte ancora attive e tratte passate
-    @routes_active =[]
-    @routes_past = []
+    @journeys_active =[]
+    @journeys_past = []
     j = 0
     i = 0
-    routes.each do |route|
-      if route.data_ora_partenza >= Time.now
-        @routes_active[i] = route
-        i+=1
+    journeys.each do |journey|
+      if journey.stages.first.route.data_ora_partenza >= Time.now
+        @journeys_active[i] = journey
+        i += 1
       else
-        @routes_past[j]=route
-        j+=1
+        @journeys_past[j] = journey
+        j += 1
       end
     end
   end
