@@ -28,8 +28,8 @@ class User < ApplicationRecord
 
   #recupero tutte le tratte singole prenotate dall'utente
   def find_bookings(user_id)
-     where_clause = 'journeys.user_id = ?'
-    Stage.joins(:route).joins(:journey).select('routes.*, stages.journey_id').where(where_clause, user_id).order(data_ora_partenza: 'DESC')
+    where_clause = 'journeys.user_id = ?'
+    Journey.includes(:stages, :routes).where(where_clause, user_id)
   end
 
 
