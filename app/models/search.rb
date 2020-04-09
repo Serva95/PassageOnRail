@@ -20,7 +20,7 @@ class Search < ApplicationRecord
 
     select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min, vehicles.comfort, vehicles.tipo_mezzo, drivers.rating_medio'
 
-    routes = Route.select(select_clause).joins(:vehicle).joins(:driver).where(['data_ora_partenza > NOW() AND routes.driver_id != ?', current_user.driver_id]).joins(:vehicle)
+    routes = Route.select(select_clause).joins(:vehicle).joins(:driver).where(['data_ora_partenza > NOW() AND routes.driver_id != ?', current_user]).joins(:vehicle)
 
     routes = routes.where("routes.id NOT IN (?)",booked_routes)
     routes = routes.where(["citta_partenza ILIKE ?","%#{c_partenza}"])
@@ -61,7 +61,7 @@ class Search < ApplicationRecord
    group_clause = 'Ms1.driver_id,Ms2.driver_id,Ms1.id,Ms2.id,Ms1.citta_partenza,Ms1.data_ora_partenza,Ms1.citta_arrivo,Ms2.citta_arrivo,Ms2.data_ora_arrivo,Ms2.n_passeggeri,Ms2.posti,Ms1.n_passeggeri, Ms1.posti'
 
 
-    routes =MultitripSearchResult.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}",current_user.driver_id,current_user.driver_id,booked_routes,booked_routes]).from(from_clause).group(group_clause)
+    routes =MultitripSearchResult.select(select_clause).where([where_clause,"%#{c_partenza}","%#{c_arrivo}",current_user,current_user,booked_routes,booked_routes]).from(from_clause).group(group_clause)
     routes=routes.where('Ms1.data_ora_partenza > NOW()')
     routes = routes.where(["Ms1.data_ora_partenza >= ?", data_ora]) if data_ora.present?
     routes = routes. where(['Ms1.n_passeggeri < Ms1.posti AND Ms2.n_passeggeri < Ms2.posti'])
