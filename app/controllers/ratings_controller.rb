@@ -1,8 +1,6 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:destroy]
 
-  #review inseribeile solo se esiste un viaggio tra guid e autost
-
   # GET /ratings
   def index
     @user = User.find(params[:user_id])
