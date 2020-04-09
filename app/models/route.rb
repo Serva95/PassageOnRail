@@ -41,6 +41,10 @@ class Route < ApplicationRecord
     stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ?", route_id,hitch_hiker_id)
   end
 
+  def self.find_driver(route)
+    driver = User.find_by(driver_id: route.driver_id)
+  end
+
   def self.search(search)
     if search
       where(["citta_partenza LIKE ?" , "%#{search}%"])

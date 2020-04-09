@@ -23,6 +23,7 @@ class RoutesController < ApplicationController
     else
       # se si richiedono i dettagli di un viaggio con tratta diretta
       @route = Route.find(params[:id])
+      @driver = Route.find_driver(@route)
       # cerca la tratta
       @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
       # cerca i posti disponibili
