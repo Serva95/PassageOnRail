@@ -9,21 +9,32 @@
 </div>
 
 <% unless @chat_message.nil? %>
-<div id="error_explanation" class="col-12 col-12-narrower">
-      <h2 style="color: #B00100"><%=  @chat_message  %></h2>
-</div>
+  <div id="error_explanation" class="col-12 col-12-narrower">
+    <h2 style="color: #B00100"><%=  @chat_message  %></h2>
+  </div>
 <%  end %>
 
 <% if @chats.present? %>
   <% @chats.each do |chat| %>
-    <div class="col-10 col-9-mobile">
+    <div class="col-9 col-8-mobile">
       <% if current_user.id == chat.user_2_id %>
         <h3><%= link_to 'Apri la chat con ' + chat.user_1.nome + ' ' + chat.user_1.cognome, chat_messagges_path(chat) %></h3>
       <%else %>
         <h3><%= link_to 'Apri la chat con ' + chat.user_2.nome + ' ' + chat.user_2.cognome, chat_messagges_path(chat) %></h3>
       <%end %>
     </div>
-    <div class="col-2 col-3-mobile">
+    <div class="col-2 col-2-mobile">
+      <% if current_user.id == chat.user_1_id %>
+        <%if chat.updated_at > chat.open_time_user_1 %>
+          <i class="far fa-comment-dots fa-3x black" title="Nuovo messaggio in questa chat"></i>
+        <%end %>
+      <%else %>
+        <%if chat.updated_at > chat.open_time_user_2 %>
+          <i class="far fa-comment-dots fa-3x black" title="Nuovo messaggio in questa chat"></i>
+        <%end %>
+      <%end %>
+    </div>
+    <div class="col-1 col-2-mobile">
       <%= link_to '', chat_path(id: chat), method: :delete, data: { confirm: 'Sicuro di voler eliminare questa chat? Verranno eliminati anche tutti i messaggi' }, class: 'far fa-trash-alt fa-3x', title: 'Elimina questa chat'%>
     </div>
     <div class="col-12 col-12-mobilep">

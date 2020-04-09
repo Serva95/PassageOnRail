@@ -11,6 +11,18 @@ class Rating < ApplicationRecord
 	belongs_to :driver
 	belongs_to :user
 
+	def self.has_previous_journey_done(user_id, driver_id)
+		journeys = Stage.joins(:journey, :route).where('journeys.user_id = ? and routes.driver_id=?', user_id, driver_id).order('routes.data_ora_arrivo')
+		if journeys.present?
+			journeys.each do |j|
+				if j.route.data_ora_arrivo.utc < DateTime.now.utc
+					return true
+				end
+			end
+			return false
+		end
+	end
+
 	def self.find_ratings(user_id)
 		Rating.joins('INNER JOIN "users" ON "users"."driver_id" = "ratings"."driver_id"').where("ratings.user_id = ?", user_id).select('"ratings".*','nome' ).order(data: :desc)
 	end

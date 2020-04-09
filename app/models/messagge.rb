@@ -15,6 +15,15 @@ class Messagge < ApplicationRecord
 
 	validates_with (MessaggeDOBValidator)
 
+	def self.update_open_time(update_time, chat_id, user_id)
+		chat = Chat.find(chat_id)
+		if chat.user_1_id == user_id
+				chat.update_columns(open_time_user_1: update_time)
+		else
+				chat.update_columns(open_time_user_2: update_time)
+		end
+	end
+
 	def self.new_msg_transaction(msg, update_time, chat, user_id)
 		if chat.user_1_id == user_id
 			ActiveRecord::Base.transaction do

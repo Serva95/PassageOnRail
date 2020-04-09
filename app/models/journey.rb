@@ -1,4 +1,16 @@
+class JourneyUSValidator < ActiveModel::Validator
+	def validate(record)
+		if record.user_id.blank?
+			record.errors[:user_id] << "Non può essere nil"
+			# non si possono prenotare tratte
+		elsif Route.already_booked(record.stages.first.route_id ,record.user_id).exists?
+			record.errors[:user_id] << "Tratta già prenotata"
+		end
+	end
+end
+
 class Journey < ApplicationRecord
+	validates_with JourneyUSValidator
 	belongs_to :user, dependent: :destroy
 	validates :n_prenotati, presence: true
 

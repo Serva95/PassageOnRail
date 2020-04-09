@@ -9,8 +9,13 @@
     background: royalblue;
     color: white;
 }
-
 /*fine chat*/
+
+/*per icone nere*/
+.black {
+    color: black;
+}
+/*fine icone nere*/
 
 /*info box up*/
 .info {

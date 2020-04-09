@@ -1,9 +1,6 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:destroy]
 
-  #nuova review possibile solo dopo la fine stimata del viaggio
-  #review inseribeile solo se esiste un viaggio tra guid e autost
-
   # GET /ratings
   def index
     @user = User.find(params[:user_id])
@@ -19,19 +16,31 @@ class RatingsController < ApplicationController
   # POST /ratings
   def create
     @rating = Rating.new(rating_params)
-    @rating.data = DateTime.current
-    @rating.driver_id = current_user.driver_id
-    exist = Rating.exists(@rating.user_id, current_user.driver_id)
+    same_user = @rating.user_id == current_user.id
+    unless same_user
+      @rating.data = DateTime.current
+      @rating.driver_id = current_user.driver_id
+      exist = Rating.exists(@rating.user_id, current_user.driver_id)
+      done = Rating.has_previous_journey_done(@rating.user_id, current_user.driver_id)
+    end
     respond_to do |format|
-      if !exist && @rating.save
-        format.html { redirect_to ratings_path(user_id: @rating.user_id), notice: 'Rating was successfully created.' }
-        format.json { render :show, status: :created, location: @rating }
-      elsif exist
-        format.html { redirect_to new_rating_path(user_id: @rating.user_id), notice: Rating.error_one }
+      if same_user
+        format.html { redirect_to new_rating_path(user_id: @rating.user_id), notice: "Error same user" }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       else
-        format.html { redirect_to new_rating_path(user_id: @rating.user_id), notice: Rating.error_two }
-        format.json { render json: @rating.errors, status: :unprocessable_entity }
+        if !exist && done && @rating.save
+          format.html { redirect_to ratings_path(user_id: @rating.user_id), notice: 'Rating was successfully created.' }
+          format.json { render :show, status: :created, location: @rating }
+        elsif exist
+          format.html { redirect_to new_rating_path(user_id: @rating.user_id), notice: Rating.error_one }
+          format.json { render json: @rating.errors, status: :unprocessable_entity }
+        elsif !done
+          format.html { redirect_to new_rating_path(user_id: @rating.user_id), notice: "Errore not done" }
+          format.json { render json: @rating.errors, status: :unprocessable_entity }
+        else
+          format.html { redirect_to new_rating_path(user_id: @rating.user_id), notice: Rating.error_two }
+          format.json { render json: @rating.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

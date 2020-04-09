@@ -22,13 +22,15 @@ class User < ApplicationRecord
   #recupero il rating medio del driver
   def find_rating_driver
     driver=Driver.find(self.driver_id)
-    rating=driver.rating_medio
-    return rating
+    driver.rating_medio
   end
 
-  def find_journey(id)
-    Journey.where('user_id = ?', id)
+  #recupero tutte le tratte singole prenotate dall'utente
+  def find_bookings(user_id)
+    where_clause = 'journeys.user_id = ?'
+    Journey.includes(:stages, :routes).where(where_clause, user_id)
   end
+
 
   belongs_to :driver, optional: true, dependent: :destroy
   has_many :chats, dependent: :destroy
