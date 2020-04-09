@@ -1,15 +1,9 @@
 class StagesController < ApplicationController
-  before_action :set_multi_trip_association, only: [:show, :edit, :update, :destroy]
+  before_action :set_multi_trip_association, only: [:update, :destroy]
 
   # GET /multi_trip_associations
-  # GET /multi_trip_associations.json
   def index
     @multi_trip_associations = MultiTripAssociation.all
-  end
-
-  # GET /multi_trip_associations/1
-  # GET /multi_trip_associations/1.json
-  def show
   end
 
   # GET /multi_trip_associations/new
@@ -17,12 +11,7 @@ class StagesController < ApplicationController
     @multi_trip_association = MultiTripAssociation.new
   end
 
-  # GET /multi_trip_associations/1/edit
-  def edit
-  end
-
   # POST /multi_trip_associations
-  # POST /multi_trip_associations.json
   def create
     @multi_trip_association = MultiTripAssociation.new(multi_trip_association_params)
 
@@ -38,7 +27,6 @@ class StagesController < ApplicationController
   end
 
   # PATCH/PUT /multi_trip_associations/1
-  # PATCH/PUT /multi_trip_associations/1.json
   def update
     respond_to do |format|
       if @multi_trip_association.update(multi_trip_association_params)
@@ -52,7 +40,6 @@ class StagesController < ApplicationController
   end
 
   # DELETE /multi_trip_associations/1
-  # DELETE /multi_trip_associations/1.json
   def destroy
     @multi_trip_association.destroy
     respond_to do |format|
@@ -62,12 +49,10 @@ class StagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_multi_trip_association
       @multi_trip_association = Stage.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def multi_trip_association_params
       params.fetch(:stage, {})
     end

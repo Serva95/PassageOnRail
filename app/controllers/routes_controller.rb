@@ -34,6 +34,7 @@ class RoutesController < ApplicationController
       # crea gli oggetti per il form
       @booked_route = Route.already_booked(params[:id],current_user.id)
       # controllo se la route è stata già prenotata
+      # cerca utente per iniziare la chat
       @user = Route.find_user_name_for_chat(@route.driver_id)
     end
   end
@@ -74,7 +75,6 @@ class RoutesController < ApplicationController
   end
 
   # PATCH/PUT /drivers/1/routes/1
-  # PATCH/PUT /drivers/1/routes/1.json
   def update
     respond_to do |format|
       if @route.update(route_params)
@@ -88,7 +88,6 @@ class RoutesController < ApplicationController
   end
 
   # DELETE /drivers/1/routes/1
-  # DELETE /drivers/1/routes/1.json
   def destroy
     @route.destroy
     respond_to do |format|
@@ -98,12 +97,10 @@ class RoutesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_route
       @route = @driver.routes.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def route_params
       params.require(:route).permit(:citta_partenza, :luogo_ritrovo, :data_ora_partenza, :citta_arrivo, :data_ora_arrivo, :costo, :deleted, :driver_id, :vehicle_id, :tempo_percorrenza, :n_passeggeri)
       end

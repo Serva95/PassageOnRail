@@ -11,7 +11,7 @@ end
 
 class Journey < ApplicationRecord
 	validates_with JourneyUSValidator
-	belongs_to :user, dependent: :destroy
+	belongs_to :user
 	validates :n_prenotati, presence: true
 
 	has_many :stages, inverse_of: :journey, dependent: :destroy
@@ -28,6 +28,17 @@ class Journey < ApplicationRecord
 				route.update!(n_passeggeri: p)
 			end
 			journey.save!
+		end
+	end
+
+	def self.journey_is_deletable(journey_id)
+		route = Route.joins(:stages).where("journey_id = ?", journey_id).first
+		if route.data_ora_partenza - 2.day > DateTime.current
+			true
+		elsif route.data_ora_partenza - 2.day < route.updated_at
+			true
+		else
+			false
 		end
 	end
 

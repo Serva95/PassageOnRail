@@ -22,7 +22,7 @@ class Route < ApplicationRecord
 	belongs_to :driver
 	belongs_to :vehicle
 
-  has_many :stages
+  has_many :stages, dependent: :destroy
   has_many :journeys, :through => :stages
 
   #estrae il numero di passeggeri attualmente prenotati

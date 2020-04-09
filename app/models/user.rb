@@ -31,11 +31,10 @@ class User < ApplicationRecord
     Journey.includes(:stages, :routes).where(where_clause, user_id)
   end
 
-
   belongs_to :driver, optional: true, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :messagges
-  has_many :journeys
+  has_many :journeys, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :ratings, dependent: :destroy
 end
