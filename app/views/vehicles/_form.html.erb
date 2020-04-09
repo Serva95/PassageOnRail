@@ -1,6 +1,6 @@
-<%= form_with(model: [@driver, vehicle], local: true) do |form| %>
+<%= form_with model: [@driver, vehicle], local: true, html: {class: "row col-12 col-12-mobilep"} do |form| %>
   <% if vehicle.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="col-12 col-12-mobilep">
       <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
 
       <ul>
@@ -11,42 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :targa %>
     <%= form.text_field :targa %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :marca %>
     <%= form.text_field :marca %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :modello %>
     <%= form.text_field :modello %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :tipo_mezzo, 'Tipo di mezzo' %>
     <%= form.collection_select :tipo_mezzo, Vehicle::TIPI, :to_s, :to_s %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :immatricolazione %>
-    <%= form.date_select :immatricolazione %>
+    <%= form.text_field :immatricolazione, onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :comfort %>
     <%= form.number_field :comfort %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :posti %>
     <%= form.number_field :posti %>
   </div>
 
-  <div class="actions">
+  <hr class="col-12 col-12-mobilep">
+
+  <div class="col-4 col-12-mobilep">
     <%= form.submit %>
   </div>
 <% end %>

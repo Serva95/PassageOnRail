@@ -12,6 +12,8 @@
       </div>
     <%elsif notice[0..14] == "Errore not done"%>
       <h2><p style="color: #B00100">Errore nel voto, prima di votare un autostoppista, almeno viaggiaci assieme... no ?</p><i class='far fa-meh fa-3x'></i></h2>
+    <%elsif notice[0..14] == "Error same user"%>
+      <h2><p style="color: #B00100">Ehi, stai davvero tentando di dare un voto a te stesso ?</p><i class="far fa-angry fa-3x"></i></h2>
     <%end
       end%>
   <hr class="col-12 col-12-mobilep">
