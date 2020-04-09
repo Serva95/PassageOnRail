@@ -36,7 +36,7 @@
   </div>
 <%end%>
 <div class="col-12 col-12-mobilep"><br></div>
-<%if @booked_route %>
+<%unless @booked_route %>
   <%= form_with(model: Chat, local: true, method: "post") do |form| %>
     <div class="col-12 col-12-mobilep">
       <%= form.hidden_field :user_2_id, :value => @user.id %>
