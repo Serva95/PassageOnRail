@@ -30,7 +30,7 @@
       </div>
     <% end%>
 
-    <% if @route1.driver_id == current_user.id || @route2.driver_id == current_user.id %>
+    <% if @route1.driver_id == current_user.driver_id || @route2.driver_id == current_user.driver_id %>
       <div class="col-12 col-12-mobilep">
         <p>Ehi, ma sei tu il guidatore!</p>
       </div>

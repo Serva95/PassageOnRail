@@ -17,7 +17,7 @@
     <div class="col-12 col-12-mobilep">
       <%= link_to 'Visualizza profilo Driver', user_path(@driver.id) %>
     </div>
-    <% if @route.driver_id == current_user.id %>
+    <% if @route.driver_id == current_user.driver_id %>
       <p>Ehi, ma sei tu il guidatore!</p>
     <% else %>
       <div class="col-6 col-12-mobilep">
