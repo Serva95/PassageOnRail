@@ -8,14 +8,18 @@
   <div class="col-12 col-12-mobilep">
     <%= render 'detail_route', route: @route1 %>
   </div>
-
+  <div class="col-12 col-12-mobilep">
+    <%= link_to 'Visualizza profilo Driver', user_path(@driver1.id) %>
+  </div>
   <div class="col-12 col-12-mobilep"><br></div>
 
   <!-- mostra seconda tratta -->
   <div class="col-12 col-12-mobilep">
     <%= render 'detail_route', route: @route2 %>
   </div>
-
+  <div class="col-12 col-12-mobilep">
+    <%= link_to 'Visualizza profilo Driver', user_path(@driver2.id) %>
+  </div>
   <div class="col-12 col-12-mobilep"><br></div>
 
   <%= form_with model: @journey, html: {class: "row col-12 col-12-mobilep"} do |f| %>
@@ -68,7 +72,9 @@
   <div class="col-12 col-12-narrower">
     <%= render 'detail_route', route: @route %>
   </div>
-
+  <div class="col-12 col-12-mobilep">
+    <%= link_to 'Visualizza profilo Driver', user_path(@driver.id) %>
+  </div>
   <!-- scegli il numero di posti -->
   <div class="col-12 col-12-mobilep">
     <%= render 'booking', route: @route %>

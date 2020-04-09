@@ -10,6 +10,8 @@ class RoutesController < ApplicationController
       # se si richiedono i dettagli di un viaggio con due tratte
       @route1 = Route.find(params[:id1])
       @route2 = Route.find(params[:id2])
+      @driver1 = Route.find_driver(@route1)
+      @driver2 = Route.find_driver(@route2)
       # cerca le due tratte
 
       @posti1 = Route.posti_disponibili(params[:id1], @route1.vehicle_id)
