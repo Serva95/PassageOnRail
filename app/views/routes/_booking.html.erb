@@ -1,4 +1,4 @@
-<% if @booked_route %>
+<% if @booked_route==3 %>
 <%=form_with model: @journey do |f| %>
   <div class="row gtr-uniform">
     <div class="col-12 col-12-mobilep">
@@ -35,8 +35,7 @@
       <% end %>
     <% end %>
   </div>
-<%end%>
-<%unless @booked_route %>
+<%elsif @booked_route==1 %>
     <%= form_with(model: Chat, local: true, method: "post") do |form| %>
 
       <div class="col-12 col-12-mobilep">
@@ -51,5 +50,5 @@
 
 <div class="col-12 col-12-mobilep"><hr></div>
 <div class="col-12 col-12-mobilep">
-  <%= link_to 'Annulla', :back, class: "button special" %>
+  <%= link_to 'Indietro', :back, class: "button special" %>
 </div>
