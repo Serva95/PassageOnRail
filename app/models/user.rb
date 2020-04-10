@@ -37,4 +37,5 @@ class User < ApplicationRecord
   has_many :journeys, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :notifications, foreign_key: :user_id
 end

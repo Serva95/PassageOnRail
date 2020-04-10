@@ -2,5 +2,9 @@
 class Notification < ActiveRecord::Base
   include Notifications::Model
 
-  # Write your custom methods...
+  belongs_to :user, class_name: "User"
+  belongs_to :actor, class_name: "User"
+  belongs_to :notifiable, polymorphic: true
+
+  scope :unread, ->{ where(read_at: nil)}
 end
