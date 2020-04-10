@@ -3,7 +3,7 @@ class JourneyUSValidator < ActiveModel::Validator
 		if record.user_id.blank?
 			record.errors[:user_id] << "Non può essere nil"
 			# non si possono prenotare tratte
-		elsif Route.already_booked(record.stages.first.route_id ,record.user_id).exists?
+		elsif Route.booked(record.stages.first.route_id ,record.user_id).exists?
 			record.errors[:user_id] << "Tratta già prenotata"
 		end
 	end

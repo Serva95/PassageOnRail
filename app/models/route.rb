@@ -54,6 +54,10 @@ class Route < ApplicationRecord
     end
   end
 
+  def self.booked(route_id,hitch_hiker_id)
+    stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? ", route_id,hitch_hiker_id)
+  end
+
   def self.find_driver(route)
     driver = User.find_by(driver_id: route.driver_id)
   end
