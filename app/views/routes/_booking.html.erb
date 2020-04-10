@@ -1,4 +1,4 @@
-<% if @booked_route %>
+<% if @booked_route == 3 %>
 <%=form_with model: @journey do |f| %>
   <div class="row gtr-uniform">
     <div class="col-12 col-12-mobilep">
@@ -16,7 +16,7 @@
     <div class="col-12 col-12-mobilep">
       <%= link_to 'Visualizza profilo Driver', user_path(@driver.id) %>
     </div>
-    <% if @route.driver_id == current_user.id %>
+    <% if @route.driver_id == current_user.driver_id %>
       <p>Ehi, ma sei tu il guidatore!</p>
     <% else %>
       <div class="col-6 col-12-mobilep">
@@ -34,9 +34,8 @@
       <% end %>
     <% end %>
   </div>
-<%end%>
 <div class="col-12 col-12-mobilep"><br></div>
-<%unless @booked_route %>
+<%elsif @booked_route == 1 %>
   <%= form_with(model: Chat, local: true, method: "post") do |form| %>
     <div class="col-12 col-12-mobilep">
       <%= form.hidden_field :user_2_id, :value => @user.id %>
