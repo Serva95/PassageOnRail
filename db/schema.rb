@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_093510) do
+ActiveRecord::Schema.define(version: 2020_04_10_152740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(version: 2020_04_10_093510) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "notify_type"], name: "index_notifications_on_user_id_and_notify_type"
     t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "pay_methods", force: :cascade do |t|
+    t.string "intestatario", null: false
+    t.string "numero", null: false
+    t.integer "mese_scadenza", null: false
+    t.integer "anno_scadenza", null: false
+    t.string "cvv", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_pay_methods_on_user_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -172,6 +184,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_093510) do
   add_foreign_key "journeys", "users"
   add_foreign_key "messagges", "chats"
   add_foreign_key "messagges", "users"
+  add_foreign_key "pay_methods", "users"
   add_foreign_key "ratings", "drivers"
   add_foreign_key "ratings", "users"
   add_foreign_key "reviews", "drivers"

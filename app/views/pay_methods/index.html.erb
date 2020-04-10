@@ -1,0 +1,34 @@
+<div class="col-12 col-12-narrower">
+  <h2>
+    <strong>Ecco i tuoi metodi di pagamento!</strong>
+  </h2>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Numero Carta</th>
+    <th>Intestatario</th>
+    <th>scadenza</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @pay_methods.each do |pay_method| %>
+    <tr>
+      <td><%= pay_method.numero %></td>
+      <td><%= pay_method.intestatario %></td>
+      <td><%= pay_method.mese_scadenza + '/' + pay_method.anno_scadenza %></td>
+<!--      <td><%#= link_to 'Show', driver_vehicle_path(@driver, vehicle) %></td>-->
+<!--      <td><%#= link_to 'Edit', edit_driver_vehicle_path(@driver, vehicle) %></td>-->
+<!--      <td><%#= link_to 'Destroy', [@driver, vehicle], method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Aggiungi un metodo di pagamento', new_user_pay_path %>
+<%= link_to 'Back', user_path(current_user) %>

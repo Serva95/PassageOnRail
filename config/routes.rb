@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/user/sign_out', to: 'users/sessions#destroy'
     get '/users/:id/bookings', to: 'users#bookings', as: 'user_bookings'
+    resources :pay_methods, as: 'user_pay'
   end
   resources :journeys, only: [:create, :destroy]
   resources :drivers, only: [:new, :edit, :create, :update, :destroy] do

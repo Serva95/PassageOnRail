@@ -33,6 +33,7 @@ class User < ApplicationRecord
 
   belongs_to :driver, optional: true, dependent: :destroy
   has_many :chats, dependent: :destroy
+  has_many :pay_methods, inverse_of: :user, dependent: :destroy
   has_many :messagges
   has_many :journeys, dependent: :destroy
   has_many :reviews, dependent: :destroy

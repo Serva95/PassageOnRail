@@ -1,0 +1,38 @@
+<%= form_with model: [@user, pay_methods], local: true, html: {class: "row col-12 col-12-mobilep"} do |form| %>
+  <% if pay_methods.errors.any? %>
+    <div id="error_explanation" class="col-12 col-12-mobilep">
+      <h2><%= pluralize(pay_methods.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
+
+      <ul>
+        <% pay_methods.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label :numero %>
+    <%= form.text_field :numero %>
+  </div>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label :intestatario %>
+    <%= form.text_field :intestatario %>
+  </div>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label :mese_scadenza %>
+    <%= form.number_field :mese_scadenza %>
+  </div>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label :anno_scadenza %>
+    <%= form.number_field :anno_scadenza %>
+  </div>
+  <hr class="col-12 col-12-mobilep">
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.submit %>
+  </div>
+<% end %>
