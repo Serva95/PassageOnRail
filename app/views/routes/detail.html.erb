@@ -1,7 +1,7 @@
-<div class="col-2 col-3-mobilep">
+<div class="col-2 col-4-mobilep">
   <%= link_to 'Indietro', :back, class: "button icon solid fa-chevron-left" %>
 </div>
-<div class="col-10 col-9-mobilep">
+<div class="col-10 col-8-mobilep">
   <h2><strong>Dettagli prenotazione</strong></h2>
 </div>
 
@@ -14,7 +14,6 @@
 <%end %>
 
 <% if @multi_trip%>
-
   <!-- mostra prima tratta -->
   <div class="col-12 col-12-mobilep">
     <%= render 'detail_route', route: @route1 %>
@@ -75,44 +74,46 @@
 
 <% else %>
   <!-- mostra tratta unica -->
-  <div class="col-12 col-12-narrower">
+  <div class="col-12 col-12-mobilep">
     <%= render 'detail_route', route: @route %>
   </div>
+  <div class="col-12 col-12-mobilep"><br></div>
+  <div class="col-12 col-12-mobilep">
     <%= link_to 'Visualizza profilo Driver', user_path(@driver.id) %>
+  </div>
+  <div class="col-12 col-12-narrower"><br></div>
   <!-- scegli il numero di posti -->
   <% if @booked_route == 3 %>
-    <%=form_with model: @journey do |f| %>
-      <div class="row gtr-uniform">
-        <div class="col-12 col-12-mobilep">
-          <% if @route.errors.any?%>
-            <div id="error_explanation">
-              <h2><%= pluralize(@route.errors.count, "error") %>prohibited this route from being saved:</h2>
-              <ul>
-                <% @route.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end%>
+    <%=form_with model: @journey, html: {class: "row col-12 col-12-mobilep"} do |f| %>
+      <div class="col-12 col-12-mobilep">
+        <% if @route.errors.any?%>
+          <div id="error_explanation">
+            <h2><%= pluralize(@route.errors.count, "error") %>prohibited this route from being saved:</h2>
+            <ul>
+              <% @route.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end%>
+      </div>
+      <% if @route.driver_id == current_user.driver_id %>
+        <p>Ehi, ma sei tu il guidatore!</p>
+      <% else %>
+        <div class="col-6 col-12-mobilep">
+          <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
         </div>
-        <% if @route.driver_id == current_user.driver_id %>
-          <p>Ehi, ma sei tu il guidatore!</p>
-        <% else %>
-          <div class="col-6 col-12-mobilep">
-            <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
-          </div>
-          <%= f.hidden_field :user_id, :value => current_user.id%>
+        <%= f.hidden_field :user_id, :value => current_user.id%>
 
-          <%= f.fields_for :stages do |f_stage| %>
-            <%= f_stage.hidden_field :route_id %>
-            <%= f_stage.hidden_field :journey_id %>
-          <% end %>
-          <div class="col-4 col-12-mobilep">
-            <%= f.submit "Prenota"%>
-          </div>
+        <%= f.fields_for :stages do |f_stage| %>
+          <%= f_stage.hidden_field :route_id %>
+          <%= f_stage.hidden_field :journey_id %>
         <% end %>
+        <div class="col-4 col-12-mobilep">
+          <%= f.submit "Prenota"%>
+        </div>
+      <% end %>
     <% end %>
-    </div>
     <div class="col-12 col-12-mobilep"><br></div>
   <%elsif @booked_route == 1 %>
     <%= form_with(model: Chat, local: true, method: "post") do |form| %>
@@ -123,10 +124,10 @@
         <%= form.submit "Chatta con " + @user.nome%>
       </div>
     <%end%>
+    <hr class="col-12 col-12-mobile">
     <div class="col-12 col-12-mobile">
       <%= link_to 'Annulla prenotazione', journey_path(id: params[:j_id], r_id: params[:id]), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Anulla prenotazione'%>
     </div>
   <%end%>
-
 <% end %>
 

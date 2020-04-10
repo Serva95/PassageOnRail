@@ -1,5 +1,8 @@
-<h1>New Route</h1>
+<div class="col-2 col-4-mobilep">
+  <%= link_to 'Indietro', driver_routes_path(@driver), class: "button icon solid fa-chevron-left" %>
+</div>
+<div class="col-10 col-8-mobilep">
+  <h2><strong>New Route</strong></h2>
+</div>
 
 <%= render 'form', route: @route %>
-
-<%= link_to 'Back', driver_routes_path(@driver) %>

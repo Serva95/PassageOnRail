@@ -1,4 +1,4 @@
-<%= form_with(model: [@driver, route], local: true) do |form| %>
+<%= form_with model: [@driver, route], local: true, html: {class: "row col-12 col-12-mobilep"} do |form| %>
   <% if route.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(route.errors.count, "error") %> prohibited this route from being saved:</h2>
@@ -11,47 +11,47 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :citta_partenza %>
     <%= form.text_field :citta_partenza %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :luogo_ritrovo %>
     <%= form.text_field :luogo_ritrovo %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :data_ora_partenza %>
-    <%= form.datetime_select :data_ora_partenza %>
+    <%= form.text_field :data_ora_partenza, onfocus: "(this.type='datetime-local')", onblur: "(this.type='text')"  %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :citta_arrivo %>
     <%= form.text_field :citta_arrivo %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :data_ora_arrivo %>
-    <%= form.datetime_select :data_ora_arrivo %>
+    <%= form.text_field :data_ora_arrivo, onfocus: "(this.type='datetime-local')", onblur: "(this.type='text')"  %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
   <%= form.label :costo %>
   <%= form.text_field :costo %>
   </div>
 
-  <div class="field">
-    <%= form.label :tempo_percorrenza %>
-    <%= form.text_field :tempo_percorrenza %>
+  <div class="col-4 col-12-mobilep">
+    <%= form.label "Tempo di percorrenza in minuti" %>
+    <%= form.number_field :tempo_percorrenza, step: 5 %>
   </div>
 
-  <div class="field">
+  <div class="col-4 col-12-mobilep">
     <%= form.label :vehicle_id %>
     <%= form.collection_select(:vehicle_id, Vehicle.where(driver_id: @driver.id), :id, :targa) %>
   </div>
-
-  <div class="actions">
+  <hr class="col-12 col-12-mobilep">
+  <div class="col-12 col-12-mobilep">
     <%= form.submit %>
   </div>
 <% end %>

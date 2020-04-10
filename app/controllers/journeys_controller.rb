@@ -22,9 +22,10 @@ class JourneysController < ApplicationController
   # DELETE /journeys/1
   # fare l'eliminazione del viaggio solo 48 ore prima, oppure sempre se ci sono modifiche da parte del guidatore
   def destroy
-    is_deletable = Journey.journey_is_deletable(@journey.id)
+    route = Route.joins(:stages).where("journey_id = ?", @journey.id).first
+    is_deletable = Journey.journey_is_deletable(route)
     respond_to do |format|
-      if is_deletable && @journey.destroy
+      if is_deletable && Journey.delete_passage_transaction(@journey, route)
         format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Prenotazione eliminata' }
         format.json { head :no_content }
       else

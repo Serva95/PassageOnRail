@@ -44,14 +44,20 @@ class Journey < ApplicationRecord
 		end
 	end
 
-	def self.journey_is_deletable(journey_id)
-		route = Route.joins(:stages).where("journey_id = ?", journey_id).first
+	def self.journey_is_deletable(route)
 		if route.data_ora_partenza - 2.day > DateTime.current
 			true
 		elsif route.data_ora_partenza - 2.day < route.updated_at
 			true
 		else
 			false
+		end
+	end
+
+	def self.delete_passage_transaction(journey, route)
+		ActiveRecord::Base.transaction do
+			journey.destroy!
+			route.decrement!(:n_passeggeri, by = journey.n_prenotati)
 		end
 	end
 
