@@ -18,6 +18,19 @@ class Journey < ApplicationRecord
 	has_many :routes, through: :stages
 	accepts_nested_attributes_for :stages
 
+	# crea le notifiche per i driver delle route prenotate
+	def self.create_notifications(journey, current_user)
+		journey.stages.each do |stage|
+			driver = Route.find_driver(stage.route)
+			Notification.create! do |notification|
+				notification.notify_type = "try_to_book"
+				notification.actor = current_user
+				notification.user = driver
+				notification.target = journey
+			end
+		end
+	end
+
 	# transazione che aggiorna il numero di passeggeri, crea l'associazione user-journey e
 	# le associazioni journey-stages
 	def self.booking(journey)

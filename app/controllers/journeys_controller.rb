@@ -8,6 +8,8 @@ class JourneysController < ApplicationController
     # passati dalla form
     respond_to do |format|
       if Journey.booking(@journey)
+        # la prenotazione ha avuto successo, crea le notifiche
+        Journey.create_notifications(@journey, current_user)
         format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Prenotazione creata' }
         format.json { render :show, status: :created, location: @journey }
       else
