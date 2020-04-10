@@ -1,6 +1,6 @@
 class PayMethodsController < ApplicationController
   before_action :set_pay_method, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
+  before_action :get_user
 
   # GET /users/:id/payMethods
   def index
@@ -13,7 +13,7 @@ class PayMethodsController < ApplicationController
 
   # GET /users/:id/payMethods/new
   def new
-    @pay_method = @user.pay_methods.build
+    @pay_method = PayMethods.new
   end
 
   # GET /users/:id/payMethods/edit
@@ -22,11 +22,11 @@ class PayMethodsController < ApplicationController
 
   # POST /users/:id/payMethods/
   def create
-    @pay_method = current_user.pay_methods.build(pay_params)
+    @pay_method = PayMethods.new(pay_params)
 
     respond_to do |format|
       if @pay_method.save
-        format.html { redirect_to user_path(current_user), notice: 'Pay method was successfully created.' }
+        format.html { redirect_to user_pay_methods_path(current_user.id), notice: 'Pay method was successfully created.' }
         format.json { render :show, status: :created, location: @pay_method }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class PayMethodsController < ApplicationController
   def update
     respond_to do |format|
       if @pay_method.update(pay_params)
-        format.html { redirect_to user_pay_path(@pay_method), notice: 'Vehicle was successfully updated.' }
+        format.html { redirect_to user_pay_methods_path(@pay_method), notice: 'Vehicle was successfully updated.' }
         format.json { render :show, status: :ok, location: @pay_method }
       else
         format.html { render :edit }
@@ -54,7 +54,7 @@ class PayMethodsController < ApplicationController
   def destroy
     @pay_method.destroy
     respond_to do |format|
-      format.html { redirect_to user_pay_path(@pay_method), notice: 'Vehicle was successfully destroyed.' }
+      format.html { redirect_to user_pay_methods_path(@pay_method), notice: 'Vehicle was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,13 +65,13 @@ class PayMethodsController < ApplicationController
     @pay_method = PayMethods.find(params[:id])
   end
 
-  def set_user
+  def get_user
     @user = User.find(current_user.id)
   end
 
   # Only allow a list of trusted parameters through.
   def pay_params
-    params.require(:vehicle).permit(:intestatario, :numero, :mese_scadenza, :anno_scadenza, :cvv, :user_id)
+    params.require(:pay_methods).permit(:intestatario, :numero, :mese_scadenza, :anno_scadenza, :cvv, :user_id)
   end
 
 end

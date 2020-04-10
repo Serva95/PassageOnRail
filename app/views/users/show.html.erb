@@ -38,6 +38,9 @@
       <strong>Indirizzo:</strong>
       <%= @user.indirizzo %>
     </h4>
+    <div class="col-12 col-12-mobilep">
+      <%= link_to 'Visualizza i tuoi metodi di pagamento', user_pay_methods_path(@user) , class:'button'%>
+    </div>
   <%end %>
   <hr class="col-12 col-12-mobilep">
   <div class="col-6 col-12-narrower">

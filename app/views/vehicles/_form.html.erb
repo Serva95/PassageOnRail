@@ -2,7 +2,6 @@
   <% if vehicle.errors.any? %>
     <div id="error_explanation" class="col-12 col-12-mobilep">
       <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
-
       <ul>
         <% vehicle.errors.full_messages.each do |message| %>
           <li><%= message %></li>

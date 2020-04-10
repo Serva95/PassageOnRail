@@ -11,10 +11,10 @@
 
 <p>
   <strong>Scadenza:</strong>
-  <%= @pay_method.mese_scadenza + '/' + @pay_method.anno_scadenza %>
+  <%= @pay_method.mese_scadenza%> / <%= @pay_method.anno_scadenza %>
 </p>
 
 
 
-<%= link_to 'Edit', edit_driver_vehicle_path(@driver, @vehicle) %> |
-<%= link_to 'Back', driver_vehicles_path(@driver) %>
+<%= link_to 'Edit', edit_user_pay_method_path(current_user.id, @pay_method.id) %>
+<%= link_to 'Back', user_pay_methods_path(@user) %>

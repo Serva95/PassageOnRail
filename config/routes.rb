@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/user/sign_out', to: 'users/sessions#destroy'
     get '/users/:id/bookings', to: 'users#bookings', as: 'user_bookings'
-    resources :pay_methods, as: 'user_pay'
   end
   resources :journeys, only: [:create, :destroy]
   resources :drivers, only: [:new, :edit, :create, :update, :destroy] do
@@ -18,7 +17,9 @@ Rails.application.routes.draw do
   end
   resources :ratings, only: [:index, :create, :new]
   resources :reviews, only: [:index, :create, :new, :destroy]
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :pay_methods
+  end
   resources :searches
   resources :routes, only: [] do
     get 'detail', action: 'detail', on: :collection
@@ -26,4 +27,5 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
+  get '/users/:id/pay_methods/', to: 'pay_method#index',  as: 'user_pay_methods_index'
 end
