@@ -15,31 +15,31 @@
 <body class="landing is-preload">
 <div id="page-wrapper">
   <header id="header" class="alt">
-    <h1><%= link_to 'Passage on Rails' , root_path %></h1>
+    <h1><%= link_to 'Passage on Rails' , main_app.root_path %></h1>
     <nav id="nav">
       <ul>
         <% if user_signed_in? %>
-          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Home', main_app.root_path %></li>
           <li><%= link_to pluralize(Notification.unread_count(current_user), 'Notification'), notifications_path %></li>
-          <li><%= link_to 'Cerca Tratta', new_search_path %></li>
+          <li><%= link_to 'Cerca Tratta', main_app.new_search_path %></li>
           <li>
             <a href="#" class="icon solid fa-angle-down">Welcome <%= current_user.nome %></a>
             <ul>
-              <li><%= link_to 'Il tuo profilo', user_path(current_user.id)%></li>
-              <li><%= link_to 'Le tue chat', chats_path%></li>
-              <li><%= link_to 'Le tue prenotazioni', user_bookings_path(current_user.id)%></li>
+              <li><%= link_to 'Il tuo profilo', main_app.user_path(current_user.id)%></li>
+              <li><%= link_to 'Le tue chat', main_app.chats_path%></li>
+              <li><%= link_to 'Le tue prenotazioni', main_app.user_bookings_path(current_user.id)%></li>
               <%if current_user.driver_id? %>
-                <li><%= link_to 'Le tue tratte',  driver_routes_path(current_user.driver_id)%></li>
-                <li><%= link_to 'I tuoi veicoli',  driver_vehicles_path(current_user.driver_id)%></li>
-                <li><%= link_to 'Non essere più driver', driver_confirm_destroy_url(current_user.driver_id)%></li>
+                <li><%= link_to 'Le tue tratte',  main_app.driver_routes_path(current_user.driver_id)%></li>
+                <li><%= link_to 'I tuoi veicoli',  main_app.driver_vehicles_path(current_user.driver_id)%></li>
+                <li><%= link_to 'Non essere più driver', main_app.driver_confirm_destroy_url(current_user.driver_id)%></li>
               <%else %>
-                <li><%= link_to 'Diventa driver!',  new_driver_path%></li>
+                <li><%= link_to 'Diventa driver!',  main_app.new_driver_path%></li>
               <%end %>
               <li><%= link_to 'Esci', '/user/sign_out'%></li>
             </ul>
           </li>
         <%else%>
-          <li><%= link_to 'Registrati/Accedi', new_user_session_url, {class: 'button'}%></li>
+          <li><%= link_to 'Registrati/Accedi', main_app.new_user_session_url, {class: 'button'}%></li>
         <% end %>
       </ul>
     </nav>
