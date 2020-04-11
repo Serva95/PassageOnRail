@@ -19,8 +19,8 @@
     <nav id="nav">
       <ul>
         <% if user_signed_in? %>
-          <li><%= link_to 'Home', main_app.root_path %></li>
           <li><%= link_to pluralize(Notification.unread_count(current_user), 'Notification'), notifications_path %></li>
+          <li><%= link_to 'Home', main_app.root_path %></li>
           <li><%= link_to 'Cerca Tratta', main_app.new_search_path %></li>
           <li>
             <a href="#" class="icon solid fa-angle-down">Welcome <%= current_user.nome %></a>
