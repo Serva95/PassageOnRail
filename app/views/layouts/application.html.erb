@@ -15,11 +15,12 @@
 <body class="landing is-preload">
 <div id="page-wrapper">
   <header id="header" class="alt">
-    <h1><%= link_to 'Passage on Rails' , root_path%></h1>
+    <h1><%= link_to 'Passage on Rails' , root_path %></h1>
     <nav id="nav">
       <ul>
         <% if user_signed_in? %>
           <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to pluralize(Notification.unread_count(current_user), 'Notification'), notifications_path %></li>
           <li><%= link_to 'Cerca Tratta', new_search_path %></li>
           <li>
             <a href="#" class="icon solid fa-angle-down">Welcome <%= current_user.nome %></a>

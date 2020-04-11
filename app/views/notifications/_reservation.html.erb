@@ -1,0 +1,8 @@
+<div class="">
+  <%= link_to notification.actor.email, main_app.user_path(notification.actor) %> ha richiesto di partecipare al viaggio
+  <%= link_to notification.second_target.id, main_app.driver_route_path(notification.user, notification.second_target) %>
+</div>
+
+<div>
+  <%= notification.target.id %>
+</div>

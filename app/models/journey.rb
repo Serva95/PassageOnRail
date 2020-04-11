@@ -23,10 +23,11 @@ class Journey < ApplicationRecord
 		journey.stages.each do |stage|
 			driver = Route.find_driver(stage.route)
 			Notification.create! do |notification|
-				notification.notify_type = "try_to_book"
+				notification.notify_type = "reservation"
 				notification.actor = current_user
 				notification.user = driver
 				notification.target = journey
+				notification.second_target = stage.route
 			end
 		end
 	end
