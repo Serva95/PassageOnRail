@@ -117,9 +117,7 @@
     <div class="col-12 col-12-mobilep"><br></div>
   <%elsif @booked_route == 1 %>
     <%= form_with(model: Chat, local: true, method: "post") do |form| %>
-      <div class="col-12 col-12-mobilep">
-        <%= form.hidden_field :user_2_id, :value => @user.id %>
-      </div>
+      <%= form.hidden_field :user_2_id, :value => @user.id %>
       <div class="col-12 col-12-mobilep">
         <%= form.submit "Chatta con " + @user.nome%>
       </div>

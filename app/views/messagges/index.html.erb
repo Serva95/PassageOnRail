@@ -7,8 +7,16 @@
   </div>
   <div class="col-12 col-12-mobilep"><hr></div>
 
-  <% if @messagges.present?
-       @messagges.each do |messagge| %>
+  <% if @messagges.present?%>
+    <%if @messagges.length == 15 %>
+      <div class="col-4 col-1-mobilep"></div>
+      <div class="col-4 col-10-mobilep">
+        <%= link_to 'Mostra anche i messaggi vecchi', chat_messagges_path(params[:chat_id], limit: "infinite"), class: "button" %>
+      </div>
+      <div class="col-4 col-1-mobilep"></div>
+      <div class="col-12 col-12-mobilep"><br></div>
+    <%end
+      @messagges.each do |messagge| %>
       <%if messagge.user_id == current_user.id %>
         <div class="col-6 col-5-mobilep"></div>
         <div class="col-6 col-7-mobilep">
