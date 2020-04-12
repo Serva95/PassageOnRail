@@ -33,6 +33,7 @@ class ChatsController < ApplicationController
   end
 
   # DELETE /chats/1
+  # fare la destroy per ogni lato della chat
   def destroy
     @chat.destroy
     respond_to do |format|

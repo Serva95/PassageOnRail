@@ -48,7 +48,7 @@
     <%if @user.hitch_hiker_rating==nil %>
       Nessuna valutazione presente!
     <%else %>
-      <%=@user.hitch_hiker_rating%>
+      <%=@user.hitch_hiker_rating.round(2)%>
     <%end %>
   </div>
  <%if @user.id != current_user.id %>
@@ -63,7 +63,7 @@
       <%if ratingDriver==nil %>
         Nessuna valutazione presente!
       <%else %>
-        <%=ratingDriver%>
+        <%=ratingDriver.round(2)%>
       <%end %>
     </div>
     <%if @user.id != current_user.id %>
