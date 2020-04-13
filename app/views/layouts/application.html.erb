@@ -19,6 +19,7 @@
     <nav id="nav">
       <ul>
         <% if user_signed_in? %>
+          <link rel="icon" type="image/png" href="/assets/images/images/car.png">
           <li><%= link_to 'Home', main_app.root_path %></li>
           <li><%= link_to 'Cerca Tratta', main_app.new_search_path %></li>
           <li>
