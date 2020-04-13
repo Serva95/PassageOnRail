@@ -5,10 +5,17 @@ class PayMethodsController < ApplicationController
   # GET /users/:id/payMethods
   def index
     @pay_methods = PayMethods.where('user_id = ?',current_user.id)
+    @scaduti=[]
+    i=0
+    @pay_methods.each do |pay|
+      @scaduti[i] = pay_scaduto(pay)
+      i+=1
+    end
   end
 
   # GET /users/:id/payMethods/:id
   def show
+    @scaduto = pay_scaduto(@pay_method)
   end
 
   # GET /users/:id/payMethods/new
@@ -72,6 +79,18 @@ class PayMethodsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def pay_params
     params.require(:pay_methods).permit(:intestatario, :numero, :mese_scadenza, :anno_scadenza, :cvv, :user_id)
+  end
+
+  def pay_scaduto(pay)
+    time = Time.new
+    anno = pay.anno_scadenza + 2000
+    if anno < time.year
+      return true
+    elsif anno == time.year && pay.mese_scadenza < time.month
+      return true
+    else
+      return false
+    end
   end
 
 end

@@ -12,7 +12,9 @@
   <strong>Scadenza:</strong>
   <%= @pay_method.mese_scadenza%> / <%= @pay_method.anno_scadenza %>
 </p>
-
+<%if @scaduto %>
+  <p class="error">Metodo di pagamento scaduto!</p>
+<% end %>
 
 
 <%= link_to 'Edit', edit_user_pay_method_path(current_user.id, @pay_method.id) %>

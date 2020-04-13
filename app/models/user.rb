@@ -1,6 +1,6 @@
 require 'carrierwave/orm/activerecord'
 
-class UserDOBValidator < ActiveModel::Validator
+class UserValidator < ActiveModel::Validator
   def validate(record)
     if record.data_di_nascita.blank?
       record.errors[:data_di_nascita] << "campo obbligatorio?!"
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates_with UserDOBValidator
+  validates_with UserValidator
 
   mount_uploader :avatar, AvatarUploader
 

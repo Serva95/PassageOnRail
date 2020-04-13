@@ -10,16 +10,23 @@
     <th>Numero Carta</th>
     <th>Intestatario</th>
     <th>scadenza</th>
-    <th colspan="3"></th>
+    <th colspan="4"></th>
   </tr>
   </thead>
 
   <tbody>
+  <%i=0 %>
   <% @pay_methods.each do |pay_method| %>
     <tr>
       <td><%= pay_method.numero %></td>
       <td><%= pay_method.intestatario %></td>
       <td><%= pay_method.mese_scadenza %> / <%= pay_method.anno_scadenza %></td>
+      <%if @scaduti[i] %>
+        <td class="error">Metodo di pagamento scaduto</td>
+      <%else%>
+        <td colspan="1"></td>
+      <% end %>
+      <% i+=1 %>
       <td><%= link_to 'Show', user_pay_method_path(current_user.id, pay_method.id) %></td>
       <td><%= link_to 'Edit', edit_user_pay_method_path(current_user.id, pay_method.id) %></td>
       <td><%= link_to 'Destroy', user_pay_method_path(current_user.id, pay_method.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

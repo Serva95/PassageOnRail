@@ -1,7 +1,7 @@
 <%= form_with model:[@user, @pay_method], local: true, html: {class: "col-12 col-12-narrower"} do |form| %>
   <% if pay_method.errors.any? %>
-    <div id="error_explanation" class="col-12 col-12-narrower">
-      <h2><%= pluralize(pay_method.errors.count, "error") %> ERROR:</h2>
+    <div id="error_explanation" class="col-12 col-12-narrower error">
+      <h2><%= pluralize(pay_method.errors.count, "Error") %>:</h2>
       <ul>
         <% pay_method.errors.full_messages.each do |message| %>
           <li><%= message %></li>

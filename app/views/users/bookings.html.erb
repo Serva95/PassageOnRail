@@ -1,12 +1,10 @@
 <!--Pagina di visualizzazione delle tratte prenotate da utente loggato-->
-<!--<div class="col-12 col-12-narrower">-->
-<!--  <h3>-->
-<!--    <strong>Le tue prenotazioni!</strong>-->
-<!--  </h3>-->
-<!--</div>-->
-<%if @journeys_active.empty? %>
+<!--se non ho tratte attive visualizzo messaggio-->
+<%if @journeys_active.empty?%>
+  <%unless @journeys_past.empty? %>
     <h4 class="col-12 col-12-narrower"> NON HAI NESSUNA TRATTA ATTIVA PRENOTATA!</h4>
-    <div class="col-12 col-12-narrower"><%= link_to 'Cerca Tratte!', search_path%></div>
+    <div class="col-12 col-12-narrower"><%= link_to 'Cerca Tratte!', search_path, class:'button'%></div>
+    <%end %>
 <%else %>
   <table>
     <caption><h3><strong>Prenotazioni Attive</strong></h3></caption>
@@ -18,7 +16,7 @@
       <th>Città di arrivo</th>
       <th>Data e ora arrivo</th>
       <th>Costo</th>
-      <th colspan="1"></th>
+      <th colspan="2"></th>
     </tr>
     </thead>
     <tbody>
@@ -31,6 +29,9 @@
           <td><%= stage.route.citta_arrivo %></td>
           <td><%= stage.route.data_ora_arrivo.strftime("%d/%m/%y, %H:%M") %></td>
           <td><%= stage.route.costo %></td>
+          <%if stage.accepted == nil %>
+            <td class="error">IL DRIVER DEVE ACCETTARE!</td>
+          <%end %>
           <td><%= link_to 'Dettagli', detail_routes_path(multitrip: false, id: stage.route.id, j_id: journey.id)%></td>
         </tr>
       <%end %>
@@ -40,10 +41,17 @@
     <%end %>
     </tbody>
   </table>
+  <br>
+  <div class="col-7 col-0-mobilep"></div>
+  <div class="col-3 col-12-mobilep">
+    <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
+  </div>
 <%end %>
-<%if @journeys_past.empty? %>
-  <h4 class="col-12 col-12-narrower">Non hai tratte passate!</h4>
-<%else %>
+
+<%if @journeys_past.empty? && @journeys_active.empty?%>
+  <h4 class="col-5 col-12-narrower">Non hai mai prenotato una tratta!</h4>
+  <div class="col-3 col-12-narrower"><%= link_to 'Inizia ora!', search_path, class:'button'%></div>
+<%elsif !@journeys_past.empty? %>
 <table>
   <caption><h3><strong>Prenotazioni Passate</strong></h3></caption>
   <thead>
@@ -58,31 +66,33 @@
   </tr>
   </thead>
   <tbody>
-  <%@journeys_past.each do |journey| %>
-    <%journey.stages.each do |stage| %>
-      <tr>
-        <td><%= stage.route.citta_partenza %></td>
-        <td><%= stage.route.luogo_ritrovo %></td>
-        <td><%= stage.route.data_ora_partenza.strftime("%d/%m/%y, %H:%M") %></td>
-        <td><%= stage.route.citta_arrivo %></td>
-        <td><%= stage.route.data_ora_arrivo.strftime("%d/%m/%y, %H:%M") %></td>
-        <td><%= stage.route.costo %></td>
-        <td><%= link_to 'Dettagli', detail_routes_path(:multitrip => false, :id => stage.route.id)%></td>
-      </tr>
-    <%end %>
+  <% @journeys_past.each do |journey|  %>
+    <% journey.stages.each do |stage|  %>
     <tr>
-      <td colspan="7"></td>
+      <td><%=  stage.route.citta_partenza  %></td>
+      <td><%=  stage.route.luogo_ritrovo  %></td>
+      <td><%=  stage.route.data_ora_partenza.strftime("%d/%m/%y, %H:%M")  %></td>
+      <td><%=  stage.route.citta_arrivo  %></td>
+      <td><%=  stage.route.data_ora_arrivo.strftime("%d/%m/%y, %H:%M")  %></td>
+      <td><%=  stage.route.costo  %></td>
+      <td><%=  link_to 'Dettagli', detail_routes_path(:multitrip => false, :id => stage.route.id) %></td>
     </tr>
-  <%end %>
+    <% end  %>
+  <tr>
+    <td colspan="7"></td>
+  </tr>
+  <% end  %>
   </tbody>
 </table>
-  <%end %>
+  <br>
+  <div class="col-7 col-0-mobilep"></div>
+  <div class="col-3 col-12-mobilep">
+    <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
+  </div>
+<%end%>
 
-<br>
-<div class="col-7 col-0-mobilep"></div>
-<div class="col-3 col-12-mobilep">
-  <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
-</div>
+
+
 <div class="col-2 col-12-mobilep">
   <%= link_to 'Back', root_path, class:"button special" %>
 </div>
