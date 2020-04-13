@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get 'detail', action: 'detail', on: :collection
   end
 
+  resources :notifications
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
   get '/users/:id/pay_methods/', to: 'pay_method#index',  as: 'user_pay_methods_index'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_152740) do
+ActiveRecord::Schema.define(version: 2020_04_13_095628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_04_10_152740) do
     t.datetime "open_time_user_1", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "open_time_user_2", precision: 6, null: false
+    t.boolean "deleted_user_1", default: false, null: false
+    t.boolean "deleted_user_2", default: false, null: false
     t.index ["user_1_id"], name: "index_chats_on_user_1_id"
     t.index ["user_2_id"], name: "index_chats_on_user_2_id"
   end

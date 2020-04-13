@@ -7,6 +7,8 @@ module Notifications
       Notification.read!(unread_ids)
 
       @notification_groups = @notifications.group_by { |note| note.created_at.to_date }
+      #
+      #@notifications = Notification.where(user: current_user).unread
     end
 
     def clean
