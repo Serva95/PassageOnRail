@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to new_review_path(user_id: user.id), notice: "Error same user" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       else
-        if !exist && done && @review.save
+        if !exist && done && Review.new_review_transaction(@review)
           format.html { redirect_to reviews_path(user_id: user.id), notice: 'Review was successfully created.' }
           format.json { render :index, status: :created, location: @review }
         elsif exist

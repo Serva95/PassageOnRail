@@ -18,9 +18,9 @@ class Messagge < ApplicationRecord
 	def self.update_open_time(update_time, chat_id, user_id)
 		chat = Chat.find(chat_id)
 		if chat.user_1_id == user_id
-				chat.update_columns(open_time_user_1: update_time)
+			chat.update_columns(open_time_user_1: update_time)
 		else
-				chat.update_columns(open_time_user_2: update_time)
+			chat.update_columns(open_time_user_2: update_time)
 		end
 	end
 
@@ -38,13 +38,17 @@ class Messagge < ApplicationRecord
 		end
 	end
 
-	def self.find_messages(chat_id, user_id)
+	def self.find_messages(chat_id, user_id, limit)
 		exists_one = Chat.exists?(chat_id)
 		if exists_one
 			extract = Chat.find(chat_id)
 			if extract.present?
 				if extract.user_1_id == user_id || extract.user_2_id == user_id
-					query = Messagge.joins(:user, :chat).where("chat_id = ?", chat_id).select("messagges.*","user_1_id","user_2_id").order(data_ora: :asc).last(15)
+					unless limit.nil?
+						query = Messagge.joins(:user, :chat).where("chat_id = ?", chat_id).select("messagges.*","user_1_id","user_2_id").order(data_ora: :asc).last(15)
+					else
+						query = Messagge.joins(:user, :chat).where("chat_id = ?", chat_id).select("messagges.*","user_1_id","user_2_id").order(data_ora: :asc)
+					end
 					#da implementare in futuro se si vuole notifiche una tabella o due campi con datetime di apertura per ogni user
 					#extract.update_column(:opened_at, DateTime.current)
 					return query

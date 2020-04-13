@@ -3,7 +3,12 @@ class MessaggesController < ApplicationController
 
   # GET /messagges
   def index
-    @messagges = Messagge.find_messages(params[:chat_id], current_user.id)
+    if params[:limit].nil?
+      @messagges = Messagge.find_messages(params[:chat_id], current_user.id, 15)
+    else
+      @messagges = Messagge.find_messages(params[:chat_id], current_user.id, nil)
+    end
+
     if !@messagges.nil? && !@messagges.is_a?(String)
       Messagge.update_open_time(DateTime.current, params[:chat_id], current_user.id)
       @chatter = Messagge.find_chatters(params[:chat_id], current_user.id)
@@ -18,10 +23,15 @@ class MessaggesController < ApplicationController
     @messagge.chat_id = params[:chat_id]
     @messagge.user_id = current_user.id
     @chat = Chat.find(params[:chat_id])
+    infinite = params[:limit]
     respond_to do |format|
       if Messagge.new_msg_transaction(@messagge, @messagge.data_ora, @chat, current_user.id)
         @chatter = Messagge.find_chatters(@messagge.chat_id, current_user.id)
-        format.html { redirect_to chat_messagges_path(params[:chat_id])}
+        if infinite.nil?
+          format.html { redirect_to chat_messagges_path(params[:chat_id])}
+        else
+          format.html { redirect_to chat_messagges_path(params[:chat_id], limit: "infinite")}
+        end
         format.json { render :index, status: :created, location: @messagge }
       else
         format.html { redirect_to chat_messagges_path(params[:chat_id]), notice: 'Messagge error' }

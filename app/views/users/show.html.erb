@@ -38,9 +38,9 @@
       <strong>Indirizzo:</strong>
       <%= @user.indirizzo %>
     </h4>
-    <div class="col-12 col-12-mobilep">
-      <%= link_to 'Visualizza i tuoi metodi di pagamento', user_pay_methods_path(@user) , class:'button'%>
-    </div>
+    <h4 class="col-8 col-12-mobilep">
+      <strong><%= link_to 'Visualizza i tuoi metodi di pagamento', user_pay_methods_path(@user)%></strong>
+    </h4>
   <%end %>
   <hr class="col-12 col-12-mobilep">
   <div class="col-6 col-12-narrower">
@@ -48,7 +48,7 @@
     <%if @user.hitch_hiker_rating==nil %>
       Nessuna valutazione presente!
     <%else %>
-      <%=@user.hitch_hiker_rating%>
+      <%=@user.hitch_hiker_rating.round(2)%>
     <%end %>
   </div>
  <%if @user.id != current_user.id %>
@@ -63,7 +63,7 @@
       <%if ratingDriver==nil %>
         Nessuna valutazione presente!
       <%else %>
-        <%=ratingDriver%>
+        <%=ratingDriver.round(2)%>
       <%end %>
     </div>
     <%if @user.id != current_user.id %>

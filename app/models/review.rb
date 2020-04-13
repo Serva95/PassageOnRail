@@ -21,6 +21,15 @@ class Review < ApplicationRecord
   belongs_to :driver
   belongs_to :user
 
+  def self.new_review_transaction(review)
+    ActiveRecord::Base.transaction do
+      review.save!
+      media = Review.where("driver_id = ?", review.driver_id).average(:vote)
+      driver = Driver.find(review.driver_id)
+      driver.update!(rating_medio: media)
+    end
+  end
+
   def self.has_previous_journey_done(user_id, driver_id)
     journeys = Stage.joins(:journey, :route).where('journeys.user_id = ? and routes.driver_id=?', user_id, driver_id).order('routes.data_ora_arrivo')
     if journeys.present?

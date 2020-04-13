@@ -11,6 +11,15 @@ class Rating < ApplicationRecord
 	belongs_to :driver
 	belongs_to :user
 
+	def self.new_rating_transaction(rating)
+		ActiveRecord::Base.transaction do
+			rating.save!
+			media = Rating.where("user_id = ?", rating.user_id).average(:vote)
+			user = User.find(rating.user_id)
+			user.update(hitch_hiker_rating: media)
+		end
+	end
+
 	def self.has_previous_journey_done(user_id, driver_id)
 		journeys = Stage.joins(:journey, :route).where('journeys.user_id = ? and routes.driver_id=?', user_id, driver_id).order('routes.data_ora_arrivo')
 		if journeys.present?

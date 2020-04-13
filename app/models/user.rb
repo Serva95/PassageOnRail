@@ -1,6 +1,6 @@
 require 'carrierwave/orm/activerecord'
 
-class UserDOBValidator < ActiveModel::Validator
+class UserValidator < ActiveModel::Validator
   def validate(record)
     if record.data_di_nascita.blank?
       record.errors[:data_di_nascita] << "campo obbligatorio?!"
@@ -15,14 +15,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates_with UserDOBValidator
+  validates_with UserValidator
 
   mount_uploader :avatar, AvatarUploader
 
-  #recupero il rating medio del driver
   def find_rating_driver
-    driver=Driver.find(self.driver_id)
-    driver.rating_medio
+    Review.where("driver_id = ?", self.driver_id).average(:vote)
+  end
+
+  def find_rating_autostoppista
+    Rating.where("user_id = ?", self.id).average(:vote)
   end
 
   #recupero tutte le tratte singole prenotate dall'utente

@@ -28,7 +28,7 @@ class RatingsController < ApplicationController
         format.html { redirect_to new_rating_path(user_id: @rating.user_id), notice: "Error same user" }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       else
-        if !exist && done && @rating.save
+        if !exist && done && Rating.new_rating_transaction(@rating)
           format.html { redirect_to ratings_path(user_id: @rating.user_id), notice: 'Rating was successfully created.' }
           format.json { render :show, status: :created, location: @rating }
         elsif exist
