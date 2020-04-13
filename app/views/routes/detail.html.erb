@@ -110,6 +110,10 @@
           <%= f_stage.hidden_field :journey_id %>
         <% end %>
         <div class="col-4 col-12-mobilep">
+          <%= f.label :vehicle_id %>
+          <%= f.collection_select(:pay_method_id, PayMethods.where(user_id: current_user.id), :numero, :id) %>
+        </div>
+        <div class="col-4 col-12-mobilep">
           <%= f.submit "Prenota"%>
         </div>
       <% end %>

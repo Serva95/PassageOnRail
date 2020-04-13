@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_095628) do
+ActiveRecord::Schema.define(version: 2020_04_13_155838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_095628) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "n_prenotati"
     t.bigint "user_id"
+    t.bigint "pay_method_id"
+    t.index ["pay_method_id"], name: "index_journeys_on_pay_method_id"
     t.index ["user_id"], name: "index_journeys_on_user_id"
   end
 
@@ -183,6 +185,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_095628) do
 
   add_foreign_key "chats", "users", column: "user_1_id"
   add_foreign_key "chats", "users", column: "user_2_id"
+  add_foreign_key "journeys", "pay_methods"
   add_foreign_key "journeys", "users"
   add_foreign_key "messagges", "chats"
   add_foreign_key "messagges", "users"
