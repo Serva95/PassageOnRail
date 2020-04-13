@@ -1,4 +1,5 @@
-  class NotificationsController < ApplicationController
+module Notifications
+  class NotificationsController < Notifications::ApplicationController
     def index
       #@notifications = notifications.includes(:actor).order('id desc').page(params[:page])
 
@@ -8,6 +9,7 @@
       #@notification_groups = @notifications.group_by { |note| note.created_at.to_date }
       #
       @notifications = Notification.where(user: current_user).unread
+      byebug
     end
 
     def clean
@@ -22,3 +24,4 @@
       Notification.where(user_id: current_user.id)
     end
   end
+end
