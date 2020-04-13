@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount Notifications::Engine => "/notifications"
+  # mount Notifications::Engine => "/notifications"
   devise_for :users, controllers: {sessions:'users/sessions', registrations: 'users/registrations'}
   devise_scope :user do
     get '/user/sign_out', to: 'users/sessions#destroy'
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :routes, only: [] do
     get 'detail', action: 'detail', on: :collection
   end
+
+  resources :notifications
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
