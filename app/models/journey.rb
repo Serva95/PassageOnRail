@@ -26,8 +26,8 @@ class Journey < ApplicationRecord
 				notification.notify_type = "reservation"
 				notification.actor = current_user
 				notification.user = driver
-				notification.target = journey
-				notification.second_target = stage.route
+				notification.target_id = journey.id
+				notification.second_target_id = stage.route.id
 			end
 		end
 	end
