@@ -35,10 +35,14 @@ class ChatsController < ApplicationController
   # DELETE /chats/1
   # fare la destroy per ogni lato della chat
   def destroy
-    @chat.destroy
-    respond_to do |format|
-      format.html { redirect_to chats_url }
-      format.json { head :no_content }
+    if @chat.deleted_user_1 || @chat.deleted_user_2
+      @chat.destroy
+      respond_to do |format|
+        format.html { redirect_to chats_url }
+        format.json { head :no_content }
+      end
+    else
+
     end
   end
 
