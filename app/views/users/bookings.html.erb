@@ -75,7 +75,7 @@
       <td><%=  stage.route.citta_arrivo  %></td>
       <td><%=  stage.route.data_ora_arrivo.strftime("%d/%m/%y, %H:%M")  %></td>
       <td><%=  stage.route.costo  %></td>
-      <td><%=  link_to 'Dettagli', detail_routes_path(:multitrip => false, :id => stage.route.id) %></td>
+      <td><%=  link_to 'Dettagli', detail_routes_path(:multitrip => false, :id => stage.route.id, j_id: journey.id) %></td>
     </tr>
     <% end  %>
   <tr>

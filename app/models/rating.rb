@@ -16,7 +16,7 @@ class Rating < ApplicationRecord
 			rating.save!
 			media = Rating.where("user_id = ?", rating.user_id).average(:vote)
 			user = User.find(rating.user_id)
-			user.update(hitch_hiker_rating: media)
+			user.update!(hitch_hiker_rating: media)
 		end
 	end
 
