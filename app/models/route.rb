@@ -74,4 +74,13 @@ class Route < ApplicationRecord
     User.where(:driver_id => driver_id).first
   end
 
+  def find_pay_method(id)
+    if self.contanti
+      where_clause = 'user_id = ? OR user_id = 0'
+    else
+      where_clause = 'user_id = ?'
+    end
+    PayMethods.where(where_clause, id)
+  end
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_155838) do
+ActiveRecord::Schema.define(version: 2020_04_14_100020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_155838) do
     t.integer "vehicle_id"
     t.integer "tempo_percorrenza"
     t.integer "n_passeggeri", default: 0
+    t.boolean "contanti", default: false, null: false
     t.index ["driver_id"], name: "index_routes_on_driver_id"
     t.index ["vehicle_id"], name: "index_routes_on_vehicle_id"
   end

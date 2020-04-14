@@ -45,6 +45,19 @@
     <%= form.label "Tempo di percorrenza in minuti" %>
     <%= form.number_field :tempo_percorrenza, step: 5 %>
   </div>
+  <% if @route.n_passeggeri != 0 %>
+    <div class="col-4 col-12-mobilep">
+      <label> Tipo Pagamento </label>
+      <%= form.check_box :contanti, :disabled => true %>
+      <%= form.label :contanti, "Accetto Contanti" %>
+    </div>
+  <%else %>
+    <div class="col-4 col-12-mobilep">
+      <label> Tipo Pagamento </label>
+      <%= form.check_box :contanti%>
+      <%= form.label :contanti, "Accetto Contanti" %>
+    </div>
+  <%end %>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label :vehicle_id %>

@@ -41,7 +41,7 @@ class JourneysController < ApplicationController
   end
 
   def journey_params
-    params.require(:journey).permit(:user_id, :n_prenotati, stages_attributes: [:id, :route_id, :journey_id, :accepted])
+    params.require(:journey).permit(:user_id, :n_prenotati, stages_attributes: [:id, :route_id, :journey_id, :accepted, :pay_method_id])
   end
 
   def true?(obj)

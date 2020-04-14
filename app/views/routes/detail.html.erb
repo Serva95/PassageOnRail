@@ -101,19 +101,24 @@
         <p>Ehi, ma sei tu il guidatore!</p>
       <% else %>
         <div class="col-6 col-12-mobilep">
-          <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
+          <%= f.label :pay_method_id, "Metodo di pagamento"%>
+          <%= f.collection_select(:pay_method_id, @route.find_pay_method(current_user.id) , :id, :numero) %>
+          <br/>
         </div>
+        <div class="col-6 col-12-mobilep"></div>
+        <div class="col-6 col-12-mobilep">
+          <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
+          <br/>
+        </div>
+
         <%= f.hidden_field :user_id, :value => current_user.id%>
 
         <%= f.fields_for :stages do |f_stage| %>
           <%= f_stage.hidden_field :route_id %>
           <%= f_stage.hidden_field :journey_id %>
         <% end %>
-        <div class="col-4 col-12-mobilep">
-          <%= f.label :vehicle_id %>
-          <%= f.collection_select(:pay_method_id, PayMethods.where(user_id: current_user.id), :numero, :id) %>
-        </div>
-        <div class="col-4 col-12-mobilep">
+
+        <div class="col-7 col-12-mobilep">
           <%= f.submit "Prenota"%>
         </div>
       <% end %>
