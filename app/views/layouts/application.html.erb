@@ -19,7 +19,10 @@
     <nav id="nav">
       <ul>
         <% if user_signed_in? %>
-          <i class="fas fa-car"></i>
+          <li class= "nav-item btn-group" data-behavior="notifications">
+          <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropDownMenu1" data-toggle="dropdown"><i class="fas fa-car" ><span data-behavior="unread-count"></span></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropDownMenu1" data-behavior="notification-items"></div>
+          </li>
           <li><%= link_to 'Home', main_app.root_path %></li>
           <li><%= link_to 'Cerca Tratta', main_app.new_search_path %></li>
           <li>
