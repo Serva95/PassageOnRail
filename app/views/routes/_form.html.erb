@@ -13,47 +13,47 @@
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Città di partenza" %>
-    <%= form.text_field :citta_partenza %>
+    <%= form.text_field :citta_partenza, :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Luogo di ritrovo" %>
-    <%= form.text_field :luogo_ritrovo %>
+    <%= form.text_field :luogo_ritrovo, :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Data di partenza" %>
-    <%= date_field_tag :data_partenza, value= DateTime.current.strftime("%Y-%m-%d") %>
+    <%= date_field_tag :data_partenza, value= DateTime.current.strftime("%Y-%m-%d"), :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Ora di partenza" %>
-    <%= time_field_tag :ora_partenza, value= DateTime.current.strftime("%H:%M") %>
+    <%= time_field_tag :ora_partenza, value= DateTime.current.strftime("%H:%M"), :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Città di arrivo" %>
-    <%= form.text_field :citta_arrivo %>
+    <%= form.text_field :citta_arrivo, :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Data di arrivo" %>
-    <%= date_field_tag :data_arrivo, value= DateTime.current.strftime("%Y-%m-%d") %>
+    <%= date_field_tag :data_arrivo, value= DateTime.current.strftime("%Y-%m-%d"), :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Ora di arrivo" %>
-    <%= time_field_tag :ora_arrivo, value= DateTime.current.strftime("%H:%M") %>
+    <%= time_field_tag :ora_arrivo, value= DateTime.current.strftime("%H:%M"), :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
   <%= form.label :costo %>
-  <%= form.text_field :costo %>
+  <%= form.text_field :costo, :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Tempo di percorrenza in minuti" %>
-    <%= form.number_field :tempo_percorrenza, step: 5 %>
+    <%= form.number_field :tempo_percorrenza, step: 5, :required => true %>
   </div>
   <% if @route.n_passeggeri != 0 %>
     <div class="col-4 col-12-mobilep">

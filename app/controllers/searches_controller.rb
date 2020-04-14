@@ -4,7 +4,15 @@ class SearchesController < ApplicationController
   end
 
   def create
-    @search = Search.create(search_params)
+    @search = Search.new(search_params)
+    if !params[:data].nil? && !params[:ora].nil?
+      @search.data_ora = params[:data] + " " + params[:ora]
+    elsif !params[:data].nil? && params[:ora].nil?
+      @search.data_ora = params[:data] + " 00:00"
+    elsif !params[:ora].nil? && params[:data].nil?
+      @search.data_ora = Date.current + " " + params[:ora]
+    end
+    @search.save!
     redirect_to @search
   end
 
@@ -19,7 +27,6 @@ class SearchesController < ApplicationController
     @multi_search = search.multi_routes_search(current_user.driver_id,@booked_routes)
     @empty_m = @multi_search.empty?
   end
-
 
   private
 

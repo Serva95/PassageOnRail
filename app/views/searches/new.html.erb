@@ -14,7 +14,10 @@
     </div>
 
     <div class="col-4 col-12-narrower">
-      <%= s.text_field :data_ora, placeholder: "Data e ora di partenza", onfocus: "(this.type='datetime-local')", onblur: "(this.type='text')"  %>
+      <%= text_field_tag :data, placeholder="Data di partenza", onfocus: "(this.type='date')"  %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= text_field_tag :ora, placeholder="Orario di partenza", onfocus: "(this.type='time')"  %>
     </div>
 
     <div class="col-4 col-12-narrower">
