@@ -8,11 +8,11 @@
   <br>
 </div>
 
-<% unless @chat_message.nil? %>
-  <div id="error_explanation" class="col-12 col-12-narrower">
-    <h2 style="color: #B00100"><%=  @chat_message  %></h2>
+<% unless notice.nil? %>
+  <div id="error_explanation" class="col-12 col-12-mobilep">
+    <h2 style="color: #B00100" class="error"><%= notice %></h2>
   </div>
-<%  end %>
+<% end %>
 
 <% if @chats.present? %>
   <% @chats.each do |chat| %>

@@ -3,7 +3,7 @@
 <%if @journeys_active.empty?%>
   <%unless @journeys_past.empty? %>
     <h4 class="col-12 col-12-narrower"> NON HAI NESSUNA TRATTA ATTIVA PRENOTATA!</h4>
-    <div class="col-12 col-12-narrower"><%= link_to 'Cerca Nuove Tratte!', search_path, class:'button'%></div>
+    <div class="col-12 col-12-narrower"><%= link_to 'Cerca Tratte!', search_path, class:'button'%></div>
     <%end %>
 <%else %>
   <table>
@@ -30,13 +30,13 @@
           <td><%= stage.route.data_ora_arrivo.strftime("%d/%m/%y, %H:%M") %></td>
           <td><%= stage.route.costo %></td>
           <%if stage.accepted == nil %>
-            <td class="error">Tratta non ancora accettata</td>
+            <td class="error">IL DRIVER DEVE ACCETTARE!</td>
           <%end %>
           <td><%= link_to 'Dettagli', detail_routes_path(multitrip: false, id: stage.route.id, j_id: journey.id)%></td>
         </tr>
       <%end %>
       <tr>
-        <td colspan="8"></td>
+        <td colspan="7"></td>
       </tr>
     <%end %>
     </tbody>

@@ -1,4 +1,4 @@
-class MessaggeDOBValidator < ActiveModel::Validator
+class MessaggeValidator < ActiveModel::Validator
 	def validate(record)
 		if record.testo.blank?
 			record.errors[:testo] << "Il messaggio non può essere vuoto"
@@ -13,7 +13,7 @@ class Messagge < ApplicationRecord
 	belongs_to :chat, required: true
 	belongs_to :user, required: true
 
-	validates_with (MessaggeDOBValidator)
+	validates_with(MessaggeValidator)
 
 	def self.update_open_time(update_time, chat_id, user_id)
 		chat = Chat.find(chat_id)
@@ -29,11 +29,25 @@ class Messagge < ApplicationRecord
 			ActiveRecord::Base.transaction do
 				msg.save!
 				chat.update!(updated_at: update_time, open_time_user_1: update_time)
+				if chat.deleted_user_1 || chat.deleted_user_2
+					Chat.delete_reset_side(chat, 1, false)
+					Chat.delete_reset_side(chat, 2, false)
+				end
+				after_commit do
+					return true
+				end
 			end
 		else
 			ActiveRecord::Base.transaction do
 				msg.save!
 				chat.update!(updated_at: update_time, open_time_user_2: update_time)
+				if chat.deleted_user_1 || chat.deleted_user_2
+					Chat.delete_reset_side(chat, 2, false)
+					Chat.delete_reset_side(chat, 1, false)
+				end
+				after_commit do
+					return true
+				end
 			end
 		end
 	end
