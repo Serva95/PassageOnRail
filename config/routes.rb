@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     get 'detail', action: 'detail', on: :collection
   end
 
-  resources :notifications
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
