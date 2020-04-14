@@ -61,11 +61,11 @@ class RoutesController < ApplicationController
   # POST /drivers/1/routes
   def create
 	  @route = @driver.routes.build(route_params)
-    #@route.n_passeggeri = 0
-
+    @route.data_ora_partenza = params[:data_partenza] + " " + params[:ora_partenza]
+    @route.data_ora_arrivo = params[:data_arrivo] + " " + params[:ora_arrivo]
     respond_to do |format|
       if @route.save
-        format.html { redirect_to driver_routes_path(@driver), notice: 'Route was successfully created.' }
+        format.html { redirect_to driver_routes_path(@driver) }
         format.json { render :show, status: :created, location: @route }
       else
         format.html { render :new  }
@@ -78,7 +78,7 @@ class RoutesController < ApplicationController
   def update
     respond_to do |format|
       if @route.update(route_params)
-        format.html { redirect_to driver_route_path(@driver), notice: 'Route was successfully updated.' }
+        format.html { redirect_to driver_route_path(@driver) }
         format.json { render :show, status: :ok, location: @route }
       else
         format.html { render :edit }
@@ -91,7 +91,7 @@ class RoutesController < ApplicationController
   def destroy
     @route.destroy
     respond_to do |format|
-      format.html { redirect_to driver_routes_path(@driver), notice: 'Route was successfully destroyed.' }
+      format.html { redirect_to driver_routes_path(@driver) }
       format.json { head :no_content }
     end
   end

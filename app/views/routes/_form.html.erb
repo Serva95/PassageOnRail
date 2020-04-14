@@ -12,28 +12,38 @@
   <% end %>
 
   <div class="col-4 col-12-mobilep">
-    <%= form.label :citta_partenza %>
+    <%= form.label "Città di partenza" %>
     <%= form.text_field :citta_partenza %>
   </div>
 
   <div class="col-4 col-12-mobilep">
-    <%= form.label :luogo_ritrovo %>
+    <%= form.label "Luogo di ritrovo" %>
     <%= form.text_field :luogo_ritrovo %>
   </div>
 
   <div class="col-4 col-12-mobilep">
-    <%= form.label :data_ora_partenza %>
-    <%= form.text_field :data_ora_partenza, onfocus: "(this.type='datetime-local')", onblur: "(this.type='text')"  %>
+    <%= form.label "Data di partenza" %>
+    <%= date_field_tag :data_partenza, value= DateTime.current.strftime("%Y-%m-%d") %>
   </div>
 
   <div class="col-4 col-12-mobilep">
-    <%= form.label :citta_arrivo %>
+    <%= form.label "Ora di partenza" %>
+    <%= time_field_tag :ora_partenza, value= DateTime.current.strftime("%H:%M") %>
+  </div>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label "Città di arrivo" %>
     <%= form.text_field :citta_arrivo %>
   </div>
 
   <div class="col-4 col-12-mobilep">
-    <%= form.label :data_ora_arrivo %>
-    <%= form.text_field :data_ora_arrivo, onfocus: "(this.type='datetime-local')", onblur: "(this.type='text')"  %>
+    <%= form.label "Data di arrivo" %>
+    <%= date_field_tag :data_arrivo, value= DateTime.current.strftime("%Y-%m-%d") %>
+  </div>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label "Ora di arrivo" %>
+    <%= time_field_tag :ora_arrivo, value= DateTime.current.strftime("%H:%M") %>
   </div>
 
   <div class="col-4 col-12-mobilep">
