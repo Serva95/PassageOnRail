@@ -2,7 +2,12 @@ class Notifications
   constructor: ->
     @notifications = $("[data-behavior='notifications']")
     @setup() if @notifications.length > 0
+    @empty() if @notifications.length == 0
 
+  empty: ->
+    items = "<li>
+          <a class='dropdown-item' href=#>Non ci sono notifiche</a>
+      </li>"
 
   setup: ->
     $("[data-behavior='notifications-link']").on "click", @handleClick
