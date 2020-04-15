@@ -25,8 +25,10 @@ class Notifications
   handleSuccess: (data) =>
     console.log(data)
     items = $.map data, (notification) ->
+      if (notification.notify_type == 'reservation')
+        type = 'vuole partecipare al tuo viaggio'
       "<li>
-          <a class='dropdown-item' href='#{notification.url}'>#{notification.actor} #{notification.action} #{notification.target.type}</a>
+          <a class='dropdown-item' href='#{notification.url}'>#{notification.actor} #{type} </a>
       </li>"
 
     $("[data-behavior='unread-count']").text(items.length)
