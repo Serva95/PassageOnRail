@@ -56,6 +56,11 @@
           <%= f_stage.hidden_field :journey_id %>
         <% end %>
       </div>
+      <div class="col-6 col-12-mobilep">
+        <%= f.label :pay_method_id, "Metodo di pagamento"%>
+        <%= f.collection_select(:pay_method_id, @route.find_pay_method(current_user.id) , :id, :numero) %>
+        <br/>
+      </div>
       <div class="col-4 col-12-mobilep">
         <% if @posti1 < @posti2 %>
           <%= f.number_field(:n_prenotati, in: 1.. @posti1, placeholder: "Numero Passeggeri") %>
@@ -63,7 +68,7 @@
           <%= f.number_field(:n_prenotati, in: 1.. @posti2, placeholder: "Numero Passeggeri") %>
         <% end %>
       </div>
-
+      <div class="col-6 col-12-mobilep"></div>
       <div class="col-4 col-12-mobilep">
         <%= f.submit "Prenota"%>
       </div>
