@@ -25,7 +25,9 @@ class Notifications
   handleSuccess: (data) =>
     console.log(data)
     items = $.map data, (notification) ->
-      "<a class='dropdown-item' href='#{notification.url}'>#{notification.actor} #{notification.action} #{notification.target.type}</a>"
+      "<li>
+          <a class='dropdown-item' href='#{notification.url}'>#{notification.actor} #{notification.action} #{notification.target.type}</a>
+      </li>"
 
     $("[data-behavior='unread-count']").text(items.length)
     $("[data-behavior='notification-items']").html(items)
