@@ -20,8 +20,9 @@
       <ul>
         <% if user_signed_in? %>
           <li data-behavior='notifications'>
-            <a data-behavior="notifications-link" id="dropDownMenu1"><i class="fas fa-car"></i><span data-behavior="unread-count"></span></a>
+            <a href="#" data-behavior="notifications-link" id="dropDownMenu1"><i class="fas fa-car"></i>&nbsp;<span data-behavior="unread-count"></span></a>
             <ul>
+              <div class="dropdown-menu" aria-labelledby="dropDownMenu1" data-behavior="notification-items"></div>
               <li>ciao</li>
             </ul>
           </li>
@@ -85,6 +86,7 @@
 <%= javascript_include_tag 'breakpoints.min.js' %>
 <%= javascript_include_tag 'util.js' %>
 <%= javascript_include_tag 'main.js' %>
+<%= javascript_include_tag 'notifications' %>
 
 </body>
 </html>
