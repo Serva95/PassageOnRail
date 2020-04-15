@@ -16,7 +16,8 @@
       <th>Città di arrivo</th>
       <th>Data e ora arrivo</th>
       <th>Costo</th>
-      <th colspan="2"></th>
+      <th>Accettato</th>
+      <th>Pagato</th>
     </tr>
     </thead>
     <tbody>
@@ -30,13 +31,32 @@
           <td><%= stage.route.data_ora_arrivo.strftime("%d/%m/%y, %H:%M") %></td>
           <td><%= stage.route.costo %></td>
           <%if stage.accepted == nil %>
-            <td class="error">IL DRIVER DEVE ACCETTARE!</td>
+            <td>
+              <input type="checkbox" name="accettato" value="true" disabled="disabled">
+              <label for="accettato"></label>
+            </td>
+          <%elsif stage.accepted %>
+            <td>
+              <input type="checkbox" name="accettato" value="true" checked="checked" disabled="disabled">
+              <label for="accettato"></label>
+            </td>
+          <%end %>
+          <%if journey.pay_method_id==nil %>
+            <td>
+              <input type="checkbox" name="pagato" value="true" disabled="disabled">
+              <label for="pagato"></label>
+            </td>
+          <%else %>
+            <td>
+              <input type="checkbox" name="pagato" checked="checked" disabled="disabled">
+              <label for="pagato"></label>
+            </td>
           <%end %>
           <td><%= link_to 'Dettagli', detail_routes_path(multitrip: false, id: stage.route.id, j_id: journey.id)%></td>
         </tr>
       <%end %>
       <tr>
-        <td colspan="7"></td>
+        <td colspan="8"></td>
       </tr>
     <%end %>
     </tbody>
