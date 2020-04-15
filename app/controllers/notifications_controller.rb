@@ -12,12 +12,9 @@
 
     # POST
     def mark_as_read
-      byebug
       @notifications = Notification.where(user: current_user).unread
       @notifications.update_all(read_at: Time.zone.now)
       render json: {success: true}
-      redirect_to driver_route_path(@notifications.user)
-
     end
 
     def clean

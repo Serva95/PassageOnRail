@@ -2,6 +2,12 @@ class Notifications
   constructor: ->
     @notifications = $("[data-behavior='notifications']")
     @setup() if @notifications.length > 0
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
 
 
   empty: ->
@@ -39,14 +45,12 @@ class Notifications
         if (notification.notify_type == 'reservation')
           type = 'vuole partecipare al tuo viaggio'
         "<li>
-           <a class='dropdown-item' href='#' onclick='@handleClick()'>#{notification.actor} #{type} </a>
+           <a class='dropdown-item' href='#' url=notification.url data-behavior='notifications-link'>#{notification.actor} #{type} </a>
         </li>"
 
       $("[data-behavior='unread-count']").text(items.length)
       $("[data-behavior='notification-items']").html(items)
-      console.log(items)
-      #items.each(
-       # $("[data-behavior='notifications-link']").on "click", @handleClick)
+      $("[data-behavior='notifications-link']").on "click", @handleClick()
 
 jQuery ->
   new Notifications
