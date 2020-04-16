@@ -31,7 +31,7 @@
             <a href="#" class="icon solid fa-angle-down">Welcome <%= current_user.nome %></a>
             <ul>
               <li><%= link_to 'Il tuo profilo', main_app.user_path(current_user.id)%></li>
-              <li><%= link_to 'Le tue chat', main_app.chats_path%></li>
+              <li><%= link_to raw('Le tue chat<i notification-chat="chats" id="chatDropdown"></i>'), main_app.chats_path%></li>
               <li><%= link_to 'Le tue prenotazioni', main_app.user_bookings_path(current_user.id)%></li>
               <%if current_user.driver_id? %>
                 <li><%= link_to 'Le tue tratte',  main_app.driver_routes_path(current_user.driver_id)%></li>
@@ -79,13 +79,14 @@
 
 <!-- Scripts -->
 <%= javascript_include_tag 'jquery.min.js' %>
+<%= javascript_include_tag 'notifications' %>
+<%= javascript_include_tag 'newmessage' %>
 <%= javascript_include_tag 'jquery.dropotron.min.js' %>
 <%= javascript_include_tag 'jquery.scrollex.min.js' %>
 <%= javascript_include_tag 'browser.min.js' %>
 <%= javascript_include_tag 'breakpoints.min.js' %>
 <%= javascript_include_tag 'util.js' %>
 <%= javascript_include_tag 'main.js' %>
-<%= javascript_include_tag 'notifications' %>
 
 </body>
 </html>

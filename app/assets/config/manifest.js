@@ -10,3 +10,4 @@
 //= link 'util.js'
 //= link 'main.js'
 //= link 'notifications.js'
+//= link 'newmessage.js'

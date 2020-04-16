@@ -1,34 +1,39 @@
 (function($) {
 
-	/**
-	 * Generate an indented list of links from a nav. Meant for use with panel().
-	 * @return {jQuery} jQuery object.
-	 */
-	$.fn.navList = function() {
 
-		var	$this = $(this);
-			$a = $this.find('a'),
-			b = [];
+    /**
+     * Generate an indented list of links from a nav. Meant for use with panel().
+     * @return {jQuery} jQuery object.
+     */
+    $.fn.navList = function() {
 
-		$a.each(function() {
+        var	$this = $(this);
+        $a = $this.find('a'),
+            b = [];
+        var $idcount = 0;
 
-			var	$this = $(this),
-				indent = Math.max(0, $this.parents('li').length - 1),
-				href = $this.attr('href'),
-				target = $this.attr('target');
+        $a.each(function() {
 
-			b.push(
-				'<a ' +
-					'class="link depth-' + indent + '"' +
-					( (typeof target !== 'undefined' && target != '') ? ' target="' + target + '"' : '') +
-					( (typeof href !== 'undefined' && href != '') ? ' href="' + href + '"' : '') +
-				'>' +
-					'<span class="indent-' + indent + '"></span>' +
-					$this.text() +
-				'</a>'
-			);
+            var	$this = $(this),
+                indent = Math.max(0, $this.parents('li').length - 1),
+                href = $this.attr('href'),
+                target = $this.attr('target');
 
-		});
+            b.push(
+                '<a ' +
+                'id="mobileMenu' + $idcount + '"' +
+                'class="link depth-' + indent + '"' +
+                ( (typeof target !== 'undefined' && target != '') ? ' target="' + target + '"' : '') +
+                ( (typeof href !== 'undefined' && href != '') ? ' href="' + href + '"' : '') +
+                '>' +
+                '<span class="indent-' + indent + '"></span>' +
+                $this.html() +
+                '</a>'
+            );
+
+            $idcount++;
+
+        });
 
 		return b.join('');
 
