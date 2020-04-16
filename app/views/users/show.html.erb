@@ -51,11 +51,11 @@
       <%=@user.hitch_hiker_rating.round(2)%>
     <%end %>
   </div>
- <%if @user.id != current_user.id %>
+
   <div class="col-6 col-12-narrower">
-    <%= link_to 'Guarda i voti di questo autostoppista', ratings_path(user_id: @user.id), class:'button' %>
+    <%= link_to 'Guarda i voti di ' + @user.nome + ' da autostoppista', ratings_path(user_id: @user.id), class:'button' %>
   </div>
-    <%end %>
+
   <%if @user.driver_id? %>
     <div class="col-6 col-12-narrower">
       <h4><strong>Rating medio Automobilista</strong></h4>
@@ -66,13 +66,23 @@
         <%=ratingDriver.round(2)%>
       <%end %>
     </div>
-    <%if @user.id != current_user.id %>
+
     <div class="col-6 col-12-narrower">
-      <%= link_to 'Guarda le recensioni di questo guidatore', reviews_path(user_id: @user.id), class:'button' %>
+      <%= link_to 'Guarda le recensioni di ' + @user.nome + ' da guidatore', reviews_path(user_id: @user.id), class:'button' %>
     </div>
-  <%end%>
+
   <%end%>
 </div>
+<%if @user.id != current_user.id %>
+  <div class="col-12 col-12-mobilep"><br></div>
+  <%= form_with(model: Chat, local: true, method: "post") do |form| %>
+    <%= form.hidden_field :user_2_id, :value => @user.id %>
+    <div class="col-12 col-12-mobilep">
+      <%= form.submit "Chatta con " + @user.nome%>
+    </div>
+  <%end
+end%>
+
 <hr class="col-12 col-12-mobilep">
 <%if @user.id == current_user.id %>
   <div class="col-7 col-0-mobilep"></div>

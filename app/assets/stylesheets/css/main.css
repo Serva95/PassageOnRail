@@ -12,10 +12,12 @@
 /*fine chat*/
 
 /*per icone nere*/
-.black {
-    color: black;
-}
+.black {color: black;}
 /*fine icone nere*/
+
+/*per icone blu*/
+.blu {color: blue;}
+/*fine icone blu*/
 
 /*info box up*/
 .info {

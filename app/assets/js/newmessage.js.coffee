@@ -12,7 +12,7 @@ class Newmessage
     )
 
   handleSuccess: (data) =>
-    $notify = '&nbsp;&nbsp;&nbsp;<i class="far fa-comment-dots" title="Nuovo messaggio in questa chat"></i>'
+    $notify = '&nbsp;&nbsp;&nbsp;<i class="fas fa-circle blu" title="Nuovo messaggio in questa chat"></i>'
     if data.length == 0
     else
       $actual = $('[notification-chat="chats"]').html($notify)

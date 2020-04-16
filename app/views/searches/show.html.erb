@@ -1,14 +1,9 @@
 <p><%= link_to 'Back', new_search_path , class: "button icon solid fa-chevron-left"%></p>
 
-
-
-
 <% if @empty_s %>
-
   <div class="col-12 col-12-narrower">
-  <p>Oh no, non sembrano esserci tratte dirette con questi requisiti :( </p>
+    <p>Oh no, non sembrano esserci tratte dirette con questi requisiti :( </p>
   </div>
-
 <%else %>
 
   <div class="col-12 col-12-narrower">
@@ -17,88 +12,87 @@
     </h2>
   </div>
 
-  <table>
-    <thead>
-    <tr>
-      <th>Città di partenza</th>
-      <th>Luogo di ritrovo</th>
-      <th>Data e ora di partenza</th>
-      <th>Città di arrivo</th>
-      <th>Tempo di percorrenza</th>
-      <th>Costo</th>
-      <th>Comfort</th>
-      <th>Rating guidatore</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
-
-    <tbody>
-  <% @single_search.each do |c| %>
+  <div class="col-12 col-12-mobilep" style="overflow: auto;">
+    <table>
+      <thead>
       <tr>
-        <td><%= c.citta_partenza %></td>
-        <td><%= c.luogo_ritrovo %></td>
-        <td><%= c.data_ora_partenza.strftime("%d/%m/%y %R") %></td>
-        <td><%= c.citta_arrivo %></td>
-        <td><%= c.ore %> ore <%=c.min %> minuti</td>
-        <td><%= c.costo %></td>
-        <td><%= c.comfort %></td>
-        <td><%= c.rating_medio %></td>
-        <td><%= link_to "Dettagli", detail_routes_path(:multitrip => false, :id => c.id), class: "button"%></td>
-       </tr>
-    <% end %>
-    </tbody>
-  </table>
+        <th>Città di partenza</th>
+        <th>Luogo di ritrovo</th>
+        <th>Data e ora di partenza</th>
+        <th>Città di arrivo</th>
+        <th>Tempo di percorrenza</th>
+        <th>Costo</th>
+        <th>Comfort</th>
+        <th>Rating guidatore</th>
+        <th colspan="3"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @single_search.each do |c| %>
+        <tr>
+          <td><%= c.citta_partenza %></td>
+          <td><%= c.luogo_ritrovo %></td>
+          <td><%= c.data_ora_partenza.strftime("%d/%m/%y %R") %></td>
+          <td><%= c.citta_arrivo %></td>
+          <td><%= c.ore %> ore <%=c.min %> minuti</td>
+          <td><%= c.costo %></td>
+          <td><%= c.comfort %></td>
+          <td><%= c.rating_medio %></td>
+          <td><%= link_to "Dettagli", detail_routes_path(:multitrip => false, :id => c.id), class: "button"%></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 
 <% end %>
 
 <% if !@hide %>
-
-<% if @empty_m %>
-
+  <% if @empty_m %>
     <div class="col-12 col-12-narrower">
-  <p>Oh no! Non sono disponibili viaggi multi tratta :(</p>
+      <p>Oh no! Non sono disponibili viaggi multi tratta :(</p>
     </div>
-
-<%else %>
-
+  <%else %>
     <div class="col-12 col-12-narrower">
       <h3>
         <strong>Abbiamo trovato anche tratte indirette per la tua meta! Guarda qui: </strong>
       </h3>
     </div>
 
-  <table>
-    <thead>
-    <tr>
-      <th>Città di partenza</th>
-      <th>Data e ora di partenza</th>
-      <th>Tappa intermedia</th>
-      <th>Città di arrivo</th>
-      <th>Costo totale</th>
-      <th>Durata complessiva</th>
-      <th>Comfort</th>
-      <th>Rating guidatori</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
+    <div class="col-12 col-12-mobilep" style="overflow: auto;">
+      <table>
+        <thead>
+        <tr>
+          <th>Città di partenza</th>
+          <th>Data e ora di partenza</th>
+          <th>Tappa intermedia</th>
+          <th>Città di arrivo</th>
+          <th>Costo totale</th>
+          <th>Durata complessiva</th>
+          <th>Comfort</th>
+          <th>Rating guidatori</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
 
-    <tbody>
-    <% @multi_search.each do |c| %>
-      <tr>
-        <td><%= c.c_part %></td>
-        <td><%= c.part.strftime("%d/%m/%y %R") %></td>
-        <td><%= c.tappa %></td>
-        <td><%= c.c_arr %></td>
-        <td><%= c.c_tot %></td>
-        <td><%= c.ore %> ore <%= c.min % 60 %> minuti</td>
-        <td><%= c.comfort_medio %></td>
-        <td><%= c.rat %></td>
-        <td><%= link_to "Dettagli", detail_routes_path(:multitrip => true, :id1 => c.id1, :id2 => c.id2), class: "button"%></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+        <tbody>
+        <% @multi_search.each do |c| %>
+          <tr>
+            <td><%= c.c_part %></td>
+            <td><%= c.part.strftime("%d/%m/%y %R") %></td>
+            <td><%= c.tappa %></td>
+            <td><%= c.c_arr %></td>
+            <td><%= c.c_tot %></td>
+            <td><%= c.ore %> ore <%= c.min % 60 %> minuti</td>
+            <td><%= c.comfort_medio %></td>
+            <td><%= c.rat %></td>
+            <td><%= link_to "Dettagli", detail_routes_path(:multitrip => true, :id1 => c.id1, :id2 => c.id2), class: "button"%></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<% end %>
-
-<% end %>
+  <% end
+ end %>
