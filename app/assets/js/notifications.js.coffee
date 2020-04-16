@@ -32,6 +32,7 @@ class Notifications
       url: "/notifications/mark_as_read"
       dataType: "JSON"
       method: "POST"
+      data: {id: e}
       success: ->
         $("[data-behavior='unread-count']").text(0)
     )
@@ -44,13 +45,13 @@ class Notifications
       items = $.map data, (notification) ->
         if (notification.notify_type == 'reservation')
           type = 'vuole partecipare al tuo viaggio'
-        "<li>
-           <a class='dropdown-item' href='#' url=notification.url data-behavior='notifications-link'>#{notification.actor} #{type} </a>
+        "<li >
+           <a class='dropdown-item' href='#{notification.url}' id=#{notification.id} data-behavior=\"notifications-link\">#{notification.actor} #{type} </a>
         </li>"
 
       $("[data-behavior='unread-count']").text(items.length)
       $("[data-behavior='notification-items']").html(items)
-      $("[data-behavior='notifications-link']").on "click", @handleClick()
+      $("[data-behavior='notifications-link']").on("click",(event) => this.handleClick(event.target.id))
 
 jQuery ->
   new Notifications

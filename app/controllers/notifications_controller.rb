@@ -12,7 +12,7 @@
 
     # POST
     def mark_as_read
-      @notifications = Notification.where(user: current_user).unread
+      @notifications = Notification.where(user: current_user, id: params[:id]).unread
       @notifications.update_all(read_at: Time.zone.now)
       render json: {success: true}
     end
