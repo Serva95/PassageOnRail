@@ -20,7 +20,8 @@ class JourneysController < ApplicationController
   end
 
   def edit
-    @journey = Journey.find_stage(params[:id], current_user.driver_id)
+    @journeys = Journey.find_stage(params[:id], current_user.driver_id)
+
   end
 
   def update

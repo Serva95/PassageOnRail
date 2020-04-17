@@ -1,4 +1,12 @@
 <h1>Ciao :3 </h1>
+<% @journeys.each do |journey|%>
+  <%= journey.id %>
+  <% journey.stages.each do |stage| %>
+    <%= stage.id %>
+    <%= stage.route.driver_id %>
+  <%end %>
+<% end %>
+
 <!--
 <render 'form', passenger_association: @passenger_association %>
 
