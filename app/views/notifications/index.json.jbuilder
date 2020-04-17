@@ -6,5 +6,5 @@ json.array! @notifications do |notification|
   json.target do #notification.target
     json.type "a #{notification.target.class.to_s.underscore}"
   end
-  json.url driver_route_path(notification.user, notification.second_target)
+  json.url edit_driver_journey_path(notification.user, notification.target)
 end

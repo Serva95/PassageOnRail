@@ -19,6 +19,24 @@ class JourneysController < ApplicationController
     end
   end
 
+  def edit
+    @journey = Journey.find_stage(params[:id], current_user.driver_id)
+  end
+
+  def update
+    respond_to do |format|
+      if @vehicle.update(vehicle_params)
+        format.html { redirect_to driver_vehicles_path(@driver), notice: 'Vehicle was successfully updated.' }
+        format.json { render :show, status: :ok, location: @vehicle }
+      else
+        format.html { render :edit }
+        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+
   # DELETE /journeys/1
   # fare l'eliminazione del viaggio solo 48 ore prima, oppure sempre se ci sono modifiche da parte del guidatore
   def destroy

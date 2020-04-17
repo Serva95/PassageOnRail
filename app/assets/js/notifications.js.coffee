@@ -53,5 +53,6 @@ class Notifications
       $("[data-behavior='notification-items']").html(items)
       $("[data-behavior='notifications-link']").on("click",(event) => this.handleClick(event.target.id))
 
+
 jQuery ->
   new Notifications

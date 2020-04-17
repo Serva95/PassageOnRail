@@ -45,6 +45,11 @@ class Journey < ApplicationRecord
 		end
 	end
 
+	def self.find_stage(journey_id, driver_id)
+		journey = Journey.find(journey_id)
+		journey.stages.route.where('driver_id = ?', driver_id)
+	end
+
 	def self.journey_is_deletable(route)
 		if route.data_ora_partenza - 2.day > DateTime.current
 			true
