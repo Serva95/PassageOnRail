@@ -1,6 +1,11 @@
 class SearchesController < ApplicationController
   def new
     @search = Search.new
+    if ((c_part = params['c_part']).present? && (c_arr = params['c_arr']).present? && (data_ora = params['data_ora']).present?)
+      @c_part = c_part
+      @c_arr = c_arr
+      @data = data_ora.to_date
+    end
   end
 
   def create
