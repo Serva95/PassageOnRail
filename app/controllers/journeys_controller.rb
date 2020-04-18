@@ -20,13 +20,20 @@ class JourneysController < ApplicationController
   end
 
   def edit
-    @journeys = Journey.find_stage(params[:id], current_user.driver_id)
 
+    @journeys = Journey.find_stage(params[:id], current_user.driver_id, params[:route])
+    @journey = @journeys.first
   end
 
   def update
     respond_to do |format|
-      if @vehicle.update(vehicle_params)
+      if accepting?
+        accept = true
+      elsif refusing?
+        accept = false
+      end
+
+      if @journey.update(journey_params, stages: {accepted: accept } )
         format.html { redirect_to driver_vehicles_path(@driver), notice: 'Vehicle was successfully updated.' }
         format.json { render :show, status: :ok, location: @vehicle }
       else
@@ -65,5 +72,13 @@ class JourneysController < ApplicationController
 
   def true?(obj)
     obj.to_s.downcase == "true"
+  end
+
+  def accepting?
+    params[:commit] == "Accetta"
+  end
+
+  def refusing?
+    params[:commit] == "Rifiuta"
   end
 end
