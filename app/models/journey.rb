@@ -45,10 +45,8 @@ class Journey < ApplicationRecord
 		end
 	end
 
-	def self.find_stage(journey_id, driver_id)
-		#journey = Journey.find(journey_id)
-		Journey.includes("stages", "routes").where(id: journey_id, routes: {driver_id: driver_id})
-			#journey.stages.joins(:route).where('routes.driver_id= ?', driver_id)
+	def self.find_stage(journey_id, driver_id, route_id)
+		Journey.includes("stages", "routes").where(id: journey_id, routes: {id: route_id, driver_id: driver_id})
 	end
 
 	def self.journey_is_deletable(route)

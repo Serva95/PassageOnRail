@@ -1,10 +1,29 @@
 <h1>Ciao :3 </h1>
-<% @journeys.each do |journey|%>
-  <%= journey.id %>
-  <% journey.stages.each do |stage| %>
+
+  <%= @journey.id %>
+  <% @journey.stages.each do |stage| %>
     <%= stage.id %>
     <%= stage.route.driver_id %>
   <%end %>
+
+
+<%= form_with(model: @journey, local: true) do |form| %>
+  <% if @journey.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@journey.errors.count, "error") %> prohibited this passenger_association from being saved:</h2>
+
+      <ul>
+        <% @journey.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Accetta", class: "btn btn-outline-success" %>
+    <%= form.submit "Rifiuta", class: "btn btn-outline-danger" %>
+  </div>
 <% end %>
 
 <!--
