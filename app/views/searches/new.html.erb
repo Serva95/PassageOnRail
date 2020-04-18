@@ -6,39 +6,46 @@
   <div class="row gtr-uniform">
 
     <div class="col-4 col-12-narrower">
+      Città di partenza
       <%= s.text_field :c_partenza, :required => true, :value=>@c_part, placeholder: "Città di partenza" %>
     </div>
 
     <div class="col-4 col-12-narrower">
+      Città di arrivo
       <%= s.text_field :c_arrivo, :required => true, :value=>@c_arr,placeholder: "Città di arrivo" %>
     </div>
 
     <div class="col-4 col-12-narrower">
-      <%= text_field_tag :data, placeholder="Data di partenza",:value=>@data, onfocus: "(this.type='date')"  %>
+      Data di partenza
+      <%= date_field_tag :data%>
     </div>
     <div class="col-4 col-12-narrower">
-      <%= text_field_tag :ora, placeholder="Orario di partenza", onfocus: "(this.type='time')"  %>
+      Orario di partenza
+      <%= time_field_tag :ora%>
     </div>
 
     <div class="col-4 col-12-narrower">
+      Rating automobilista
       <%= s.number_field :rating, placeholder: "Rating automobilista" %>
     </div>
 
     <div class="col-4 col-12-narrower">
+      Costo massimo
       <%= s.number_field :costo, placeholder: "Costo massimo" %>
     </div>
 
     <div class="col-4 col-12-narrower">
+      Comfort minimo
       <%= s.number_field :comfort , placeholder: "Comfort minimo" %>
     </div>
 
     <div class="col-4 col-12-narrower">
-      <%= s.label :tipo_mezzo, "Tipo di mezzo" %>
+     Tipo di mezzo
       <%= s.collection_select :tipo_mezzo, Vehicle::TIPI, :to_s, :to_s %>
     </div>
 
     <div class="col-4 col-12-narrower">
-      <%= s.label :'Ordina per' %>
+      Ordina per
       <%= s.select :sort_attribute, ['Costo','Comfort','Tempo di percorrenza'] %>
       <%= s.select :sort_order, ['Crescente','Decrescente'] %>
     </div>
