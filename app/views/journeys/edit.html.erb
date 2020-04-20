@@ -20,6 +20,11 @@
     </div>
   < end %-->
 
+  <%= form.fields_for :stages do |f_stage| %>
+    <%= f_stage.hidden_field :route_id %>
+    <%= f_stage.hidden_field :journey_id %>
+  <% end %>
+
   <div class="actions">
     <%= form.submit "Accetta", class: "btn btn-outline-success" %>
     <%= form.submit "Rifiuta", class: "btn btn-outline-danger" %>

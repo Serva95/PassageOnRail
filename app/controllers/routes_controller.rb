@@ -78,6 +78,9 @@ class RoutesController < ApplicationController
   # PATCH/PUT /drivers/1/routes/1
   def update
     respond_to do |format|
+      @route.data_ora_partenza = params[:data_partenza] + " " + params[:ora_partenza]
+      @route.data_ora_arrivo = params[:data_arrivo] + " " + params[:ora_arrivo]
+      @route.tempo_percorrenza = ((@route.data_ora_arrivo - @route.data_ora_partenza).to_i)/60
       if @route.update(route_params)
         format.html { redirect_to driver_route_path(@driver) }
         format.json { render :show, status: :ok, location: @route }
@@ -90,6 +93,7 @@ class RoutesController < ApplicationController
 
   # DELETE /drivers/1/routes/1
   def destroy
+    byebug
     @route.destroy
     respond_to do |format|
       format.html { redirect_to driver_routes_path(@driver) }

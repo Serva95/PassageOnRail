@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     get 'confirm_destroy', to: 'drivers#confirm_destroy', as: 'confirm_destroy'
     resources :vehicles
     resources :routes
-    resources :journeys, only: [:update, :edit]
+    resources :journeys, only: [:edit, :update]
+    resources :stages, only: :update
   end
   resources :stages, only: :create
   resources :chats, only: [:index, :create, :destroy] do

@@ -1,7 +1,6 @@
 class JourneysController < ApplicationController
   before_action :set_journey, only: [:destroy]
-  before_action :get_driver, only: 
-  before_action :set_driver_journey, only: [:show, :edit, :update, :destroy]
+  before_action :get_driver_journey, only: [:edit, :update]
 
   # POST /journey
   def create
@@ -25,6 +24,7 @@ class JourneysController < ApplicationController
   def edit
     @journeys = Journey.find_stage(params[:id], current_user.driver_id, params[:route])
     @journey = @journeys.first
+
   end
 
   #PATCH /drivers/1/journeys/1/edit?route_id = 14
@@ -36,7 +36,12 @@ class JourneysController < ApplicationController
         accept = false
       end
 
-      if @journey.update(journey_params, stages: {accepted: accept } )
+
+      @journeys = Journey.find_stage(params[:id], current_user.driver_id, params[:journey][:stages_attributes]["0"][:route_id])
+      @journey = @journeys.first
+      @stage = @journey.stages.first
+
+      if @stage.update(accepted: accept)
         if accepting?
           Journey.create_notifications_th(@journey, current_user, "accepted")
         elsif refusing?
@@ -72,6 +77,10 @@ class JourneysController < ApplicationController
   private
   def set_journey
     @journey = Journey.find(params[:id])
+  end
+
+  def get_driver_journey
+    @driver = Driver.find(params[:driver_id])
   end
 
   def journey_params

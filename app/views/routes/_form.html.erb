@@ -23,12 +23,12 @@
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Data di partenza" %>
-    <%= date_field_tag :data_partenza, value= DateTime.current.strftime("%Y-%m-%d"), :required => true %>
+    <%= date_field_tag :data_partenza, :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Ora di partenza" %>
-    <%= time_field_tag :ora_partenza, value= DateTime.current.strftime("%H:%M"), :required => true %>
+    <%= time_field_tag :ora_partenza,  :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
@@ -38,12 +38,12 @@
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Data di arrivo" %>
-    <%= date_field_tag :data_arrivo, value= DateTime.current.strftime("%Y-%m-%d"), :required => true %>
+    <%= date_field_tag :data_arrivo,  :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Ora di arrivo" %>
-    <%= time_field_tag :ora_arrivo, value= DateTime.current.strftime("%H:%M"), :required => true %>
+    <%= time_field_tag :ora_arrivo,  :required => true %>
   </div>
 
   <div class="col-4 col-12-mobilep">

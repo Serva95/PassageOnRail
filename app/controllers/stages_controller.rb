@@ -1,59 +1,46 @@
 class StagesController < ApplicationController
-  before_action :set_multi_trip_association, only: [:update, :destroy]
+  before_action :set_stage, only: [:update]
+  before_action :get_driver, only: [:update]
 
-  # GET /multi_trip_associations
-  def index
-    @multi_trip_associations = MultiTripAssociation.all
-  end
-
-  # GET /multi_trip_associations/new
-  def new
-    @multi_trip_association = MultiTripAssociation.new
-  end
-
-  # POST /multi_trip_associations
-  def create
-    @multi_trip_association = MultiTripAssociation.new(multi_trip_association_params)
-
-    respond_to do |format|
-      if @multi_trip_association.save
-        format.html { redirect_to @multi_trip_association, notice: 'Multi trip association was successfully created.' }
-        format.json { render :show, status: :created, location: @multi_trip_association }
-      else
-        format.html { render :new }
-        format.json { render json: @multi_trip_association.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /multi_trip_associations/1
+  # PATCH/PUT /drivers/1/stages/1
   def update
     respond_to do |format|
-      if @multi_trip_association.update(multi_trip_association_params)
-        format.html { redirect_to @multi_trip_association, notice: 'Multi trip association was successfully updated.' }
-        format.json { render :show, status: :ok, location: @multi_trip_association }
+      if accepting?
+        accept = true
+      elsif refusing?
+        accept = false
+      end
+
+      if @stage.update(stage_params, stages: {accepted: accept })
+
+        if accepting?
+          Journey.create_notifications_th(@journey, current_user, "accepted")
+        elsif refusing?
+          Journey.create_notifications_th(@journey, current_user, "rejected")
+        end
+
+        format.html { redirect_to root_path, notice: 'ottimo' }
+        format.json { render :show, status: :ok, location: @stage }
       else
         format.html { render :edit }
-        format.json { render json: @multi_trip_association.errors, status: :unprocessable_entity }
+        format.json { render json: @stage.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /multi_trip_associations/1
-  def destroy
-    @multi_trip_association.destroy
-    respond_to do |format|
-      format.html { redirect_to multi_trip_associations_url, notice: 'Multi trip association was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
-    def set_multi_trip_association
-      @multi_trip_association = Stage.find(params[:id])
+    def set_stage
+      @stage = Stage.find(params[:id])
     end
 
-    def multi_trip_association_params
-      params.fetch(:stage, {})
+    def get_driver_journey
+      @driver = Driver.find(params[:driver_id])
     end
+
+    def stage_params
+      params.require(:stage).permit(:id, :route_id, :journey_id, :accepted, :pay_method_id)
+    end
+
+
 end
