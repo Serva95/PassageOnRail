@@ -79,6 +79,10 @@ class RoutesController < ApplicationController
   def update
     respond_to do |format|
       if @route.update(route_params)
+        @journeys = Route.find_journeys(params[:id])
+        @journeys.each do |journey|
+          Journey.create_notifications_th(journey,current_user,"updated")
+        end
         format.html { redirect_to driver_route_path(@driver) }
         format.json { render :show, status: :ok, location: @route }
       else

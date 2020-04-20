@@ -37,6 +37,10 @@ class Route < ApplicationRecord
     v - r.first.n_passeggeri
   end
 
+  def self.find_journeys(route_id)
+    journeys = Journey.joins(:stages).where("route_id = ?", route_id)
+  end
+
   def self.already_booked(route_id,hitch_hiker_id)
     stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? AND accepted IS TRUE", route_id,hitch_hiker_id)
     if !stages.empty? #ci sono tratte prenotate da quell'utente (già accettate)
