@@ -51,6 +51,8 @@ class Notifications
           type = 'non ha accettato il tuo viaggio :('
         if (notification.notify_type == 'updated')
           type = 'ha modificato il viaggio'
+        if (notification.notify_type == 'deleted')
+          type = 'ha annullato il viaggio'
         "<li >
            <a class='dropdown-item' href='#{notification.url}' id=#{notification.id} data-behavior=\"notifications-link\">#{notification.actor} #{type} </a>
         </li>"
