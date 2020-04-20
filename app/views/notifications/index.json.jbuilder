@@ -12,5 +12,7 @@ json.array! @notifications do |notification|
     json.url user_bookings_path(notification.user)
   elsif notification.notify_type == 'rejected'
     json.url new_search_path(c_part: notification.second_target.citta_partenza,c_arr: notification.second_target.citta_arrivo,data_ora: notification.second_target.data_ora_partenza)
+  elsif notification.notify_type == 'updated'
+    json.url detail_routes_path(multitrip: false, id: notification.second_target.id, j_id: notification.target.id)
   end
 end

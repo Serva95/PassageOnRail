@@ -63,6 +63,7 @@ class RoutesController < ApplicationController
 	  @route = @driver.routes.build(route_params)
     @route.data_ora_partenza = params[:data_partenza] + " " + params[:ora_partenza]
     @route.data_ora_arrivo = params[:data_arrivo] + " " + params[:ora_arrivo]
+    @route.tempo_percorrenza = ((@route.data_ora_arrivo - @route.data_ora_partenza).to_i)/60
     respond_to do |format|
       if @route.save
         format.html { redirect_to driver_routes_path(@driver) }
