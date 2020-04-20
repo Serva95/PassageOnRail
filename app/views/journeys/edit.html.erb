@@ -7,18 +7,18 @@
   <%end %>
 
 
-<%= form_with(model: @journey, local: true) do |form| %>
-  <% if @journey.any? %>
+<%= form_with model: [@driver, @journey], local: true do |form| %>
+  <!--% if @journeys.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@journey.errors.count, "error") %> prohibited this passenger_association from being saved:</h2>
+      <h2><= pluralize(@journey.errors.count, "error") %> prohibited this passenger_association from being saved:</h2>
 
       <ul>
-        <% @journey.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+        <@journey.errors.full_messages.each do |message| %>
+          <li>%= message %></li>
+        < end %>
       </ul>
     </div>
-  <% end %>
+  < end %-->
 
   <div class="actions">
     <%= form.submit "Accetta", class: "btn btn-outline-success" %>

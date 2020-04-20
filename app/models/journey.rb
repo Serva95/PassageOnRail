@@ -19,13 +19,27 @@ class Journey < ApplicationRecord
 	accepts_nested_attributes_for :stages
 
 	# crea le notifiche per i driver delle route prenotate
-	def self.create_notifications(journey, current_user)
+	def self.create_notifications_td(journey, current_user)
 		journey.stages.each do |stage|
 			driver = Route.find_driver(stage.route)
 			Notification.create! do |notification|
 				notification.notify_type = "reservation"
 				notification.actor = current_user
 				notification.user = driver
+				notification.target = journey
+				notification.second_target = stage.route
+			end
+		end
+	end
+
+	# crea le notifiche per gli autostoppisti
+	def self.create_notifications_th(journey, current_user, notify_type)
+		journey.stages.each do |stage|
+			user = User.find(journey.user_id)
+			Notification.create! do |notification|
+				notification.notify_type = notify_type
+				notification.actor = current_user
+				notification.user = user
 				notification.target = journey
 				notification.second_target = stage.route
 			end

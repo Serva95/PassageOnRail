@@ -1,5 +1,7 @@
 class JourneysController < ApplicationController
   before_action :set_journey, only: [:destroy]
+  before_action :get_driver, only: 
+  before_action :set_driver_journey, only: [:show, :edit, :update, :destroy]
 
   # POST /journey
   def create
@@ -9,7 +11,7 @@ class JourneysController < ApplicationController
     respond_to do |format|
       if Journey.booking(@journey)
         # la prenotazione ha avuto successo, crea le notifiche
-        Journey.create_notifications(@journey, current_user)
+        Journey.create_notifications_td(@journey, current_user)
         format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Prenotazione creata' }
         format.json { render :show, status: :created, location: @journey }
       else
@@ -19,12 +21,13 @@ class JourneysController < ApplicationController
     end
   end
 
+  #GET /drivers/1/journeys/1/edit?route_id = 14
   def edit
-
     @journeys = Journey.find_stage(params[:id], current_user.driver_id, params[:route])
     @journey = @journeys.first
   end
 
+  #PATCH /drivers/1/journeys/1/edit?route_id = 14
   def update
     respond_to do |format|
       if accepting?
@@ -34,8 +37,13 @@ class JourneysController < ApplicationController
       end
 
       if @journey.update(journey_params, stages: {accepted: accept } )
-        format.html { redirect_to driver_vehicles_path(@driver), notice: 'Vehicle was successfully updated.' }
-        format.json { render :show, status: :ok, location: @vehicle }
+        if accepting?
+          Journey.create_notifications_th(@journey, current_user, "accepted")
+        elsif refusing?
+          Journey.create_notifications_th(@journey, current_user, "rejected")
+        end
+        format.html { redirect_to root_path, notice: 'Journey was successfully updated.' }
+        format.json { render :show, status: :ok, location: @journey }
       else
         format.html { render :edit }
         format.json { render json: @vehicle.errors, status: :unprocessable_entity }
