@@ -51,10 +51,10 @@
   <%= form.text_field :costo, :required => true %>
   </div>
 
-  <div class="col-4 col-12-mobilep">
-    <%= form.label "Tempo di percorrenza in minuti" %>
-    <%= form.number_field :tempo_percorrenza, step: 5, :required => true %>
-  </div>
+  <!--<div class="col-4 col-12-mobilep">
+    < form.label "Tempo di percorrenza in minuti" %>
+    < form.number_field :tempo_percorrenza, step: 5, :required => true %>
+  </div> !-->
   <% if @route.n_passeggeri != 0 %>
     <div class="col-4 col-12-mobilep">
       <label> Tipo Pagamento </label>
