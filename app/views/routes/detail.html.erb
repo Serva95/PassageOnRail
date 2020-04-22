@@ -61,7 +61,10 @@
         <%= f.collection_select(:pay_method_id, @route.find_pay_method(current_user.id) , :id, :numero) %>
         <br/>
       </div>
-      <div class="col-6 col-12-mobilep"><%= link_to 'Aggiungi Nuovo metodo di pagamento', new_user_pay_method_path(@user) %></div>
+      <div class="col-6 col-12-mobilep">
+        <label><br/></label>
+        <%= link_to 'Aggiungi Nuovo metodo di pagamento', new_user_pay_method_path(@user) %>
+      </div>
       <div class="col-4 col-12-mobilep">
         <% if @posti1 < @posti2 %>
           <%= f.number_field(:n_prenotati, in: 1.. @posti1, placeholder: "Numero Passeggeri") %>
@@ -111,7 +114,8 @@
           <br/>
         </div>
         <div class="col-6 col-12-mobilep">
-          <button onclick="new_tab(user_pay_method_url)">Aggiungi pagamento</button>
+          <label><br/></label>
+          <%= link_to 'Aggiungi metodo di pagamento',new_user_pay_method_path(@user), class: 'button'%>
           <script src="app/assets/js/route.js">  </script>
         </div>
         <div class="col-6 col-12-mobilep">
@@ -126,8 +130,8 @@
           <%= f_stage.hidden_field :journey_id %>
         <% end %>
 
-        <div class="col-7 col-12-mobilep">
-          <%= f.submit "Prenota"%>
+        <div class="col-6 col-12-mobilep">
+         <%= f.submit "Prenota"%>
         </div>
       <% end %>
     <% end %>
@@ -140,4 +144,7 @@
     </div>
   <%end%>
 <% end %>
+
+
+
 

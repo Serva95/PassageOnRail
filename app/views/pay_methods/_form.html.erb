@@ -41,6 +41,7 @@
 
   <div class="col-4 col-12-mobilep">
     <%= form.submit "inserisci" %>
+    <%= link_to 'Back', :back, class:'button special' %>
   </div>
 <% end %>
-<%= link_to 'Back', user_pay_methods_path(current_user.id), class:'button special' %>
+
