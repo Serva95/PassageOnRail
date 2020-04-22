@@ -20,10 +20,16 @@ class JourneysController < ApplicationController
     end
   end
 
+  #GET /drivers/1/journeys
+  def index
+    @journeys = Journey.find_requests(params[:driver_id])
+  end
+
   #GET /drivers/1/journeys/1/edit?route_id = 14
   def edit
     @journeys = Journey.find_stage(params[:id], current_user.driver_id, params[:route])
     @journey = @journeys.first
+    @journey.user
 
   end
 

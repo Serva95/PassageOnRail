@@ -1,5 +1,5 @@
 
-<h1>Passenger Associations</h1>
+<h2><strong>Richieste di prenotazione</strong></h2>
 
 <table>
   <thead>
@@ -9,16 +9,16 @@
   </thead>
 
   <tbody>
-    <% @passenger_associations.each do |passenger_association| %>
-      <tr>
-        <td><%= link_to 'Show', passenger_association %></td>
-        <td><%= link_to 'Edit', edit_passenger_association_path(passenger_association) %></td>
-        <td><%= link_to 'Destroy', passenger_association, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @journeys.each do |journey| %>
+        <% journey.stages.each do |stage| %>
+          <tr>
+            <td>
+              <%= journey.user.username%> vorrebbe percorrere la tua stessa <%=link_to 'Tratta', edit_driver_journey_path(stage.route.driver_id, journey, route: stage.route)%>!
+            </td>
+          </tr>
+        <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Passenger Association', new_passenger_association_path %>

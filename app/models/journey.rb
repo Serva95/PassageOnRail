@@ -59,8 +59,14 @@ class Journey < ApplicationRecord
 		end
 	end
 
+	# Cerca una precisa prenotazione
 	def self.find_stage(journey_id, driver_id, route_id)
 		Journey.includes("stages", "routes").where(id: journey_id, routes: {id: route_id, driver_id: driver_id})
+	end
+
+	# Cerca i journey che hanno uno stage relativa a una route di un dato guidatore
+	def self.find_requests(driver_id)
+		Journey.includes("user","stages", "routes").where(stages: {accepted: "null"} ,routes: {driver_id: driver_id})
 	end
 
 	def self.journey_is_deletable(route)

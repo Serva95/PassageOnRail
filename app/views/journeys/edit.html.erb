@@ -1,35 +1,94 @@
-<h1>Ciao :3 </h1>
-
-  <%= @journey.id %>
-  <% @journey.stages.each do |stage| %>
-    <%= stage.id %>
-    <%= stage.route.driver_id %>
-  <%end %>
-
-
-<%= form_with model: [@driver, @journey], local: true do |form| %>
-  <!--% if @journeys.any? %>
-    <div id="error_explanation">
-      <h2><= pluralize(@journey.errors.count, "error") %> prohibited this passenger_association from being saved:</h2>
-
-      <ul>
-        <@journey.errors.full_messages.each do |message| %>
-          <li>%= message %></li>
-        < end %>
-      </ul>
-    </div>
-  < end %-->
-
-  <%= form.fields_for :stages do |f_stage| %>
-    <%= f_stage.hidden_field :route_id %>
-    <%= f_stage.hidden_field :journey_id %>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit "Accetta", class: "btn btn-outline-success" %>
-    <%= form.submit "Rifiuta", class: "btn btn-outline-danger" %>
+<!--Dati dell'autostoppista-->
+<div class="row gtr-uniform">
+  <h4 class="image col-12 col-12-narrower">
+    <%if @journey.user.avatar.url == nil%>
+      <%= image_tag 'images/default.jpeg' , size: "160"%>
+    <%else %>
+      <%=image_tag(@journey.user.avatar.url, size: "160") %>
+    <%end %>
+  </h4>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Nome:</strong>
+    <%= @journey.user.nome %>
+  </h4>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Cognome:</strong>
+    <%= @journey.user.cognome %>
+  </h4>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Username:</strong>
+    <%= @journey.user.username %>
+  </h4>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Email:</strong>
+    <%= @journey.user.email %>
+  </h4>
+  <div class="col-6 col-12-narrower">
+    <h4><strong>Rating medio autostoppista</strong></h4>
+    <%if @journey.user.hitch_hiker_rating==nil %>
+      Nessuna valutazione presente!
+    <%else %>
+      <%=@joureny.user.hitch_hiker_rating.round(2)%>
+    <%end %>
   </div>
-<% end %>
+</div>
+<div class="col-12 col-12-mobilep"><br></div>
+<div class="col-12 col-12-mobilep"><br></div>
+<div class="row gtr-uniform">
+  <div class="col-12 col-12-mobilep" style="overflow: auto;">
+    <table>
+      <caption><h3><strong>Tratta richiesta</strong></h3></caption>
+      <thead>
+      <tr>
+        <th>Città di Partenza</th>
+        <th>Luogo di ritrovo</th>
+        <th>Data e ora partenza</th>
+        <th>Città di arrivo</th>
+      </tr>
+      </thead>
+      <tbody>
+        <%@journey.stages.each do |stage| %>
+          <tr>
+            <td><%= stage.route.citta_partenza %></td>
+            <td><%= stage.route.luogo_ritrovo %></td>
+            <td><%= stage.route.data_ora_partenza.strftime("%d/%m/%y, %H:%M") %></td>
+            <td><%= stage.route.citta_arrivo %></td>
+            <td><%= link_to 'Dettagli', detail_routes_path(multitrip: false, id: stage.route.id, j_id: @journey.id), class: "button" %></td>
+          </tr>
+        <%end %>
+        <tr>
+          <td colspan="8"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12 col-12-mobilep"><br></div>
+</div>
+<div class="row gtr-uniform">
+  <%= form_with model: [@driver, @journey], local: true do |form| %>
+    <!--% if @journeys.any? %>
+      <div id="error_explanation">
+        <h2><= pluralize(@journey.errors.count, "error") %> prohibited this passenger_association from being saved:</h2>
+
+        <ul>
+          <@journey.errors.full_messages.each do |message| %>
+            <li>%= message %></li>
+          < end %>
+        </ul>
+      </div>
+    < end %-->
+
+    <%= form.fields_for :stages do |f_stage| %>
+      <%= f_stage.hidden_field :route_id %>
+      <%= f_stage.hidden_field :journey_id %>
+    <% end %>
+
+    <div class="actions">
+      <%= form.submit "Accetta", class: "btn btn-outline-success" %>
+      <%= form.submit "Rifiuta", class: "btn btn-outline-danger" %>
+    </div>
+  <% end %>
+</div>
 
 <!--
 <render 'form', passenger_association: @passenger_association %>
