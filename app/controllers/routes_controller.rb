@@ -1,7 +1,7 @@
 class RoutesController < ApplicationController
   before_action :get_driver, only: [:journey, :index, :show, :edit, :destroy, :new, :create, :update, :booking]
   before_action :set_route, only: [:show, :edit, :destroy, :update]
-
+  before_action :set_user, only: [:detail]
 
   # GET /routes/detail
   def detail
@@ -115,6 +115,10 @@ class RoutesController < ApplicationController
 
     def route_params
       params.require(:route).permit(:citta_partenza, :luogo_ritrovo, :data_ora_partenza, :citta_arrivo, :data_ora_arrivo, :costo, :deleted, :driver_id, :vehicle_id, :tempo_percorrenza, :n_passeggeri, :contanti)
+    end
+
+    def set_user
+      @user = User.find(current_user.id)
     end
 
     def get_driver

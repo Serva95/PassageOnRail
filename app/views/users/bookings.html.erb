@@ -3,7 +3,7 @@
 <%if @journeys_active.empty?%>
   <%unless @journeys_past.empty? %>
     <h4 class="col-12 col-12-narrower"> NON HAI NESSUNA TRATTA ATTIVA PRENOTATA!</h4>
-    <div class="col-12 col-12-narrower"><%= link_to 'Cerca Tratte!', search_path, class:'button'%></div>
+    <div class="col-12 col-12-narrower"><%= link_to 'Cerca Tratte!', new_search_path, class:'button'%></div>
   <%end %>
 <%else %>
   <div class="col-12 col-12-mobilep" style="overflow: auto;">
@@ -63,11 +63,16 @@
       </tbody>
     </table>
   </div>
+  <div class="col-12 col-12-mobilep"><br></div>
+  <div class="col-7 col-0-mobilep"></div>
+  <div class="col-3 col-12-mobilep">
+    <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
+  </div>
 <%end %>
 
 <%if @journeys_past.empty? && @journeys_active.empty?%>
   <h4 class="col-5 col-12-narrower">Non hai mai prenotato una tratta!</h4>
-  <div class="col-3 col-12-narrower"><%= link_to 'Inizia ora!', search_path, class:'button'%></div>
+  <div class="col-3 col-12-narrower"><%= link_to 'Inizia ora!', new_search_path, class:'button'%></div>
 <%elsif !@journeys_past.empty? %>
   <div class="col-12 col-12-mobilep" style="overflow: auto;">
     <table>
@@ -103,13 +108,14 @@
       </tbody>
     </table>
   </div>
+  <div class="col-12 col-12-mobilep"><br></div>
+  <div class="col-7 col-0-mobilep"></div>
+  <div class="col-3 col-12-mobilep">
+    <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
+  </div>
 <%end%>
 
-<div class="col-12 col-12-mobilep"><br></div>
-<div class="col-7 col-0-mobilep"></div>
-<div class="col-3 col-12-mobilep">
-  <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
-</div>
+
 <div class="col-2 col-12-mobilep">
   <%= link_to 'Back', root_path, class:"button special" %>
 </div>

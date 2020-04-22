@@ -61,6 +61,7 @@
         <%= f.collection_select(:pay_method_id, @route.find_pay_method(current_user.id) , :id, :numero) %>
         <br/>
       </div>
+      <div class="col-6 col-12-mobilep"><%= link_to 'Aggiungi Nuovo metodo di pagamento', new_user_pay_method_path(@user) %></div>
       <div class="col-4 col-12-mobilep">
         <% if @posti1 < @posti2 %>
           <%= f.number_field(:n_prenotati, in: 1.. @posti1, placeholder: "Numero Passeggeri") %>
@@ -68,7 +69,6 @@
           <%= f.number_field(:n_prenotati, in: 1.. @posti2, placeholder: "Numero Passeggeri") %>
         <% end %>
       </div>
-      <div class="col-6 col-12-mobilep"></div>
       <div class="col-4 col-12-mobilep">
         <%= f.submit "Prenota"%>
       </div>
@@ -104,13 +104,16 @@
       </div>
       <% if @route.driver_id == current_user.driver_id %>
         <p>Ehi, ma sei tu il guidatore!</p>
-      <% else %>
+      <% else%>
         <div class="col-6 col-12-mobilep">
           <%= f.label :pay_method_id, "Metodo di pagamento"%>
           <%= f.collection_select(:pay_method_id, @route.find_pay_method(current_user.id) , :id, :numero) %>
           <br/>
         </div>
-        <div class="col-6 col-12-mobilep"></div>
+        <div class="col-6 col-12-mobilep">
+          <button onclick="new_tab(user_pay_method_url)">Aggiungi pagamento</button>
+          <script src="app/assets/js/route.js">  </script>
+        </div>
         <div class="col-6 col-12-mobilep">
           <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
           <br/>

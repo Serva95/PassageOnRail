@@ -1,14 +1,12 @@
 <!--Pagina profilo utente-->
 <div class="row gtr-uniform">
-  <%if @user.avatar.url != nil%>
-    <h4 class="image col-12 col-12-narrower">
+  <h4 class="image col-12 col-12-narrower">
+    <%if @user.avatar.url == nil%>
+      <%= image_tag 'images/default.jpeg' , size: "160"%>
+    <%else %>
       <%=image_tag(@user.avatar.url, size: "160") %>
-    </h4>
-  <%else %>
-    <h4 class="col-12 col-12-narrower">
-      Nessuna immagine inserita
-    </h4>
-  <%end %>
+    <%end %>
+  </h4>
   <h4 class="col-4 col-12-narrower">
     <strong>Nome:</strong>
     <%= @user.nome %>
