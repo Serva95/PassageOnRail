@@ -2288,7 +2288,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* Box */
 
 	.box {
-        background-color: rgba(255,255,255,0.75);
+        background-color: rgba(255,255,255,0.90);
 		border-radius: 6px;
 		box-shadow: 0 2px 0 0 #e5e5e5;
 		margin: 0 0 2em 0;

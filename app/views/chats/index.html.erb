@@ -14,6 +14,8 @@
   </div>
 <% end %>
 
+<!-- reload page ogni 10 secondi -->
+
 <% if @chats.present? %>
   <% @chats.each do |chat| %>
     <div class="col-9 col-8-mobile">
@@ -64,3 +66,8 @@
     <h3>Non c'&egrave; alcuna chat, se hai bisogno di parlare con qualcuno puoi farlo dalla sua pagina utente</h3>
   </div>
 <% end %>
+<script type="application/javascript">
+    setTimeout(function(){
+        window.location.reload(1);
+    }, 2*60*1000); /* minuti * secondi * 1000 */
+</script>

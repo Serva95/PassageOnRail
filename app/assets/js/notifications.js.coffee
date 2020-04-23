@@ -61,6 +61,7 @@ class Notifications
       $("[data-behavior='notification-items']").html(items)
       $("[data-behavior='notifications-link']").on("click",(event) => this.handleClick(event.target.id))
 
+      #inserire visual mobile
 
 jQuery ->
   new Notifications
