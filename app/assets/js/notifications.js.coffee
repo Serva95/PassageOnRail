@@ -8,8 +8,6 @@ class Notifications
       }
     });
 
-
-
   empty: ->
     items = "<li>
           <a class='dropdown-item' href=#>Non ci sono notifiche</a>
@@ -57,11 +55,23 @@ class Notifications
            <a class='dropdown-item' href='#{notification.url}' id=#{notification.id} data-behavior=\"notifications-link\">#{notification.actor} #{type} </a>
         </li>"
 
+      itemsMobile = $.map data, (notification) ->
+        if (notification.notify_type == 'reservation')
+          type = 'vuole partecipare al tuo viaggio'
+        if (notification.notify_type == 'accepted')
+          type = 'ha confermato il tuo viaggio!'
+        if (notification.notify_type == 'rejected')
+          type = 'non ha accettato il tuo viaggio :('
+        if (notification.notify_type == 'updated')
+          type = 'ha modificato il viaggio'
+        if (notification.notify_type == 'deleted')
+          type = 'ha annullato il viaggio'
+        "<a id='#{notification.id}' class = 'link depth-1' href='#{notification.url}' data-behavior=\"notifications-link\"><span class='indent-1'></span>#{notification.actor} #{type} </a>"
+
       $("[data-behavior='unread-count']").text(items.length)
       $("[data-behavior='notification-items']").html(items)
+      $("#mobileMenu0").after(itemsMobile)
       $("[data-behavior='notifications-link']").on("click",(event) => this.handleClick(event.target.id))
-
-      #inserire visual mobile
 
 jQuery ->
   new Notifications
