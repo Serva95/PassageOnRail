@@ -62,7 +62,12 @@ class JourneysController < ApplicationController
     end
   end
 
-
+  def manage_booking
+    @j1 = Journey.find_from_stage(params[:j_id],'true')
+    @accepted_stage =@j1.first
+    @j2 = Journey.find_from_stage(params[:id],'false')
+    @rejected_stage = @j2.first
+  end
 
   # DELETE /journeys/1
   # fare l'eliminazione del viaggio solo 48 ore prima, oppure sempre se ci sono modifiche da parte del guidatore

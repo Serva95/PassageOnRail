@@ -69,6 +69,10 @@ class Journey < ApplicationRecord
 		Journey.includes("user","stages", "routes").where(stages: {accepted: nil} ,routes: {driver_id: driver_id})
 	end
 
+	def self.find_from_stage(journey_id,state)
+		Journey.includes("stages", "routes").where(id: journey_id, stages: {accepted: state})
+	end
+
 	def self.journey_is_deletable(route)
 		if route.data_ora_partenza - 2.day > DateTime.current
 			true

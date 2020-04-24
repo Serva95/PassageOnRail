@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/user/sign_out', to: 'users/sessions#destroy'
     get '/users/:id/bookings', to: 'users#bookings', as: 'user_bookings'
+    get '/users/:id/manage_booking', to: 'journeys#manage_booking', as: 'user_manage_booking'
   end
   resources :journeys, only: [:create, :destroy]
   resources :drivers, only: [:new, :edit, :create, :update, :destroy] do
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
     resources :journeys, only: [:edit, :update, :index]
     resources :stages, only: :update
   end
-  resources :stages, only: :create
+  resources :stages, only: [:create, :destroy]
   resources :chats, only: [:index, :create, :destroy] do
     resources :messagges, only: [:index, :create]
   end

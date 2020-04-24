@@ -28,6 +28,15 @@ class StagesController < ApplicationController
     end
   end
 
+  # DELETE /stages/1
+  def destroy
+    c_part=@stage.route.citta_partenza
+    @stage.destroy
+    respond_to do |format|
+        format.html { redirect_to new_search_path(c_part: c_part), notice: 'Prenotazione eliminata' }
+        format.json { head :no_content }
+    end
+  end
 
   private
     def set_stage
