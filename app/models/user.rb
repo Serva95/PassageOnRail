@@ -29,8 +29,8 @@ class User < ApplicationRecord
 
   #recupero tutte le tratte singole prenotate dall'utente
   def find_bookings(user_id)
-    where_clause = 'journeys.user_id = ?'
-    Journey.includes(:stages, :routes).where(where_clause, user_id)
+    Journey.includes(:stages, :routes).where(user_id:user_id, stages:{accepted:true})
+        .or(Journey.includes(:stages, :routes).where(user_id:user_id, stages:{accepted:nil}))
   end
 
   belongs_to :driver, optional: true, dependent: :destroy
