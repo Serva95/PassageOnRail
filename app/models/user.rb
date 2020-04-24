@@ -31,6 +31,7 @@ class User < ApplicationRecord
   def find_bookings(user_id)
     Journey.includes(:stages, :routes).where(user_id:user_id, stages:{accepted:true})
         .or(Journey.includes(:stages, :routes).where(user_id:user_id, stages:{accepted:nil}))
+        .order(data_ora_partenza: 'ASC')
   end
 
   belongs_to :driver, optional: true, dependent: :destroy

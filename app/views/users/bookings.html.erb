@@ -57,17 +57,13 @@
           </tr>
         <%end %>
         <tr>
-          <td colspan="8"></td>
+          <td colspan="9"></td>
         </tr>
       <%end %>
       </tbody>
     </table>
   </div>
   <div class="col-12 col-12-mobilep"><br></div>
-  <div class="col-7 col-0-mobilep"></div>
-  <div class="col-3 col-12-mobilep">
-    <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
-  </div>
 <%end %>
 
 <%if @journeys_past.empty? && @journeys_active.empty?%>
@@ -109,13 +105,13 @@
     </table>
   </div>
   <div class="col-12 col-12-mobilep"><br></div>
-  <div class="col-7 col-0-mobilep"></div>
-  <div class="col-3 col-12-mobilep">
-    <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
-  </div>
 <%end%>
-
-
+<div class="col-7 col-0-mobilep"></div>
+<div class="col-3 col-12-mobilep">
+  <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
+</div>
 <div class="col-2 col-12-mobilep">
   <%= link_to 'Back', root_path, class:"button special" %>
 </div>
+
+
