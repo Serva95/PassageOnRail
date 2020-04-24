@@ -58,7 +58,7 @@
       </div>
       <div class="col-6 col-12-mobilep">
         <%= f.label :pay_method_id, "Metodo di pagamento"%>
-        <%= f.collection_select(:pay_method_id, @route.find_pay_method(current_user.id) , :id, :numero) %>
+        <%= f.collection_select(:pay_method_id, @route1.find_pay_method(current_user.id, @route2) , :id, :numero) %>
         <br/>
       </div>
       <div class="col-6 col-12-mobilep">
@@ -110,7 +110,7 @@
       <% else%>
         <div class="col-6 col-12-mobilep">
           <%= f.label :pay_method_id, "Metodo di pagamento"%>
-          <%= f.collection_select(:pay_method_id, @route.find_pay_method(current_user.id) , :id, :numero) %>
+          <%= f.collection_select(:pay_method_id, @route.find_pay_method(current_user.id, nil) , :id, :numero) %>
           <br/>
         </div>
         <div class="col-6 col-12-mobilep">
