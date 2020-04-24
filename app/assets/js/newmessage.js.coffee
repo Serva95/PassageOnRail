@@ -16,7 +16,7 @@ class Newmessage
     if data.length > 0
       $actual = $('[notification-chat="chats"]').html($notify)
     else
-      setTimeout( run, 30 * 1000)
+      setTimeout( run, 60 * 1000)
 
   run = () ->
     new Newmessage()

@@ -20,15 +20,23 @@
     <%= form.label "Luogo di ritrovo" %>
     <%= form.text_field :luogo_ritrovo, :required => true %>
   </div>
-  <!--inserire la data di domani a 12:00 se è una tratta nuova-->
+
   <div class="col-4 col-12-mobilep">
     <%= form.label "Data di partenza" %>
-    <%= date_field_tag :data_partenza, :required => true %>
+    <% if route.data_ora_partenza.nil?%>
+      <%= date_field_tag :data_partenza, :required => true %>
+    <%else%>
+      <%= date_field_tag :data_partenza, value = route.data_ora_partenza.strftime("%Y-%m-%d"), :required => true %>
+    <%end %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Ora di partenza" %>
-    <%= time_field_tag :ora_partenza,  :required => true %>
+    <% if route.data_ora_partenza.nil?%>
+      <%= time_field_tag :ora_partenza, :required => true %>
+    <%else%>
+      <%= time_field_tag :ora_partenza, value = route.data_ora_partenza.strftime("%H:%M"), :required => true %>
+    <%end %>
   </div>
 
   <div class="col-4 col-12-mobilep">
@@ -38,17 +46,25 @@
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Data di arrivo" %>
-    <%= date_field_tag :data_arrivo,  :required => true %>
+    <% if route.data_ora_arrivo.nil?%>
+      <%= date_field_tag :data_arrivo, :required => true %>
+    <%else%>
+      <%= date_field_tag :data_arrivo, value = route.data_ora_arrivo.strftime("%Y-%m-%d"), :required => true %>
+    <%end %>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label "Ora di arrivo" %>
-    <%= time_field_tag :ora_arrivo,  :required => true %>
+    <% if route.data_ora_arrivo.nil?%>
+      <%= time_field_tag :ora_arrivo, :required => true %>
+    <%else%>
+      <%= time_field_tag :ora_arrivo, value = route.data_ora_arrivo.strftime("%H:%M"), :required => true %>
+    <%end %>
   </div>
 
   <div class="col-4 col-12-mobilep">
-  <%= form.label :costo %>
-  <%= form.text_field :costo, :required => true %>
+    <%= form.label :costo %>
+    <%= form.text_field :costo, :required => true %>
   </div>
 
   <!--<div class="col-4 col-12-mobilep">
