@@ -19,12 +19,14 @@ class UsersController < ApplicationController
     j = 0
     i = 0
     journeys.each do |journey|
-      if journey.stages.first.route.data_ora_partenza >= Time.now
-        @journeys_active[i] = journey
-        i += 1
-      else
-        @journeys_past[j] = journey
-        j += 1
+      unless journey.stages.first.accepted == false
+        if journey.stages.first.route.data_ora_partenza >= Time.now
+          @journeys_active[i] = journey
+          i += 1
+        else
+          @journeys_past[j] = journey
+          j += 1
+        end
       end
     end
   end
