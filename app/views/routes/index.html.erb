@@ -1,3 +1,11 @@
+<% if @routes.empty? %>
+  <div class="col-12 col-12-narrower">
+    <h2>
+      <strong>Non hai tratte attive al momento!</strong>
+    </h2>
+  </div>
+<%else %>
+
 <div class="col-12 col-12-narrower">
   <h2>
     <strong>Ecco le tue tratte!</strong>
@@ -37,7 +45,10 @@
   <% end %>
   </tbody>
 </table>
+  <% end %>
 
 <br>
 
-<%= link_to 'New Route', new_driver_route_path, class: "button" %>
+<div>
+<%= link_to 'Crea tratta', new_driver_route_path, class: "button" %>
+</div>
