@@ -7,7 +7,7 @@ json.array! @notifications do |notification|
     json.type "a #{notification.target.class.to_s.underscore}"
   end
   if notification.notify_type == 'reservation'
-    json.url edit_driver_journey_path(notification.user, notification.target, route: notification.second_target.id)
+    json.url edit_driver_journey_path(notification.user.driver_id, notification.target, route: notification.second_target.id)
   elsif notification.notify_type == 'accepted'
     json.url user_bookings_path(notification.user)
   elsif notification.notify_type == 'rejected'

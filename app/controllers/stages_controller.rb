@@ -33,7 +33,7 @@ class StagesController < ApplicationController
     c_part=@stage.route.citta_partenza
     @stage.destroy
     respond_to do |format|
-        format.html { redirect_to new_search_path(c_part: c_part), notice: 'Prenotazione eliminata' }
+        format.html { redirect_to new_search_path(c_part: params[:c_part],c_arr: params[:c_arr],data_ora: params[:data]), notice: 'Prenotazione eliminata' }
         format.json { head :no_content }
     end
   end

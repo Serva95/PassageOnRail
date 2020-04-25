@@ -92,4 +92,12 @@ class Route < ApplicationRecord
     PayMethods.where(where_clause, id)
   end
 
+  def self.first_route(route1,route2)
+    if route1.citta_arrivo.eql?(route2.citta_partenza)
+      return true
+    else
+      return false
+    end
+  end
+
 end

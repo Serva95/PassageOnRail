@@ -64,9 +64,10 @@ class JourneysController < ApplicationController
 
   def manage_booking
     @j1 = Journey.find_from_stage(params[:j_id],'true')
-    @accepted_stage =@j1.first
-    @j2 = Journey.find_from_stage(params[:id],'false')
-    @rejected_stage = @j2.first
+    @accepted_stage =@j1.first.stages.first
+    @j2 = Journey.find_from_stage(params[:j_id],'false')
+    @rejected_stage = @j2.first.stages.first
+    @first=Route.first_route(@accepted_stage.route,@rejected_stage.route)
   end
 
   # DELETE /journeys/1
