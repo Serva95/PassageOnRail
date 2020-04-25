@@ -30,7 +30,7 @@ class StagesController < ApplicationController
 
   # DELETE /stages/1
   def destroy
-    c_part=@stage.route.citta_partenza
+    @stage=Stage.find(params[:id])
     @stage.destroy
     respond_to do |format|
         format.html { redirect_to new_search_path(c_part: params[:c_part],c_arr: params[:c_arr],data_ora: params[:data]), notice: 'Prenotazione eliminata' }
