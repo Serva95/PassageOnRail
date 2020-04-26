@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :searches
   resources :routes, only: [] do
     get 'detail', action: 'detail', on: :collection
+    resources :journeys, only: [:edit, :update]
   end
 
   resources :notifications do

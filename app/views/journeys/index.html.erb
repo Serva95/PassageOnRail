@@ -13,7 +13,7 @@
         <% journey.stages.each do |stage| %>
           <tr>
             <td>
-              <%= journey.user.username%> vorrebbe percorrere la tua stessa <%=link_to 'Tratta', edit_driver_journey_path(stage.route.driver_id, journey, route: stage.route)%>!
+              <%= journey.user.username%> vorrebbe percorrere la tua stessa <%=link_to 'Tratta', edit_route_journey_path(stage.route, journey)%>!
             </td>
           </tr>
         <% end %>

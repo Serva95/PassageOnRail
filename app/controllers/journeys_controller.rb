@@ -1,6 +1,6 @@
 class JourneysController < ApplicationController
   before_action :set_journey, only: [:destroy]
-  before_action :get_driver_journey, only: [:edit, :update]
+
 
   # POST /journey
   def create
@@ -22,18 +22,18 @@ class JourneysController < ApplicationController
 
   #GET /drivers/1/journeys
   def index
+    # trova tutte le richieste che hanno accepted = nil
     @journeys = Journey.find_requests(params[:driver_id])
   end
 
-  #GET /drivers/1/journeys/1/edit?route_id = 14
+  #GET /routes/1/journeys/1/edit
   def edit
-    @journeys = Journey.find_stage(params[:id], current_user.driver_id, params[:route])
-    @journey = @journeys.first
-    @journey.user
-
+    @route = Route.find(params[:route_id])
+    @journey =  Journey.find(params[:id])
+    @user = @journey.user
   end
 
-  #PATCH /drivers/1/journeys/1/edit?route_id = 14
+  #PATCH /routes/1/journeys/1
   def update
     respond_to do |format|
       if accepting?
@@ -42,12 +42,12 @@ class JourneysController < ApplicationController
         accept = false
       end
 
-
-      @journeys = Journey.find_stage(params[:id], current_user.driver_id, params[:journey][:stages_attributes]["0"][:route_id])
-      @journey = @journeys.first
-      @stage = @journey.stages.first
+      @route = Route.find(params[:route_id])
+      @stage = @route.stages.where(journey_id: params[:id]).first
+      @journey =  Journey.find(params[:id])
 
       if @stage.update(accepted: accept)
+        # crea la notifica una volta che la tratta è stata aggiornata correttamente
         if accepting?
           Journey.create_notifications_th(@journey, current_user, "accepted")
         elsif refusing?
@@ -57,7 +57,7 @@ class JourneysController < ApplicationController
         format.json { render :show, status: :ok, location: @journey }
       else
         format.html { render :edit }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+        format.json { render json: @journey.errors, status: :unprocessable_entity }
       end
     end
   end
