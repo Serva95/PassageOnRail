@@ -89,8 +89,12 @@
     <%= form.label :vehicle_id %>
     <%= form.collection_select(:vehicle_id, Vehicle.where(driver_id: @driver.id), :id, :targa) %>
   </div>
-  <hr class="col-12 col-12-mobilep">
+  <div class="col-6 col-12-mobilep">
+    <label><br/></label>
+    <%= link_to 'aggiungi veicolo', new_driver_vehicle_path, class:'button' %>
+  </div>
   <div class="col-12 col-12-mobilep">
+    <br/>
     <%= form.submit %>
   </div>
 <% end %>
