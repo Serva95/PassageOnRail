@@ -16,6 +16,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles/new
   def new
     @vehicle = @driver.vehicles.build
+    session[:return_to] ||= request.referer
   end
 
   # GET /vehicles/1/edit
@@ -29,7 +30,7 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to driver_vehicles_path(@driver), notice: 'Vehicle was successfully created.' }
+        format.html { redirect_to (session.delete(:return_to) || driver_vehicles_path(@driver)), notice: 'Vehicle was successfully created.' }
         format.json { render :show, status: :created, location: @vehicle }
       else
         format.html { render :new }
