@@ -1,7 +1,7 @@
 class Vehicle < ApplicationRecord
 	validates :targa, presence: true, uniqueness: true
-	validates :posti, presence: true
-	validates :comfort, presence: true
+	validates :posti, presence: true, numericality: {greater_than: 0, less_than: 9, only_integer: true}
+	validates :comfort, presence: true, numericality: {greater_than: 0, less_than_or_equal_to: 10, only_integer: true}
 	
 	has_many :routes, dependent: :destroy
 	belongs_to :driver

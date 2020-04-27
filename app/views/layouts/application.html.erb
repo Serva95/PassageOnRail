@@ -13,6 +13,7 @@
   <%= stylesheet_link_tag 'css/main.css' %>
 </head>
 <body class="landing is-preload">
+<%= javascript_include_tag 'jquery.min.js' %>
 <div id="page-wrapper">
   <header id="header" class="alt">
     <h1><%= link_to 'Passage on Rails' , main_app.root_path %></h1>
@@ -79,7 +80,7 @@
 </div>
 
 <!-- Scripts -->
-<%= javascript_include_tag 'jquery.min.js' %>
+
 <%= javascript_include_tag 'notifications' %>
 <%= javascript_include_tag 'newmessage' %>
 <%= javascript_include_tag 'jquery.dropotron.min.js' %>

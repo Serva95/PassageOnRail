@@ -95,6 +95,34 @@
   </div>
   <div class="col-12 col-12-mobilep">
     <br/>
-    <%= form.submit %>
+    <%= form.submit "Crea Nuova Route", :id => "submit_button" %>
   </div>
 <% end %>
+
+<script type="application/javascript">
+
+  function compare(){
+      var d_p= $("#data_partenza").val();
+      var o_p= $("#ora_partenza").val();
+      var d_a= $("#data_arrivo").val();
+      var o_a= $("#ora_arrivo").val();
+
+      if (d_p != "" && o_p != "" && d_a != "" && o_a != ""){
+          var partenza = d_p + " " + o_p;
+          var arrivo = d_a + " " + o_a;
+          if (partenza >= arrivo){
+              $("#submit_button").val("La data di arrivo non può essere antecedente a quella di partenza!");
+              $("#submit_button").prop("disabled", true);
+          }else{
+              $("#submit_button").prop("disabled", false);
+              $("#submit_button").val("Crea Nuova Route");
+          }
+      }
+  }
+
+    $("#data_partenza").change(compare);
+    $("#ora_partenza").change(compare);
+    $("#data_arrivo").change(compare);
+    $("#ora_arrivo").change(compare);
+
+</script>
