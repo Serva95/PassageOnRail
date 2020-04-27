@@ -9,6 +9,20 @@ class RouteNPValidator < ActiveModel::Validator
   end
 end
 
+class RouteDateValidator < ActiveModel::Validator
+  def validate(record)
+    if record.data_ora_arrivo < record.data_ora_partenza
+      record.errors[:data_ora_arrivo] << "La data di arrivo non può essere antecedente alla data di partenza"
+    end
+    if record.data_ora_partenza < Date.today
+      record.errors[:data_ora_partenza] << "La data di partenza non può essere antecedente alla data di oggi"
+    end
+    if record.data_ora_arrivo < Date.today
+      record.errors[:data_ora_arrivo] << "La data di partenza non può essere antecedente alla data di oggi"
+    end
+  end
+end
+
 class Route < ApplicationRecord
   validates :citta_partenza, presence: true
   validates :luogo_ritrovo, presence: true
@@ -17,6 +31,7 @@ class Route < ApplicationRecord
   validates :data_ora_arrivo, presence: true
   validates :costo, presence: true
   validates_with RouteNPValidator
+  validates_with RouteDateValidator
   #validates :n_passeggeri, presence: true
 
 	belongs_to :driver
