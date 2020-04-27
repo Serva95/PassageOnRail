@@ -37,12 +37,12 @@
 
   <div class="col-4 col-12-mobilep">
     <%= form.label :comfort %>
-    <%= form.number_field :comfort %>
+    <%= form.number_field :comfort, min: 1, max: 10%>
   </div>
 
   <div class="col-4 col-12-mobilep">
     <%= form.label :posti %>
-    <%= form.number_field :posti %>
+    <%= form.number_field :posti, min: 1, max: 8 %>
   </div>
 
   <hr class="col-12 col-12-mobilep">

@@ -1,4 +1,6 @@
 class Search < ApplicationRecord
+  validates :c_partenza, presence: true
+  validates :c_arrivo, presence: true
 
   def define_order(s_order)
     s_order=='Crescente' ? :asc : :desc
