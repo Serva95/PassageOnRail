@@ -24,9 +24,9 @@
   <div class="col-4 col-12-mobilep">
     <%= form.label "Data di partenza" %>
     <% if route.data_ora_partenza.nil?%>
-      <%= date_field_tag :data_partenza, :required => true %>
+      <%= date_field_tag :data_partenza, value = nil, :min => Date.current, :required => true %>
     <%else%>
-      <%= date_field_tag :data_partenza, value = route.data_ora_partenza.strftime("%Y-%m-%d"), :required => true %>
+      <%= date_field_tag :data_partenza, value = route.data_ora_partenza.strftime("%Y-%m-%d"), :min => Date.current, :required => true %>
     <%end %>
   </div>
 
@@ -47,9 +47,9 @@
   <div class="col-4 col-12-mobilep">
     <%= form.label "Data di arrivo" %>
     <% if route.data_ora_arrivo.nil?%>
-      <%= date_field_tag :data_arrivo, :required => true %>
+      <%= date_field_tag :data_arrivo, value = nil, :min => Date.current, :required => true %>
     <%else%>
-      <%= date_field_tag :data_arrivo, value = route.data_ora_arrivo.strftime("%Y-%m-%d"), :required => true %>
+      <%= date_field_tag :data_arrivo, value = route.data_ora_arrivo.strftime("%Y-%m-%d"), :min => Date.current, :required => true %>
     <%end %>
   </div>
 
@@ -94,3 +94,29 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script type="application/javascript">
+
+  function compare(){
+      var d_p= $("#data_partenza").val();
+      var o_p= $("#ora_partenza").val();
+      var d_a= $("#data_arrivo").val();
+      var o_a= $("#ora_arrivo").val();
+      console.log(d_p);
+      console.log(o_p);
+
+      if (d_p != null && o_p != null && d_a != null && o_a != null){
+          var partenza = d_p + " " + o_p;
+          var arrivo = d_a + " " + o_a;
+          if (partenza > arrivo){
+              alert("La data di arrivo non può essere antecedente a quella di partenza!");
+          }
+      }
+  }
+
+    $("#data_partenza").change(compare());
+    $("#ora_partenza").change(compare());
+    $("#data_arrivo").change(compare());
+    $("#ora_arrivo").change(compare());
+
+</script>
