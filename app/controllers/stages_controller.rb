@@ -31,10 +31,14 @@ class StagesController < ApplicationController
   # DELETE /stages/1
   def destroy
     @stage=Stage.find(params[:id])
-    @stage.destroy
+    n_passeggeri = @stage.journey.n_prenotati
     respond_to do |format|
-        format.html { redirect_to new_search_path(c_part: params[:c_part],c_arr: params[:c_arr],data_ora: params[:data]), notice: 'Prenotazione eliminata' }
-        format.json { head :no_content }
+      if Journey.decrease_and_destroy(@stage, n_passeggeri)
+         format.html { redirect_to new_search_path(c_part: params[:c_part],c_arr: params[:c_arr],data_ora: params[:data]), notice: 'Prenotazione eliminata' }
+         format.json { head :no_content }
+      else
+        format.html { redirect_to user_manage_booking(current_user,j_id: params[:j_id]), notice: 'Siamo spiacenti qualcosa è andato storto (incapace bastardo!)' }
+      end
     end
   end
 

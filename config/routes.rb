@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get 'confirm_destroy', to: 'drivers#confirm_destroy', as: 'confirm_destroy'
     resources :vehicles
     resources :routes
-    resources :journeys, only: [:edit, :update, :index]
+    resources :journeys, only: [:index]
     resources :stages, only: :update
   end
   resources :stages, only: [:create, :destroy]
@@ -26,7 +26,12 @@ Rails.application.routes.draw do
   resources :searches
   resources :routes, only: [] do
     get 'detail', action: 'detail', on: :collection
-    resources :journeys, only: [:edit, :update]
+    resources :journeys, only: [:edit] do
+      patch 'update_accept', action: 'update_accept', on: :member
+      put 'update_accept', action: 'update_accept', on: :member
+      patch 'update_reject', action: 'update_reject', on: :member
+      put 'update_reject', action: 'update_reject', on: :member
+    end
   end
 
   resources :notifications do

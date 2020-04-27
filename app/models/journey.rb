@@ -59,6 +59,22 @@ class Journey < ApplicationRecord
 		end
 	end
 
+	# transaction che decrementa il numero di passeggeri e
+	# setta a false la stage rifiutata
+	def self.reject(n_passeggeri, stage)
+		self.transaction do
+			Route.decrease(stage.route_id, n_passeggeri)
+			stage.update!(accepted: false)
+		end
+	end
+
+	def self.decrease_and_destroy(stage, n_passeggeri)
+		self.transaction do
+			Route.decrease(stage.route_id, n_passeggeri)
+			stage.destroy!
+		end
+	end
+
 	# Cerca una precisa prenotazione
 	def self.find_stage(journey_id, driver_id, route_id)
 		Journey.includes("stages", "routes").where(id: journey_id, routes: {id: route_id, driver_id: driver_id})

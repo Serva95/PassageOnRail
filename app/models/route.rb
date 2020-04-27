@@ -100,4 +100,11 @@ class Route < ApplicationRecord
     end
   end
 
+  # decrementa il numero di passeggeri
+  def self.decrease(route_id, n_passeggeri)
+    route = Route.find(route_id)
+    p = route.n_passeggeri - n_passeggeri
+    route.update!(n_passeggeri: p)
+  end
+
 end

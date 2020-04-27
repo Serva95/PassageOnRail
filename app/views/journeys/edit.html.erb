@@ -63,24 +63,12 @@
   <div class="col-12 col-12-mobilep"><br></div>
 </div>
 <div class="row gtr-uniform">
-  <%= form_with model: [@route, @journey], local: true do |form| %>
-    <!--% if @journeys.any? %>
-      <div id="error_explanation">
-        <h2><= pluralize(@journey.errors.count, "error") %> prohibited this passenger_association from being saved:</h2>
+  <div class="col-12 col-12-mobile">
 
-        <ul>
-          <@journey.errors.full_messages.each do |message| %>
-            <li>%= message %></li>
-          < end %>
-        </ul>
-      </div>
-    < end %-->
+    <%= link_to 'Accetta', update_accept_route_journey_path(@route, @journey), method: :patch, class: "button", title: 'Accetta' %>
+    <%= link_to 'Rifiuta', update_reject_route_journey_path(@route, @journey), method: :patch, class: "button", title: 'Rifiuta'%>
 
-    <div class="actions">
-      <%= form.submit "Accetta", class: "btn btn-outline-success" %>
-      <%= form.submit "Rifiuta", class: "btn btn-outline-danger" %>
-    </div>
-  <% end %>
+  </div>
 </div>
 
 <!--

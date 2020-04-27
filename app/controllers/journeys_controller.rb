@@ -34,25 +34,34 @@ class JourneysController < ApplicationController
   end
 
   #PATCH /routes/1/journeys/1
-  def update
+  def update_accept
     respond_to do |format|
-      if accepting?
-        accept = true
-      elsif refusing?
-        accept = false
-      end
 
       @route = Route.find(params[:route_id])
       @stage = @route.stages.where(journey_id: params[:id]).first
       @journey =  Journey.find(params[:id])
 
-      if @stage.update(accepted: accept)
+      if @stage.update(accepted: true)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
-        if accepting?
-          Journey.create_notifications_th(@journey, current_user, "accepted")
-        elsif refusing?
-          Journey.create_notifications_th(@journey, current_user, "rejected")
-        end
+        Journey.create_notifications_th(@journey, current_user, "accepted")
+        format.html { redirect_to root_path, notice: 'Journey was successfully updated.' }
+        format.json { render :show, status: :ok, location: @journey }
+      else
+        format.html { render :edit }
+        format.json { render json: @journey.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_reject
+    respond_to do |format|
+      @route = Route.find(params[:route_id])
+      @stage = @route.stages.where(journey_id: params[:id]).first
+      @journey =  Journey.find(params[:id])
+
+      if Journey.reject(@journey.n_prenotati, @stage)
+        # crea la notifica una volta che la tratta è stata aggiornata correttamente
+        Journey.create_notifications_th(@journey, current_user, "rejected")
         format.html { redirect_to root_path, notice: 'Journey was successfully updated.' }
         format.json { render :show, status: :ok, location: @journey }
       else
@@ -101,13 +110,5 @@ class JourneysController < ApplicationController
 
   def true?(obj)
     obj.to_s.downcase == "true"
-  end
-
-  def accepting?
-    params[:commit] == "Accetta"
-  end
-
-  def refusing?
-    params[:commit] == "Rifiuta"
   end
 end
