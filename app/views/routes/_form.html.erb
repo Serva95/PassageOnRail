@@ -109,10 +109,11 @@
           var partenza = d_p + " " + o_p;
           var arrivo = d_a + " " + o_a;
           if (partenza >= arrivo){
-              alert("La data di arrivo non può essere antecedente a quella di partenza!");
+              $("#submit_button").val("La data di arrivo non può essere antecedente a quella di partenza!");
               $("#submit_button").prop("disabled", true);
           }else{
               $("#submit_button").prop("disabled", false);
+              $("#submit_button").val("Crea Nuova Route");
           }
       }
   }
