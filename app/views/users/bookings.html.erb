@@ -56,14 +56,11 @@
             <td><%= link_to 'Dettagli', detail_routes_path(multitrip: false, id: stage.route.id, j_id: journey.id), class: "button" %></td>
           </tr>
         <%end %>
-        <tr>
-          <td colspan="9"></td>
-        </tr>
       <%end %>
       </tbody>
     </table>
   </div>
-  <div class="col-12 col-12-mobilep"><br></div>
+  <div class="col-12 col-12-mobilep"><hr></div>
 <%end %>
 
 <%if @journeys_past.empty? && @journeys_active.empty?%>

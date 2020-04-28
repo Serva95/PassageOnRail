@@ -89,6 +89,8 @@ class Journey < ApplicationRecord
 		Journey.includes("stages", "routes").where(id: journey_id, stages: {accepted: state})
 	end
 
+	# @param [Route] route
+	# @return [TrueClass, FalseClass]
 	def self.journey_is_deletable(route)
 		if route.data_ora_partenza - 2.day > DateTime.current
 			true
@@ -99,10 +101,21 @@ class Journey < ApplicationRecord
 		end
 	end
 
+	# @param [Journey] journey
+	# @param [Route] route
 	def self.delete_passage_transaction(journey, route)
-		ActiveRecord::Base.transaction do
-			journey.destroy!
-			route.decrement!(:n_passeggeri, by = journey.n_prenotati)
+		number_of_stages = Stage.where("journey_id = ?", journey.id).count("id")
+		if number_of_stages == 1
+			ActiveRecord::Base.transaction do
+				journey.destroy!
+				route.decrement!(:n_passeggeri, by = journey.n_prenotati)
+			end
+		elsif number_of_stages == 2
+			stage = Stage.where("journey_id = ? and route_id = ?", journey.id, route.id).first
+			ActiveRecord::Base.transaction do
+				stage.destroy!
+				route.decrement!(:n_passeggeri, by = journey.n_prenotati)
+			end
 		end
 	end
 

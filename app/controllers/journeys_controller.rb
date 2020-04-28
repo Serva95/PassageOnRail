@@ -44,7 +44,7 @@ class JourneysController < ApplicationController
       if @stage.update(accepted: true)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
         Journey.create_notifications_th(@journey, current_user, "accepted")
-        format.html { redirect_to root_path, notice: 'Journey was successfully updated.' }
+        format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @journey }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class JourneysController < ApplicationController
       if Journey.reject(@journey.n_prenotati, @stage)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
         Journey.create_notifications_th(@journey, current_user, "rejected")
-        format.html { redirect_to root_path, notice: 'Journey was successfully updated.' }
+        format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @journey }
       else
         format.html { render :edit }
@@ -80,9 +80,8 @@ class JourneysController < ApplicationController
   end
 
   # DELETE /journeys/1
-  # fare l'eliminazione del viaggio solo 48 ore prima, oppure sempre se ci sono modifiche da parte del guidatore
   def destroy
-    route = Route.joins(:stages).where("journey_id = ?", @journey.id).first
+    route = Route.find(params[:r_id])
     is_deletable = Journey.journey_is_deletable(route)
     respond_to do |format|
       if is_deletable && Journey.delete_passage_transaction(@journey, route)
