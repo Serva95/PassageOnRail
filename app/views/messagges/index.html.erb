@@ -6,9 +6,11 @@
     <h3>Chat con <%=@chatter[0]+' '+@chatter[1] %></h3>
   </div>
   <% unless notice.nil? %>
-    <div id="error_explanation" class="col-12 col-12-mobilep">
-      <h2 style="color: #B00100" class="error"><%= notice %></h2>
-    </div>
+    <%if notice == "Messagge error" %>
+      <div id="error_explanation" class="col-12 col-12-mobilep">
+        <h2 style="color: #B00100" class="error"><%= notice %></h2>
+      </div>
+    <%end %>
   <% end %>
   <div class="col-12 col-12-mobilep"><hr></div>
 

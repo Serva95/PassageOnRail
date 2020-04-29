@@ -8,11 +8,13 @@
   <br>
 </div>
 
-<% unless notice.nil? %>
-  <div id="error_explanation" class="col-12 col-12-mobilep">
-    <h2 style="color: #B00100" class="error"><%= notice %></h2>
-  </div>
-<% end %>
+<% unless notice.nil?
+     if notice[0..10] == "Errore nell" || notice == "Chat eliminata correttamente"%>
+    <div id="error_explanation" class="col-12 col-12-mobilep">
+      <h2 style="color: #B00100" class="error"><%= notice %></h2>
+    </div>
+  <%end%>
+<%end%>
 
 <% if @chats.present? %>
   <% @chats.each do |chat| %>
