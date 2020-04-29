@@ -1,3 +1,12 @@
+<% if @checked %>
+  <div class="col-12 col-12-narrower">
+  <h2> Ops!</h2>
+  </div>
+  <div class="col-12 col-12-narrower">
+  <h3>Sembra che tu abbia già controllato questa richiesta!</h3>
+  </div>
+
+<%else %>
 <!--Dati dell'autostoppista-->
 <div class="row gtr-uniform">
   <h4 class="image col-12 col-12-narrower">
@@ -70,6 +79,7 @@
 
   </div>
 </div>
+  <%end %>
 
 <!--
 <render 'form', passenger_association: @passenger_association %>

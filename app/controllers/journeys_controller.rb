@@ -31,6 +31,7 @@ class JourneysController < ApplicationController
     @route = Route.find(params[:route_id])
     @journey =  Journey.find(params[:id])
     @user = @journey.user
+    @checked = Journey.already_checked(@route.id,@journey.id)
   end
 
   #PATCH /routes/1/journeys/1
