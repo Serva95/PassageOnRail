@@ -101,6 +101,15 @@ class Journey < ApplicationRecord
 		end
 	end
 
+	def self.already_checked(route_id,journey_id)
+		stage = Stage.where("route_id = ? AND journey_id = ?",route_id,journey_id).first
+		if stage.accepted.nil?
+			return false
+		else
+			return true
+		end
+	end
+
 	# @param [Journey] journey
 	# @param [Route] route
 	def self.delete_passage_transaction(journey, route)
