@@ -31,9 +31,14 @@ class StagesController < ApplicationController
   # DELETE /stages/1
   def destroy
     @stage=Stage.find(params[:id])
+    route = @stage.route
     n_passeggeri = @stage.journey.n_prenotati
+    journey = Journey.find(params[:j_id])
     respond_to do |format|
       if Journey.decrease_and_destroy(@stage, n_passeggeri)
+         notifications = Notification.where(target: journey, second_target: route)
+         notifications.update_all(read_at: Time.zone.now)
+         Journey.create_notifications_td(journey, current_user, "cancel")
          format.html { redirect_to new_search_path(c_part: params[:c_part],c_arr: params[:c_arr],data_ora: params[:data]), notice: 'Prenotazione eliminata' }
          format.json { head :no_content }
       else

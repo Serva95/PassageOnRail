@@ -39,6 +39,7 @@ class Route < ApplicationRecord
 
   has_many :stages, dependent: :destroy
   has_many :journeys, :through => :stages
+  has_many :notifications, as: :second_target, dependent: :destroy
 
   #estrae il numero di passeggeri attualmente prenotati
   scope :current_passengers, -> (route_id) do

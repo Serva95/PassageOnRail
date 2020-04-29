@@ -10,7 +10,7 @@ class JourneysController < ApplicationController
     respond_to do |format|
       if Journey.booking(@journey)
         # la prenotazione ha avuto successo, crea le notifiche
-        Journey.create_notifications_td(@journey, current_user)
+        Journey.create_notifications_td(@journey, current_user,"reservation")
         format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Prenotazione creata' }
         format.json { render :show, status: :created, location: @journey }
       else
@@ -43,6 +43,7 @@ class JourneysController < ApplicationController
 
       if @stage.update(accepted: true)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
+        byebug
         Journey.create_notifications_th(@journey, current_user, "accepted")
         format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @journey }
@@ -61,6 +62,7 @@ class JourneysController < ApplicationController
 
       if Journey.reject(@journey.n_prenotati, @stage)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
+        byebug
         Journey.create_notifications_th(@journey, current_user, "rejected")
         format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @journey }
@@ -84,7 +86,7 @@ class JourneysController < ApplicationController
     route = Route.find(params[:r_id])
     is_deletable = Journey.journey_is_deletable(route)
     respond_to do |format|
-      if is_deletable && Journey.delete_passage_transaction(@journey, route)
+      if is_deletable && Journey.delete_passage_transaction(@journey, route, current_user)
         format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Prenotazione eliminata' }
         format.json { head :no_content }
       else
