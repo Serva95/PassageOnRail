@@ -41,7 +41,7 @@ class RoutesController < ApplicationController
 
   # GET /drivers/1/routes
   def index
-    @routes = @driver.routes
+    @routes = @driver.routes.where("routes.deleted IS NOT TRUE")
   end
 
   # GET /drivers/1/routes/1
@@ -101,11 +101,15 @@ class RoutesController < ApplicationController
     @journeys.each do |journey|
       Journey.create_notifications_th(journey,current_user,"deleted")
     end
-    @route.destroy
     respond_to do |format|
-      format.html { redirect_to driver_routes_path(@driver) }
-      format.json { head :no_content }
-    end
+      if Route.destroy_route_and_stages(@route,current_user)
+        format.html { redirect_to driver_routes_path(@driver) }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to driver_routes_path(@driver) }
+        format.json { render json: @route.errors, status: :unprocessable_entity }
+      end
+      end
   end
 
   private

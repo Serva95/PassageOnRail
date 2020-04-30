@@ -82,13 +82,13 @@ class Route < ApplicationRecord
     driver = User.find_by(driver_id: route.driver_id)
   end
 
-  def self.search(search)
-    if search
-      where(["citta_partenza LIKE ?" , "%#{search}%"])
-    else
-      all
-    end
-  end
+  # def self.search(search)
+  # if search
+  #   where(["citta_partenza LIKE ?" , "%#{search}%"])
+  # else
+  #   all
+  # end
+  # end
 
   def self.find_user_name_for_chat(driver_id)
     User.where(:driver_id => driver_id).first
@@ -121,6 +121,21 @@ class Route < ApplicationRecord
     route = Route.find(route_id)
     p = route.n_passeggeri - n_passeggeri
     route.update!(n_passeggeri: p)
+  end
+
+  def self.destroy_route_and_stages(route,current_user)
+    self.transaction do
+      route.update(deleted: true)
+      journeys = Route.find_journeys(route.id)
+      journeys.each do |journey|
+        Journey.create_notifications_th(journey,current_user,"deleted")
+        number_of_stages = Stage.where("journey_id = ?", journey.id).count("id")
+        if number_of_stages == 1
+          journey.destroy! #la journey era composta da un solo stage, quindi elimino la journey e a cascata si elimina lo stage
+        end
+      end
+      Stage.where(route_id: route.id).destroy_all #se la journey è composta da 2 stages, elimino solo quello di cui è stata cancellata la route e mantengo la journey con l'altro stage
+    end
   end
 
 end

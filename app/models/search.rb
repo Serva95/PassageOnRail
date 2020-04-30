@@ -30,6 +30,7 @@ class Search < ApplicationRecord
 
     routes = Route.select(select_clause).joins(:vehicle).joins(:driver).where(where_clause).joins(:vehicle)
 
+    routes = routes.where("routes.deleted IS NOT TRUE")
     routes = routes.where("routes.id NOT IN (?)",booked_routes)
     routes = routes.where(["citta_partenza ILIKE ?","%#{c_partenza}"])
     routes = routes.where(["citta_arrivo ILIKE ?","%#{c_arrivo}"])
@@ -69,7 +70,7 @@ class Search < ApplicationRecord
                    AND Ms2.data_ora_partenza >= Ms1.data_ora_arrivo AND (EXTRACT(DAY FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo)) <= 5',"%#{c_partenza}","%#{c_arrivo}",booked_routes,booked_routes
     else
       where_clause='Ms1.citta_partenza ILIKE ? AND Ms2.citta_arrivo ILIKE ? AND Ms1.citta_arrivo = Ms2.citta_partenza AND Ms2.driver_id != ?
-                    AND Ms1.id NOT IN (?) AND Ms2.id NOT IN (?)
+                    AND Ms1.id NOT IN (?) AND Ms2.id NOT IN (?) AND Ms1.deleted IS NOT TRUE AND Ms2.deleted IS NOT TRUE
                    AND Ms2.data_ora_partenza >= Ms1.data_ora_arrivo AND (EXTRACT(DAY FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo)) <= 5',"%#{c_partenza}","%#{c_arrivo}",current_user,booked_routes,booked_routes
     end
    group_clause = 'Ms1.driver_id,Ms2.driver_id,Ms1.id,Ms2.id,Ms1.citta_partenza,Ms1.data_ora_partenza,Ms1.citta_arrivo,Ms2.citta_arrivo,Ms2.data_ora_arrivo,Ms2.n_passeggeri,Ms2.posti,Ms1.n_passeggeri, Ms1.posti'
