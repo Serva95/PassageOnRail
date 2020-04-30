@@ -19,6 +19,7 @@
     <strong>Username:</strong>
     <%= @user.username %>
   </h4>
+  <!-- Dati che visualizzo solo se sono il proprietario del profilo -->
   <%if current_user.id == @user.id %>
     <h4 class="col-4 col-12-narrower">
       <strong>Email:</strong>
@@ -53,7 +54,7 @@
   <div class="col-6 col-12-narrower">
     <%= link_to 'Guarda i voti di ' + @user.nome + ' da autostoppista', ratings_path(user_id: @user.id), class:'button' %>
   </div>
-
+  <!-- Se sono un driver visualizzo il mio rating-->
   <%if @user.driver_id? %>
     <div class="col-6 col-12-narrower">
       <h4><strong>Rating medio Automobilista</strong></h4>
@@ -71,28 +72,20 @@
 
   <%end%>
 </div>
-<%if @user.id != current_user.id %>
-  <div class="col-12 col-12-mobilep"><br></div>
-  <%= form_with(model: Chat, local: true, method: "post") do |form| %>
-    <%= form.hidden_field :user_2_id, :value => @user.id %>
-    <div class="col-12 col-12-mobilep">
-      <%= form.submit "Chatta con " + @user.nome%>
-    </div>
-  <%end
-end%>
-
 <hr class="col-12 col-12-mobilep">
+<!-- Visualizzazione profilo di un altro utente -->
 <%if @user.id == current_user.id %>
   <div class="col-7 col-0-mobilep"></div>
   <div class="col-2 col-12-mobilep">
     <%= link_to 'Edit', edit_user_registration_path , class:'button'%>
   </div>
   <div class="col-3 col-12-mobilep">
-    <%= link_to 'Back', root_path, class:'button special' %>
+    <%= link_to 'Back', :back, class:'button special' %>
   </div>
 <%else %>
   <div class="col-7 col-0-mobilep"></div>
-  <div class="col-1 col-12-mobilep">
+  <div class="col-2 col-0-mobilep"></div>
+  <div class="col-3 col-12-mobilep">
     <%= link_to 'Back', root_path, class:'button special' %>
   </div>
 <%end %>

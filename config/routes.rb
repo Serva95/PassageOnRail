@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get '/user/sign_out', to: 'users/sessions#destroy'
     get '/users/:id/bookings', to: 'users#bookings', as: 'user_bookings'
     get '/users/:id/manage_booking', to: 'journeys#manage_booking', as: 'user_manage_booking'
+    get '/users/:id/bookings/:route_id', to: 'users#detail_booking', as: 'user_detail_booking'
   end
   resources :journeys, only: [:create, :destroy]
   resources :drivers, only: [:new, :edit, :create, :update, :destroy] do

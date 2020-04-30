@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user
 
   # mostro la pagina dell'utente
   # GET /users/1
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # mostro tutte le route prenotate dall'utente loggato
   # GET /users/1/bookings
   def bookings
-    @user=User.find(params[:id])
+    @user=User.find(current_user.id)
     journeys=@user.find_bookings(current_user.id)
     #distinguo tra tratte ancora attive e tratte passate
     @journeys_active =[]
@@ -29,6 +29,13 @@ class UsersController < ApplicationController
         end
       end
     end
+  end
+
+  # mostro dettagli della tratta prenotata
+  # GET /users/:id/bookings/:route_id
+  def detail_booking
+    @route=Route.find(params[:route_id])
+    @driver=Route.find_driver(@route)
   end
 
   private
