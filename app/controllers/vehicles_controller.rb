@@ -75,6 +75,6 @@ class VehiclesController < ApplicationController
     end
 
     def get_driver
-      @driver = Driver.find(params[:driver_id])
+      @driver = Driver.find(current_user.driver_id)
     end
 end

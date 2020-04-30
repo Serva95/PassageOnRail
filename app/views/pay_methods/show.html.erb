@@ -1,3 +1,4 @@
+<%if @pay_method.user_id == current_user.id %>
 <p>
   <strong>Numero:</strong>
   <%= @pay_method.numero %>
@@ -19,3 +20,6 @@
 
 <%= link_to 'Edit', edit_user_pay_method_path(current_user.id, @pay_method.id) %>
 <%= link_to 'Back', :back %>
+<%else %>
+  <h2 class="error">Non puoi visualizzare questo metodo di pagamento!</h2>
+<%end %>

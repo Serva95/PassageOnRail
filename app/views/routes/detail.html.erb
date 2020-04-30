@@ -141,11 +141,7 @@
   <%elsif @booked_route == 1 %>
     <!-- una volta c'era il form della chat qua ora è in user/show.html -->
     <hr class="col-12 col-12-mobile">
-    <div class="col-12 col-12-mobile">
-      <%if @route.data_ora_partenza > DateTime.current%>
-        <%= link_to 'Annulla prenotazione', journey_path(id: params[:j_id], r_id: params[:id]), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Annulla prenotazione'%>
-      <%end %>
-    </div>
+    <!--una volta c'era l'annulla prenotazione-->
   <%end%>
 <% end %>
 
