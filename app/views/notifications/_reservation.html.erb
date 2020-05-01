@@ -1,8 +1,6 @@
-<div class="">
-  <%= link_to notification.actor.email, main_app.user_path(notification.actor) %> ha richiesto di partecipare al viaggio
-  <%= link_to notification.second_target.id, main_app.driver_route_path(notification.user, notification.second_target) %>
-</div>
-
-<div>
-  <%= notification.target.id %>
-</div>
+<!-- notifica che manda il driver sulla pagina di gestione della richiesta
+in questo caso il target è la route e il second target è la journey-->
+<%= link_to edit_route_journey_path(notification.target.id, notification.second_target), class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
+  <%= notification.actor.username %>
+  vuole partecipare alla tua tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %> !
+<% end %>
