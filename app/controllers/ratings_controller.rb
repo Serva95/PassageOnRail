@@ -3,14 +3,22 @@ class RatingsController < ApplicationController
 
   # GET /ratings
   def index
-    @user = User.find(params[:user_id])
-    @ratings = Rating.find_ratings(@user.id)
+    begin
+      @user = User.find(params[:user_id])
+      @ratings = Rating.find_ratings(@user.id)
+    rescue ActiveRecord::RecordNotFound
+      render :file => "#{Rails.root}/public/404.html",  layout: true, status: :not_found
+    end
   end
 
   # GET /ratings/new
   def new
-    @rating = Rating.new
-    @user = User.find(params[:user_id])
+    begin
+      @rating = Rating.new
+      @user = User.find(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      render :file => "#{Rails.root}/public/404.html",  layout: true, status: :not_found
+    end
   end
 
   # POST /ratings

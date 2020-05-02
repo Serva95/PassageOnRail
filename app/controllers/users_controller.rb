@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render :file => "#{Rails.root}/public/404.html",  layout: true, status: :not_found
+    end
   end
 
   # mostro tutte le route prenotate dall'utente loggato
@@ -32,13 +36,18 @@ class UsersController < ApplicationController
   # mostro dettagli della tratta prenotata
   # GET /users/:id/bookings/:route_id
   def detail_booking
-    @route=Route.find(params[:route_id])
-    @driver=Route.find_driver(@route)
+    begin
+      @route=Route.find(params[:route_id])
+      @journey_ok = Route.find_associated_stage(@route, current_user.id)
+      @driver=Route.find_driver(@route)
+    rescue ActiveRecord::RecordNotFound
+      render :file => "#{Rails.root}/public/404.html", layout: true, status: :not_found
+    end
   end
 
   private
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:email, :username, :password, :nome, :cognome, :data_di_nascita, :cellulare, :indirizzo, :url_foto, :deleted)
-    end
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:email, :username, :password, :nome, :cognome, :data_di_nascita, :cellulare, :indirizzo, :url_foto, :deleted)
+  end
 end
