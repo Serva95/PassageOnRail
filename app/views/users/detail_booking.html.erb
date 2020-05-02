@@ -54,7 +54,7 @@
   <!-- passaggio alla chat con il driver-->
   <div class="col-12 col-12-mobilep"><br></div>
   <%= form_with(model: Chat, local: true, method: "post") do |form| %>
-    <%= form.hidden_field :user_2_id, :value => @route.driver_id %>
+    <%= form.hidden_field :user_2_id, :value => @driver.id %>
     <div class="col-12 col-12-mobilep">
       <%= form.submit "Chatta con " + @driver.nome%>
     </div>

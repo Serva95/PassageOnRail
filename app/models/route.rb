@@ -90,10 +90,6 @@ class Route < ApplicationRecord
   # end
   # end
 
-  def self.find_user_name_for_chat(driver_id)
-    User.where(:driver_id => driver_id).first
-  end
-
   def find_pay_method(id, route2)
     if route2 == nil
       contanti2=true

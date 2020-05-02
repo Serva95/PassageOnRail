@@ -35,6 +35,9 @@ class ChatsController < ApplicationController
           #redirect alla chat se già esiste
           format.html { redirect_to chat_messagges_path(exists)}
           format.json { render json: @chat.errors, status: :unprocessable_entity }
+        else
+          format.html { redirect_to chat_messagges_path(exists)}
+          format.json { render json: @chat.errors, status: :unprocessable_entity }
         end
       else
         format.html { redirect_to chats_path, notice: "Errore nella creazione" }
