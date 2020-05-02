@@ -46,7 +46,6 @@ class RoutesController < ApplicationController
 
   # GET /drivers/1/routes/1
   def show
-    @route = @driver.routes.find(params[:id])
   end
 
   # GET /drivers/1/routes/new
@@ -114,7 +113,7 @@ class RoutesController < ApplicationController
 
   private
     def set_route
-      @route = @driver.routes.find(params[:id])
+      (@route = @driver.routes.find(params[:id])) rescue not_found
     end
 
     def route_params
@@ -126,7 +125,7 @@ class RoutesController < ApplicationController
     end
 
     def get_driver
-      @driver = Driver.find(params[:driver_id])
+      @driver = Driver.find(current_user.driver_id)
     end
 
   # trasforma un parametro da stringa a boolean
