@@ -134,8 +134,9 @@ class Route < ApplicationRecord
     end
   end
 
-  # @param [Route] route
   # @param [Numeric] user_id
+  # @param [Numeric] route_id
+  # @param [Numeric] j_id
   def self.find_associated_stage(route_id, user_id, j_id)
     Stage.joins(:journey).where("route_id = ? and user_id = ? and journey_id = ?", route_id, user_id, j_id).any?
   end
