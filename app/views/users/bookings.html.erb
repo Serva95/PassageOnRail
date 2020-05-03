@@ -5,7 +5,6 @@
   <%if @journeys_active.empty?%>
     <%unless @journeys_past.empty? %>
       <h4 class="col-12 col-12-narrower"> NON HAI NESSUNA TRATTA ATTIVA PRENOTATA!</h4>
-      <div class="col-12 col-12-narrower"><%= link_to 'Cerca Tratte!', new_search_path, class:'button'%></div>
     <%end %>
   <%else %>
     <!-- visualizzo le tratte attive-->
