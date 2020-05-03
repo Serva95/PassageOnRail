@@ -25,17 +25,15 @@ class RoutesController < ApplicationController
     else
       # se si richiedono i dettagli di un viaggio con tratta diretta
       @route = Route.find(params[:id])
-      @driver = Route.find_driver(@route)
       # cerca la tratta
-      @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
+      @driver = Route.find_driver(@route)
       # cerca i posti disponibili
+      @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
       @journey = Journey.new
-      @journey.stages.build(route_id: @route.id)
       # crea gli oggetti per il form
-      @booked_route = Route.already_booked(params[:id],current_user.id)
+      @journey.stages.build(route_id: @route.id)
       # controllo se la route è stata già prenotata
-      # cerca utente per iniziare la chat
-      @user = Route.find_user_name_for_chat(@route.driver_id)
+      @booked_route = Route.already_booked(params[:id],current_user.id)
     end
   end
 
