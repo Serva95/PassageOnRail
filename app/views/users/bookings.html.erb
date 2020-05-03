@@ -5,7 +5,6 @@
   <%if @journeys_active.empty?%>
     <%unless @journeys_past.empty? %>
       <h4 class="col-12 col-12-narrower"> NON HAI NESSUNA TRATTA ATTIVA PRENOTATA!</h4>
-      <div class="col-12 col-12-narrower"><%= link_to 'Cerca Tratte!', new_search_path, class:'button'%></div>
     <%end %>
   <%else %>
     <!-- visualizzo le tratte attive-->
@@ -56,7 +55,7 @@
                   <label for="pagato"></label>
                 </td>
               <%end %>
-              <td><%= link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id), class: "button" %></td>
+              <td><%= link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id, j_id:journey.id), class: "button" %></td>
             </tr>
           <%end %>
           <!-- inserisco riga vuota per separare le eventuali prenotazioni multitratta-->
@@ -66,15 +65,10 @@
       </table>
     </div>
     <div class="col-12 col-12-mobilep"><hr></div>
-    <div class="col-7 col-0-mobilep"></div>
-    <div class="col-3 col-12-mobilep">
-      <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
-    </div>
   <%end %>
   <!-- visualizzo le tratte passate -->
   <%if @journeys_past.empty? && @journeys_active.empty?%>
     <h4 class="col-5 col-12-narrower">Non hai mai prenotato una tratta!</h4>
-    <div class="col-3 col-12-narrower"><%= link_to 'Inizia ora!', new_search_path, class:'button'%></div>
   <%elsif !@journeys_past.empty? %>
     <div class="col-12 col-12-mobilep" style="overflow: auto;">
       <table>
@@ -100,7 +94,7 @@
               <td><%=  stage.route.citta_arrivo  %></td>
               <td><%=  stage.route.data_ora_arrivo.strftime("%d/%m/%y, %H:%M")  %></td>
               <td><%=  stage.route.costo  %></td>
-              <td><%=  link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id), class: "button" %></td>
+              <td><%=  link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id, j_id:journey.id), class: "button" %></td>
             </tr>
           <% end  %>
           <tr>
@@ -111,11 +105,11 @@
       </table>
     </div>
     <div class="col-12 col-12-mobilep"><br></div>
-    <div class="col-7 col-0-mobilep"></div>
-    <div class="col-3 col-12-mobilep">
-      <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
-    </div>
   <%end%>
+  <div class="col-7 col-0-mobilep"></div>
+  <div class="col-3 col-12-mobilep">
+    <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
+  </div>
 <%else %>
   <div class="col-7 col-12-mobilep">
     <h4>Non puoi vedere le prenotazioni di questo utente!</h4>

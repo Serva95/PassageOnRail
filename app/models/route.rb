@@ -90,10 +90,6 @@ class Route < ApplicationRecord
   # end
   # end
 
-  def self.find_user_name_for_chat(driver_id)
-    User.where(:driver_id => driver_id).first
-  end
-
   def find_pay_method(id, route2)
     if route2 == nil
       contanti2=true
@@ -136,6 +132,13 @@ class Route < ApplicationRecord
       end
       Stage.where(route_id: route.id).destroy_all #se la journey è composta da 2 stages, elimino solo quello di cui è stata cancellata la route e mantengo la journey con l'altro stage
     end
+  end
+
+  # @param [Numeric] user_id
+  # @param [Numeric] route_id
+  # @param [Numeric] j_id
+  def self.find_associated_stage(route_id, user_id, j_id)
+    Stage.joins(:journey).where("route_id = ? and user_id = ? and journey_id = ?", route_id, user_id, j_id).any?
   end
 
 end

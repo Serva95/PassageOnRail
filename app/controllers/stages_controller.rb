@@ -53,7 +53,7 @@ class StagesController < ApplicationController
     end
 
     def get_driver_journey
-      @driver = Driver.find(params[:driver_id])
+      @driver = Driver.find(current_user.driver_id)
     end
 
     def stage_params

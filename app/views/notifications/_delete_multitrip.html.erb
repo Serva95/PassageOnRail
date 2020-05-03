@@ -1,0 +1,11 @@
+<!-- Se viene cancellata una route che faceva parte del multiviaggio prenotato
+il path di manage booking è da cambiare come segue perchè non passo più il journey id,
+quindi gli passo l'id della route cancellata e l'id dell'altra route del multiviaggio-->
+<%= link_to user_manage_booking_path(deleted: notification.target.id, other: notification.second_target.id), class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
+  <%= notification.actor.username %>
+  ha cancellato la tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %>
+<% end %>
+
+<!--NB: Se entrambi gli autostoppisti cancellano le route, il manage_booking non può chiedergli di mantenere l'altra tratta visto che è stata cancellata,
+bisogna fare un controllo in modo che se entrambe le tratte sono cancellate, lo avvisi e lo mandi direttamente alla ricerca complessiva (dato che non ha
+altre scelte -->

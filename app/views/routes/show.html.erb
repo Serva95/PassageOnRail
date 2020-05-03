@@ -1,5 +1,5 @@
-
-<p>
+<%if @route.driver_id == current_user.driver_id and @route.deleted != true%>
+  <p>
   <strong>Citta partenza:</strong>
   <%= @route.citta_partenza %>
 </p>
@@ -46,3 +46,6 @@
 
 <%= link_to 'Edit', edit_driver_route_path(@driver, @route) %> |
 <%= link_to 'Back', driver_routes_path(@driver) %>
+<%else %>
+  <h2 class="error">Non puoi visualizzare questa tratta!</h2>
+<%end %>

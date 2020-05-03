@@ -25,17 +25,15 @@ class RoutesController < ApplicationController
     else
       # se si richiedono i dettagli di un viaggio con tratta diretta
       @route = Route.find(params[:id])
-      @driver = Route.find_driver(@route)
       # cerca la tratta
-      @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
+      @driver = Route.find_driver(@route)
       # cerca i posti disponibili
+      @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
       @journey = Journey.new
-      @journey.stages.build(route_id: @route.id)
       # crea gli oggetti per il form
-      @booked_route = Route.already_booked(params[:id],current_user.id)
+      @journey.stages.build(route_id: @route.id)
       # controllo se la route è stata già prenotata
-      # cerca utente per iniziare la chat
-      @user = Route.find_user_name_for_chat(@route.driver_id)
+      @booked_route = Route.already_booked(params[:id],current_user.id)
     end
   end
 
@@ -46,7 +44,6 @@ class RoutesController < ApplicationController
 
   # GET /drivers/1/routes/1
   def show
-    @route = @driver.routes.find(params[:id])
   end
 
   # GET /drivers/1/routes/new
@@ -114,7 +111,7 @@ class RoutesController < ApplicationController
 
   private
     def set_route
-      @route = @driver.routes.find(params[:id])
+      (@route = @driver.routes.find(params[:id])) rescue not_found
     end
 
     def route_params
@@ -126,7 +123,7 @@ class RoutesController < ApplicationController
     end
 
     def get_driver
-      @driver = Driver.find(params[:driver_id])
+      @driver = Driver.find(current_user.driver_id)
     end
 
   # trasforma un parametro da stringa a boolean

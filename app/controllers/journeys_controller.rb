@@ -11,7 +11,7 @@ class JourneysController < ApplicationController
       if Journey.booking(@journey)
         # la prenotazione ha avuto successo, crea le notifiche
         Journey.create_notifications_td(@journey, current_user,"reservation")
-        format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Prenotazione creata' }
+        format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione creata' }
         format.json { render :show, status: :created, location: @journey }
       else
         format.html { render :new }
@@ -23,7 +23,7 @@ class JourneysController < ApplicationController
   #GET /drivers/1/journeys
   def index
     # trova tutte le richieste che hanno accepted = nil
-    @journeys = Journey.find_requests(params[:driver_id])
+    @journeys = Journey.find_requests(current_user.driver_id)
   end
 
   #GET /routes/1/journeys/1/edit
@@ -88,7 +88,7 @@ class JourneysController < ApplicationController
     is_deletable = Journey.journey_is_deletable(route)
     respond_to do |format|
       if is_deletable && Journey.delete_passage_transaction(@journey, route, current_user)
-        format.html { redirect_to user_bookings_path(@journey.user_id), notice: 'Prenotazione eliminata' }
+        format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione eliminata' }
         format.json { head :no_content }
       else
         format.html { redirect_to detail_routes_path(multitrip: false, id: params[:r_id], j_id: params[:id]), notice: 'Errore eliminazione, non puoi annullare un viaggio se mancano meno di 48 ore alla partenza' }
@@ -103,7 +103,7 @@ class JourneysController < ApplicationController
   end
 
   def get_driver_journey
-    @driver = Driver.find(params[:driver_id])
+    @driver = Driver.find(current_user.driver_id)
   end
 
   def journey_params

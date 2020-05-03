@@ -3,14 +3,22 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   def index
-    @user = Review.find_user(params[:user_id])
-    @reviews = Review.find_reviews(@user.driver_id)
+    begin
+      @user = Review.find_user(params[:user_id])
+      @reviews = Review.find_reviews(@user.driver_id)
+    rescue ActiveRecord::RecordNotFound
+      render :file => "#{Rails.root}/public/404.html",  layout: true, status: :not_found
+    end
   end
 
   # GET /reviews/new
   def new
-    @review = Review.new
-    @user = Review.find_user(params[:user_id])
+    begin
+      @review = Review.new
+      @user = Review.find_user(params[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      render :file => "#{Rails.root}/public/404.html",  layout: true, status: :not_found
+    end
   end
 
   # POST /reviews
