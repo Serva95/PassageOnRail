@@ -100,7 +100,7 @@
               <td><%=  stage.route.citta_arrivo  %></td>
               <td><%=  stage.route.data_ora_arrivo.strftime("%d/%m/%y, %H:%M")  %></td>
               <td><%=  stage.route.costo  %></td>
-              <td><%=  link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id), class: "button" %></td>
+              <td><%=  link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id, j_id:journey.id), class: "button" %></td>
             </tr>
           <% end  %>
           <tr>
