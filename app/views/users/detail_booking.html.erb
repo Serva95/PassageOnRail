@@ -58,12 +58,13 @@
     <div class="col-12 col-12-mobilep">
       <%= form.submit "Chatta con " + @driver.nome%>
     </div>
-    <div class="col-12 col-12-mobile">
-      <%if @route.data_ora_partenza > DateTime.current%>
-        <%= link_to 'Annulla prenotazione', journey_path(id: params[:j_id], r_id: @route.id), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Annulla prenotazione'%>
-      <%end %>
-    </div>
   <%end%>
+  <div class="col-12 col-12-mobile"><br></div>
+  <div class="col-12 col-12-mobile">
+    <%if @route.data_ora_partenza > DateTime.current%>
+      <%= link_to 'Annulla prenotazione', journey_path(id: params[:j_id], r_id: @route.id), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Annulla prenotazione'%>
+    <%end %>
+  </div>
 <%else %>
   <div class="col-7 col-12-mobilep">
     <h4>Non puoi vedere questa prenotazione!</h4>
