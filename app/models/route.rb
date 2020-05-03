@@ -119,18 +119,29 @@ class Route < ApplicationRecord
     route.update!(n_passeggeri: p)
   end
 
+  # elimina la route del driver e tutte le relative prenotazioni
   def self.destroy_route_and_stages(route,current_user)
+
     self.transaction do
       route.update(deleted: true)
+
       journeys = Route.find_journeys(route.id)
       journeys.each do |journey|
-        Journey.create_notifications_th(journey,current_user,"deleted")
         number_of_stages = Stage.where("journey_id = ?", journey.id).count("id")
         if number_of_stages == 1
+          Journey.create_notifications_th(journey.user_id, current_user, route, 0, "delete_trip")
           journey.destroy! #la journey era composta da un solo stage, quindi elimino la journey e a cascata si elimina lo stage
         end
+        # verificare se è possibile mettere la seconda parte dentro il ciclo
       end
-      Stage.where(route_id: route.id).destroy_all #se la journey è composta da 2 stages, elimino solo quello di cui è stata cancellata la route e mantengo la journey con l'altro stage
+
+      stages = Stage.where(route_id: route.id)
+      stages.each do |stage|
+        journey = stage.journey
+        second_stage = journey.stages.where("route_id != ?", route.id)
+        Journey.create_notifications_th(stage.journey.user_id, current_user, route, second_stage.first.route, "delete_multitrip")
+      end
+      stages.destroy_all #se la journey è composta da 2 stages, elimino solo quello di cui è stata cancellata la route e mantengo la journey con l'altro stage
     end
   end
 

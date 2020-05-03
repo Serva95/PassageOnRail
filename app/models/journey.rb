@@ -34,17 +34,19 @@ class Journey < ApplicationRecord
 	end
 
 	# crea le notifiche per gli autostoppisti
-	def self.create_notifications_th(journey, current_user, notify_type)
-		journey.stages.each do |stage|
-			user = User.find(journey.user_id)
+	def self.create_notifications_th(user_id, actor, target, second_target, notify_type)
+		user = User.find(user_id)
 			Notification.create! do |notification|
-				notification.notify_type = notify_type
-				notification.actor = current_user
 				notification.user = user
-				notification.target = journey
-				notification.second_target = stage.route
+				notification.actor = actor
+				notification.target = target
+				if second_target.equal?(0)
+					notification.second_target = nil
+				else
+					notification.second_target = second_target
+				end
+				notification.notify_type = notify_type
 			end
-		end
 	end
 
 	# transazione che aggiorna il numero di passeggeri, crea l'associazione user-journey e

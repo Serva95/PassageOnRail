@@ -94,10 +94,6 @@ class RoutesController < ApplicationController
 
   # DELETE /drivers/1/routes/1
   def destroy
-    @journeys = Route.find_journeys(params[:id])
-    @journeys.each do |journey|
-      Journey.create_notifications_th(journey,current_user,"deleted")
-    end
     respond_to do |format|
       if Route.destroy_route_and_stages(@route,current_user)
         format.html { redirect_to driver_routes_path(@driver) }

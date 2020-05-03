@@ -3,9 +3,9 @@ class Notifications
     @notifications = $("[data-behavior='notifications']")
     if @notifications.length > 0
       @getNewNotifications()
-      #setInterval (=>
-      #  @getNewNotifications()
-      #), 50000
+      setInterval (=>
+        @getNewNotifications()
+      ), 50000
     $.ajaxSetup({
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
