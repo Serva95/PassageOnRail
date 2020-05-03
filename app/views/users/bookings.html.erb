@@ -66,15 +66,10 @@
       </table>
     </div>
     <div class="col-12 col-12-mobilep"><hr></div>
-    <div class="col-7 col-0-mobilep"></div>
-    <div class="col-3 col-12-mobilep">
-      <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
-    </div>
   <%end %>
   <!-- visualizzo le tratte passate -->
   <%if @journeys_past.empty? && @journeys_active.empty?%>
     <h4 class="col-5 col-12-narrower">Non hai mai prenotato una tratta!</h4>
-    <div class="col-3 col-12-narrower"><%= link_to 'Inizia ora!', new_search_path, class:'button'%></div>
   <%elsif !@journeys_past.empty? %>
     <div class="col-12 col-12-mobilep" style="overflow: auto;">
       <table>
@@ -111,11 +106,11 @@
       </table>
     </div>
     <div class="col-12 col-12-mobilep"><br></div>
-    <div class="col-7 col-0-mobilep"></div>
-    <div class="col-3 col-12-mobilep">
-      <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
-    </div>
   <%end%>
+  <div class="col-7 col-0-mobilep"></div>
+  <div class="col-3 col-12-mobilep">
+    <%= link_to 'Cerca nuove tratte!', new_search_path, class:"button" %>
+  </div>
 <%else %>
   <div class="col-7 col-12-mobilep">
     <h4>Non puoi vedere le prenotazioni di questo utente!</h4>
