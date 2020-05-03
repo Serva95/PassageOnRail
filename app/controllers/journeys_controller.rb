@@ -99,7 +99,7 @@ class JourneysController < ApplicationController
 
   private
   def set_journey
-    @journey = Journey.find(current_user.id)
+    @journey = Journey.find(params[:id])
   end
 
   def get_driver_journey

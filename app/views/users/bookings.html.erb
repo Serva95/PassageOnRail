@@ -56,7 +56,7 @@
                   <label for="pagato"></label>
                 </td>
               <%end %>
-              <td><%= link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id), class: "button" %></td>
+              <td><%= link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id, j_id:journey.id), class: "button" %></td>
             </tr>
           <%end %>
           <!-- inserisco riga vuota per separare le eventuali prenotazioni multitratta-->
