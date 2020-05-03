@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def detail_booking
     begin
       @route=Route.find(params[:route_id])
-      @journey_ok = Route.find_associated_stage(@route, current_user.id)
+      @journey_ok= Route.find_associated_stage(@route.id, current_user.id, params[:j_id])
       @driver=Route.find_driver(@route)
     rescue ActiveRecord::RecordNotFound
       render :file => "#{Rails.root}/public/404.html", layout: true, status: :not_found
