@@ -59,7 +59,6 @@
       <%= form.submit "Chatta con " + @driver.nome%>
     </div>
     <div class="col-12 col-12-mobile">
-      <h2 class="error"> l'annulla prenotazione non funziona </h2>
       <%if @route.data_ora_partenza > DateTime.current%>
         <%= link_to 'Annulla prenotazione', journey_path(id: params[:j_id], r_id: @route.id), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Annulla prenotazione'%>
       <%end %>
