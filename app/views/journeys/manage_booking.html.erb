@@ -1,14 +1,23 @@
+<h3><strong>NON CLICCATE I PULSANTI!!!!</strong></h3>
+<h3><strong>QUESTA PAGINA SARA' DA "SDOPPIARE" MOLTO PROBABILMENTE, PER DIVIDERE UPDATE DA DELETE DATO CHE CI SONO I CASI PARTICOLARI DI ENTRAMBI DA TRATTARE. ATTENDO CONSULTO PER PROSEGUIRE</strong></h3>
+<% if @delete %>
 <div class="col-12 col-12-mobile">
-  <h3>Abbiamo una notizia cattiva e una buona..</h3>
-  <h1><a>La cattiva notizia è che la tua partecipazione alla tratta </a><%= @rejected_stage.route.citta_partenza%>-<%=@rejected_stage.route.citta_arrivo%><a> del viaggio è stata rifiutata :(</a></h1>
-  <h1><a>La buona notizia è che il driver della tratta </a><%= @accepted_stage.route.citta_partenza%>-<%=@accepted_stage.route.citta_arrivo%><a> ha invece accettato di viaggiare con te!! :)</a></h1>
-  <h1>Preferisci cercare una nuova tratta che sostituisca quella che ti è stata rifiutata o vuoi disdire la prenotazione della tratta che è già stata accettata per cercare un viaggio ex novo?</h1>
+  <h3>Oh no..</h3>
+  <h1><a>Sembra che la tratta </a><%= @target_route.citta_partenza%>-<%= @target_route.citta_arrivo%><a> sia stata cancellata dal conducente :(</a></h1>
+  <h1>Preferisci cercare una nuova tratta che sostituisca quella che è stata cancellata o vuoi disdire la prenotazione dell'altra tratta per cercare un viaggio ex novo?</h1>
   </div>
+  <%else %>
+  <h3>Attenzione!</h3>
+  <h1><a>Sembra che la tratta </a><%= @target_route.citta_partenza%>-<%= @target_route.citta_arrivo%><a> sia stata modificata dal conducente :(</a></h1>
+  <h2><strong>INSERIRE QUI I DATI DELLE TRATTE</strong></h2>
+  <h1>Preferisci cercare una nuova tratta che sostituisca quella che è stata cancellata o vuoi disdire la prenotazione dell'altra tratta per cercare un viaggio ex novo?</h1>
+  </div>
+  <%end %>
 <div class="col-12 col-12-mobile">
-  <%= link_to 'Completa viaggio esistente', new_search_path(c_part: @rejected_stage.route.citta_partenza, c_arr: @rejected_stage.route.citta_arrivo, data_ora: @rejected_stage.route.data_ora_partenza),class: "button special" ,title: 'Completa il viaggio'%>
+  <%= link_to 'Completa viaggio esistente', new_search_path(c_part: @target_route.citta_partenza, c_arr: @target_route.citta_arrivo, data_ora: @target_route.data_ora_partenza),class: "button special" ,title: 'Completa il viaggio'%>
   <% if @first %>
-    <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: params[:j_id], id: @accepted_stage.id, c_part: @accepted_stage.route.citta_partenza,c_arr: @rejected_stage.route.citta_arrivo,data: @accepted_stage.route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
+    <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @other_route.citta_partenza,c_arr: @target_route.citta_arrivo,data: @other_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
     <% else %>
-  <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: params[:j_id], id: @accepted_stage.id, c_part: @rejected_stage.route.citta_partenza,c_arr: @accepted_stage.route.citta_arrivo,data: @rejected_stage.route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
+  <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @target_route.citta_partenza,c_arr: @other_route.citta_arrivo,data: @target_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
 <%end %>
 </div>

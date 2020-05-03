@@ -75,11 +75,15 @@ class JourneysController < ApplicationController
   end
 
   def manage_booking
-    @j1 = Journey.find_from_stage(params[:j_id],'true')
-    @accepted_stage =@j1.first.stages.first
-    @j2 = Journey.find_from_stage(params[:j_id],'false')
-    @rejected_stage = @j2.first.stages.first
-    @first=Route.first_route(@accepted_stage.route,@rejected_stage.route)
+    if params[:type].eql?("delete_multitrip")
+      @delete=true
+    else
+      @delete=false
+    end
+    @target_route =Route.find(params[:target])
+    @other_route = Route.find(params[:other])
+    @other_stage = Stage.where("route_id = ?",@other_route.id).first #se non lo trova è perchè entrambe sono state cancellate -> DA GESTIRE
+    @first=Route.first_route(@other_route,@target_route)
   end
 
   # DELETE /journeys/1
