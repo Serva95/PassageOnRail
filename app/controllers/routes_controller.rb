@@ -80,9 +80,14 @@ class RoutesController < ApplicationController
       @route.tempo_percorrenza = ((@route.data_ora_arrivo - @route.data_ora_partenza).to_i)/60
       if @route.update(route_params)
         @journeys = Route.find_journeys(params[:id])
-        @journeys.each do |journey|
-          Journey.create_notifications_th(journey,current_user,"updated")
-        end
+        @journeys.each {|journey|
+          if  journey.stages.count == 1
+            Journey.create_notifications_th(journey.user_id, current_user, @route, @route, "update_trip")
+          else
+            second_route = Route.find_second_stage(journey, @route.id)
+            Journey.create_notifications_th(journey.user_id, current_user, @route, second_route, "update_multitrip")
+          end
+        }
         format.html { redirect_to driver_route_path(@driver) }
         format.json { render :show, status: :ok, location: @route }
       else

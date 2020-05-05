@@ -20,16 +20,14 @@ class Journey < ApplicationRecord
 	accepts_nested_attributes_for :stages
 
 	# crea le notifiche per i driver delle route prenotate
-	def self.create_notifications_td(journey, current_user, notify_type)
-		journey.stages.each do |stage|
-			driver = Route.find_driver(stage.route)
-			Notification.create! do |notification|
-				notification.notify_type = notify_type
-				notification.actor = current_user
-				notification.user = driver
-				notification.target = journey
-				notification.second_target = stage.route
-			end
+	def self.create_notifications_td(driver_id, actor, target, second_target, notify_type)
+		user = User.where(driver_id: driver_id).first
+		Notification.create! do |notification|
+			notification.user = user
+			notification.actor = actor
+			notification.target = target
+			notification.second_target = second_target
+			notification.notify_type = notify_type
 		end
 	end
 
@@ -40,11 +38,7 @@ class Journey < ApplicationRecord
 				notification.user = user
 				notification.actor = actor
 				notification.target = target
-				if second_target.equal?(0)
-					notification.second_target = nil
-				else
-					notification.second_target = second_target
-				end
+				notification.second_target = second_target
 				notification.notify_type = notify_type
 			end
 	end
@@ -128,9 +122,6 @@ class Journey < ApplicationRecord
 				stage.destroy!
 				route.decrement!(:n_passeggeri, by = journey.n_prenotati)
 			end
-			notifications = Notification.where(target: journey, second_target: route)
-			notifications.update_all(read_at: Time.zone.now)
-			Journey.create_notifications_td(journey, current_user, "cancel")
 
 		end
 	end

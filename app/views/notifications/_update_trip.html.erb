@@ -1,6 +1,6 @@
 <!-- se viene modificata la tratta singola che è stata prenotata, si manda l'utente al dettaglio della prenotazione, poi si arrangia lui nel
 caso ad annullare la prenotazione e a ricercare-->
-<%= link_to user_detail_booking_path(notification.user, notification.target.id), class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
+<%= link_to user_bookings_path(notification.user, notification.target.id), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
   <%= notification.actor.username %>
   ha modificato la tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %>
 <% end %>

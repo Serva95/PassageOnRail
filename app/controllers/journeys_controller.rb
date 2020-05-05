@@ -10,7 +10,9 @@ class JourneysController < ApplicationController
     respond_to do |format|
       if Journey.booking(@journey)
         # la prenotazione ha avuto successo, crea le notifiche
-        Journey.create_notifications_td(@journey, current_user,"reservation")
+        @journey.stages.each do |stage|
+          Journey.create_notifications_td(stage.route.driver_id, current_user, stage.route, @journey, "reservation")
+        end
         format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione creata' }
         format.json { render :show, status: :created, location: @journey }
       else
@@ -44,8 +46,7 @@ class JourneysController < ApplicationController
 
       if @stage.update(accepted: true)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
-        byebug
-        Journey.create_notifications_th(@journey, current_user, "accepted")
+        Journey.create_notifications_th(@journey.user_id, current_user, @route, @route, "accept_trip")
         format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @journey }
       else
@@ -63,8 +64,7 @@ class JourneysController < ApplicationController
 
       if Journey.reject(@journey.n_prenotati, @stage)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
-        byebug
-        Journey.create_notifications_th(@journey, current_user, "rejected")
+        Journey.create_notifications_th(@journey.user_id, current_user, @route, @route, "reject_trip")
         format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @journey }
       else
@@ -92,6 +92,7 @@ class JourneysController < ApplicationController
     is_deletable = Journey.journey_is_deletable(route)
     respond_to do |format|
       if is_deletable && Journey.delete_passage_transaction(@journey, route, current_user)
+        Journey.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
         format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione eliminata' }
         format.json { head :no_content }
       else
