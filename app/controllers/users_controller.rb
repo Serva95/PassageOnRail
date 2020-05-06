@@ -40,6 +40,9 @@ class UsersController < ApplicationController
       @route=Route.find(params[:route_id])
       @journey_ok= Route.find_associated_stage(@route.id, current_user.id, params[:j_id])
       @driver=Route.find_driver(@route)
+      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "#{1.year.ago}"
     rescue ActiveRecord::RecordNotFound
       render :file => "#{Rails.root}/public/404.html", layout: true, status: :not_found
     end
