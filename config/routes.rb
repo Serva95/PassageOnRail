@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     get '/users/:id/bookings/:route_id', to: 'users#detail_booking', as: 'user_detail_booking'
   end
   resources :journeys, only: [:create, :destroy]
+  resources :journeys, only: [:destroy_both] do
+    delete 'destroy_both', action: 'destroy_both', on: :member
+  end
   resources :drivers, only: [:new, :edit, :create, :update, :destroy] do
     get 'confirm_destroy', to: 'drivers#confirm_destroy', as: 'confirm_destroy'
     resources :vehicles

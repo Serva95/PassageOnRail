@@ -89,13 +89,14 @@ class JourneysController < ApplicationController
   def manage_booking_update
     @updated_route =Route.find(params[:target])
     @other_route = Route.find(params[:other])
-    if @first=Route.first_route(@other_route,@updated_route)
+    if (@first=Route.first_route(@other_route,@updated_route))
       @overlying = Route.overlying(@other_route,@updated_route)
     else
       @overlying = Route.overlying(@updated_route,@other_route)
     end
     @updated_stage = Stage.where("route_id = ?",@updated_route.id).first
     @other_stage = Stage.where("route_id = ?",@other_route.id).first
+    @journey_id = @other_stage.journey_id
   end
 
   # DELETE /journeys/1
