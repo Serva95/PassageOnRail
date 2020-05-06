@@ -96,8 +96,11 @@
   <div class="col-12 col-12-mobilep">
     <br/>
     <%= form.submit "Crea Nuova Route", :id => "submit_button" %>
+    <% unless route.nil? %>
+    <h2>è una modifica</h2>
+    <% end%>
   </div>
-<% end %>
+<%  end %>
 
 <script type="application/javascript">
 
