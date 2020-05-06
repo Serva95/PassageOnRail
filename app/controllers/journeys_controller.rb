@@ -74,16 +74,28 @@ class JourneysController < ApplicationController
     end
   end
 
-  def manage_booking
-    if params[:type].eql?("delete_multitrip")
-      @delete=true
-    else
-      @delete=false
-    end
-    @target_route =Route.find(params[:target])
+  def manage_booking_delete
+    @deleted_route =Route.find(params[:target])
     @other_route = Route.find(params[:other])
-    @other_stage = Stage.where("route_id = ?",@other_route.id).first #se non lo trova è perchè entrambe sono state cancellate -> DA GESTIRE
-    @first=Route.first_route(@other_route,@target_route)
+    if @other_route.deleted.eql?('true') #se l'altra route è stata eliminata prima della lettura di questa notifica
+      @both_deleted = true
+    else
+      @both_deleted = false
+      @other_stage = Stage.where("route_id = ?",@other_route.id).first #se non lo trova è perchè entrambe sono state cancellate -> DA GESTIRE
+    end
+    @first=Route.first_route(@other_route,@deleted_route)
+  end
+
+  def manage_booking_update
+    @updated_route =Route.find(params[:target])
+    @other_route = Route.find(params[:other])
+    if @first=Route.first_route(@other_route,@updated_route)
+      @overlying = Route.overlying(@other_route,@updated_route)
+    else
+      @overlying = Route.overlying(@updated_route,@other_route)
+    end
+    @updated_stage = Stage.where("route_id = ?",@updated_route.id).first
+    @other_stage = Stage.where("route_id = ?",@other_route.id).first
   end
 
   # DELETE /journeys/1

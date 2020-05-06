@@ -1,0 +1,85 @@
+<% if !@overlying %>
+  <div class="col-12 col-12-mobile">
+    <h2><strong>Attenzione!</strong></h2>
+    <h1>Sembra che il tuo viaggio abbia subito una modifica da parte dei guidatori. </h1>
+    <h1>Ecco i dettagli aggiornati: </h1>
+  </div>
+
+    <% if @first %>
+      <div class="col-6 col-12-mobilep">
+        <h1><strong>Prima tratta</strong></h1>
+        <%= render 'routes/detail_route', route: @other_route %>
+      </div>
+      <div class="col-6 col-12-mobilep">
+        <h1><strong>Seconda tratta</strong></h1>
+        <%= render 'routes/detail_route', route: @updated_route %>
+      </div>
+    <% else %>
+      <div class="col-6 col-12-mobilep">
+        <h3><strong>Prima tratta</strong></h3>
+        <%= render 'routes/detail_route', route: @updated_route %>
+      </div>
+      <div class="col-6 col-12-mobilep">
+        <h3><strong>Seconda tratta</strong></h3>
+        <%= render 'routes/detail_route', route: @other_route %>
+      </div>
+    <% end %>
+
+  <div class="col-12 col-12-mobilep">
+    <h1>Se le modifiche non sono di tuo gradimento, puoi decidere di cancellare una delle due tratte per cercarne una sostitutiva che soddisfi le tue esigenze.</h1>
+  </div>
+
+  <div>
+    <% if @first %>
+      <%= link_to 'Sostituisci la prima tratta', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @other_route.citta_partenza,c_arr: @other_route.citta_arrivo,data: @other_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione e cercare una tratta sostitutiva?' }, class: "button special" ,title: 'Sostituisci la prima tratta' %>
+      <%= link_to 'Sostituisci la seconda tratta', stage_path(j_id: @updated_stage.journey_id, id: @updated_stage.id, c_part: @updated_route.citta_partenza,c_arr: @updated_route.citta_arrivo,data: @updated_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione e cercare una tratta sostitutiva?' }, class: "button special" ,title: 'Sostituisci la seconda tratta' %>
+    <% else %>
+      <%= link_to 'Sostituisci la prima tratta', stage_path(j_id: @updated_stage.journey_id, id: @updated_stage.id, c_part: @updated_route.citta_partenza,c_arr: @updated_route.citta_arrivo,data: @updated_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione e cercare una tratta sostitutiva?' }, class: "button special" ,title: 'Sostituisci la prima tratta' %>
+      <%= link_to 'Sostituisci la seconda tratta', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @other_route.citta_partenza,c_arr: @other_route.citta_arrivo,data: @other_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione e cercare una tratta sostitutiva?' }, class: "button special" ,title: 'Sostituisci la seconda tratta' %>
+    <% end %>
+    <%= link_to 'Accetta le modifiche', user_bookings_path(current_user), class: "button special" ,title: 'Accetta le modifiche' %>
+  </div>
+
+<%else %>
+  <div class="col-12 col-12-mobile">
+    <h2><strong>Attenzione!</strong></h2>
+    <h1>Sembra che il tuo viaggio abbia subito una modifica da parte dei guidatori e ora <strong>il cambio tra le tratte non è più possibile.</strong></h1>
+    <h1>Ecco i dettagli aggiornati: </h1>
+  </div>
+
+  <% if @first %>
+    <div class="col-6 col-12-mobilep">
+      <h1><strong>Prima tratta</strong></h1>
+      <%= render 'routes/detail_route', route: @other_route %>
+    </div>
+    <div class="col-6 col-12-mobilep">
+      <h1><strong>Seconda tratta</strong></h1>
+      <%= render 'routes/detail_route', route: @updated_route %>
+    </div>
+  <% else %>
+    <div class="col-6 col-12-mobilep">
+      <h1><strong>Prima tratta</strong></h1>
+      <%= render 'routes/detail_route', route: @updated_route %>
+    </div>
+    <div class="col-6 col-12-mobilep">
+      <h1><strong>Seconda tratta</strong></h1>
+      <%= render 'routes/detail_route', route: @other_route %>
+    </div>
+  <% end %>
+
+  <div>
+    <h1>Puoi decidere di cancellare una delle due tratte per cercarne una sostitutiva che ti permetta di effettuare il cambio oppure puoi annullare entrambe le prenotazioni e cercare un viaggio ex novo.</h1>
+  </div>
+
+  <div>
+    <% if @first %>
+      <%= link_to 'Sostituisci la prima tratta', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @other_route.citta_partenza,c_arr: @other_route.citta_arrivo,data: @other_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione e cercare una tratta sostitutiva?' }, class: "button special" ,title: 'Sostituisci la prima tratta' %>
+      <%= link_to 'Sostituisci la seconda tratta', stage_path(j_id: @updated_stage.journey_id, id: @updated_stage.id, c_part: @updated_route.citta_partenza,c_arr: @updated_route.citta_arrivo,data: @updated_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione e cercare una tratta sostitutiva?' }, class: "button special" ,title: 'Sostituisci la seconda tratta' %>
+    <% else %>
+      <%= link_to 'Sostituisci la prima tratta', stage_path(j_id: @updated_stage.journey_id, id: @updated_stage.id, c_part: @updated_route.citta_partenza,c_arr: @updated_route.citta_arrivo,data: @updated_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione e cercare una tratta sostitutiva?' }, class: "button special" ,title: 'Sostituisci la prima tratta' %>
+      <%= link_to 'Sostituisci la seconda tratta', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @other_route.citta_partenza,c_arr: @other_route.citta_arrivo,data: @other_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione e cercare una tratta sostitutiva?' }, class: "button special" ,title: 'Sostituisci la seconda tratta' %>
+    <% end %>
+    <%= link_to 'Cerca un nuovo viaggio NON CLICCARE', user_bookings_path(current_user) %>
+  </div>
+
+<%end %>

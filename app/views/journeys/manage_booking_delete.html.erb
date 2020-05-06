@@ -1,0 +1,34 @@
+<%if !@both_deleted %>
+
+  <div class="col-12 col-12-mobile">
+    <h3>Oh no..</h3>
+    <h1><a>Sembra che la tratta </a><%= @deleted_route.citta_partenza%>-<%= @deleted_route.citta_arrivo%><a> sia stata cancellata dal conducente :(</a></h1>
+    <h1>Preferisci cercare una nuova tratta che sostituisca quella che è stata cancellata o vuoi disdire la prenotazione dell'altra tratta per cercare un viaggio ex novo?</h1>
+  </div>
+
+  <div class="col-12 col-12-mobile">
+    <%= link_to 'Completa viaggio esistente', new_search_path(c_part: @deleted_route.citta_partenza, c_arr: @deleted_route.citta_arrivo, data_ora: @deleted_route.data_ora_partenza),class: "button special" ,title: 'Completa il viaggio'%>
+    <% if @first %>
+      <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @other_route.citta_partenza,c_arr: @deleted_route.citta_arrivo,data: @other_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
+    <% else %>
+      <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @deleted_route.citta_partenza,c_arr: @other_route.citta_arrivo,data: @deleted_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
+    <%end %>
+  </div>
+
+<%else %>
+
+  <div class="col-12 col-12-mobile">
+    <h3>Oh no..</h3>
+    <h1><a>Sembra che entrambe le tratte che componevano il viaggio </a><%= @deleted_route.citta_partenza%>-<%= @other_route.citta_arrivo%><a> siano state cancellate dai conducenti :(</a></h1>
+    <h1>Non ti preoccupare! Cerca subito un nuovo viaggio che ti porti a destinazione!</h1>
+  </div>
+
+  <div class="col-12 col-12-mobile">
+    <% if @first %>
+      <%= link_to 'Cerca nuovo viaggio', new_search_path(c_part: @other_route.citta_partenza,c_arr: @deleted_route.citta_arrivo,data: @other_route.data_ora_partenza), class: "button special" ,title: 'Cerca nuovo viaggio' %>
+    <% else %>
+      <%= link_to 'Cerca nuovo viaggio', new_search_path(c_part: @deleted_route.citta_partenza,c_arr: @other_route.citta_arrivo,data: @deleted_route.data_ora_partenza), class: "button special" ,title: 'Cerca nuovo viaggio' %>
+    <%end %>
+  </div>
+
+<%end %>

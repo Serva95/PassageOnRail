@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/user/sign_out', to: 'users/sessions#destroy'
     get '/users/:id/bookings', to: 'users#bookings', as: 'user_bookings'
-    get '/users/:id/manage_booking', to: 'journeys#manage_booking', as: 'user_manage_booking'
+    get '/users/:id/manage_booking_delete', to: 'journeys#manage_booking_delete', as: 'user_manage_booking_delete'
+    get '/users/:id/manage_booking_update', to: 'journeys#manage_booking_update', as: 'user_manage_booking_update'
     get '/users/:id/bookings/:route_id', to: 'users#detail_booking', as: 'user_detail_booking'
   end
   resources :journeys, only: [:create, :destroy]
