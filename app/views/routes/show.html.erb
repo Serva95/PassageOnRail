@@ -1,16 +1,32 @@
 <%if @route.driver_id == current_user.driver_id and @route.deleted != true%>
-
   <div class="col-12 col-12-mobilep">
-    <%= render 'detail_route', route: @route %>
+    <h2><strong>Dettagli tratta</strong></h2>
   </div>
+  <div class="col-6 col-12-mobilep">
+    <%= render 'detail_route', route: @route, posti:@posti %>
   <p>
     <strong>Contanti:</strong>
     <%= @route.contanti %>
   </p>
+  </div>
 
-  <div class="col-12 col-12-mobilep"></div>
-<%= link_to 'Edit', edit_driver_route_path(@driver, @route) %> |
-<%= link_to 'Back', driver_routes_path(@driver) %>
+  <div class="col-6 col-12-mobilep">
+    <h1><strong>Passeggeri prenotati</strong></h1>
+    <% if @empty %>
+      <h1>Nessun passeggero prenotato per questa tratta</h1>
+    <%else %>
+      <% @passengers.each do |passenger| %>
+        <div>
+        <%= link_to "#{passenger.user.username}", user_path(passenger.user) %>
+        </div>
+    <%end %>
+      <%end %>
+  </div>
+
+  <div class="col-12 col-12-mobilep">
+<%= link_to 'Modifica tratta', edit_driver_route_path(@driver, @route), class: "button" %>
+<%= link_to 'Back', driver_routes_path(@driver), class: "button special" %>
+  </div>
 <%else %>
   <h2 class="error">Non puoi visualizzare questa tratta!</h2>
 <%end %>
