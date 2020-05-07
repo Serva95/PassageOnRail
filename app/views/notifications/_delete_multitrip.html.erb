@@ -4,6 +4,7 @@ quindi gli passo l'id della route cancellata e l'id dell'altra route del multivi
 <%= link_to user_manage_booking_path(notification.user,target: notification.target.id, other: notification.second_target.id, type: notification.notify_type), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
   <%= notification.actor.username %>
   ha cancellato la tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %>
+  <br/>
 <% end %>
 
 <!--NB: Se entrambi gli autostoppisti cancellano le route, il manage_booking non può chiedergli di mantenere l'altra tratta visto che è stata cancellata,

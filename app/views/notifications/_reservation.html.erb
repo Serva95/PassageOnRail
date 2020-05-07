@@ -3,4 +3,5 @@ in questo caso il target è la route e il second target è la journey-->
 <%= link_to edit_route_journey_path(notification.target.id, notification.second_target), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
   <%= notification.actor.username %>
   vuole partecipare alla tua tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %> !
+  <br/>
 <% end %>

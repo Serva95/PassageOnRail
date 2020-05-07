@@ -6,36 +6,27 @@ class RoutesController < ApplicationController
   # GET /routes/detail
   def detail
     @multi_trip = true?(params[:multitrip])
+    @routes = Route.find(params[:ids])
+    @drivers = []
+    @seats = []
+    @routes.each do |route|
+      @drivers << route.driver.user
+      @seats   << route.posti_disponibili
+    end
+
     if @multi_trip
-      # se si richiedono i dettagli di un viaggio con due tratte
-      @route1 = Route.find(params[:id1])
-      @route2 = Route.find(params[:id2])
-      @driver1 = Route.find_driver(@route1)
-      @driver2 = Route.find_driver(@route2)
-      # cerca le due tratte
-
-      @posti1 = Route.posti_disponibili(params[:id1], @route1.vehicle_id)
-      @posti2 = Route.posti_disponibili(params[:id2], @route2.vehicle_id)
-      # cerchi i posti disponibili per ciascuna tratta
-
-      @journey = Journey.new
-      @journey.stages.build(route_id: @route1.id)
-      @journey.stages.build(route_id: @route2.id)
+      # @journey = Journey.new
+      #@journey.stages.build(route_id: @route1.id)
+      #@journey.stages.build(route_id: @route2.id)
       # crea gli oggetti per la form
-    else
-      # se si richiedono i dettagli di un viaggio con tratta diretta
-      @route = Route.find(params[:id])
-      # cerca la tratta
-      @driver = Route.find_driver(@route)
-      # cerca i posti disponibili
-      @posti = Route.posti_disponibili(params[:id], @route.vehicle_id)
-      @journey = Journey.new
-      # crea gli oggetti per il form
-      @journey.stages.build(route_id: @route.id)
-      # controllo se la route è stata già prenotata
-      @booked_route = Route.already_booked(params[:id],current_user.id)
     end
   end
+  #GET /routes/detail_multitrip
+
+  def detail_multitrip
+
+  end
+
 
   # GET /drivers/1/routes
   def index
