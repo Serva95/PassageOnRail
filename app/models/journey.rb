@@ -34,13 +34,13 @@ class Journey < ApplicationRecord
 	# crea le notifiche per gli autostoppisti
 	def self.create_notifications_th(user_id, actor, target, second_target, notify_type)
 		user = User.find(user_id)
-			Notification.create! do |notification|
-				notification.user = user
-				notification.actor = actor
-				notification.target = target
-				notification.second_target = second_target
-				notification.notify_type = notify_type
-			end
+		Notification.create! do |notification|
+			notification.user = user
+			notification.actor = actor
+			notification.target = target
+			notification.second_target = second_target
+			notification.notify_type = notify_type
+		end
 	end
 
 	# transazione che aggiorna il numero di passeggeri, crea l'associazione user-journey e
@@ -109,7 +109,7 @@ class Journey < ApplicationRecord
 
 	# @param [Journey] journey
 	# @param [Route] route
-	def self.delete_passage_transaction(journey, route, current_user)
+	def self.delete_passage_transaction(journey, route)
 		number_of_stages = Stage.where("journey_id = ?", journey.id).count("id")
 		if number_of_stages == 1
 			ActiveRecord::Base.transaction do
@@ -122,7 +122,17 @@ class Journey < ApplicationRecord
 				stage.destroy!
 				route.decrement!(:n_passeggeri, by = journey.n_prenotati)
 			end
+		end
+	end
 
+	# @param [Journey] journey
+	# @param [Route] route_1
+	# @param [Route] route_2
+	def self.delete_both_passage(journey, route_1, route_2)
+		ActiveRecord::Base.transaction do
+			journey.destroy!
+			route_1.decrement!(:n_passeggeri, by = journey.n_prenotati)
+			route_2.decrement!(:n_passeggeri, by = journey.n_prenotati)
 		end
 	end
 

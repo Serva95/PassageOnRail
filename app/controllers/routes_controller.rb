@@ -103,7 +103,7 @@ class RoutesController < ApplicationController
 
   private
     def set_route
-      (@route = @driver.routes.find(params[:id])) rescue not_found
+      @route = @driver.routes.find(params[:id])
     end
 
     def route_params

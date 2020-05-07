@@ -1,7 +1,7 @@
 <!-- Se viene cancellata una route che faceva parte del multiviaggio prenotato
 il path di manage booking è da cambiare come segue perchè non passo più il journey id,
 quindi gli passo l'id della route cancellata e l'id dell'altra route del multiviaggio-->
-<%= link_to user_manage_booking_path(notification.user,target: notification.target.id, other: notification.second_target.id, type: notification.notify_type), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
+<%= link_to user_manage_booking_delete_path(notification.user,target: notification.target.id, other: notification.second_target.id), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
   <%= notification.actor.username %>
   ha cancellato la tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %>
   <br/>

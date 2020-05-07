@@ -105,6 +105,15 @@ class Route < ApplicationRecord
     end
   end
 
+  #controlla se due tratte del multiviaggio si sovrappongono
+  def self.overlying(route1,route2)
+    if route1.data_ora_arrivo > route2.data_ora_partenza
+      return true
+    else
+      return false
+    end
+  end
+
   # decrementa il numero di passeggeri
   def self.decrease(route_id, n_passeggeri)
     route = Route.find(route_id)

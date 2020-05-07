@@ -1,5 +1,5 @@
 class JourneysController < ApplicationController
-  before_action :set_journey, only: [:destroy]
+  before_action :set_journey, only: [:destroy, :destroy_both]
 
 
   # POST /journey
@@ -74,16 +74,29 @@ class JourneysController < ApplicationController
     end
   end
 
-  def manage_booking
-    if params[:type].eql?("delete_multitrip")
-      @delete=true
-    else
-      @delete=false
-    end
-    @target_route =Route.find(params[:target])
+  def manage_booking_delete
+    @deleted_route =Route.find(params[:target])
     @other_route = Route.find(params[:other])
-    @other_stage = Stage.where("route_id = ?",@other_route.id).first #se non lo trova è perchè entrambe sono state cancellate -> DA GESTIRE
-    @first=Route.first_route(@other_route,@target_route)
+    if @other_route.deleted.eql?('true') #se l'altra route è stata eliminata prima della lettura di questa notifica
+      @both_deleted = true
+    else
+      @both_deleted = false
+      @other_stage = Stage.where("route_id = ?",@other_route.id).first #se non lo trova è perchè entrambe sono state cancellate -> DA GESTIRE
+    end
+    @first=Route.first_route(@other_route,@deleted_route)
+  end
+
+  def manage_booking_update
+    @updated_route =Route.find(params[:target])
+    @other_route = Route.find(params[:other])
+    if (@first=Route.first_route(@other_route,@updated_route))
+      @overlying = Route.overlying(@other_route,@updated_route)
+    else
+      @overlying = Route.overlying(@updated_route,@other_route)
+    end
+    @updated_stage = Stage.where("route_id = ?",@updated_route.id).first
+    @other_stage = Stage.where("route_id = ?",@other_route.id).first
+    @journey_id = @other_stage.journey_id
   end
 
   # DELETE /journeys/1
@@ -91,13 +104,34 @@ class JourneysController < ApplicationController
     route = Route.find(params[:r_id])
     is_deletable = Journey.journey_is_deletable(route)
     respond_to do |format|
-      if is_deletable && Journey.delete_passage_transaction(@journey, route, current_user)
+      if is_deletable && Journey.delete_passage_transaction(@journey, route)
         Journey.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
         format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione eliminata' }
         format.json { head :no_content }
       else
         format.html { redirect_to detail_routes_path(multitrip: false, id: params[:r_id], j_id: params[:id]), notice: 'Errore eliminazione, non puoi annullare un viaggio se mancano meno di 48 ore alla partenza' }
         format.json { head :no_content }
+      end
+    end
+  end
+
+  # DELETE /journeys/1
+  # elimina entrambe gli stage
+  def destroy_both
+    route1 = Route.find(params[:r_1_id])
+    route2 = Route.find(params[:r_2_id])
+    notification = params[:notification]
+    respond_to do |format|
+      if Journey.delete_both_passage(@journey, route1, route2)
+        Journey.create_notifications_td(route1.driver_id, current_user, route1, route1, "cancel")
+        Journey.create_notifications_td(route2.driver_id, current_user, route2, route2, "cancel")
+        if notification
+          format.html { redirect_to new_search_path(c_part: route1.citta_partenza, c_arr: route2.citta_arrivo, data_ora: route1.data_ora_partenza) }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to user_bookings_path(current_user.id), notice: 'Entrambe i viaggi della multitratta sono stati eliminati' }
+          format.json { head :no_content }
+        end
       end
     end
   end
