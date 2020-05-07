@@ -44,7 +44,8 @@ Rails.application.routes.draw do
       post :mark_as_read
     end
   end
-
+  get "/404", :to => "errors#not_found"
+  get "/442", :to => "errors#record_not_found"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
   get '/users/:id/pay_methods/', to: 'pay_method#index',  as: 'user_pay_methods_index'

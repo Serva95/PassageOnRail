@@ -3,11 +3,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    begin
       @user = User.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render :file => "#{Rails.root}/public/404.html",  layout: true, status: :not_found
-    end
   end
 
   # mostro tutte le route prenotate dall'utente loggato
