@@ -39,7 +39,7 @@
           <td><%= c.costo %></td>
           <td><%= c.comfort %></td>
           <td><%= c.rating_medio %></td>
-          <td><%= link_to "Dettagli", detail_routes_path(:multitrip => false, :id => c.id), class: "button"%></td>
+          <td><%= link_to "Dettagli", detail_routes_path(:multitrip => false, :ids => c.id), class: "button"%></td>
         </tr>
       <% end %>
       </tbody>
@@ -87,7 +87,7 @@
             <td><%= c.ore %> ore <%= c.min % 60 %> minuti</td>
             <td><%= c.comfort_medio %></td>
             <td><%= c.rat %></td>
-            <td><%= link_to "Dettagli", detail_routes_path(:multitrip => true, :id1 => c.id1, :id2 => c.id2), class: "button"%></td>
+            <td><%= link_to "Dettagli", detail_routes_path(:multitrip => true, :ids => [c.id1, c.id2]), class: "button"%></td>
           </tr>
         <% end %>
         </tbody>

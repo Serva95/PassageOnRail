@@ -8,20 +8,20 @@
     <% if @first %>
       <div class="col-6 col-12-mobilep">
         <h1><strong>Prima tratta</strong></h1>
-        <%= render 'routes/detail_route', route: @other_route %>
+        <%= render 'routes/detail_route', route: @other_route, posti: @posti_other %>
       </div>
       <div class="col-6 col-12-mobilep">
         <h1><strong>Seconda tratta</strong></h1>
-        <%= render 'routes/detail_route', route: @updated_route %>
+        <%= render 'routes/detail_route', route: @updated_route, posti: @posti_updated %>
       </div>
     <% else %>
       <div class="col-6 col-12-mobilep">
         <h3><strong>Prima tratta</strong></h3>
-        <%= render 'routes/detail_route', route: @updated_route %>
+        <%= render 'routes/detail_route', route: @updated_route, posti: @posti_updated %>
       </div>
       <div class="col-6 col-12-mobilep">
         <h3><strong>Seconda tratta</strong></h3>
-        <%= render 'routes/detail_route', route: @other_route %>
+        <%= render 'routes/detail_route', route: @other_route, posti: @posti_other %>
       </div>
     <% end %>
 
@@ -50,20 +50,20 @@
   <% if @first %>
     <div class="col-6 col-12-mobilep">
       <h1><strong>Prima tratta</strong></h1>
-      <%= render 'routes/detail_route', route: @other_route %>
+      <%= render 'routes/detail_route', route: @other_route, posti: @posti_other %>
     </div>
     <div class="col-6 col-12-mobilep">
       <h1><strong>Seconda tratta</strong></h1>
-      <%= render 'routes/detail_route', route: @updated_route %>
+      <%= render 'routes/detail_route', route: @updated_route, posti: @posti_updated %>
     </div>
   <% else %>
     <div class="col-6 col-12-mobilep">
       <h1><strong>Prima tratta</strong></h1>
-      <%= render 'routes/detail_route', route: @updated_route %>
+      <%= render 'routes/detail_route', route: @updated_route, posti: @posti_updated %>
     </div>
     <div class="col-6 col-12-mobilep">
       <h1><strong>Seconda tratta</strong></h1>
-      <%= render 'routes/detail_route', route: @other_route %>
+      <%= render 'routes/detail_route', route: @other_route, posti: @posti_other %>
     </div>
   <% end %>
 

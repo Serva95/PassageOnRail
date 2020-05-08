@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :searches
   resources :routes, only: [] do
     get 'detail', action: 'detail', on: :collection
+    get 'detail_multitrp', action: 'detail_multitrip', on: :collection
     resources :journeys, only: [:edit] do
       patch 'update_accept', action: 'update_accept', on: :member
       put 'update_accept', action: 'update_accept', on: :member

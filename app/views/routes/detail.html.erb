@@ -7,142 +7,21 @@
   <h2><strong>Dettagli prenotazione</strong></h2>
 </div>
 
-<%unless notice.nil?
-    if notice[0..18] == "Errore eliminazione"%>
-    <div class="col-12 col-12-mobilep">
-      <h2 style="color: #B00100"><%=notice %></h2>
-    </div>
-  <%end %>
-<%end %>
+<!-- mostra i dettagli di ogni tratta -->
 
-<% if @multi_trip%>
-  <!-- mostra prima tratta -->
+<% @routes.each_with_index do |route, index| %>
+
   <div class="col-12 col-12-mobilep">
-    <%= render 'detail_route', route: @route1 %>
+    <%= render 'detail_route', route: route, posti: @seats[index]%>
   </div>
   <div class="col-12 col-12-mobilep">
-    <%= link_to 'Visualizza profilo Driver', user_path(@driver1.id) %>
+    <%= link_to 'Visualizza profilo Driver', user_path(@drivers[index]) %>
   </div>
   <div class="col-12 col-12-mobilep"><br></div>
 
-  <!-- mostra seconda tratta -->
-  <div class="col-12 col-12-mobilep">
-    <%= render 'detail_route', route: @route2 %>
-  </div>
-  <div class="col-12 col-12-mobilep">
-    <%= link_to 'Visualizza profilo Driver', user_path(@driver2.id) %>
-  </div>
-  <div class="col-12 col-12-mobilep"><br></div>
-
-  <%= form_with model: @journey, html: {class: "row col-12 col-12-mobilep"} do |f| %>
-    <% if @route1.errors.any? %>
-      <div id="error_explanation" class="col-12 col-12-mobilep">
-        <h2><%= pluralize(@route1.errors.count, "error") %>prohibited this route from being saved:</h2>
-        <ul>
-          <% @route1.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end%>
-
-    <% if @route1.driver_id == current_user.driver_id || @route2.driver_id == current_user.driver_id %>
-      <div class="col-12 col-12-mobilep">
-        <p>Ehi, ma sei tu il guidatore!</p>
-      </div>
-    <% else %>
-      <div class="col-12 col-12-mobilep">
-        <%= f.hidden_field :user_id, :value => current_user.id%>
-        <%= f.fields_for :stages do |f_stage| %>
-          <%= f_stage.hidden_field :route_id %>
-          <%= f_stage.hidden_field :journey_id %>
-        <% end %>
-      </div>
-      <div class="col-6 col-12-mobilep">
-        <%= f.label :pay_method_id, "Metodo di pagamento"%>
-        <%= f.collection_select(:pay_method_id, @route1.find_pay_method(current_user.id, @route2) , :id, :numero) %>
-        <br/>
-      </div>
-      <div class="col-6 col-12-mobilep">
-        <label><br/></label>
-        <%= link_to 'Aggiungi Nuovo metodo di pagamento', new_user_pay_method_path(@user) %>
-      </div>
-      <div class="col-4 col-12-mobilep">
-        <% if @posti1 < @posti2 %>
-          <%= f.number_field(:n_prenotati, in: 1.. @posti1, placeholder: "Numero Passeggeri") %>
-        <% else %>
-          <%= f.number_field(:n_prenotati, in: 1.. @posti2, placeholder: "Numero Passeggeri") %>
-        <% end %>
-      </div>
-      <div class="col-4 col-12-mobilep">
-        <%= f.submit "Prenota"%>
-      </div>
-    <% end %>
-  <% end %>
-
-  <!-- mancano i dati generali, tipo costo complessivo -->
-
-<% else %>
-  <!-- mostra tratta unica -->
-  <div class="col-12 col-12-mobilep">
-    <%= render 'detail_route', route: @route %>
-  </div>
-  <div class="col-12 col-12-mobilep"><br></div>
-  <div class="col-12 col-12-mobilep">
-    <%= link_to 'Visualizza profilo Driver', user_path(@driver.id) %>
-  </div>
-  <div class="col-12 col-12-narrower"><br></div>
-  <!-- scegli il numero di posti -->
-  <% if @booked_route == 3 %>
-    <%=form_with model: @journey, html: {class: "row col-12 col-12-mobilep"} do |f| %>
-      <div class="col-12 col-12-mobilep">
-        <% if @route.errors.any?%>
-          <div id="error_explanation">
-            <h2><%= pluralize(@route.errors.count, "error") %>prohibited this route from being saved:</h2>
-            <ul>
-              <% @route.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end%>
-      </div>
-      <% if @route.driver_id == current_user.driver_id %>
-        <p>Ehi, ma sei tu il guidatore!</p>
-      <% else%>
-        <div class="col-6 col-12-mobilep">
-          <%= f.label :pay_method_id, "Metodo di pagamento"%>
-          <%= f.collection_select(:pay_method_id, @route.find_pay_method(current_user.id, nil) , :id, :numero) %>
-          <br/>
-        </div>
-        <div class="col-6 col-12-mobilep">
-          <label><br/></label>
-          <%= link_to 'Aggiungi metodo di pagamento',new_user_pay_method_path(@user), class: 'button'%>
-          <script src="app/assets/js/route.js">  </script>
-        </div>
-        <div class="col-6 col-12-mobilep">
-          <%= f.number_field(:n_prenotati, in: 1.. @posti, placeholder: "Numero Passeggeri") %>
-          <br/>
-        </div>
-
-        <%= f.hidden_field :user_id, :value => current_user.id%>
-
-        <%= f.fields_for :stages do |f_stage| %>
-          <%= f_stage.hidden_field :route_id %>
-          <%= f_stage.hidden_field :journey_id %>
-        <% end %>
-
-        <div class="col-6 col-12-mobilep">
-          <%= f.submit "Prenota"%>
-        </div>
-      <% end %>
-    <% end %>
-    <div class="col-12 col-12-mobilep"><br></div>
-    <!-- una volta c'era il form della chat qua ora è in user/show.html -->
-    <hr class="col-12 col-12-mobile">
-    <!--una volta c'era l'annulla prenotazione-->
-  <%end%>
 <% end %>
+
+
 
 
 

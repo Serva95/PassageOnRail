@@ -89,6 +89,8 @@ class JourneysController < ApplicationController
   def manage_booking_update
     @updated_route =Route.find(params[:target])
     @other_route = Route.find(params[:other])
+    @posti_updated = @updated_route.posti_disponibili
+    @posti_other = @other_route.posti_disponibili
     if (@first=Route.first_route(@other_route,@updated_route))
       @overlying = Route.overlying(@other_route,@updated_route)
     else

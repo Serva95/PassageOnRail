@@ -41,16 +41,18 @@ class Route < ApplicationRecord
   has_many :journeys, :through => :stages
   has_many :notifications, as: :second_target, dependent: :destroy
 
-  #estrae il numero di passeggeri attualmente prenotati
-  scope :current_passengers, -> (route_id) do
-    select('n_passeggeri').where('id = ?', route_id)
+  #estrai il massimo numero di posti che si possono aggiungere
+  def posti_disponibili
+    self.vehicle.posti - self.n_passeggeri
   end
 
-  #estrai il massimo numero di posti che si possono aggiungere
-  def self.posti_disponibili(route_id,vehicle_id)
-    v = Vehicle.estrai_posti(vehicle_id)
-    r = Route.current_passengers(route_id)
-    v - r.first.n_passeggeri
+  #data una route, trova tutti i passeggeri prenotati
+  def find_passengers
+    @journeys = Journey.includes("stages").where(stages: {route_id: self.id, accepted: true})
+    @passengers = []
+    @journeys.each do |journey|
+      @passengers << journey.user
+    end
   end
 
   def self.find_journeys(route_id)

@@ -3,4 +3,5 @@ caso ad annullare la prenotazione e a ricercare-->
 <%= link_to user_bookings_path(notification.user, notification.target.id), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
   <%= notification.actor.username %>
   ha modificato la tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %>
+  <br/>
 <% end %>

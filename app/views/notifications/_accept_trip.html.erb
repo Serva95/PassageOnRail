@@ -2,4 +2,5 @@
 <%= link_to user_bookings_path(notification.user), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
   <%= notification.actor.username %>
   ha accettato di viaggiare con te sulla tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %>
+  <br/>
 <% end %>
