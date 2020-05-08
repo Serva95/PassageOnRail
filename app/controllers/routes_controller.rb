@@ -5,7 +5,6 @@ class RoutesController < ApplicationController
 
   # GET /routes/detail
   def detail
-    @multi_trip = true?(params[:multitrip])
     @routes = Route.find(params[:ids])
     @drivers = []
     @seats = []
@@ -13,20 +12,7 @@ class RoutesController < ApplicationController
       @drivers << route.driver.user
       @seats   << route.posti_disponibili
     end
-
-    if @multi_trip
-      # @journey = Journey.new
-      #@journey.stages.build(route_id: @route1.id)
-      #@journey.stages.build(route_id: @route2.id)
-      # crea gli oggetti per la form
-    end
   end
-  #GET /routes/detail_multitrip
-
-  def detail_multitrip
-
-  end
-
 
   # GET /drivers/1/routes
   def index

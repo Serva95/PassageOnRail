@@ -71,6 +71,7 @@ class Route < ApplicationRecord
     stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? ", route_id,hitch_hiker_id)
   end
 
+  # carica il profilo del driver
   def self.find_driver(route)
     driver = User.find_by(driver_id: route.driver_id)
   end
@@ -83,13 +84,11 @@ class Route < ApplicationRecord
   # end
   # end
 
-  def find_pay_method(id, route2)
-    if route2 == nil
-      contanti2=true
-    else
-      contanti2=route2.contanti
-    end
-    if self.contanti && contanti2
+  # estrae i metodi di pagamento di un utente
+  # controllando se è possibile pagare in contanti su tutte
+  # le tratte
+  def self.find_pay_method(id, routes)
+    if routes.inject(true) {|x,y| x && y.contanti}
       where_clause = 'user_id = ? OR user_id = 0'
     else
       where_clause = 'user_id = ?'

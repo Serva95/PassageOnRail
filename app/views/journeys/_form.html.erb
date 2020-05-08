@@ -1,17 +1,39 @@
-<%= form_with(model: passenger_association, local: true) do |form| %>
-  <% if passenger_association.errors.any? %>
+<%= form_with(model: journey, html: {class: "row col-12 col-12-mobilep"}, local: true) do |f| %>
+  <% if journey.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(passenger_association.errors.count, "error") %> prohibited this passenger_association from being saved:</h2>
+      <h2><%= pluralize(journey.errors.count, "error") %> prohibited this passenger_association from being saved:</h2>
 
       <ul>
-        <% passenger_association.errors.full_messages.each do |message| %>
+        <% journey.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-6 col-12-mobilep">
+    <%= f.label :pay_method_id, "Metodo di pagamento"%>
+    <%= f.collection_select(:pay_method_id, @pay_methods, :id, :numero) %>
+    <br/>
+  </div>
+  <div class="col-6 col-12-mobilep">
+    <label><br/></label>
+    <%= link_to 'Aggiungi metodo di pagamento',new_user_pay_method_path(user_id: current_user), class: 'button'%>
+    <script src="app/assets/js/route.js">  </script>
+  </div>
+  <div class="col-6 col-12-mobilep">
+    <%= f.number_field(:n_prenotati, in: 1.. @seats.max(), placeholder: "Numero Passeggeri") %>
+    <br/>
+  </div>
+
+  <%= f.hidden_field :user_id, :value => current_user.id%>
+
+  <%= f.fields_for :stages do |f_stage| %>
+    <%= f_stage.hidden_field :route_id %>
+    <%= f_stage.hidden_field :journey_id %>
+  <% end %>
+
+  <div class="col-6 col-12-mobilep">
+    <%= f.submit "Prenota"%>
   </div>
 <% end %>

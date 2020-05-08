@@ -2,6 +2,24 @@ class JourneysController < ApplicationController
   before_action :set_journey, only: [:destroy, :destroy_both]
 
 
+  # GET /journeys/new
+  def new
+    @routes = Route.find(params[:ids])
+    @seats = []
+    @journey = Journey.new
+
+    # vengono cercati i posti disponibili per le route selezionate
+    # e vengono creati gli stage
+    @routes.each do |route|
+      @seats   << route.posti_disponibili
+      @journey.stages.build(route_id: route.id)
+    end
+
+    # vengono estratti tutti i metodi di pagamento dell'utente
+    # utilizzabili per le route selezionate
+    @pay_methods = Route.find_pay_method(current_user.id, @routes)
+  end
+
   # POST /journey
   def create
     @journey = Journey.new(journey_params)

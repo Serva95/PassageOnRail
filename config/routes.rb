@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/users/:id/manage_booking_update', to: 'journeys#manage_booking_update', as: 'user_manage_booking_update'
     get '/users/:id/bookings/:route_id', to: 'users#detail_booking', as: 'user_detail_booking'
   end
-  resources :journeys, only: [:create, :destroy]
+  resources :journeys, only: [:create, :destroy, :new]
   resources :journeys, only: [:destroy_both] do
     delete 'destroy_both', action: 'destroy_both', on: :member
   end
@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   resources :searches
   resources :routes, only: [] do
     get 'detail', action: 'detail', on: :collection
-    get 'detail_multitrp', action: 'detail_multitrip', on: :collection
     resources :journeys, only: [:edit] do
       patch 'update_accept', action: 'update_accept', on: :member
       put 'update_accept', action: 'update_accept', on: :member

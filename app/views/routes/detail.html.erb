@@ -1,10 +1,20 @@
-
-
 <div class="col-2 col-4-mobilep">
-  <%= link_to 'Indietro', user_bookings_path(current_user.id), class: "button icon solid fa-chevron-left" %>
+  <%= link_to 'Indietro', :back, class: "button icon solid fa-chevron-left" %>
 </div>
+
 <div class="col-10 col-8-mobilep">
-  <h2><strong>Dettagli prenotazione</strong></h2>
+  <h2><strong>Dettagli percorso</strong></h2>
+</div>
+
+<!-- dati generali -->
+<div class="col-10 col-8-mobilep">
+  <h3>
+    <strong> Da <%= @routes.first.citta_partenza %> a <%= @routes.last.citta_arrivo%> </strong>
+    <br/>
+      Durata totale: <%= @routes.sum {|x| + x.tempo_percorrenza } %> minuti
+    <p></p>
+      Costo totale a persona: <%= @routes.sum {|x| + x.costo}  %>
+  </h3>
 </div>
 
 <!-- mostra i dettagli di ogni tratta -->
@@ -20,6 +30,12 @@
   <div class="col-12 col-12-mobilep"><br></div>
 
 <% end %>
+
+<div class="col-6 col-12-mobilep">
+    <div class="col-4 col-12-mobilep">
+      <%= link_to "Continua", new_journey_path(ids: @routes.map {|r| r.id}, ), class: "button icon solid fa-chevron-right" %>
+    </div>
+</div>
 
 
 
