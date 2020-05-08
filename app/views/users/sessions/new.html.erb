@@ -32,3 +32,10 @@
 </div>
 
 <%= render "users/shared/links" %>
+
+<!-- this is an easter's egg! -->
+<%if Time.now.wday == 4 %>
+  <div class="col-12 col-12-narrower">
+    <h5><i>Oggi dev'esser giovedì. Non sono mai riuscito a capirli, i giovedì</i></h5>
+  </div>
+<%end %>
