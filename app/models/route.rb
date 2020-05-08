@@ -46,6 +46,15 @@ class Route < ApplicationRecord
     self.vehicle.posti - self.n_passeggeri
   end
 
+  #data una route, trova tutti i passeggeri prenotati
+  def find_passengers
+    @journeys = Journey.includes("stages").where(stages: {route_id: self.id, accepted: true})
+    @passengers = []
+    @journeys.each do |journey|
+      @passengers << journey.user
+    end
+  end
+
   def self.find_journeys(route_id)
     journeys = Journey.joins(:stages).where("route_id = ?", route_id)
   end

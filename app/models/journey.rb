@@ -98,6 +98,7 @@ class Journey < ApplicationRecord
 		end
 	end
 
+	#controlla se lo stage è già stato controllato (accettato o rifiutato) dal driver
 	def self.already_checked(route_id,journey_id)
 		stage = Stage.where("route_id = ? AND journey_id = ?",route_id,journey_id).first
 		if stage.accepted.nil?

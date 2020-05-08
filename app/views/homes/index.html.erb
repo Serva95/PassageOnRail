@@ -6,7 +6,7 @@
 <body>
 <div class="col-6 col-12-narrower">
   <section class="box special">
-    <span class="image featured"><%= image_tag 'images/home1.jpg'%></span>
+    <span class="image featured"><%= image_tag 'images/home1.2.jpg'%></span>
     <h3>Cerchi un viaggio?</h3>
     <p>Sta a casa che c'è il coronavirus, imbecille</p>
     <ul class="actions special">
@@ -18,7 +18,7 @@
   <% if user_signed_in? %>
     <%if current_user.driver_id?%>
       <section class="box special">
-        <span class="image featured"><%= image_tag 'images/home2.jpg' %></span>
+        <span class="image featured"><%= image_tag 'images/home2.0.jpg' %></span>
         <h3>Hai un nuovo viaggio?</h3>
         <p>Aggiungi una nuova tratta!</p>
         <div class="button alt"><%= link_to 'Aggiungi!', new_driver_route_path(current_user.driver_id)%></div>

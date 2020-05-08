@@ -122,7 +122,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	}
 
 	body {
-        background-image: url(images/sfondo.jpg);
+        background-image: url(images/sfondo2.jpg);
         background-size: cover;
     }
 
@@ -2379,6 +2379,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 				border-radius: 0;
 				display: block;
 				width: 100%;
+			}
+
+			.box .image.error img{
+				border-radius: 0;
+				display: block;
+				width: 100%;
+				height: 70%;
 			}
 
 			.box .image.featured:first-child {

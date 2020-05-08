@@ -21,6 +21,13 @@ class RoutesController < ApplicationController
 
   # GET /drivers/1/routes/1
   def show
+    @posti = @route.posti_disponibili
+    @passengers = @route.find_passengers
+    if @passengers.empty?
+      @empty = true
+    else
+      @empty = false
+    end
   end
 
   # GET /drivers/1/routes/new
