@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: {sessions:'users/sessions', registrations: 'users/registrations'}
+  devise_for :users, controllers: {sessions:'users/sessions', registrations: 'users/registrations',
+                                   passwords:'users/passwords', confirmations: 'users/confirmations'}
   devise_scope :user do
     get '/user/sign_out', to: 'users/sessions#destroy'
     get '/users/:id/bookings', to: 'users#bookings', as: 'user_bookings'
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   end
   get "/404", :to => "errors#not_found"
   get "/442", :to => "errors#record_not_found"
+  get "/500", :to => "errors#internal_server_error"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
   get '/users/:id/pay_methods/', to: 'pay_method#index',  as: 'user_pay_methods_index'

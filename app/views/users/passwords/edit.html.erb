@@ -1,0 +1,24 @@
+<div class="col-12 col-12-narrower">
+  <h2>Change your password</h2>
+</div>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+  <div class="row gtr-uniform">
+    <div class="col-4 col-12-narrower">
+      <%= f.password_field :password, autocomplete: "new-password", placeholder:"Password (minimo 6 caratteri)" %>
+    </div>
+    <div class="col-4 col-12-narrower">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Conferma Password" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Change my password" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="col-12 col-12-narrower">
+  <hr>
+</div>
+<%= render "users/shared/links" %>
