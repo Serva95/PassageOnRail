@@ -1,9 +1,8 @@
 <!-- Se viene modificata una route che faceva parte del multiviaggio prenotato
 il path di manage booking è da cambiare come segue perchè non passo più il journey id,
 quindi gli passo l'id della route modificata e l'id dell'altra route del multiviaggio-->
-<%= link_to user_manage_booking_update_path(notification.user,target: notification.target.id, other: notification.second_target.id), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
-  <%= notification.actor.username %>
-  ha modificato la tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %>
+<%= link_to user_manage_booking_update_path(notification.user,target: notification.target.id, other: notification.second_target.id), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "mobile-notif depth-1 dropdown-item #{"unread" if !notification.read_at?}" do %>
+  <%= notification.actor.username %> ha modificato la tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %>
   <br/>
 <% end %>
 

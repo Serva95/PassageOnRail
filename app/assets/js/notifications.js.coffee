@@ -49,9 +49,10 @@ class Notifications
       items = $.map data, (notification) ->
         notification.template
 
+      $("[name='notification']").remove()
       $("[data-behavior='unread-count']").text(items.length)
       $("[data-behavior='notification-items']").html(items)
-
+      $("#mobileMenu0").after(items)
       $("[data-behavior='notifications-link']").on("click",(event) => this.handleClick(event.target.id))
 
 jQuery ->
