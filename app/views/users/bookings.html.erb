@@ -25,7 +25,7 @@
         </thead>
         <tbody>
         <%@journeys_active.each do |journey| %>
-          <%journey.stages.each do |stage| %>
+          <%journey.stages.sort_by { |x | x.route.data_ora_partenza  }.each do |stage| %>
             <tr>
               <td><%= stage.route.citta_partenza %></td>
               <td><%= stage.route.luogo_ritrovo %></td>
