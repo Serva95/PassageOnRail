@@ -97,6 +97,7 @@ class RoutesController < ApplicationController
   private
     def set_route
       @route = @driver.routes.find(params[:id])
+      render template: 'errors/deleted_route' if @route.deleted?
     end
 
     def route_params
@@ -115,5 +116,9 @@ class RoutesController < ApplicationController
     def true?(obj)
       obj.to_s.downcase == "true"
     end
+
+  def deleted?(obj)
+    obj.deleted
+  end
 
 end

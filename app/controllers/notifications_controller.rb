@@ -1,6 +1,6 @@
   class NotificationsController < ApplicationController
     def index
-      @notifications = Notification.where(user: current_user).unread
+      @notifications = Notification.where(user: current_user).unread.select {|x| deleted_target?(x)}
     end
 
     # POST
@@ -20,5 +20,9 @@
     def notifications
       raise 'You need reqiure user login for /notifications page.' unless current_user
       Notification.where(user_id: current_user.id)
+    end
+
+    def deleted_target? (obj)
+      obj.target != nil && obj.second_target != nil
     end
   end
