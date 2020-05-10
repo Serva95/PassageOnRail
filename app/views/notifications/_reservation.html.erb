@@ -1,6 +1,8 @@
 <!--manda il driver sulla pagina di gestione della richiesta il target è la route e il second target è la journey-->
-<%= link_to edit_route_journey_path(notification.target.id, notification.second_target), :'data-behavior' => "notifications-link", id: "#{notification.id}", name: "notification", class: "mobile-notif depth-1 dropdown-item #{"unread" if !notification.read_at?}" do %>
-  <span class='indent-1'></span>
-  <%=notification.actor.username%> vuole partecipare alla tua tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %> !
-  <br>
-<% end %>
+<div>
+  <%= link_to edit_route_journey_path(notification.target.id, notification.second_target), :'data-behavior' => "notifications-link", id: "#{notification.id}", name: "notification", class: "mobile-notif depth-1 dropdown-item #{"unread" if !notification.read_at?}" do %>
+    <span class='indent-1'></span>
+    <%=notification.actor.username%> vuole partecipare alla tua tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %> !
+    <br>
+  <% end %>
+</div>

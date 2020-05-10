@@ -1,6 +1,8 @@
 <!-- notifica per il driver mandata quando l'autostoppista annulla la prenotazione. Il driver viene mandato sulla pagina della tratta, così
 vede gli utenti prenotati-->
-<%= link_to driver_route_path(notification.user, notification.target.id), :'data-behavior' => "notifications-link", id: "#{notification.id}",class: "mobile-notif depth-1 dropdown-item #{"unread" if !notification.read_at?}" do %>
-  <%= notification.actor.username %> ha annullato la prenotazione alla tua tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %> !
-  <br>
-<% end %>
+<div>
+  <%= link_to driver_route_path(notification.user, notification.target.id), :'data-behavior' => "notifications-link", id: "#{notification.id}",class: "mobile-notif depth-1 dropdown-item #{"unread" if !notification.read_at?}" do %>
+    <%= notification.actor.username %> ha annullato la prenotazione alla tua tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %> !
+    <br>
+  <% end %>
+</div>

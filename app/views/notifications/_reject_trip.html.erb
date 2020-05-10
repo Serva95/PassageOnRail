@@ -1,6 +1,8 @@
 <!-- se viene rifiutata la tratta dal driver, si manda l'utente alla ricerca e si arrangia, perchè se è stato rifiutato vuol dire che è
 una brutta persona e se lo merita-->
-<%= link_to new_search_path(c_part: notification.target.citta_partenza,c_arr: notification.target.citta_arrivo,data_ora: notification.target.data_ora_partenza), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "mobile-notif depth-1 dropdown-item #{"unread" if !notification.read_at?}" do %>
-  <%=notification.actor.username %> non ha accettato di viaggiare con te sulla tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %> !
-  <br>
-<% end %>
+<div>
+  <%= link_to new_search_path(c_part: notification.target.citta_partenza,c_arr: notification.target.citta_arrivo,data_ora: notification.target.data_ora_partenza), :'data-behavior' => "notifications-link", id: "#{notification.id}", class: "mobile-notif depth-1 dropdown-item #{"unread" if !notification.read_at?}" do %>
+    <%=notification.actor.username %> non ha accettato di viaggiare con te sulla tratta <%= notification.target.citta_partenza %> - <%= notification.target.citta_arrivo %> !
+    <br>
+  <% end %>
+</div>
