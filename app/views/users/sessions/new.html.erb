@@ -4,9 +4,12 @@
   <h2>Log in</h2>
 </div>
 
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row gtr-uniform">
-
+    <div class="error col-12 col-12-narrower  ">
+      <%=flash[:alert] %>
+    </div>
     <div class="col-6 col-12-narrower">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
     </div>
