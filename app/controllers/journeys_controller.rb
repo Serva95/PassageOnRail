@@ -49,6 +49,7 @@ class JourneysController < ApplicationController
   #GET /routes/1/journeys/1/edit
   def edit
     @route = Route.find(params[:route_id])
+    render template: 'errors/deleted_route' if @route.deleted?
     @journey =  Journey.find(params[:id])
     @user = @journey.user
     @checked = Journey.already_checked(@route.id,@journey.id)

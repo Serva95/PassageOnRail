@@ -11,6 +11,30 @@
 }
 /*fine chat*/
 
+/*notifiche mobile*/
+@media screen and (max-width: 840px) {
+    .mobile-notif {
+        line-height: 25px;
+        border-bottom: 0;
+        border-top: solid 1px rgba(255, 255, 255, 0.05);
+        color: #bbb;
+        display: block;
+        padding: 0 1em 0 1em;
+        text-decoration: none;
+    }
+}
+/*notifiche desktop*/
+.dropotron div a {
+    padding: 0.15em 1em;
+    display: block;
+}
+.dropotron div.active > a, .dropotron div:hover > a {
+    background: #e89980;
+    color: #ffffff;
+
+}
+/*fine*/
+
 /*per icone nere*/
 .black {color: black;}
 /*fine icone nere*/
@@ -3663,8 +3687,8 @@ input[type="button"].special:active,
 					border-top: solid 1px rgba(255, 255, 255, 0.05);
 					color: #bbb;
 					display: block;
-					height: 44px;
-					line-height: 44px;
+					/*height: 44px;*/
+					line-height: 40px;
 					padding: 0 1em 0 1em;
 					text-decoration: none;
 				}
@@ -3858,11 +3882,9 @@ input[type="button"].special:active,
 	}
 
 /* Mobile (Portrait) */
-
 	@media screen and (max-width: 480px) {
 
 		/* Basic */
-
 			html, body {
 				min-width: 320px;
 			}
@@ -3872,13 +3894,11 @@ input[type="button"].special:active,
 			}
 
 		/* Section/Article */
-
 			header.major {
 				padding: 0;
 			}
 
 		/* List */
-
 			ul.actions {
 				margin: 0 0 2em 0;
 			}
@@ -3912,7 +3932,6 @@ input[type="button"].special:active,
 					}
 
 		/* Box */
-
 			.box {
 				border-radius: 0;
 				box-shadow: none;
@@ -3946,21 +3965,17 @@ input[type="button"].special:active,
 					}
 
 		/* Banner */
-
 			#banner {
 				padding: 5em 3em 4em 3em;
 			}
 
 		/* Main */
-
 			#main > .box:first-child {
 				margin-top: 0;
 			}
 
 		/* CTA */
-
 			#cta {
 				padding: 2.5em 1em 3em 1em;
 			}
-
 	}
