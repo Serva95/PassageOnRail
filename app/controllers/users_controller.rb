@@ -30,17 +30,21 @@ class UsersController < ApplicationController
   end
 
   # mostro dettagli della tratta prenotata
-  # GET /users/:id/bookings/:route_id
+  # GET /users/:id/bookings/detail
   def detail_booking
     begin
-      @route=Route.find(params[:route_id])
-      @journey_ok= Route.find_associated_stage(@route.id, current_user.id, params[:j_id])
-      @driver=Route.find_driver(@route)
+      @route1=Route.find(params[:route_id1])
+      @driver1=Route.find_driver(@route1)
+      @journey1_ok = Route.find_associated_stage(@route1.id, current_user.id, params[:j_id])
+      @journey_id=params[:j_id]
+      if params[:route_id2] != nil
+        @route2=Route.find(params[:route_id2])
+        @driver2=Route.find_driver(@route2)
+        @journey2_ok = Route.find_associated_stage(@route2.id, current_user.id, params[:j_id])
+      end
       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
       response.headers["Pragma"] = "no-cache"
       response.headers["Expires"] = "#{1.year.ago}"
-    rescue ActiveRecord::RecordNotFound
-      render :file => "#{Rails.root}/public/404.html", layout: true, status: :not_found
     end
   end
 

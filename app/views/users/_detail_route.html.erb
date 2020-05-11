@@ -1,0 +1,49 @@
+<div class="col-12 col-12-mobilep">
+  <h4 class="col-4 col-12-narrower">
+    <strong>Citta partenza:</strong>
+    <%= route.citta_partenza %>
+  </h4>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Luogo ritrovo:</strong>
+    <%= route.luogo_ritrovo %>
+  </h4>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Data ora partenza:</strong>
+    <%= route.data_ora_partenza.strftime("il %d-%m-%Y alle %H:%M:%S") %>
+  </h4>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Citta arrivo:</strong>
+    <%= route.citta_arrivo %>
+  </h4>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Data ora arrivo:</strong>
+    <%= route.data_ora_arrivo.strftime("il %d-%m-%Y alle %H:%M:%S") %>
+  </h4>
+  <h4 class="col-4 col-12-narrower">
+    <strong>Costo:</strong>
+    <%= route.costo %>
+  </h4>
+
+  <h4 class="col-4 col-12-narrower">
+    <strong>Tempo di percorrenza:</strong>
+    <%= route.tempo_percorrenza %>
+  </h4>
+
+  <h4 class="col-4 col-12-narrower">
+    <strong>Posti prenotati</strong>
+    <%= route.n_passeggeri %>
+  </h4>
+  <!-- link per la pagina del driver-->
+  <h4 class="col-4 col-12-narrower">
+    <strong>Driver:</strong>
+    <%=link_to driver.nome + driver.cognome, user_path(id:driver.id)%>
+  </h4>
+</div>
+<!-- passaggio alla chat con il driver-->
+<div class="col-12 col-12-mobilep"><br></div>
+<%= form_with(model: Chat, local: true, method: "post") do |form| %>
+  <%= form.hidden_field :user_2_id, :value => driver.id %>
+  <div class="col-12 col-12-mobilep">
+    <%= form.submit "Chatta con " + driver.nome%>
+  </div>
+<%end%>

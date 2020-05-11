@@ -55,7 +55,11 @@
                   <label for="pagato"></label>
                 </td>
               <%end %>
-              <td><%= link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id, j_id:journey.id), class: "button" %></td>
+              <%if journey.stages[1] == nil %>
+                <td><%= link_to 'Dettagli', user_detail_booking_path(route_id1: journey.stages[0].route_id, route_id2:nil , j_id:journey.id), class: "button" %></td>
+              <%else %>
+                <td><%= link_to 'Dettagli', user_detail_booking_path(route_id1: journey.stages[0].route_id, route_id2:journey.stages[1].route_id, j_id:journey.id), class: "button" %></td>
+              <%end %>
             </tr>
           <%end %>
           <!-- inserisco riga vuota per separare le eventuali prenotazioni multitratta-->
@@ -94,7 +98,7 @@
               <td><%=  stage.route.citta_arrivo  %></td>
               <td><%=  stage.route.data_ora_arrivo.strftime("%d/%m/%y, %H:%M")  %></td>
               <td><%=  stage.route.costo  %></td>
-              <td><%=  link_to 'Dettagli', user_detail_booking_path(route_id: stage.route_id, j_id:journey.id), class: "button" %></td>
+              <td><%=  link_to 'Dettagli', user_detail_booking_path(route_id1: stage.route_id, j_id1:journey.id), class: "button" %></td>
             </tr>
           <% end  %>
           <tr>
