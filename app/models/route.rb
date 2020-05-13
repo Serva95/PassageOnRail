@@ -55,10 +55,12 @@ class Route < ApplicationRecord
     end
   end
 
+  #data una route, trova tutte le journey a cui appartiene
   def self.find_journeys(route_id)
     journeys = Journey.joins(:stages).where("route_id = ?", route_id)
   end
 
+  #SE HO CAPITO BENE QUESTA E' DA CANCELLARE
   def self.already_booked(route_id,hitch_hiker_id)
     stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? AND accepted IS TRUE", route_id,hitch_hiker_id)
     if !stages.empty? #ci sono tratte prenotate da quell'utente (già accettate)
@@ -105,6 +107,7 @@ class Route < ApplicationRecord
     PayMethods.where(where_clause, id)
   end
 
+  #date due route di una multitratta, ritorna true se quella passata come primo parametro è antecedente all'altra
   def self.first_route(route1,route2)
     if route1.citta_arrivo.eql?(route2.citta_partenza)
       return true
@@ -155,6 +158,7 @@ class Route < ApplicationRecord
     end
   end
 
+  #data una route e una journey multitratta a cui appartiene, trova lo stage dell'altra route della stessa journey
   def self.find_second_stage(journey, route_id)
     journey.stages.where("route_id != ?", route_id).first.route
   end
