@@ -41,12 +41,12 @@ class Route < ApplicationRecord
   has_many :journeys, :through => :stages
   has_many :notifications, as: :second_target, dependent: :destroy
 
-  #estrai il massimo numero di posti che si possono aggiungere
+  # Estrai il massimo numero di posti che si possono aggiungere
   def posti_disponibili
     self.vehicle.posti - self.n_passeggeri
   end
 
-  #data una route, trova tutti i passeggeri prenotati
+  # Data una route, trova tutti i passeggeri prenotati
   def find_passengers
     @journeys = Journey.includes("stages").where(stages: {route_id: self.id, accepted: true})
     @passengers = []
@@ -55,6 +55,7 @@ class Route < ApplicationRecord
     end
   end
 
+  # Trova journey associati ad una route
   def self.find_journeys(route_id)
     journeys = Journey.joins(:stages).where("route_id = ?", route_id)
   end
@@ -80,7 +81,7 @@ class Route < ApplicationRecord
     stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? ", route_id,hitch_hiker_id)
   end
 
-  # carica il profilo del driver
+  # Carica il profilo del driver
   def self.find_driver(route)
     driver = User.find_by(driver_id: route.driver_id)
   end
@@ -93,9 +94,7 @@ class Route < ApplicationRecord
   # end
   # end
 
-  # estrae i metodi di pagamento di un utente
-  # controllando se è possibile pagare in contanti su tutte
-  # le tratte
+  # estrae i metodi di pagamento di un utente controllando se è possibile pagare in contanti su tutte le tratte
   def self.find_pay_method(id, routes)
     if routes.inject(true) {|x,y| x && y.contanti}
       where_clause = 'user_id = ? OR user_id = 0'
@@ -113,7 +112,7 @@ class Route < ApplicationRecord
     end
   end
 
-  #controlla se due tratte del multiviaggio si sovrappongono
+  # Controlla se due tratte del multiviaggio si sovrappongono
   def self.overlying(route1,route2)
     if route1.data_ora_arrivo > route2.data_ora_partenza
       return true
@@ -122,14 +121,14 @@ class Route < ApplicationRecord
     end
   end
 
-  # decrementa il numero di passeggeri
+  # Decrementa il numero di passeggeri
   def self.decrease(route_id, n_passeggeri)
     route = Route.find(route_id)
     p = route.n_passeggeri - n_passeggeri
     route.update!(n_passeggeri: p)
   end
 
-  # elimina la route del driver e tutte le relative prenotazioni
+  # Elimina la route del driver e tutte le relative prenotazioni
   def self.destroy_route_and_stages(route,current_user)
 
     self.transaction do

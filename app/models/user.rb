@@ -19,15 +19,17 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  # Ttova tutti i rating associati al driver e ne fa la media
   def find_rating_driver
     Review.where("driver_id = ?", self.driver_id).average(:vote)
   end
 
+  # Trpva tutti i rating dell'autospottista e ne fa la media
   def find_rating_autostoppista
     Rating.where("user_id = ?", self.id).average(:vote)
   end
 
-  #recupero tutte le tratte singole prenotate dall'utente
+  # Recupero tutte le tratte singole prenotate dall'utente
   def find_bookings(user_id)
     Journey.includes(:stages, :routes).where(user_id:user_id, stages:{accepted:true})
         .or(Journey.includes(:stages, :routes).where(user_id:user_id, stages:{accepted:nil}))
