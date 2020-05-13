@@ -129,6 +129,7 @@ class Journey < ApplicationRecord
 	# @param [Journey] journey
 	# @param [Route] route_1
 	# @param [Route] route_2
+	# data una multitratta, cancella l'intera journey (quindi entrambi gli stages)
 	def self.delete_both_passage(journey, route_1, route_2)
 		ActiveRecord::Base.transaction do
 			journey.destroy!

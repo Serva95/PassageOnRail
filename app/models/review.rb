@@ -1,4 +1,4 @@
-class ReviewDOBValidator < ActiveModel::Validator
+class ReviewValidator < ActiveModel::Validator
   def validate(record)
     if record.commento.blank?
       record.errors[:commento] << " non può essere vuoto"
@@ -16,7 +16,7 @@ class Review < ApplicationRecord
             }
   validates :data, presence: true
 
-  validates_with (ReviewDOBValidator)
+  validates_with(ReviewValidator)
 
   belongs_to :driver
   belongs_to :user
