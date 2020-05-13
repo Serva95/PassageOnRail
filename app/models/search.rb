@@ -2,10 +2,12 @@ class Search < ApplicationRecord
   validates :c_partenza, presence: true
   validates :c_arrivo, presence: true
 
+  #funzione che setta la variabile relativa all'ordine in base alla selezione dell'utente da ricerca
   def define_order(s_order)
     s_order=='Crescente' ? :asc : :desc
   end
 
+  #funzione relativa al check "no cambi" della ricerca
   def hide_multitrip
     if multitrip
       true
@@ -14,10 +16,12 @@ class Search < ApplicationRecord
     end
   end
 
+  #restituisce le route a cui l'utente risulta già prenotato
   def already_booked(current_user)
     routes_id=Stage.select('stages.route_id').joins(:journey).where(['journeys.user_id =?',current_user])
   end
 
+  #ricerca di tratte singole
   def search_routes(current_user,booked_routes)
 
     select_clause= 'routes.*, (routes.tempo_percorrenza/60) AS ore, (routes.tempo_percorrenza%60) AS min, vehicles.comfort, vehicles.tipo_mezzo, drivers.rating_medio'
@@ -51,6 +55,7 @@ class Search < ApplicationRecord
 
   end
 
+  #ricerca di multitratte
   def multi_routes_search(current_user,booked_routes)
 
     #bisogna valutare se applicare tutti i filtri del singolo viaggio (es marchio veicolo, cambiando auto non ha molto senso) e terminare ordinamento per comfort
