@@ -58,10 +58,10 @@ class Messagge < ApplicationRecord
 			extract = Chat.find(chat_id)
 			if extract.present?
 				if extract.user_1_id == user_id || extract.user_2_id == user_id
-					unless limit.nil?
-						query = Messagge.joins(:user, :chat).where("chat_id = ?", chat_id).select("messagges.*","user_1_id","user_2_id").order(data_ora: :asc).last(15)
+					if !limit.nil?
+						query = Messagge.joins(:user, :chat).where("chat_id = ?", chat_id).select("messagges.*", "user_1_id", "user_2_id").order(data_ora: :asc)
 					else
-						query = Messagge.joins(:user, :chat).where("chat_id = ?", chat_id).select("messagges.*","user_1_id","user_2_id").order(data_ora: :asc)
+						query = Messagge.joins(:user, :chat).where("chat_id = ?", chat_id).select("messagges.*", "user_1_id", "user_2_id").order(data_ora: :asc).last(15)
 					end
 					#da implementare in futuro se si vuole notifiche una tabella o due campi con datetime di apertura per ogni user
 					#extract.update_column(:opened_at, DateTime.current)
