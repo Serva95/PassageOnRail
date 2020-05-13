@@ -21,6 +21,9 @@ class Review < ApplicationRecord
   belongs_to :driver
   belongs_to :user
 
+  # @author serva
+  #
+  # @note crea la review a database, calcola la media con la nuova review e aggiorna il dato nella row del driver
   def self.new_review_transaction(review)
     ActiveRecord::Base.transaction do
       review.save!
@@ -30,34 +33,42 @@ class Review < ApplicationRecord
     end
   end
 
-  def self.has_previous_journey_done(user_id, driver_id)
-    journeys = Stage.joins(:journey, :route).where('journeys.user_id = ? and routes.driver_id=?', user_id, driver_id).order('routes.data_ora_arrivo')
-    if journeys.present?
-      journeys.each do |j|
-        if j.route.data_ora_arrivo.utc < DateTime.now.utc
-          return true
-        end
-      end
-      return false
-    end
-  end
-
+  # @author serva
+  #
+  # @note esiste già una recensione a DB da parte di quell'utente per quel diver ?
+  #
+  # @return [TrueClass, FalseClass]
+  #
+  # @param [Numeric] current_user_id
+  # @param [Numeric] user_driver_id
   def self.exists(current_user_id, user_driver_id)
     Review.where("user_id = ? and driver_id = ?", current_user_id, user_driver_id).exists?
   end
 
+  # @author serva
+  #
+  # @note trova l'utente in join con il dirver che abbia quell'id passato
+  #
+  # @param [Numeric] user_id
   def self.find_user(user_id)
     User.joins(:driver).find(user_id)
   end
 
+  # @author serva
+  #
+  # @note trova tutte le review associate al driver con id passato
+  #
+  # @param [Numeric] driver_id
   def self.find_reviews(driver_id)
     Review.joins(:user).where("reviews.driver_id = ?", driver_id).order(data: :desc)
   end
 
+  # per testo errore
   def self.error_one
     return "Errore nella recensione, non puoi scrivere una nuova recensione se ne esiste già una a nome tuo"
   end
 
+  # per testo errore
   def self.error_two
     return "Errore nella recensione, controlla tutti i campi e prova ancora"
   end

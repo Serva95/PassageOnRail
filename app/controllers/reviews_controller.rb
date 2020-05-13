@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
       @review.driver_id = user.driver_id
       @review.data = DateTime.current
       @review.user_id = current_user.id
-      done = Review.has_previous_journey_done(current_user.id, user.driver_id)
+      done = User.has_previous_journey_done(current_user.id, user.driver_id)
     end
     respond_to do |format|
       if same_user

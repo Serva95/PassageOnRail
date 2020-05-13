@@ -29,7 +29,7 @@ class RatingsController < ApplicationController
       @rating.data = DateTime.current
       @rating.driver_id = current_user.driver_id
       exist = Rating.exists(@rating.user_id, current_user.driver_id)
-      done = Rating.has_previous_journey_done(@rating.user_id, current_user.driver_id)
+      done = User.has_previous_journey_done(@rating.user_id, current_user.driver_id)
     end
     respond_to do |format|
       if same_user

@@ -19,12 +19,12 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  # Ttova tutti i rating associati al driver e ne fa la media
+  # Trova tutti i rating associati al driver e ne fa la media
   def find_rating_driver
     Review.where("driver_id = ?", self.driver_id).average(:vote)
   end
 
-  # Trpva tutti i rating dell'autospottista e ne fa la media
+  # Trova tutti i rating dell'autospottista e ne fa la media
   def find_rating_autostoppista
     Rating.where("user_id = ?", self.id).average(:vote)
   end
@@ -34,6 +34,30 @@ class User < ApplicationRecord
     Journey.includes(:stages, :routes).where(user_id:user_id, stages:{accepted:true})
         .or(Journey.includes(:stages, :routes).where(user_id:user_id, stages:{accepted:nil}))
         .order(data_ora_partenza: 'ASC')
+  end
+
+  # @author serva
+  #
+  # @note controlla se il guidatore e l'autostoppista hanno viaggiato insieme in precedenza
+  # @note questo per permettere di valutare solo dopo aver viaggiato insieme almeno una volta
+  # @note (valido sia per rating che per review)
+  #
+  # @note spostata in user perché uguale sia in review.rb che rating.rb
+  #
+  # @param [Numeric] user_id
+  # @param [Numeric] driver_id
+  #
+  # @return [TrueClass, FalseClass]
+  def self.has_previous_journey_done(user_id, driver_id)
+    journeys = Stage.joins(:journey, :route).where('journeys.user_id = ? and routes.driver_id=?', user_id, driver_id).order('routes.data_ora_arrivo')
+    if journeys.present?
+      journeys.each do |j|
+        if j.route.data_ora_arrivo.utc < DateTime.now.utc
+          return true
+        end
+      end
+      return false
+    end
   end
 
   belongs_to :driver, optional: true, dependent: :destroy

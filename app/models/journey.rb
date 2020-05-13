@@ -88,6 +88,12 @@ class Journey < ApplicationRecord
 
 	# @param [Route] route
 	# @return [TrueClass, FalseClass]
+	#
+	# @author serva
+	#
+	# @note controlla se il viaggio è eliminabile secondo i vincoli temporali:
+	# @note 48 ore o prima rispetto alla partenza,
+	# @note sempre se il guidatore ha modificato il viaggio entro 48 dalla partenza
 	def self.journey_is_deletable(route)
 		if route.data_ora_partenza - 2.day > DateTime.current
 			true
@@ -110,6 +116,12 @@ class Journey < ApplicationRecord
 
 	# @param [Journey] journey
 	# @param [Route] route
+	#
+	# @author serva
+	#
+	# @note dato un oggetto journey e uno route da eliminare, controlla se ha uno o due stage,
+	# @note se ne ha uno elimina il journey e decrementa il numero di passeggeri nella route
+	# @note se ne ha due elimina il relativo stage e decrementa il numero di passeggeri nella route
 	def self.delete_passage_transaction(journey, route)
 		number_of_stages = Stage.where("journey_id = ?", journey.id).count("id")
 		if number_of_stages == 1
@@ -129,6 +141,9 @@ class Journey < ApplicationRecord
 	# @param [Journey] journey
 	# @param [Route] route_1
 	# @param [Route] route_2
+	#
+	# @author sara e serva
+	#
 	# data una multitratta, cancella l'intera journey (quindi entrambi gli stages)
 	def self.delete_both_passage(journey, route_1, route_2)
 		ActiveRecord::Base.transaction do
