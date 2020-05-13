@@ -8,9 +8,9 @@ class Search < ApplicationRecord
 
   def hide_multitrip
     if multitrip
-      return true
+      true
     else
-      return false
+      false
     end
   end
 
@@ -47,7 +47,7 @@ class Search < ApplicationRecord
     routes = routes.order(tempo_percorrenza: sorder) if sort_attribute.eql?('Tempo di percorrenza')
     routes = routes.joins(:vehicle).order(comfort: sorder) if sort_attribute.eql?('Comfort')
 
-    return routes
+    routes
 
   end
 
@@ -73,7 +73,7 @@ class Search < ApplicationRecord
                     AND Ms1.id NOT IN (?) AND Ms2.id NOT IN (?) AND Ms1.deleted IS NOT TRUE AND Ms2.deleted IS NOT TRUE
                    AND Ms2.data_ora_partenza >= Ms1.data_ora_arrivo AND (EXTRACT(DAY FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo)) <= 5',"%#{c_partenza}","%#{c_arrivo}",current_user,booked_routes,booked_routes
     end
-   group_clause = 'Ms1.driver_id,Ms2.driver_id,Ms1.id,Ms2.id,Ms1.citta_partenza,Ms1.data_ora_partenza,Ms1.citta_arrivo,Ms2.citta_arrivo,Ms2.data_ora_arrivo,Ms2.n_passeggeri,Ms2.posti,Ms1.n_passeggeri, Ms1.posti'
+    group_clause = 'Ms1.driver_id,Ms2.driver_id,Ms1.id,Ms2.id,Ms1.citta_partenza,Ms1.data_ora_partenza,Ms1.citta_arrivo,Ms2.citta_arrivo,Ms2.data_ora_arrivo,Ms2.n_passeggeri,Ms2.posti,Ms1.n_passeggeri, Ms1.posti'
 
 
     routes =MultitripSearchResult.select(select_clause).where(where_clause).from(from_clause).group(group_clause)
@@ -86,11 +86,11 @@ class Search < ApplicationRecord
 
     sorder=define_order(sort_order)
 
-   routes = routes.order(c_tot: sorder) if sort_attribute.eql?('Costo')
-   routes = routes.order(min: sorder) if sort_attribute.eql?('Tempo di percorrenza')
-   routes = routes.order(comfort_medio: sorder) if sort_attribute.eql?('Comfort')
+    routes = routes.order(c_tot: sorder) if sort_attribute.eql?('Costo')
+    routes = routes.order(min: sorder) if sort_attribute.eql?('Tempo di percorrenza')
+    routes = routes.order(comfort_medio: sorder) if sort_attribute.eql?('Comfort')
 
-    return routes
+    routes
 
   end
 
