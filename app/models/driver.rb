@@ -1,13 +1,8 @@
 class Driver < ApplicationRecord
-	# Trova le route non passate associate al driver
+	# Trova se eisistono route attive associate al driver
 	def has_routes(id)
-		where_clause= 'routes.driver_id = ? AND routes.data_ora_partenza > NOW()'
-		routes = Stage.joins(:route).joins(:journey).select('routes.*').where(where_clause, id)
-		if routes != nil
-			false
-		else
-			true
-		end
+		where_clause= 'routes.driver_id = ? AND routes.data_ora_partenza > NOW() AND routes.deleted IS NOT TRUE'
+		Route.select('routes.*').where(where_clause, id).exists?
 	end
 
 	has_one  :user

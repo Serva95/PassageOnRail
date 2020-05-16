@@ -1,7 +1,5 @@
 require 'test_helper'
 
 class DriverTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "#has_routes(id) should return if driver has route"
 end
