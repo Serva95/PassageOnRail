@@ -3,7 +3,7 @@ class RouteNPValidator < ActiveModel::Validator
     if record.n_passeggeri.blank?
       record.errors[:n_passeggeri] << "Non può essere nil"
       #non si possono aggiungere più passeggeri dei posti diponibili nella macchina
-      elsif record.n_passeggeri > Vehicle.estrai_posti(record.vehicle_id)
+      elsif record.n_passeggeri > Vehicle.max_passengers(record.vehicle_id)
         record.errors[:n_passeggeri] << "La macchina è piena"
     end
   end
@@ -41,7 +41,7 @@ class Route < ApplicationRecord
   has_many :journeys, :through => :stages
   has_many :notifications, as: :second_target, dependent: :destroy
 
-  # Estrai il massimo numero di posti che si possono aggiungere
+  # Calcola il massimo numero di posti disponibili per una tratta
   def posti_disponibili
     self.vehicle.posti - self.n_passeggeri
   end
@@ -60,7 +60,7 @@ class Route < ApplicationRecord
     journeys = Journey.joins(:stages).where("route_id = ?", route_id)
   end
 
-  #SE HO CAPITO BENE QUESTA E' DA CANCELLARE
+  #SE HO CAPITO BENE QUESTA E' DA CANCELLARE, Martina: si e' da cancellare
   def self.already_booked(route_id,hitch_hiker_id)
     stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? AND accepted IS TRUE", route_id,hitch_hiker_id)
     if !stages.empty? #ci sono tratte prenotate da quell'utente (già accettate)
@@ -79,12 +79,12 @@ class Route < ApplicationRecord
   end
 
   def self.booked(route_id,hitch_hiker_id)
-    stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? ", route_id,hitch_hiker_id)
+    Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? ", route_id,hitch_hiker_id)
   end
 
   # Carica il profilo del driver
   def self.find_driver(route)
-    driver = User.find_by(driver_id: route.driver_id)
+    User.find_by(driver_id: route.driver_id)
   end
 
   # def self.search(search)

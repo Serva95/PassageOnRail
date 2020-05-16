@@ -5,9 +5,11 @@ class RoutesController < ApplicationController
 
   # GET /routes/detail
   def detail
+    # estrae le route che si vogliono prenotare
     @routes = Route.find(params[:ids])
     @drivers = []
     @seats = []
+    # per ogni route cercare il guidatore e i posti disponibili
     @routes.each do |route|
       @drivers << route.driver.user
       @seats   << route.posti_disponibili
