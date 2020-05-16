@@ -8,6 +8,7 @@ one:
   comfort: 1
   posti: 1
   deleted: false
+  tipo_mezzo: MyString
 
 two:
   targa: MyString
@@ -17,3 +18,15 @@ two:
   comfort: 1
   posti: 1
   deleted: false
+  tipo_mezzo: MyString
+
+has_4_seats:
+  id : 1
+  targa: MyString
+  marca: MyString
+  modello: MyString
+  immatricolazione: MyString
+  comfort: 1
+  posti: 4
+  deleted: false
+  tipo_mezzo: MyString
