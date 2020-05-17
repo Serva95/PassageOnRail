@@ -2,28 +2,33 @@
 
 one:
   id: 1
-  email: MyString
+  email: MyStringOne
   username: MyString
-  password: MyString
+  encrypted_password: MyString
   nome: MyString
   cognome: MyString
   data_di_nascita: 2020-02-14
   cellulare: MyString
   indirizzo: MyText
-  url_foto: MyString
-  driver_id: 1
+  avatar: MyString
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
   deleted: false
 
 two:
   id: 2
-  email: MyString
+  email: MyStringTwo
   username: MyString
-  password: MyString
+  encrypted_password: MyString
   nome: MyString
   cognome: MyString
   data_di_nascita: 2020-02-14
   cellulare: MyString
   indirizzo: MyText
-  url_foto: MyString
+  avatar: MyString
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
   driver_id: 2
   deleted: false

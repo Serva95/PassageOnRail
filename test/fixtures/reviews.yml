@@ -3,7 +3,7 @@
 one:
   id: 1
   data: 2020-02-14 14:00:59
-  rating: 1
+  vote: 1
   commento: MyText
   deleted: false
   user_id: 2
@@ -11,7 +11,7 @@ one:
 two:
   id: 2
   data: 2020-02-14 14:00:59
-  rating: 3
+  vote: 3
   commento: MyText
   deleted: false
   user_id: 2

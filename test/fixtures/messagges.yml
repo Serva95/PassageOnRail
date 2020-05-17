@@ -3,11 +3,7 @@
 one:
   data_ora: 2020-02-14 16:27:19
   testo: MyText
-  mittente: MyString
-  destinatario: MyString
 
 two:
   data_ora: 2020-02-14 16:27:19
   testo: MyText
-  mittente: MyString
-  destinatario: MyString

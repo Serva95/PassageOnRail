@@ -7,3 +7,9 @@ one:
 two:
   rating_medio: 1.5
   deleted: false
+
+with_route:
+  id: 2
+
+no_route:
+  id: 100
