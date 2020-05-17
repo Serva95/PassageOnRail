@@ -1,8 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  c_partenza: MyString
-  c_arrivo: MyString
+  c_partenza: MyString1
+  c_arrivo: MyString2
   data_ora: 2020-03-12 10:38:19
   rating: 1.5
   costo: 1.5
