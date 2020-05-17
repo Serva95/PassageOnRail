@@ -20,10 +20,10 @@ class ChatTest < ActiveSupport::TestCase
     assert_equal "true", Chats.find(chats(:to_be_deleted)).deleted_user_1
   end
 
-  test "#delete_reset_side(chat, 2, false) should reset the chat for the user_1" do
+  test "#delete_reset_side(chat, 2, false) should reset the chat for the user_2" do
     c = chats(:to_be_restored)
     c.delete_reset_side(c,2,false)
-    assert_equal "true", Chats.find(chats(:to_be_deleted)).deleted_user_2
+    assert_equal "false", Chats.find(chats(:to_be_deleted)).deleted_user_2
   end
 
 end

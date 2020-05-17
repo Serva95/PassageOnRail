@@ -9,3 +9,8 @@ two:
   id: 2
   route_id: 2
   journey_id: 1
+
+old_stage:
+  id: 3
+  route_id: 5
+  journey_id: 3

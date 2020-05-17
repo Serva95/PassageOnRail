@@ -1,16 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  c_partenza: MyString1
-  c_arrivo: MyString2
+ferrara_bologna:
+  c_partenza: Ferrara
+  c_arrivo: Bologna
   data_ora: 2020-03-12 10:38:19
   rating: 1.5
   costo: 1.5
   tipo_mezzo: MyString
 
-two:
-  c_partenza: MyString
-  c_arrivo: MyString
+ferrara_milano:
+  c_partenza: Ferrara
+  c_arrivo: Venezia
   data_ora: 2020-03-12 10:38:19
   rating: 1.5
   costo: 1.5

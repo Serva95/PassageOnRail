@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   email: MyString
   username: MyString
   password: MyString
@@ -10,9 +11,11 @@ one:
   cellulare: MyString
   indirizzo: MyText
   url_foto: MyString
+  driver_id: 1
   deleted: false
 
 two:
+  id: 2
   email: MyString
   username: MyString
   password: MyString
@@ -22,4 +25,5 @@ two:
   cellulare: MyString
   indirizzo: MyText
   url_foto: MyString
+  driver_id: 2
   deleted: false
