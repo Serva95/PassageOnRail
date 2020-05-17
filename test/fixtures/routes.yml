@@ -1,19 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  citta_partenza: MyString
+ferrara_bologna:
+  citta_partenza: Ferrara
   luogo_ritrovo: MyString
   data_ora_partenza: 2020-02-14 16:23:52
-  citta_arrivo: MyString
-  data_ora_arrivo: 2020-02-14 16:23:52
+  citta_arrivo: Bologna
+  data_ora_arrivo: 2020-02-14 17:23:52
   costo: 1.5
   deleted: false
 
-two:
-  citta_partenza: MyString
+bologna_milano:
+  citta_partenza: Bologna
   luogo_ritrovo: MyString
-  data_ora_partenza: 2020-02-14 16:23:52
-  citta_arrivo: MyString
-  data_ora_arrivo: 2020-02-14 16:23:52
+  data_ora_partenza: 2020-02-14 18:23:52
+  citta_arrivo: Milano
+  data_ora_arrivo: 2020-02-14 19:23:52
   costo: 1.5
   deleted: false
