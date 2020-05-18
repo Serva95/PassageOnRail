@@ -15,6 +15,7 @@ one:
   confirmed_at: 2020-02-14 16:23:52
   confirmation_sent_at: 2020-02-14 16:23:53
   deleted: false
+  driver_id: 1
 
 two:
   id: 2

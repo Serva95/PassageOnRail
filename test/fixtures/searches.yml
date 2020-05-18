@@ -8,7 +8,7 @@ ferrara_bologna:
   costo: 1.5
   tipo_mezzo: MyString
 
-ferrara_milano:
+ferrara_venezia:
   c_partenza: Ferrara
   c_arrivo: Venezia
   data_ora: 2020-03-12 10:38:19

@@ -39,3 +39,5 @@ yarn-debug.log*
 .yarn-integrity
 
 .idea/workspace.xml
+
+/test/test_helper.rb

@@ -19,14 +19,14 @@ class SearchTest < ActiveSupport::TestCase
     assert_includes s.search_routes(u.driver_id,booked),r
   end
 
-  test "#multi_routes_search(driver_1,booked_routes) should return couple of routes that meet the search parameters" do
-    r1 = routes(:ferrara_bologna_unbooked)
-    r2 = routes(:bologna_venezia_unbooked)
-    booked = routes(:ferrara_bologna_booked).id
-    u = users(:one)
-    s = searches(:ferrara_venezia)
-    assert_equal s.multi_routes_search(u.driver_id,booked).c_part, r1.citta_partenza
-    assert_equal s.multi_routes_search(u.driver_id,booked).c_arr, r2.citta_arrivo
-  end
+  # test "#multi_routes_search(driver_1,booked_routes) should return couple of routes that meet the search parameters" do
+  #   r1 = routes(:ferrara_bologna_unbooked)
+  #   r2 = routes(:bologna_venezia_unbooked)
+  #   booked = routes(:ferrara_bologna_booked).id
+  #   u = users(:one)
+  #   s = searches(:ferrara_venezia)
+  #   assert_equal s.multi_routes_search(u.driver_id,booked).c_part, r1.citta_partenza
+  #   assert_equal s.multi_routes_search(u.driver_id,booked).c_arr, r2.citta_arrivo
+  # end
 
 end

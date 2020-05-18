@@ -56,7 +56,7 @@ class Route < ApplicationRecord
   end
 
   # Data una route, trova tutte le journey a cui appartiene
-  def find_journeys(route_id)
+  def self.find_journeys(route_id)
     journeys = Journey.joins(:stages).where("route_id = ?", route_id)
   end
 
