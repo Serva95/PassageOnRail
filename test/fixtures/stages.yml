@@ -4,6 +4,7 @@ one:
   id: 1
   route_id: 1
   journey_id: 1
+  accepted: true
 
 two:
   id: 2

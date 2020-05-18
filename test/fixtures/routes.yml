@@ -1,5 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# Hey! se modifichi questa route attento che mi sminchi il test di posti_diponibili delle route!
 ferrara_bologna_booked:
   id: 1
   citta_partenza: Ferrara
@@ -9,6 +10,8 @@ ferrara_bologna_booked:
   data_ora_arrivo: 2021-02-14 17:23:52
   costo: 1.5
   driver_id: 2
+  vehicle_id: 2
+  n_passeggeri: 1
   deleted: false
 
 bologna_milano_booked:
