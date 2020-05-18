@@ -11,9 +11,9 @@ class RouteTest < ActiveSupport::TestCase
   test "find_journeys che data una route trova tutte le journey associate" do
     r1 = routes(:bologna_milano_booked)
     j = journeys(:one)
-    # r_unbooked = routes(:ferrara_bologna_unbooked)
+    r_unbooked = routes(:ferrara_bologna_unbooked)
     assert_includes r1.find_journeys(r1.id), j
-    # assert_empty r_unbooked.find_journeys(r_unbooked.id)
+    assert_empty r_unbooked.find_journeys(r_unbooked.id)
   end
 
 end

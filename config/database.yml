@@ -38,7 +38,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: passageonrails
+  database: passageonrails_test
   pool: 5
   username: postgres
   password: password
@@ -47,7 +47,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: passageonrails
+  database: passageonrails_production
   pool: 5
   username: postgres
   password: password

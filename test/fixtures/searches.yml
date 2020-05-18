@@ -1,7 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 ferrara_bologna:
-  id: 1
   c_partenza: Ferrara
   c_arrivo: Bologna
   data_ora: 2020-03-12 10:38:19
@@ -10,7 +9,6 @@ ferrara_bologna:
   tipo_mezzo: MyString
 
 ferrara_milano:
-  id: 2
   c_partenza: Ferrara
   c_arrivo: Venezia
   data_ora: 2020-03-12 10:38:19
