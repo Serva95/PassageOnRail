@@ -82,6 +82,7 @@ class Search < ApplicationRecord
 
 
     routes =MultitripSearchResult.select(select_clause).where(where_clause).from(from_clause).group(group_clause)
+
     routes=routes.where('Ms1.data_ora_partenza > NOW()')
     routes = routes.where(["Ms1.data_ora_partenza >= ?", data_ora]) if data_ora.present?
     routes = routes. where(['Ms1.n_passeggeri < Ms1.posti AND Ms2.n_passeggeri < Ms2.posti'])

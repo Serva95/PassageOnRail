@@ -9,7 +9,8 @@ one:
   comfort: 1
   posti: 4
   deleted: false
-  tipo_mezzo: MyString
+  tipo_mezzo: Altro
+  driver_id: 2
 
 two:
   id: 3
@@ -20,7 +21,8 @@ two:
   comfort: 1
   posti: 1
   deleted: false
-  tipo_mezzo: MyString
+  tipo_mezzo: Altro
+  driver_id: 2
 
 has_4_seats:
   id : 1
@@ -31,4 +33,4 @@ has_4_seats:
   comfort: 1
   posti: 4
   deleted: false
-  tipo_mezzo: MyString
+  tipo_mezzo: Altro

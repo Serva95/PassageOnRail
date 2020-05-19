@@ -3,15 +3,15 @@
 ferrara_bologna:
   c_partenza: Ferrara
   c_arrivo: Bologna
-  data_ora: 2020-03-12 10:38:19
-  rating: 1.5
-  costo: 1.5
-  tipo_mezzo: MyString
+  sort_order: Crescente
+  multitrip: false
+  tipo_mezzo: Altro
+  sort_attribute: Costo
 
 ferrara_venezia:
   c_partenza: Ferrara
   c_arrivo: Venezia
-  data_ora: 2020-03-12 10:38:19
-  rating: 1.5
-  costo: 1.5
-  tipo_mezzo: MyString
+  sort_order: Crescente
+  multitrip: false
+  tipo_mezzo: Altro
+  sort_attribute: Costo

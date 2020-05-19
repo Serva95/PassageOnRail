@@ -34,7 +34,11 @@ ferrara_bologna_unbooked:
   data_ora_arrivo: 2021-02-14 17:23:52
   costo: 1.5
   driver_id: 2
+  vehicle_id: 1
   deleted: false
+  tempo_percorrenza: 120
+  n_passeggeri: 1
+  contanti: true
 
 bologna_venezia_unbooked:
   id: 4
@@ -44,8 +48,12 @@ bologna_venezia_unbooked:
   citta_arrivo: Venezia
   data_ora_arrivo: 2021-02-14 19:23:52
   costo: 1.5
+  vehicle_id: 2
   driver_id: 2
   deleted: false
+  tempo_percorrenza: 120
+  n_passeggeri: 1
+  contanti: true
 
 old_route:
   id: 5

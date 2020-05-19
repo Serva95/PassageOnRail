@@ -11,7 +11,6 @@ class SearchTest < ActiveSupport::TestCase
 
   test "#search_routes(driver_1,booked_routes) should return single routes that meet the search parameters" do
     r = routes(:ferrara_bologna_unbooked)
-    booked = routes(:ferrara_bologna_booked).id
     u = users(:one)
     s = searches(:ferrara_bologna)
     b = s.already_booked(u.id)
@@ -21,11 +20,11 @@ class SearchTest < ActiveSupport::TestCase
    test "#multi_routes_search(driver_1,booked_routes) should return couple of routes that meet the search parameters" do
      r1 = routes(:ferrara_bologna_unbooked)
      r2 = routes(:bologna_venezia_unbooked)
-     booked = routes(:ferrara_bologna_booked).id
      u = users(:one)
      s = searches(:ferrara_venezia)
-     assert_equal s.multi_routes_search(u.driver_id,booked).c_part, r1.citta_partenza
-     assert_equal s.multi_routes_search(u.driver_id,booked).c_arr, r2.citta_arrivo
+     booked = s.already_booked(u.id)
+     assert_equal s.multi_routes_search(u.driver_id,booked).first.c_part, r1.citta_partenza
+     assert_equal s.multi_routes_search(u.driver_id,booked).first.c_arr, r2.citta_arrivo
    end
 
 end
