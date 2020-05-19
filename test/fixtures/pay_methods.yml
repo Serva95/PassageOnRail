@@ -1,0 +1,21 @@
+contanti:
+  id: 1
+  user_id: 0
+  intestatario: admin
+  numero: contanti
+  mese_scadenza: 12
+  anno_scadenza: 45
+  cvv: 000
+  created_at: 2020-02-14 19:23:52
+  updated_at: 2020-02-14 19:23:52
+
+two:
+  id: 2
+  user_id: 1
+  intestatario: one
+  numero: mynumber
+  mese_scadenza: 12
+  anno_scadenza: 25
+  cvv: 000
+  created_at: 2020-02-14 19:23:52
+  updated_at: 2020-02-14 19:23:52

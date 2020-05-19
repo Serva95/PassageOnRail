@@ -48,16 +48,17 @@ class Route < ApplicationRecord
 
   # Data una route, trova tutti i passeggeri prenotati
   def find_passengers
-    @journeys = Journey.includes("stages").where(stages: {route_id: self.id, accepted: true})
-    @passengers = []
-    @journeys.each do |journey|
-      @passengers << journey.user
+    journeys = Journey.includes("stages").where(stages: {route_id: self.id, accepted: true})
+    passengers = []
+    journeys.each do |journey|
+      passengers << journey.user
     end
+    passengers
   end
 
   # Data una route, trova tutte le journey a cui appartiene
   def self.find_journeys(route_id)
-    journeys = Journey.joins(:stages).where("route_id = ?", route_id)
+    Journey.joins(:stages).where("route_id = ?", route_id)
   end
 
   def self.booked(route_id,hitch_hiker_id)
@@ -68,14 +69,6 @@ class Route < ApplicationRecord
   def self.find_driver(route)
     User.find_by(driver_id: route.driver_id)
   end
-
-  # def self.search(search)
-  # if search
-  #   where(["citta_partenza LIKE ?" , "%#{search}%"])
-  # else
-  #   all
-  # end
-  # end
 
   # estrae i metodi di pagamento di un utente controllando se è possibile pagare in contanti su tutte le tratte
   def self.find_pay_method(id, routes)

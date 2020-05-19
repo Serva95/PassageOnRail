@@ -14,6 +14,7 @@ ferrara_bologna_booked:
   n_passeggeri: 1
   deleted: false
 
+
 bologna_milano_booked:
   id: 2
   citta_partenza: Bologna
@@ -64,4 +65,32 @@ old_route:
   data_ora_arrivo: 2019-02-14 19:23:52
   costo: 1.5
   driver_id: 2
+  deleted: false
+
+ferrara_bologna_contanti:
+  id: 10
+  citta_partenza: Ferrara
+  luogo_ritrovo: MyString
+  data_ora_partenza: 2021-02-14 16:23:52
+  citta_arrivo: Bologna
+  data_ora_arrivo: 2021-02-14 17:23:52
+  costo: 1.5
+  driver_id: 2
+  vehicle_id: 2
+  n_passeggeri: 1
+  contanti: true
+  deleted: false
+
+ferrara_bologna_not_contanti:
+  id: 11
+  citta_partenza: Ferrara
+  luogo_ritrovo: MyString
+  data_ora_partenza: 2021-02-14 16:23:52
+  citta_arrivo: Bologna
+  data_ora_arrivo: 2021-02-14 17:23:52
+  costo: 1.5
+  driver_id: 2
+  vehicle_id: 2
+  n_passeggeri: 1
+  contanti: false
   deleted: false
