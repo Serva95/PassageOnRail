@@ -16,7 +16,7 @@ one:
 two:
   id: 2
   user_1_id: 1
-  user_2_id: 2
+  user_2_id: 3
   deleted_user_1: false
   deleted_user_2: false
   open_time_user_1: 2020-02-14 16:23:52
@@ -24,8 +24,8 @@ two:
 
 to_be_deleted:
   id: 3
-  user_1_id: 1
-  user_2_id: 2
+  user_1_id: 3
+  user_2_id: 4
   deleted_user_1: false
   deleted_user_2: false
   open_time_user_1: 2020-02-14 16:23:52
@@ -33,7 +33,7 @@ to_be_deleted:
 
 to_be_restored:
   id: 4
-  user_1_id: 1
+  user_1_id: 4
   user_2_id: 2
   deleted_user_1: false
   deleted_user_2: true

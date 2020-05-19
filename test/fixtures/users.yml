@@ -33,3 +33,37 @@ two:
   confirmation_sent_at: 2020-02-14 16:23:53
   driver_id: 2
   deleted: false
+
+three:
+   id: 3
+   email: MyStringThree
+   username: MyString
+   encrypted_password: MyString
+   nome: MyString
+   cognome: MyString
+   data_di_nascita: 2020-02-14
+   cellulare: MyString
+   indirizzo: MyText
+   avatar: MyString
+   hitch_hiker_rating: 5
+   confirmed_at: 2020-02-14 16:23:52
+   confirmation_sent_at: 2020-02-14 16:23:53
+   driver_id: 3
+   deleted: false
+
+four:
+  id: 4
+  email: MyStringFour
+  username: MyString
+  encrypted_password: MyString
+  nome: MyString
+  cognome: MyString
+  data_di_nascita: 2020-02-14
+  cellulare: MyString
+  indirizzo: MyText
+  avatar: MyString
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
+  driver_id: 4
+  deleted: false
