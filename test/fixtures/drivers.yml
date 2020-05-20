@@ -1,15 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   rating_medio: 1.5
   deleted: false
 
 two:
+  id: 10
   rating_medio: 1.5
   deleted: false
 
 with_route:
   id: 2
+  rating_medio: 3
+  deleted: false
 
 no_route:
   id: 100
