@@ -38,39 +38,62 @@ class RouteTest < ActiveSupport::TestCase
   end
 
   test "self.find_pay_method should return a user's valid payment methods" do
-
+    r_contanti = routes(:ferrara_bologna_contanti)
+    r_no_contanti = routes(:ferrara_bologna_not_contanti)
+    u = users(:one)
+    pay = pay_methods(:two)
+    contanti = pay_methods(:contanti)
+    assert_includes Route.find_pay_method(u.id, [r_contanti]), pay
+    assert_includes Route.find_pay_method(u.id, [r_contanti]), contanti
+    assert_includes Route.find_pay_method(u.id, [r_no_contanti,r_contanti]), pay
+    assert_not_includes Route.find_pay_method(u.id, [r_contanti,r_no_contanti]), contanti
   end
 
   #date due route di una multitratta, ritorna true se quella passata come primo parametro è antecedente all'altra
-  test "self.first_route(route1,route2)" do
-    assert true
+  test "self.first_route(route1,route2) should return if the first route is older than the second" do
+    rolder = routes(:ferrara_bologna_booked)
+    ryounger = routes(:bologna_milano_booked)
+    assert Route.first_route(rolder, ryounger)
+    assert_not Route.first_route(ryounger, rolder)
   end
 
   # Controlla se due tratte del multiviaggio si sovrappongono
-  test "self.overlying(route1,route2)" do
-    assert true
-  end
-
-  # Decrementa il numero di passeggeri
-  test "self.decrease(route_id, n_passeggeri)" do
-    assert true
+  test "self.overlying(route1,route2) should return if two route in multitrip overlying" do
+    rolder = routes(:ferrara_bologna_booked)
+    ryounger = routes(:bologna_milano_booked)
+    roverlying = routes(:bologna_milano_overlying)
+    assert_not Route.overlying(rolder, ryounger)
+    assert Route.overlying(ryounger, roverlying)
   end
 
   # Elimina la route del driver e tutte le relative prenotazioni
-  test "self.destroy_route_and_stages(route,current_user)" do
-    assert true
+  test "self.destroy_route_and_stages(route,current_user) should delete route of user and destroy all his stage and journey" do
+    r = routes(:bologna_milano_booked)
+    u = users(:two)
+    Route.destroy_route_and_stages(r,u)
+    j = Route.find_journeys(r.id)
+    s = Stage.where("route_id = ? ", r.id)
+    assert r.deleted
+    assert_empty j
+    assert_empty s
   end
 
   # Data una route e una journey multitratta a cui appartiene, trova lo stage dell'altra route della stessa journey
-  test "self.find_second_stage(journey, route_id)" do
-    assert true
+  test "self.find_second_stage(journey, route_id) should return second route of same journey" do
+    r1 = routes(:ferrara_bologna_booked)
+    j = Route.find_journeys(r1.id).first
+    r2 = routes(:bologna_milano_booked)
+    result = Route.find_second_stage(j, r1.id)
+    assert_equal result , r2
   end
 
-  # @param [Numeric] user_id
-  # @param [Numeric] route_id
-  # @param [Numeric] j_id
-  test "self.find_associated_stage(route_id, user_id, j_id)" do
-    assert true
+  test "self.find_associated_stage(route_id, user_id, j_id) should return if one route, user and journey are associated" do
+    r_ok = routes(:bologna_milano_booked)
+    r_error = routes(:ferrara_bologna_unbooked)
+    j = Route.find_journeys(r_ok.id).first
+    u = users(:one)
+    assert Route.find_associated_stage(r_ok.id, u.id, j.id)
+    assert_not Route.find_associated_stage(r_error.id, u.id, j.id)
   end
 
 end
