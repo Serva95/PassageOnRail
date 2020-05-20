@@ -39,3 +39,12 @@ to_be_restored:
   deleted_user_2: true
   open_time_user_1: 2020-02-14 16:23:52
   open_time_user_2: 2020-02-14 16:23:52
+
+named:
+  id: 5
+  user_1_id: 5
+  user_2_id: 3
+  deleted_user_1: false
+  deleted_user_2: false
+  open_time_user_1: 2020-02-14 16:23:52
+  open_time_user_2: 2020-02-14 16:23:52

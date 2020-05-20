@@ -67,3 +67,20 @@ four:
   confirmation_sent_at: 2020-02-14 16:23:53
   driver_id: 4
   deleted: false
+
+named:
+  id: 5
+  email: myEmail@email.it
+  username: ginopino
+  encrypted_password: password
+  nome: gino
+  cognome: pino
+  data_di_nascita: 2020-02-14
+  cellulare: 3335566444
+  indirizzo: via da definire 5
+  avatar: avatar.mkv
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
+  driver_id: 4
+  deleted: false
