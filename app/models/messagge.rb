@@ -22,6 +22,7 @@ class Messagge < ApplicationRecord
 	# @param [DateTime] update_time
 	# @param [Numeric] chat_id
 	# @param [Numeric] user_id
+	# @return [Chat]
 	def self.update_open_time(update_time, chat_id, user_id)
 		chat = Chat.find(chat_id)
 		if chat.user_1_id == user_id
@@ -29,6 +30,7 @@ class Messagge < ApplicationRecord
 		else
 			chat.update_columns(open_time_user_2: update_time)
 		end
+		chat
 	end
 
 	# @author serva

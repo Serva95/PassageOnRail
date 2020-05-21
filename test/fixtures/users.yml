@@ -1,25 +1,86 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
+  id: 1
+  email: MyStringOne
   username: MyString
-  password: MyString
+  encrypted_password: MyString
   nome: MyString
   cognome: MyString
   data_di_nascita: 2020-02-14
   cellulare: MyString
   indirizzo: MyText
-  url_foto: MyString
+  avatar: MyString
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
   deleted: false
+  driver_id: 1
 
 two:
-  email: MyString
+  id: 2
+  email: MyStringTwo
   username: MyString
-  password: MyString
+  encrypted_password: MyString
   nome: MyString
   cognome: MyString
   data_di_nascita: 2020-02-14
   cellulare: MyString
   indirizzo: MyText
-  url_foto: MyString
+  avatar: MyString
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
+  driver_id: 2
+  deleted: false
+
+three:
+  id: 3
+  username: MyString
+  nome: MyString
+  cognome: MyString
+  data_di_nascita: 2020-02-14
+  cellulare: MyString
+  indirizzo: MyText
+  deleted: false
+  driver_id: 3
+  email: MyStringThree
+  encrypted_password: MyString
+  avatar: MyString
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
+
+four:
+  id: 4
+  email: MyStringFour
+  username: MyString
+  encrypted_password: MyString
+  nome: MyString
+  cognome: MyString
+  data_di_nascita: 2020-02-14
+  cellulare: MyString
+  indirizzo: MyText
+  avatar: MyString
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
+  driver_id: 4
+  deleted: false
+
+named:
+  id: 5
+  email: myEmail@email.it
+  username: ginopino
+  encrypted_password: password
+  nome: gino
+  cognome: pino
+  data_di_nascita: 2020-02-14
+  cellulare: 3335566444
+  indirizzo: via da definire 5
+  avatar: avatar.mkv
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
+  driver_id: 4
   deleted: false

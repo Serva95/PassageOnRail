@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2020_05_01_145911) do
   create_table "messagges", force: :cascade do |t|
     t.datetime "data_ora", precision: 6, null: false
     t.text "testo", null: false
-    t.integer "chat_id"
-    t.integer "user_id"
+    t.bigint "chat_id"
+    t.bigint "user_id"
     t.index ["chat_id"], name: "index_messagges_on_chat_id"
     t.index ["user_id"], name: "index_messagges_on_user_id"
   end
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_145911) do
   create_table "ratings", force: :cascade do |t|
     t.datetime "data", precision: 6, null: false
     t.integer "vote", null: false
-    t.integer "driver_id"
+    t.bigint "driver_id"
     t.bigint "user_id"
     t.index ["driver_id"], name: "index_ratings_on_driver_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_145911) do
     t.integer "vote", null: false
     t.text "commento", null: false
     t.boolean "deleted", default: false, null: false
-    t.integer "driver_id"
+    t.bigint "driver_id"
     t.bigint "user_id"
     t.index ["driver_id"], name: "index_reviews_on_driver_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
@@ -112,10 +112,10 @@ ActiveRecord::Schema.define(version: 2020_05_01_145911) do
     t.boolean "deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "driver_id"
-    t.integer "vehicle_id"
-    t.integer "tempo_percorrenza"
+    t.bigint "driver_id"
+    t.bigint "vehicle_id"
     t.integer "n_passeggeri", default: 0
+    t.integer "tempo_percorrenza"
     t.boolean "contanti", default: false, null: false
     t.index ["driver_id"], name: "index_routes_on_driver_id"
     t.index ["vehicle_id"], name: "index_routes_on_vehicle_id"
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_145911) do
   create_table "stages", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "route_id"
+    t.bigint "route_id"
     t.bigint "journey_id"
     t.boolean "accepted"
     t.index ["journey_id"], name: "index_stages_on_journey_id"
@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_145911) do
     t.boolean "deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "driver_id"
+    t.bigint "driver_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_145911) do
     t.boolean "deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "driver_id"
+    t.bigint "driver_id"
     t.string "tipo_mezzo"
     t.index ["driver_id"], name: "index_vehicles_on_driver_id"
   end
@@ -220,8 +220,8 @@ ActiveRecord::Schema.define(version: 2020_05_01_145911) do
       routes.updated_at,
       routes.driver_id,
       routes.vehicle_id,
-      routes.tempo_percorrenza,
       routes.n_passeggeri,
+      routes.tempo_percorrenza,
       vehicles.comfort,
       vehicles.tipo_mezzo,
       drivers.rating_medio,

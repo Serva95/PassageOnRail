@@ -3,11 +3,23 @@
 one:
   data_ora: 2020-02-14 16:27:19
   testo: MyText
-  mittente: MyString
-  destinatario: MyString
+  chat_id: 1
+  user_id: 2
 
 two:
   data_ora: 2020-02-14 16:27:19
   testo: MyText
-  mittente: MyString
-  destinatario: MyString
+  chat_id: 1
+  user_id: 2
+
+tre:
+  data_ora: 2020-02-15 16:27:19
+  testo: MyText
+  chat_id: 1
+  user_id: 1
+
+different_chat:
+  data_ora: 2020-02-15 16:27:19
+  testo: MyText
+  chat_id: 2
+  user_id: 3

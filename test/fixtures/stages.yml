@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ferrara_bologna:
+  id: 1
+  route_id: 1
+  journey_id: 1
+  accepted: true
+
+bologna_milano:
+  id: 2
+  route_id: 2
+  journey_id: 1
+  accepted: true
+
+old_stage:
+  id: 3
+  route_id: 5
+  journey_id: 3
+  accepted: true

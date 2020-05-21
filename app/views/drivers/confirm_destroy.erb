@@ -1,11 +1,12 @@
 <%if @driver!= nil %>
+  <%#=@driver.has_routes(@driver.id) %>
 <% if @driver.has_routes(@driver.id) %>
   <div class="col-12 col-12-narrower">
     <h3>Non puoi annullare il tuo abbonamento driver, hai delle tratte a tuo nome!</h3>
     <h4>gestisci le tratte prima di annullare la tua sottoscrizione!</h4>
   </div>
   <div class="col-6 col-12-narrower">
-    <%= button_to "Visualizza le tue tratte", driver_route_path(@driver), :method => :delete %>
+    <%= link_to 'Le tue tratte',  driver_routes_path(current_user.driver_id), class: 'button'%>
   </div>
 <%else %>
   <div class="col-12 col-12-narrower">
@@ -13,7 +14,7 @@
     <h4>potrai tornare driver in qualsiasi momento ma perderai tutti i dati sui tuoi veicoli!</h4>
   </div>
   <div class="col-6 col-12-narrower">
-    <%= button_to "Elimina Driver", driver_path(@driver), :method => :delete %>
+    <%= link_to "Elimina Driver", driver_path(current_user.driver_id), :method => :delete, class: 'button' %>
   </div>
 <%end %>
 <div class="col-6 col-12-narrower">

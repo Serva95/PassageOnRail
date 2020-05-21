@@ -1,0 +1,15 @@
+
+one:
+  id: 1
+  n_prenotati: 1
+  user_id: 1
+
+two:
+  id: 2
+  n_prenotati: 1
+  user_id: 2
+
+old_journey:
+  id: 3
+  n_prenotati: 1
+  user_id: 1

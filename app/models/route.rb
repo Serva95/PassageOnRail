@@ -48,34 +48,16 @@ class Route < ApplicationRecord
 
   # Data una route, trova tutti i passeggeri prenotati
   def find_passengers
-    @journeys = Journey.includes("stages").where(stages: {route_id: self.id, accepted: true})
-    @passengers = []
-    @journeys.each do |journey|
-      @passengers << journey.user
+    journeys = Journey.includes("stages").where(stages: {route_id: self.id, accepted: true})
+    passengers = []
+    journeys.each do |journey|
+      passengers << journey.user
     end
   end
 
   # Data una route, trova tutte le journey a cui appartiene
   def self.find_journeys(route_id)
-    journeys = Journey.joins(:stages).where("route_id = ?", route_id)
-  end
-
-  #SE HO CAPITO BENE QUESTA E' DA CANCELLARE, Martina: si e' da cancellare
-  def self.already_booked(route_id,hitch_hiker_id)
-    stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? AND accepted IS TRUE", route_id,hitch_hiker_id)
-    if !stages.empty? #ci sono tratte prenotate da quell'utente (già accettate)
-      return 1
-    else
-      stages= Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? AND accepted IS NULL", route_id,hitch_hiker_id)
-      if !stages.empty?  #ci sono tratte la cui prenotazione è ancora non accettata
-        return 2
-      else
-        stages = Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? ", route_id,hitch_hiker_id)
-        if stages.empty?  #non ci sono prenotazioni di quell'utente per la tratta
-        return 3
-        end
-        end
-    end
+    Journey.joins(:stages).where("route_id = ?", route_id)
   end
 
   def self.booked(route_id,hitch_hiker_id)
@@ -86,14 +68,6 @@ class Route < ApplicationRecord
   def self.find_driver(route)
     User.find_by(driver_id: route.driver_id)
   end
-
-  # def self.search(search)
-  # if search
-  #   where(["citta_partenza LIKE ?" , "%#{search}%"])
-  # else
-  #   all
-  # end
-  # end
 
   # estrae i metodi di pagamento di un utente controllando se è possibile pagare in contanti su tutte le tratte
   def self.find_pay_method(id, routes)
@@ -123,12 +97,14 @@ class Route < ApplicationRecord
     end
   end
 
-  # Decrementa il numero di passeggeri
-  def self.decrease(route_id, n_passeggeri)
-    route = Route.find(route_id)
-    p = route.n_passeggeri - n_passeggeri
-    route.update!(n_passeggeri: p)
-  end
+  # # Decrementa il numero di passeggeri
+  # def self.decrease(route_id, n_passeggeri)
+  #   route = Route.find(route_id)
+  #   # route.decrement!(:n_passeggeri, n_passeggeri)
+  #   p = route.n_passeggeri - n_passeggeri
+  #   route.update!(n_passeggeri: p)
+  #   # route
+  # end
 
   # Elimina la route del driver e tutte le relative prenotazioni
   def self.destroy_route_and_stages(route,current_user)

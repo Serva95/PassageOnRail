@@ -1,13 +1,28 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   data: 2020-02-14 14:00:59
-  rating: 1
+  vote: 1
   commento: MyText
   deleted: false
+  driver_id: 2
+  user_id: 2
 
 two:
+  id: 2
   data: 2020-02-14 14:00:59
-  rating: 1
+  vote: 3
   commento: MyText
   deleted: false
+  driver_id: 2
+  user_id: 3
+
+to_be_inserted:
+  id: 3
+  data: 2020-02-15 15:00:00
+  vote: 5
+  commento: inserito
+  deleted: false
+  driver_id: 1
+  user_id: 1

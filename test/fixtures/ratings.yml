@@ -1,9 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   data: 2020-02-14 14:02:11
-  rating: 1
+  vote: 1
+  user_id: 2
+  driver_id: 1
 
 two:
+  id: 2
   data: 2020-02-14 14:02:11
-  rating: 1
+  vote: 3
+  user_id: 2
+  driver_id: 2
+
+insert:
+  data: 2020-02-15 12:00:00
+  vote: 5
+  user_id: 3
+  driver_id: 10

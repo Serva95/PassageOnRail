@@ -1,16 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 2
   targa: MyString
   marca: MyString
   modello: MyString
   immatricolazione: 2020-02-14
   comfort: 1
-  posti: 1
+  posti: 4
   deleted: false
-  tipo_mezzo: MyString
+  tipo_mezzo: Altro
+  driver_id: 2
 
 two:
+  id: 3
   targa: MyString
   marca: MyString
   modello: MyString
@@ -18,7 +21,8 @@ two:
   comfort: 1
   posti: 1
   deleted: false
-  tipo_mezzo: MyString
+  tipo_mezzo: Altro
+  driver_id: 2
 
 has_4_seats:
   id : 1
@@ -29,4 +33,4 @@ has_4_seats:
   comfort: 1
   posti: 4
   deleted: false
-  tipo_mezzo: MyString
+  tipo_mezzo: Altro

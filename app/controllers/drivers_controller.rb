@@ -42,7 +42,7 @@ class DriversController < ApplicationController
 
   # GET
   def confirm_destroy
-    @driver= Driver.find(params[:driver_id])
+    @driver= Driver.find(current_user.driver_id)
   end
 
   # DELETE /drivers/1

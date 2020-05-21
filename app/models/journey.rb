@@ -60,14 +60,14 @@ class Journey < ApplicationRecord
 	# setta a false la stage rifiutata
 	def self.reject(n_passeggeri, stage)
 		self.transaction do
-			Route.decrease(stage.route_id, n_passeggeri)
+			stage.route.decrement!(:n_passeggeri, n_passeggeri)
 			stage.update!(accepted: false)
 		end
 	end
 
 	def self.decrease_and_destroy(stage, n_passeggeri)
 		self.transaction do
-			Route.decrease(stage.route_id, n_passeggeri)
+			stage.route.decrement!(:n_passeggeri, n_passeggeri)
 			stage.destroy!
 		end
 	end
