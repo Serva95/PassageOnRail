@@ -31,11 +31,12 @@ class RouteTest < ActiveSupport::TestCase
     assert_empty Route.booked(r_unbooked, u.id)
   end
 
-  test "self.find_driver should return route driver" do
-    r = routes(:ferrara_bologna_booked)
-    u = users(:two)
-    assert_equal Route.find_driver(r), u
-  end
+  # OBSOLETO
+  # test "self.find_driver should return route driver" do
+  #   r = routes(:ferrara_bologna_booked)
+  #   u = users(:two)
+  #   assert_equal Route.find_driver(r), u
+  # end
 
   test "self.find_pay_method should return a user's valid payment methods" do
     r_contanti = routes(:ferrara_bologna_contanti)

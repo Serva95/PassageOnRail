@@ -65,10 +65,10 @@ class Route < ApplicationRecord
     Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? ", route_id,hitch_hiker_id)
   end
 
-  # Carica il profilo del driver
-  def self.find_driver(route)
-    User.find_by(driver_id: route.driver_id)
-  end
+  # # Carica il profilo del driver
+  # def self.find_driver(route)
+  #   User.find_by(driver_id: route.driver_id)
+  # end
 
   # estrae i metodi di pagamento di un utente controllando se è possibile pagare in contanti su tutte le tratte
   def self.find_pay_method(id, routes)

@@ -14,16 +14,12 @@ class UsersController < ApplicationController
     #distinguo tra tratte ancora attive e tratte passate
     @journeys_active =[]
     @journeys_past = []
-    j = 0
-    i = 0
     journeys.each do |journey|
       unless journey.stages.first.accepted == false
         if journey.stages.first.route.data_ora_partenza >= Time.now
-          @journeys_active[i] = journey
-          i += 1
+          @journeys_active << journey
         else
-          @journeys_past[j] = journey
-          j += 1
+          @journeys_past << journey
         end
       end
     end
@@ -33,14 +29,12 @@ class UsersController < ApplicationController
   # GET /users/:id/bookings/detail
   def detail_booking
     begin
-      @route1=Route.find(params[:route_id1])
-      @driver1=Route.find_driver(@route1)
-      @journey1_ok = Route.find_associated_stage(@route1.id, current_user.id, params[:j_id])
-      @journey_id=params[:j_id]
-      if params[:route_id2] != nil
-        @route2=Route.find(params[:route_id2])
-        @driver2=Route.find_driver(@route2)
-        @journey2_ok = Route.find_associated_stage(@route2.id, current_user.id, params[:j_id])
+      @journey = Journey.find(params[:j_id])
+      @routes = []
+      @ute_drivers = []
+      @journey.stages.each do |stage|
+        @routes << stage.route
+        @ute_drivers << stage.route.driver.user
       end
       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
       response.headers["Pragma"] = "no-cache"
