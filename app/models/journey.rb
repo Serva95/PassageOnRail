@@ -19,40 +19,15 @@ class Journey < ApplicationRecord
 	has_many :notifications, as: :target, dependent: :destroy
 	accepts_nested_attributes_for :stages
 
-	# crea le notifiche per i driver delle route prenotate
-	def self.create_notifications_td(driver_id, actor, target, second_target, notify_type)
-		user = User.where(driver_id: driver_id).first
-		Notification.create! do |notification|
-			notification.user = user
-			notification.actor = actor
-			notification.target = target
-			notification.second_target = second_target
-			notification.notify_type = notify_type
-		end
-	end
-
-	# crea le notifiche per gli autostoppisti
-	def self.create_notifications_th(user_id, actor, target, second_target, notify_type)
-		user = User.find(user_id)
-		Notification.create! do |notification|
-			notification.user = user
-			notification.actor = actor
-			notification.target = target
-			notification.second_target = second_target
-			notification.notify_type = notify_type
-		end
-	end
-
 	# transazione che aggiorna il numero di passeggeri, crea l'associazione user-journey e
 	# le associazioni journey-stages
-	def self.booking(journey)
+	def booking
 		self.transaction do
-			for stage in journey.stages do
+			for stage in self.stages do
 				route = Route.find(stage.route_id)
-				p = route.n_passeggeri + journey.n_prenotati
-				route.update!(n_passeggeri: p)
+				route.increment!(:n_passeggeri, by = self.n_prenotati)
 			end
-			journey.save!
+			self.save!
 		end
 	end
 
@@ -94,6 +69,7 @@ class Journey < ApplicationRecord
 	# @note controlla se il viaggio è eliminabile secondo i vincoli temporali:
 	# @note 48 ore o prima rispetto alla partenza,
 	# @note sempre se il guidatore ha modificato il viaggio entro 48 dalla partenza
+	# si potrebbe modificare e accorciare in un'unica riga di codice
 	def self.journey_is_deletable(route)
 		if route.data_ora_partenza - 2.day > DateTime.current
 			true
@@ -101,16 +77,6 @@ class Journey < ApplicationRecord
 			true
 		else
 			false
-		end
-	end
-
-	#controlla se lo stage è già stato controllato (accettato o rifiutato) dal driver
-	def self.already_checked(route_id,journey_id)
-		stage = Stage.where("route_id = ? AND journey_id = ?",route_id,journey_id).first
-		if stage.accepted.nil?
-			return false
-		else
-			return true
 		end
 	end
 
