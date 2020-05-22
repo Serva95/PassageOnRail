@@ -53,6 +53,7 @@ class Route < ApplicationRecord
     journeys.each do |journey|
       passengers << journey.user
     end
+    passengers
   end
 
   # Data una route, trova tutte le journey a cui appartiene

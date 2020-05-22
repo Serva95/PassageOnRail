@@ -17,7 +17,7 @@
     <%else %>
       <% @passengers.each do |passenger| %>
         <div>
-        <%= link_to "#{passenger.user.username}", user_path(passenger.user) %>
+        <%= link_to "#{passenger.username}", user_path(passenger) %>
         </div>
     <%end %>
       <%end %>
