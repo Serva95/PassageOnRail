@@ -1,41 +1,25 @@
 <!-- Pagina dei dettagli della route prenotata -->
-<%if @journey1_ok%>
-  <div class="col-2 col-4-mobilep ">
-    <%= link_to 'Back', user_bookings_path, class: "button icon solid fa-chevron-left"%>
-  </div>
-  <!-- dettagli della route-->
-  <div class="col-10 col-8-mobilep">
-    <h2>La tua prenotazione</h2>
-  </div>
-  <div class="col-12 col-12-mobilep">
-    <br>
-  </div>
-  <div class="col-6 col-12-mobilep">
-    <h1><strong>Prima tratta</strong></h1>
-    <%= render 'detail_route', route: @route1, driver: @driver1 %>
-    <%if @route1.data_ora_partenza > DateTime.current%>
-      <%= link_to 'Annulla prenotazione', journey_path(id: params[:j_id], r_id: @route1.id), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Annulla prenotazione'%>
+<div class="col-2 col-4-mobilep ">
+  <%= link_to 'Back', user_bookings_path, class: "button icon solid fa-chevron-left"%>
+</div>
+<!-- dettagli della route-->
+<div class="col-10 col-8-mobilep">
+  <h2>La tua prenotazione</h2>
+</div>
+<div class="col-12 col-12-mobilep">
+  <br>
+</div>
+<% @routes.each_with_index do | route , index | %>
+  <div class="col-5 col-12-mobilep">
+    <%= render 'detail_route', route: route, driver: @ute_drivers[index] %>
+    <%if route.data_ora_partenza > DateTime.current%>
+      <%= link_to 'Annulla prenotazione', journey_path(id: params[:j_id], r_id: route.id), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Annulla prenotazione'%>
     <%end %>
-
   </div>
-  <%if @route2 != nil %>
-    <div class="col-6 col-12-mobilep">
-      <h1><strong>Seconda tratta</strong></h1>
-      <%= render 'detail_route', route: @route2, driver: @driver2%>
-      <%if @route2.data_ora_partenza > DateTime.current%>
-        <%= link_to 'Annulla prenotazione', journey_path(id: params[:j_id], r_id: @route2.id), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Annulla prenotazione'%>
-      <%end %>
-    </div>
-    <div class="col-12 col-12-mobile"><br></div>
-    <div class="col-12 col-12-mobile">
-      <%= link_to 'Annulla entrambe', destroy_both_journey_path(id: @journey_id, r_1_id: @route1.id, r_2_id: @route2.id),method: :delete, data: { confirm: 'Sicuro di voler annullare entrambe le prenotazioni?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
-    </div>
-  <%end%>
-<%else %>
-  <div class="col-7 col-12-mobilep">
-    <h4>Non puoi vedere questa prenotazione!</h4>
+<%end%>
+<% if @routes[1] != nil %>
+  <div class="col-12 col-12-mobile"><br></div>
+  <div class="col-12 col-12-mobile">
+    <%= link_to 'Annulla entrambe', destroy_both_journey_path(id: @journey.id, r_1_id: @routes[0].id, r_2_id: 1),method: :delete, data: { confirm: 'Sicuro di voler annullare entrambe le prenotazioni?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
   </div>
-  <div class="col-3 col-12-mobilep">
-    <%= link_to 'Le tue prenotazioni!', user_bookings_path(current_user.id), class:'button'%>
-  </div>
-<% end %>
+<%end %>
