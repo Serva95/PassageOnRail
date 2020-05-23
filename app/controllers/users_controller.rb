@@ -32,6 +32,7 @@ class UsersController < ApplicationController
       @journey = Journey.find(params[:j_id])
       @routes = []
       @ute_drivers = []
+      @journey_ok = (@journey.user_id == current_user.id)
       @journey.stages.each do |stage|
         @routes << stage.route
         @ute_drivers << stage.route.driver.user
