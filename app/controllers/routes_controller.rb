@@ -68,10 +68,10 @@ class RoutesController < ApplicationController
         @journeys = Route.find_journeys(params[:id])
         @journeys.each {|journey|
           if  journey.stages.count == 1
-            Journey.create_notifications_th(journey.user_id, current_user, @route, @route, "update_trip")
+            Notification.create_notifications_th(journey.user_id, current_user, @route, @route, "update_trip")
           else
             second_route = Route.find_second_stage(journey, @route.id)
-            Journey.create_notifications_th(journey.user_id, current_user, @route, second_route, "update_multitrip")
+            Notification.create_notifications_th(journey.user_id, current_user, @route, second_route, "update_multitrip")
           end
         }
         format.html { redirect_to driver_route_path(@driver) }

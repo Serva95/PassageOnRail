@@ -22,14 +22,13 @@ class JourneysController < ApplicationController
 
   # POST /journey
   def create
+    # creo un oggetto journey che contiene anche gli stages associati
     @journey = Journey.new(journey_params)
-    # crea un nuovo journey e uno o due stage settando i parametri
-    # passati dalla form
     respond_to do |format|
-      if Journey.booking(@journey)
+      if @journey.booking
         # la prenotazione ha avuto successo, crea le notifiche
         @journey.stages.each do |stage|
-          Journey.create_notifications_td(stage.route.driver_id, current_user, stage.route, @journey, "reservation")
+          Notification.create_notifications_td(stage.route.driver_id, current_user, stage.route, @journey, "reservation")
         end
         format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione creata' }
         format.json { render :show, status: :created, location: @journey }
@@ -52,7 +51,7 @@ class JourneysController < ApplicationController
     render template: 'errors/deleted_route' if @route.deleted?
     @journey =  Journey.find(params[:id])
     @user = @journey.user
-    @checked = Journey.already_checked(@route.id,@journey.id)
+    @checked = ! Stage.already_checked(@route.id,@journey.id).nil?
   end
 
   #PATCH /routes/1/journeys/1
@@ -65,7 +64,7 @@ class JourneysController < ApplicationController
 
       if @stage.update(accepted: true)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
-        Journey.create_notifications_th(@journey.user_id, current_user, @route, @route, "accept_trip")
+        Notification.create_notifications_th(@journey.user_id, current_user, @route, @route, "accept_trip")
         format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @journey }
       else
@@ -83,7 +82,7 @@ class JourneysController < ApplicationController
 
       if Journey.reject(@journey.n_prenotati, @stage)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
-        Journey.create_notifications_th(@journey.user_id, current_user, @route, @route, "reject_trip")
+        Notification.create_notifications_th(@journey.user_id, current_user, @route, @route, "reject_trip")
         format.html { redirect_to root_path }
         format.json { render :show, status: :ok, location: @journey }
       else
@@ -126,7 +125,7 @@ class JourneysController < ApplicationController
     is_deletable = Journey.journey_is_deletable(route)
     respond_to do |format|
       if is_deletable && Journey.delete_passage_transaction(@journey, route)
-        Journey.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
+        Notification.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
         format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione eliminata' }
         format.json { head :no_content }
       else
@@ -144,8 +143,8 @@ class JourneysController < ApplicationController
     notification = params[:notification]
     respond_to do |format|
       if Journey.delete_both_passage(@journey, route1, route2)
-        Journey.create_notifications_td(route1.driver_id, current_user, route1, route1, "cancel")
-        Journey.create_notifications_td(route2.driver_id, current_user, route2, route2, "cancel")
+        Notification.create_notifications_td(route1.driver_id, current_user, route1, route1, "cancel")
+        Notification.create_notifications_td(route2.driver_id, current_user, route2, route2, "cancel")
         if notification
           format.html { redirect_to new_search_path(c_part: route1.citta_partenza, c_arr: route2.citta_arrivo, data_ora: route1.data_ora_partenza) }
           format.json { head :no_content }
