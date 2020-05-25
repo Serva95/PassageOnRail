@@ -62,7 +62,7 @@
         <i>Ciao <%= current_user.nome %>, attualmente sei un driver ma non hai nessun veicolo inserito!</i>
 
             |<%= link_to ' Aggiungi veicolo ', new_driver_vehicle_url(current_user.driver_id)%>|
-            |<%= link_to ' Non essere più driver ', driver_url(current_user.driver_id)%>|
+            |<%= link_to ' Non essere più driver ',main_app.driver_confirm_destroy_url(current_user.driver_id)%>|
           </div>
         </div>
       <%end %>

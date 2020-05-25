@@ -5,6 +5,13 @@ class Driver < ApplicationRecord
 		Route.select('routes.*').where(where_clause, id).exists?
 	end
 
+	def self.delete_driver(user, driver)
+		self.transaction do
+			user.update!(driver_id: nil)
+			driver.destroy!
+		end
+	end
+
 	has_one  :user
 	has_many :vehicles, dependent: :destroy
 	has_many :reviews, dependent: :destroy

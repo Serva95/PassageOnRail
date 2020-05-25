@@ -88,13 +88,4 @@ class RouteTest < ActiveSupport::TestCase
     assert_equal result , r2
   end
 
-  test "self.find_associated_stage(route_id, user_id, j_id) should return if one route, user and journey are associated" do
-    r_ok = routes(:bologna_milano_booked)
-    r_error = routes(:ferrara_bologna_unbooked)
-    j = Route.find_journeys(r_ok.id).first
-    u = users(:one)
-    assert Route.find_associated_stage(r_ok.id, u.id, j.id)
-    assert_not Route.find_associated_stage(r_error.id, u.id, j.id)
-  end
-
 end

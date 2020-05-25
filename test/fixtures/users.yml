@@ -85,3 +85,20 @@ named:
   driver_id: 4
   deleted: false
 
+delete_driver:
+  id: 6
+  email: myEmaildd@email.it
+  username: ginopino
+  encrypted_password: password
+  nome: gino
+  cognome: pino
+  data_di_nascita: 1920-02-14
+  cellulare: 3335566444
+  indirizzo: via da definire 5
+  avatar: avatar.mkv
+  hitch_hiker_rating: 5
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
+  driver_id: 100
+  deleted: false
+
