@@ -6,7 +6,7 @@ class MessaggeTest < ActiveSupport::TestCase
   test "self.update_open_time(update_time, chat_id, user_id) should have now for current user" do
     h = DateTime.current
     m = Messagge.update_open_time(h,1,1)
-    assert_equal m.open_time_user_1, h
+    assert_equal m.open_time_user_1.strftime("%d-%m-%Y %H:%M:%S"), h.strftime("%d-%m-%Y %H:%M:%S")
   end
 
   # @note controlla quale lato della chat appartiene all'utente che ha inviato il messaggio,

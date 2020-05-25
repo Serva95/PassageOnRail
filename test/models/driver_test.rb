@@ -7,4 +7,11 @@ class DriverTest < ActiveSupport::TestCase
     assert d1.has_routes(d1.id)
     assert_not d2.has_routes(d2.id)
   end
+
+  test "#self.delete_driver should delete driver" do
+    d = drivers(:no_route)
+    u = users(:delete_driver)
+    Driver.delete_driver(u, d)
+    assert_equal u.driver_id, nil
+  end
 end

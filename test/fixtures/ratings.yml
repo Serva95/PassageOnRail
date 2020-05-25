@@ -15,7 +15,8 @@ two:
   driver_id: 2
 
 insert:
+  id: 3
   data: 2020-02-15 12:00:00
   vote: 5
-  user_id: 3
+  user_id: 5
   driver_id: 10

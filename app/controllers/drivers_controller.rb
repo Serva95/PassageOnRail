@@ -48,8 +48,7 @@ class DriversController < ApplicationController
   # DELETE /drivers/1
   # DELETE /drivers/1.json
   def destroy
-    current_user.update_attributes(driver_id: nil)
-    @driver.destroy
+    Driver.delete_driver(current_user, @driver)
     respond_to do |format|
       format.html { redirect_to root_url, notice: 'Driver was successfully destroyed.' }
       format.json { head :no_content }
@@ -59,7 +58,7 @@ class DriversController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_driver
-      @driver = Driver.find(current_user.id)
+      @driver = Driver.find(current_user.driver_id)
     end
 
     # Only allow a list of trusted parameters through.
