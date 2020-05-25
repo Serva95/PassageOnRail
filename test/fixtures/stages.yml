@@ -17,3 +17,26 @@ old_stage:
   route_id: 5
   journey_id: 3
   accepted: true
+
+accepted_nil_one:
+  id: 4
+  route_id: 1
+  journey_id: 4
+
+
+accepted_nil_two:
+  id: 5
+  route_id: 2
+  journey_id: 4
+
+verona_milano_nil:
+  id: 6
+  route_id: 12
+  journey_id: 5
+
+milano_venezia_nil:
+  id: 7
+  route_id: 13
+  journey_id: 5
+
+

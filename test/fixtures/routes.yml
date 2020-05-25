@@ -106,3 +106,31 @@ ferrara_bologna_not_contanti:
   n_passeggeri: 1
   contanti: false
   deleted: false
+
+verona_milano:
+  id: 12
+  citta_partenza: Verona
+  luogo_ritrovo: piazza
+  data_ora_partenza: 2021-02-14 16:23:52
+  citta_arrivo: Milano
+  data_ora_arrivo: 2021-02-14 17:23:52
+  costo: 1.5
+  driver_id: 1
+  vehicle_id: 2
+  n_passeggeri: 1
+  contanti: true
+  deleted: false
+
+milano_venezia:
+  id: 13
+  citta_partenza: Milano
+  luogo_ritrovo: piazza
+  data_ora_partenza: 2021-02-14 16:23:52
+  citta_arrivo: Milano
+  data_ora_arrivo: 2021-02-14 17:23:52
+  costo: 1.5
+  driver_id: 1
+  vehicle_id: 2
+  n_passeggeri: 1
+  contanti: true
+  deleted: false

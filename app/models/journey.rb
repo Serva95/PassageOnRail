@@ -48,18 +48,22 @@ class Journey < ApplicationRecord
 	end
 
 	# Cerca una precisa prenotazione
-	def self.find_stage(journey_id, driver_id, route_id)
-		Journey.includes("stages", "routes").where(id: journey_id, routes: {id: route_id, driver_id: driver_id})
+	# ha fallito i test, in realtà include tutti gli stage
+	# proprio pre questo credo che non venga utilizzata da nessuna parte
+	#scope :find_stage, -> (journey_id, driver_id, route_id) do
+	#	includes("stages", "routes").where(id: journey_id, routes: {id: route_id, driver_id: driver_id})
+	#end
+
+	# Cerca i journey che hanno uno stage relativo a una route di un dato guidatore
+	# che devono essere accettati/rifiutati
+	scope :find_requests, -> (driver_id) do
+		includes("user","stages", "routes").where(stages: {accepted: nil} ,routes: {driver_id: driver_id})
 	end
 
-	# Cerca i journey che hanno uno stage relativa a una route di un dato guidatore
-	def self.find_requests(driver_id)
-		Journey.includes("user","stages", "routes").where(stages: {accepted: nil} ,routes: {driver_id: driver_id})
-	end
-
-	def self.find_from_stage(journey_id,state)
-		Journey.includes("stages", "routes").where(id: journey_id, stages: {accepted: state})
-	end
+	#è inutile anche questo metodo
+	#scope :find_from_stage, -> (journey_id,state) do
+	#	includes("stages", "routes").where(id: journey_id, stages: {accepted: state})
+	#end
 
 	# @param [Route] route
 	# @return [TrueClass, FalseClass]

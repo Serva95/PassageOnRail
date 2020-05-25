@@ -24,6 +24,18 @@ two:
   tipo_mezzo: Altro
   driver_id: 2
 
+ford:
+  id: 4
+  targa: MyString
+  marca: MyString
+  modello: MyString
+  immatricolazione: 2020-02-14
+  comfort: 1
+  posti: 4
+  deleted: false
+  tipo_mezzo: Altro
+  driver_id: 1
+
 has_4_seats:
   id : 1
   targa: MyString
