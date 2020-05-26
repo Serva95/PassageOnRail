@@ -12,6 +12,6 @@ class DriverTest < ActiveSupport::TestCase
     d = drivers(:no_route)
     u = users(:delete_driver)
     Driver.delete_driver(u, d)
-    assert_equal u.driver_id, nil
+    assert_nil u.driver_id
   end
 end
