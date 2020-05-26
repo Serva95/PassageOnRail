@@ -1,5 +1,5 @@
 class JourneysController < ApplicationController
-  before_action :set_journey, only: [:destroy_both]
+  before_action :set_journey, only: [:destroy]
 
 
   # GET /journeys/new
