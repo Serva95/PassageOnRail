@@ -33,17 +33,12 @@ class Journey < ApplicationRecord
 
 	# transaction che decrementa il numero di passeggeri e
 	# setta a false la stage rifiutata
+	#
+	# da spostare
 	def self.reject(n_passeggeri, stage)
 		self.transaction do
 			stage.route.decrement!(:n_passeggeri, n_passeggeri)
 			stage.update!(accepted: false)
-		end
-	end
-
-	def self.decrease_and_destroy(stage, n_passeggeri)
-		self.transaction do
-			stage.route.decrement!(:n_passeggeri, n_passeggeri)
-			stage.destroy!
 		end
 	end
 
@@ -87,39 +82,16 @@ class Journey < ApplicationRecord
 	# @param [Journey] journey
 	# @param [Route] route
 	#
-	# @author serva
-	#
-	# @note dato un oggetto journey e uno route da eliminare, controlla se ha uno o due stage,
-	# @note se ne ha uno elimina il journey e decrementa il numero di passeggeri nella route
-	# @note se ne ha due elimina il relativo stage e decrementa il numero di passeggeri nella route
-	def self.delete_passage_transaction(journey, route)
-		number_of_stages = Stage.where("journey_id = ?", journey.id).count("id")
-		if number_of_stages == 1
-			ActiveRecord::Base.transaction do
-				journey.destroy!
-				route.decrement!(:n_passeggeri, by = journey.n_prenotati)
-			end
-		elsif number_of_stages == 2
-			stage = Stage.where("journey_id = ? and route_id = ?", journey.id, route.id).first
-			ActiveRecord::Base.transaction do
-				stage.destroy!
-				route.decrement!(:n_passeggeri, by = journey.n_prenotati)
-			end
-		end
-	end
-
-	# @param [Journey] journey
-	# @param [Route] route_1
-	# @param [Route] route_2
-	#
 	# @author sara e serva
 	#
 	# data una multitratta, cancella l'intera journey (quindi entrambi gli stages)
-	def self.delete_both_passage(journey, route_1, route_2)
+
+	def self.delete_journey(journey, route)
 		ActiveRecord::Base.transaction do
+			route.each do |r|
+				r.decrement!(:n_passeggeri, by = journey.n_prenotati)
+			end
 			journey.destroy!
-			route_1.decrement!(:n_passeggeri, by = journey.n_prenotati)
-			route_2.decrement!(:n_passeggeri, by = journey.n_prenotati)
 		end
 	end
 

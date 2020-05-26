@@ -1,5 +1,5 @@
 class JourneysController < ApplicationController
-  before_action :set_journey, only: [:destroy, :destroy_both]
+  before_action :set_journey, only: [:destroy_both]
 
 
   # GET /journeys/new
@@ -120,11 +120,11 @@ class JourneysController < ApplicationController
   end
 
   # DELETE /journeys/1
-  def destroy
+  def destroy_temp
     route = Route.find(params[:r_id])
     is_deletable = Journey.journey_is_deletable(route)
     respond_to do |format|
-      if is_deletable && Journey.delete_passage_transaction(@journey, route)
+      if is_deletable && Stage.delete_stage(@journey, route)
         Notification.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
         format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione eliminata' }
         format.json { head :no_content }
@@ -137,16 +137,19 @@ class JourneysController < ApplicationController
 
   # DELETE /journeys/1
   # elimina entrambe gli stage
-  def destroy_both
-    route1 = Route.find(params[:r_1_id])
-    route2 = Route.find(params[:r_2_id])
+  def destroy
+    route = []
+    @journey.stages.sort_by { |x | x.route.data_ora_partenza  }.each do |stage|
+      route << stage.route
+    end
     notification = params[:notification]
     respond_to do |format|
-      if Journey.delete_both_passage(@journey, route1, route2)
-        Notification.create_notifications_td(route1.driver_id, current_user, route1, route1, "cancel")
-        Notification.create_notifications_td(route2.driver_id, current_user, route2, route2, "cancel")
+      if Journey.delete_journey(@journey, route)
+        route.each do |r|
+          Notification.create_notifications_td(r.driver_id, current_user, r, r, "cancel")
+        end
         if notification
-          format.html { redirect_to new_search_path(c_part: route1.citta_partenza, c_arr: route2.citta_arrivo, data_ora: route1.data_ora_partenza) }
+          format.html { redirect_to new_search_path(c_part: route.first.citta_partenza, c_arr: route.last.citta_arrivo, data_ora: route.first.data_ora_partenza) }
           format.json { head :no_content }
         else
           format.html { redirect_to user_bookings_path(current_user.id), notice: 'Entrambe i viaggi della multitratta sono stati eliminati' }

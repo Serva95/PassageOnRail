@@ -30,35 +30,40 @@ class StagesController < ApplicationController
 
   # DELETE /stages/1
   def destroy
-    @stage=Stage.find(params[:id])
-    route = @stage.route
-    n_passeggeri = @stage.journey.n_prenotati
+    route = Route.find(params[:r_id])
+    is_deletable = Journey.journey_is_deletable(route)
     journey = Journey.find(params[:j_id])
+    notification = params[:notification]
     respond_to do |format|
-      if Journey.decrease_and_destroy(@stage, n_passeggeri)
-         notifications = Notification.where(target: journey, second_target: route)
-         notifications.update_all(read_at: Time.zone.now)
-         Journey.create_notifications_td(journey, current_user, "cancel")
-         format.html { redirect_to new_search_path(c_part: params[:c_part],c_arr: params[:c_arr],data_ora: params[:data]), notice: 'Prenotazione eliminata' }
-         format.json { head :no_content }
+      if is_deletable && Stage.delete_stage(journey, route)
+        notifications = Notification.where(target: journey, second_target: route)
+        notifications.update_all(read_at: Time.zone.now)
+        Notification.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
+        #Journey.create_notifications_td(journey, current_user, "cancel")
+        if notification
+          format.html { redirect_to new_search_path(c_part: params[:c_part],c_arr: params[:c_arr],data_ora: params[:data]), notice: 'Prenotazione eliminata' }
+          format.json { head :no_content }
+        else
+          format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione eliminata' }
+        end
       else
-        format.html { redirect_to user_manage_booking(current_user,j_id: params[:j_id]), notice: 'Siamo spiacenti qualcosa è andato storto (incapace bastardo!)' }
+        format.html { redirect_to user_detail_booking_path(current_user,j_id: params[:j_id]), notice: 'Errore eliminazione, non puoi annullare un viaggio se mancano meno di 48 ore alla partenza' }
       end
     end
   end
 
   private
-    def set_stage
-      @stage = Stage.find(params[:id])
-    end
+  def set_stage
+    @stage = Stage.find(params[:id])
+  end
 
-    def get_driver_journey
-      @driver = Driver.find(current_user.driver_id)
-    end
+  def get_driver_journey
+    @driver = Driver.find(current_user.driver_id)
+  end
 
-    def stage_params
-      params.require(:stage).permit(:id, :route_id, :journey_id, :accepted, :pay_method_id)
-    end
+  def stage_params
+    params.require(:stage).permit(:id, :route_id, :journey_id, :accepted, :pay_method_id)
+  end
 
 
 end

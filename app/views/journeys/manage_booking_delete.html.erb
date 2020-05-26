@@ -9,9 +9,9 @@
   <div class="col-12 col-12-mobile">
     <%= link_to 'Completa viaggio esistente', new_search_path(c_part: @deleted_route.citta_partenza, c_arr: @deleted_route.citta_arrivo, data_ora: @deleted_route.data_ora_partenza),class: "button special" ,title: 'Completa il viaggio'%>
     <% if @first %>
-      <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @other_route.citta_partenza,c_arr: @deleted_route.citta_arrivo,data: @other_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
+      <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: @other_stage.journey_id, r_id: @other_route.id, c_part: @other_route.citta_partenza,c_arr: @deleted_route.citta_arrivo,data: @other_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
     <% else %>
-      <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: @other_stage.journey_id, id: @other_stage.id, c_part: @deleted_route.citta_partenza,c_arr: @other_route.citta_arrivo,data: @deleted_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
+      <%= link_to 'Cerca nuovo viaggio', stage_path(j_id: @other_stage.journey_id, r_id: @other_route.id, c_part: @deleted_route.citta_partenza,c_arr: @other_route.citta_arrivo,data: @deleted_route.data_ora_partenza),  method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione già accettata e cercare un nuovo viaggio?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
     <%end %>
   </div>
 

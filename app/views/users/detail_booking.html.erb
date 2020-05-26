@@ -9,19 +9,22 @@
   </div>
   <div class="col-12 col-12-mobilep">
     <br>
+    <% if notice %>
+      <h2 class="error"><%= notice %></h2>
+    <% end %>
   </div>
   <% @routes.each_with_index do | route , index | %>
     <div class="col-5 col-12-mobilep">
       <%= render 'detail_route', route: route, driver: @ute_drivers[index] %>
       <%if route.data_ora_partenza > DateTime.current%>
-        <%= link_to 'Annulla prenotazione', journey_path(id: params[:j_id], r_id: route.id), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Annulla prenotazione'%>
+        <%= link_to 'Annulla prenotazione', stage_path(j_id: params[:j_id], r_id: route.id), method: :delete, data: { confirm: 'Sicuro di voler annullare la prenotazione a questo viaggio?' }, class: "button special" ,title: 'Annulla prenotazione'%>
       <%end %>
     </div>
   <%end%>
   <% if @routes[1] != nil %>
     <div class="col-12 col-12-mobile"><br></div>
     <div class="col-12 col-12-mobile">
-      <%= link_to 'Annulla entrambe', destroy_both_journey_path(id: @journey.id, r_1_id: @routes[0].id, r_2_id: 1),method: :delete, data: { confirm: 'Sicuro di voler annullare entrambe le prenotazioni?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
+      <%= link_to 'Annulla tutte le prenotazioni', journey_path(id: @journey.id),method: :delete, data: { confirm: 'Sicuro di voler annullare entrambe le prenotazioni?' }, class: "button special" ,title: 'Cerca nuovo viaggio' %>
     </div>
   <%end %>
 <%else %>
