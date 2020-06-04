@@ -43,8 +43,8 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem "better_errors"
-gem "binding_of_caller" # opzionale
-gem "meta_request" # richiesta da RailsPanel
+  gem "binding_of_caller" # opzionale
+  gem "meta_request" # richiesta da RailsPanel
 end
 
 group :test do
