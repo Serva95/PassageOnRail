@@ -4,9 +4,6 @@ class JourneyTest < ActiveSupport::TestCase
   test "#find_requests(driver_id) should return a list of journeys" do
     d = drivers(:with_route)
     j = journeys(:four)
-    #r = routes(:bologna_milano_booked)
-    #s1 = stages(:bologna_milano)
-    #s2 = stages(:ferrara_bologna)
     assert_includes Journey.find_requests(d.id), j
   end
 
@@ -15,4 +12,12 @@ class JourneyTest < ActiveSupport::TestCase
     j = journeys(:five)
     assert_not_includes Journey.find_requests(d.id), j
   end
+
+  test "#find_requests(driver_id) should contain user's information" do
+    d = drivers(:with_route)
+    u = users(:four)
+    assert_equal Journey.find_requests(d.id).first.user, u
+  end
+
+
 end
