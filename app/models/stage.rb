@@ -30,4 +30,13 @@ class Stage < ApplicationRecord
     end
   end
 
+  # transaction che decrementa il numero di passeggeri e
+  # setta a false la stage rifiutata
+  def reject(n_passeggeri)
+    self.transaction do
+      self.route.decrement!(:n_passeggeri, n_passeggeri)
+      self.update!(accepted: false)
+    end
+  end
+
 end

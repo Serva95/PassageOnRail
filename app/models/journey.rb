@@ -31,17 +31,6 @@ class Journey < ApplicationRecord
 		end
 	end
 
-	# transaction che decrementa il numero di passeggeri e
-	# setta a false la stage rifiutata
-	#
-	# da spostare
-	def self.reject(n_passeggeri, stage)
-		self.transaction do
-			stage.route.decrement!(:n_passeggeri, n_passeggeri)
-			stage.update!(accepted: false)
-		end
-	end
-
 	# Cerca una precisa prenotazione
 	# ha fallito i test, in realtà include tutti gli stage
 	# proprio pre questo credo che non venga utilizzata da nessuna parte
@@ -70,6 +59,7 @@ class Journey < ApplicationRecord
 	# @note sempre se il guidatore ha modificato il viaggio entro 48 dalla partenza
 	# si potrebbe modificare e accorciare in un'unica riga di codice
 	def self.journey_is_deletable(route)
+		# route.data_ora_partenza - 2.day > DateTime.current || route.data_ora_partenza - 2.day < route.update_at
 		if route.data_ora_partenza - 2.day > DateTime.current
 			true
 		elsif route.data_ora_partenza - 2.day < route.updated_at

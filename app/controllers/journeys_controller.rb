@@ -80,7 +80,7 @@ class JourneysController < ApplicationController
       @stage = @route.stages.where(journey_id: params[:id]).first
       @journey =  Journey.find(params[:id])
 
-      if Journey.reject(@journey.n_prenotati, @stage)
+      if @stage.reject(@journey.n_prenotati)
         # crea la notifica una volta che la tratta è stata aggiornata correttamente
         Notification.create_notifications_th(@journey.user_id, current_user, @route, @route, "reject_trip")
         format.html { redirect_to root_path }
