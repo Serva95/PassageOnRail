@@ -8,9 +8,10 @@ class Stage < ApplicationRecord
   end
 
   # estrae il numero massimo di passeggeri che possono salire su un dato veicolo
-  scope :max_passengers, -> (vehicle_id)  do
-    select('posti').where('id = ?', vehicle_id).first.posti
-  end
+  # non so perche' e' qui
+  #scope :max_passengers, -> (vehicle_id)  do
+  #  select('posti').where('id = ?', vehicle_id).first.posti
+  #end
 
   # @param [Journey] journey
   # @param [Route] route
