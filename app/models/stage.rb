@@ -4,7 +4,7 @@ class Stage < ApplicationRecord
 
   # controlla se lo stage è già stato controllato (accettato o rifiutato) dal driver
   scope :already_checked, -> (route_id,journey_id) do
-    where("route_id = ? AND journey_id = ?",route_id,journey_id).first.accepted
+    where("route_id = ? AND journey_id = ?",route_id,journey_id).first
   end
 
   # estrae il numero massimo di passeggeri che possono salire su un dato veicolo

@@ -51,7 +51,7 @@ class JourneysController < ApplicationController
     render template: 'errors/deleted_route' if @route.deleted?
     @journey =  Journey.find(params[:id])
     @user = @journey.user
-    @checked = ! Stage.already_checked(@route.id,@journey.id).nil?
+    @checked = ! Stage.already_checked(@route.id,@journey.id).accepted.nil?
   end
 
   #PATCH /routes/1/journeys/1
