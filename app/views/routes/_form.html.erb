@@ -87,7 +87,7 @@
 
   <div class="col-4 col-12-mobilep">
     <%= form.label :vehicle_id %>
-    <%= form.collection_select(:vehicle_id, Vehicle.where(driver_id: @driver.id), :id, :targa) %>
+    <%= form.collection_select(:vehicle_id, @vehicles, :id, :targa) %>
   </div>
   <div class="col-6 col-12-mobilep">
     <label><br/></label>

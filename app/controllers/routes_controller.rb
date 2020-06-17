@@ -35,10 +35,12 @@ class RoutesController < ApplicationController
   # GET /drivers/1/routes/new
   def new
     @route = @driver.routes.build
+    @vehicles = Vehicle.where(driver_id: @driver.id)
   end
 
   # GET /drivers/1/routes/1/edit
   def edit
+    @vehicles = Vehicle.where(driver_id: @driver.id)
   end
 
   # POST /drivers/1/routes

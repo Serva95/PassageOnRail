@@ -1,102 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="modifiche al DB e ai models per la chat">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
     <list default="true" id="3d1cb8fe-3608-4a77-a142-d62e33d67677" name="Default Changelist" comment="finta pagina login e sistemati campi form">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/registrations/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/registrations/edit.html.erb" afterDir="false" />
->>>>>>> Stashed changes
+      <change beforePath="$PROJECT_DIR$/app/controllers/routes_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/routes_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/routes/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/routes/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/devise.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/development.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/development.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="ERB File" />
+      </list>
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-<<<<<<< Updated upstream
-        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
-=======
-        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
->>>>>>> Stashed changes
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-<<<<<<< Updated upstream
-        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
-=======
-        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
->>>>>>> Stashed changes
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-<<<<<<< Updated upstream
-        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
-=======
-        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
->>>>>>> Stashed changes
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-<<<<<<< Updated upstream
-        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
-=======
-        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
->>>>>>> Stashed changes
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-<<<<<<< Updated upstream
-        <item name="PostgreSQL - @localhost" type="feb32156:DbDataSourceImpl" />
-=======
-        <item name="PostgreSQL - passageonrails@localhost" type="feb32156:DbDataSourceImpl" />
->>>>>>> Stashed changes
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="passageonrails: database" type="162271b6:PgImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-    </expand>
-    <select />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="PassageOnRail" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -113,7 +55,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -122,16 +63,29 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/Set Language" value="SQLite" />
-    <property name="last_opened_file_path" value="E:/Download" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../You-PT" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sara\Documents\GitHub\PassageOnRail\test\fixtures" />
+      <recent name="C:\Users\Sara\Documents\GitHub\PassageOnRail\app\views\journeys" />
+      <recent name="C:\Users\Sara\Documents\GitHub\PassageOnRail\app\views\stages" />
+    </key>
   </component>
   <component name="RunManager" selected="Rails.Development: PassageOnRail">
     <configuration name="Development: PassageOnRail" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="PassageOnRail" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -151,7 +105,7 @@
       <module name="PassageOnRail" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -164,26 +118,6 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="production" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test" type="RailsRunConfigurationType" factoryName="Rails">
-      <module name="PassageOnRail" />
-      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="80" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="test" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
       <method v="2" />
     </configuration>
@@ -231,50 +165,9 @@
     <list>
       <item itemvalue="Rails.Development: PassageOnRail" />
       <item itemvalue="Rails.Production: PassageOnRail" />
-      <item itemvalue="Rails.Test" />
       <item itemvalue="Rake.spec: PassageOnRail" />
       <item itemvalue="Rake.test: PassageOnRail" />
     </list>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-<<<<<<< Updated upstream
-                <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@624d8376" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:PostgreSQL - @localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@3217b5fa" type="9fbbdea:ServiceModel$ServiceNode" />
-=======
-                <item name="root:PostgreSQL - passageonrails@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:PostgreSQL - passageonrails@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@46488b2d" type="9fbbdea:ServiceModel$ServiceNode" />
->>>>>>> Stashed changes
-              </path>
-            </expand>
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
@@ -298,62 +191,421 @@
       <workItem from="1584452985823" duration="84000" />
       <workItem from="1584453111464" duration="2070000" />
       <workItem from="1584458320668" duration="60000" />
-<<<<<<< Updated upstream
-      <workItem from="1584520750427" duration="26593000" />
-      <workItem from="1584606543889" duration="24641000" />
-      <workItem from="1584695700235" duration="7068000" />
-=======
       <workItem from="1584520750427" duration="26316000" />
-      <workItem from="1584700663850" duration="1924000" />
->>>>>>> Stashed changes
+      <workItem from="1584616281820" duration="7323000" />
+      <workItem from="1584647685987" duration="2400000" />
+      <workItem from="1584695284818" duration="11300000" />
+      <workItem from="1584795517018" duration="5352000" />
+      <workItem from="1584954868533" duration="11986000" />
+      <workItem from="1585064614900" duration="4001000" />
+      <workItem from="1585744937983" duration="841000" />
+      <workItem from="1585993223743" duration="6321000" />
+      <workItem from="1586078299238" duration="9533000" />
+      <workItem from="1586260193427" duration="158000" />
+      <workItem from="1586260654752" duration="4739000" />
+      <workItem from="1586437094307" duration="6834000" />
+      <workItem from="1586445382871" duration="2121000" />
+      <workItem from="1586509627248" duration="7537000" />
+      <workItem from="1586606367954" duration="5132000" />
+      <workItem from="1586781261661" duration="10130000" />
+      <workItem from="1586865613177" duration="8303000" />
+      <workItem from="1586939445662" duration="11350000" />
+      <workItem from="1587037388655" duration="4978000" />
+      <workItem from="1587115676607" duration="6892000" />
+      <workItem from="1587210669063" duration="9430000" />
+      <workItem from="1587370042647" duration="11037000" />
+      <workItem from="1587641982246" duration="1685000" />
+      <workItem from="1587733134744" duration="11985000" />
+      <workItem from="1587803895632" duration="503000" />
+      <workItem from="1587804439462" duration="10861000" />
+      <workItem from="1587976484681" duration="10908000" />
+      <workItem from="1588070973558" duration="99000" />
+      <workItem from="1588159403987" duration="5700000" />
+      <workItem from="1588248205153" duration="5622000" />
+      <workItem from="1588336940766" duration="5339000" />
+      <workItem from="1588427463866" duration="4176000" />
+      <workItem from="1588507000478" duration="5951000" />
+      <workItem from="1588517350021" duration="64000" />
+      <workItem from="1588679940796" duration="4694000" />
+      <workItem from="1588759597649" duration="10965000" />
+      <workItem from="1588857393141" duration="5061000" />
+      <workItem from="1589100909018" duration="759000" />
+      <workItem from="1589373668963" duration="1549000" />
+      <workItem from="1589384724957" duration="221000" />
+      <workItem from="1589620283758" duration="7826000" />
+      <workItem from="1589703116447" duration="5788000" />
+      <workItem from="1589789280237" duration="6621000" />
+      <workItem from="1589878687296" duration="16717000" />
+      <workItem from="1589960115979" duration="985000" />
+      <workItem from="1589964388928" duration="378000" />
+      <workItem from="1589988290864" duration="780000" />
+      <workItem from="1589994677383" duration="645000" />
+      <workItem from="1590072714315" duration="162000" />
+      <workItem from="1590072981748" duration="725000" />
+      <workItem from="1590077229688" duration="1135000" />
+      <workItem from="1590320952483" duration="9417000" />
+      <workItem from="1590338153471" duration="104000" />
+      <workItem from="1590407300749" duration="4833000" />
+      <workItem from="1590481677889" duration="7437000" />
+      <workItem from="1590587769237" duration="610000" />
+      <workItem from="1590749553305" duration="4193000" />
+      <workItem from="1591100482560" duration="4553000" />
+      <workItem from="1591175432268" duration="2655000" />
+      <workItem from="1591286868210" duration="2163000" />
+      <workItem from="1591628472352" duration="673000" />
+      <workItem from="1591707109012" duration="77000" />
+      <workItem from="1592250304120" duration="632000" />
+      <workItem from="1592401104996" duration="28000" />
+      <workItem from="1592406774012" duration="740000" />
     </task>
-    <task id="LOCAL-00001" summary="Log in FUNZIONA.">
-      <created>1584224138518</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+    <task id="LOCAL-00041" summary="update booking">
+      <created>1586445575578</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
       <option name="project" value="LOCAL" />
-      <updated>1584224138518</updated>
+      <updated>1586445575578</updated>
     </task>
-    <task id="LOCAL-00002" summary="pagina chat per autostoppista disponibile">
-      <created>1584356612423</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
+    <task id="LOCAL-00042" summary="hinoogiy">
+      <created>1586446806312</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
       <option name="project" value="LOCAL" />
-      <updated>1584356612423</updated>
+      <updated>1586446806312</updated>
     </task>
-    <task id="LOCAL-00003" summary="db + chats">
-      <created>1584538857858</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
+    <task id="LOCAL-00043" summary="fixed function in jounrey">
+      <created>1586513432987</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
       <option name="project" value="LOCAL" />
-      <updated>1584538857858</updated>
+      <updated>1586513432987</updated>
     </task>
-    <task id="LOCAL-00004" summary="vista chat terminata, update DB, risolto checkbox">
-      <created>1584565094392</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
+    <task id="LOCAL-00044" summary="update notifications model">
+      <created>1586524067020</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
       <option name="project" value="LOCAL" />
-      <updated>1584565094392</updated>
+      <updated>1586524067020</updated>
     </task>
-    <task id="LOCAL-00005" summary="modifiche al DB e ai models per la chat">
-      <created>1584616193550</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
+    <task id="LOCAL-00045" summary="notifications">
+      <created>1586610145893</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
       <option name="project" value="LOCAL" />
-      <updated>1584616193551</updated>
+      <updated>1586610145893</updated>
     </task>
-    <task id="LOCAL-00006" summary="cambio da sqlite a postgres">
-      <created>1584649826006</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
+    <task id="LOCAL-00046" summary="ordine link">
+      <created>1586613498970</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
       <option name="project" value="LOCAL" />
-      <updated>1584649826006</updated>
+      <updated>1586613498970</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00047" summary="add json">
+      <created>1586784649540</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1586784649540</updated>
+    </task>
+    <task id="LOCAL-00048" summary="update">
+      <created>1586785736728</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1586785736728</updated>
+    </task>
+    <task id="LOCAL-00049" summary="finta pagina login e sistemati campi form">
+      <created>1586787792048</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1586787792048</updated>
+    </task>
+    <task id="LOCAL-00050" summary="delete gem">
+      <created>1586790373034</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1586790373035</updated>
+    </task>
+    <task id="LOCAL-00051" summary="update">
+      <created>1586791671160</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1586791671160</updated>
+    </task>
+    <task id="LOCAL-00052" summary="car">
+      <created>1586792929194</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1586792929194</updated>
+    </task>
+    <task id="LOCAL-00053" summary="notifications">
+      <created>1586868018002</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1586868018003</updated>
+    </task>
+    <task id="LOCAL-00054" summary="notifications.js.coffee">
+      <created>1586943215417</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1586943215417</updated>
+    </task>
+    <task id="LOCAL-00055" summary="italiano">
+      <created>1586949433155</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1586949433155</updated>
+    </task>
+    <task id="LOCAL-00056" summary="prov no notifiche">
+      <created>1586951799169</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1586951799169</updated>
+    </task>
+    <task id="LOCAL-00057" summary="edit_journey">
+      <created>1587128806731</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1587128806734</updated>
+    </task>
+    <task id="LOCAL-00058" summary="altre notifiche">
+      <created>1587217594208</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1587217594209</updated>
+    </task>
+    <task id="LOCAL-00059" summary="sistemata html new search">
+      <created>1587219108602</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1587219108602</updated>
+    </task>
+    <task id="LOCAL-00060" summary="finta pagina login e sistemati campi form">
+      <created>1587372752882</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1587372752882</updated>
+    </task>
+    <task id="LOCAL-00061" summary="in new route il tempo di percorrenza è calcolato automaticamente">
+      <created>1587373659509</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1587373659509</updated>
+    </task>
+    <task id="LOCAL-00062" summary="notifiche su update tratta">
+      <created>1587389979968</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1587389979968</updated>
+    </task>
+    <task id="LOCAL-00063" summary="sistemata notifica in cancellazione tratta">
+      <created>1587392534553</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1587392534553</updated>
+    </task>
+    <task id="LOCAL-00064" summary="manage_bookins">
+      <created>1587746078746</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1587746078746</updated>
+    </task>
+    <task id="LOCAL-00065" summary="update pagina manage_booking">
+      <created>1587808506770</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1587808506770</updated>
+    </task>
+    <task id="LOCAL-00066" summary="se un driver non ha tratte, non mostra una tabella vuota ma un messaggio">
+      <created>1587809061631</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1587809061631</updated>
+    </task>
+    <task id="LOCAL-00067" summary="terminato manage_booking">
+      <created>1587818063764</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1587818063764</updated>
+    </task>
+    <task id="LOCAL-00068" summary="route validation">
+      <created>1587977613774</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1587977613774</updated>
+    </task>
+    <task id="LOCAL-00069" summary="vehicle validation">
+      <created>1587979243188</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1587979243188</updated>
+    </task>
+    <task id="LOCAL-00070" summary="controllo lato client date route">
+      <created>1587983894954</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1587983894954</updated>
+    </task>
+    <task id="LOCAL-00071" summary="fix">
+      <created>1587985358177</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1587985358177</updated>
+    </task>
+    <task id="LOCAL-00072" summary="controllo che la richiesta non sia già stata accettata senza le notifiche">
+      <created>1588168911726</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1588168911727</updated>
+    </task>
+    <task id="LOCAL-00073" summary="modifica della destroy della route -&gt; no destroy ma deleted a true">
+      <created>1588254411966</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1588254411967</updated>
+    </task>
+    <task id="LOCAL-00074" summary="add html per la redirezione delle varie notifiche">
+      <created>1588348168877</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1588348168878</updated>
+    </task>
+    <task id="LOCAL-00075" summary="sistemato reindirizzamento a pagina TEMPORANEA di manage booking">
+      <created>1588517099605</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1588517099605</updated>
+    </task>
+    <task id="LOCAL-00076" summary="creati manage_booking_delete.html.erb e manage_booking_update.html.erb, manca un pulsante nella seconda">
+      <created>1588769421342</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1588769421342</updated>
+    </task>
+    <task id="LOCAL-00077" summary="finiti manage_booking_update.html.erb">
+      <created>1588779190259</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1588779190259</updated>
+    </task>
+    <task id="LOCAL-00078" summary="aggiunti passeggeri nella visualizzazione della tratta del driver">
+      <created>1588862379149</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1588862379149</updated>
+    </task>
+    <task id="LOCAL-00079" summary="commentata funzione in journey.rb">
+      <created>1589374772610</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1589374772610</updated>
+    </task>
+    <task id="LOCAL-00080" summary="commentate funzioni in route.rb">
+      <created>1589374971600</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1589374971600</updated>
+    </task>
+    <task id="LOCAL-00081" summary="commentate funzioni in search.rb">
+      <created>1589375153916</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1589375153916</updated>
+    </task>
+    <task id="LOCAL-00082" summary="inizio sviluppo test (non provati)">
+      <created>1589625379581</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1589625379582</updated>
+    </task>
+    <task id="LOCAL-00083" summary="update test">
+      <created>1589704017293</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1589704017294</updated>
+    </task>
+    <task id="LOCAL-00084" summary="update fixture for stages.yml">
+      <created>1589704119991</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1589704119991</updated>
+    </task>
+    <task id="LOCAL-00085" summary="update fixture routes.yml">
+      <created>1589704249964</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1589704249965</updated>
+    </task>
+    <task id="LOCAL-00086" summary="update routes.yml">
+      <created>1589704289389</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1589704289389</updated>
+    </task>
+    <task id="LOCAL-00087" summary="terminata scrittura test (NON TESTATI)">
+      <created>1589708756916</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1589708756916</updated>
+    </task>
+    <task id="LOCAL-00088" summary="terminati test vehicle, chat e user">
+      <created>1589883182396</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1589883182396</updated>
+    </task>
+    <task id="LOCAL-00089" summary="terminati test search">
+      <created>1589889202736</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1589889202736</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -395,147 +647,105 @@
         </entry>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Log in FUNZIONA." />
-    <MESSAGE value="pagina chat per autostoppista disponibile" />
-    <MESSAGE value="db + chats" />
-    <MESSAGE value="vista chat terminata, update DB, risolto checkbox" />
-    <MESSAGE value="modifiche al DB e ai models per la chat" />
-    <MESSAGE value="cambio da sqlite a postgres" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambio da sqlite a postgres" />
+    <MESSAGE value="update pagina manage_booking" />
+    <MESSAGE value="se un driver non ha tratte, non mostra una tabella vuota ma un messaggio" />
+    <MESSAGE value="terminato manage_booking" />
+    <MESSAGE value="route validation" />
+    <MESSAGE value="vehicle validation" />
+    <MESSAGE value="controllo lato client date route" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="controllo che la richiesta non sia già stata accettata senza le notifiche" />
+    <MESSAGE value="modifica della destroy della route -&gt; no destroy ma deleted a true" />
+    <MESSAGE value="add html per la redirezione delle varie notifiche" />
+    <MESSAGE value="sistemato reindirizzamento a pagina TEMPORANEA di manage booking" />
+    <MESSAGE value="creati manage_booking_delete.html.erb e manage_booking_update.html.erb, manca un pulsante nella seconda" />
+    <MESSAGE value="finiti manage_booking_update.html.erb" />
+    <MESSAGE value="aggiunti passeggeri nella visualizzazione della tratta del driver" />
+    <MESSAGE value="commentata funzione in journey.rb" />
+    <MESSAGE value="commentate funzioni in route.rb" />
+    <MESSAGE value="commentate funzioni in search.rb" />
+    <MESSAGE value="inizio sviluppo test (non provati)" />
+    <MESSAGE value="update test" />
+    <MESSAGE value="update fixture for stages.yml" />
+    <MESSAGE value="update fixture routes.yml" />
+    <MESSAGE value="update routes.yml" />
+    <MESSAGE value="terminata scrittura test (NON TESTATI)" />
+    <MESSAGE value="terminati test vehicle, chat e user" />
+    <MESSAGE value="terminati test search" />
+    <option name="LAST_COMMIT_MESSAGE" value="terminati test search" />
   </component>
   <component name="WindowStateProjectService">
-<<<<<<< Updated upstream
-    <state x="309" y="25" width="1086" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584696352962">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1584273213047" />
-    <state x="309" y="25" width="1086" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1584696352962" />
-=======
-    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584702209195">
+    <state x="486" y="7" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589879595724">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1584702209195" />
+    <state x="486" y="7" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1589879595724" />
     <state x="309" y="25" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1584355402905" />
->>>>>>> Stashed changes
-    <state x="539" y="184" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584354741333">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="479" y="163" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589789970449">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="479" y="163" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1589789970449" />
     <state x="539" y="184" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1584354741333" />
-    <state x="500" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584697622387">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="476" y="0" key="CommitChangelistDialog2" timestamp="1589889200624">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="500" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584697622387" />
-    <state x="336" y="0" key="CommitChangelistDialog2" timestamp="1584703032550">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="476" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589889200624" />
+    <state x="336" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584538856661" />
+    <state x="92" y="92" width="1182" height="407" key="DiffContextDialog" timestamp="1589889180810">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="299" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1584224136412" />
-<<<<<<< Updated upstream
-    <state x="336" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584703032550" />
-    <state x="209" y="173" key="FileChooserDialogImpl" timestamp="1584631275552">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="92" y="92" width="1182" height="407" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1589889180810" />
+    <state x="186" y="153" key="FileChooserDialogImpl" timestamp="1590338251942">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="186" y="153" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584273209703" />
-    <state x="209" y="173" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584631275552" />
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1584702548350">
+    <state x="186" y="153" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1590338251942" />
+    <state width="1024" height="211" key="GridCell.Tab.0.bottom" timestamp="1584553595243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="661" height="238" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
-    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1584702548349">
+    <state width="1024" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
+    <state width="1024" height="211" key="GridCell.Tab.0.center" timestamp="1584553595243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="661" height="238" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
-    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584702548349" />
-    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1584702548349">
+    <state width="1024" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
+    <state width="1024" height="211" key="GridCell.Tab.0.left" timestamp="1584553595243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="661" height="238" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584273992526" />
-    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584702548349" />
-    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1584702548350">
+    <state width="1024" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
+    <state width="1024" height="211" key="GridCell.Tab.0.right" timestamp="1584553595243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="661" height="238" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
-    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
-    <state width="1493" height="211" key="GridCell.Tab.1.bottom" timestamp="1584702548350">
+    <state width="1024" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom" timestamp="1584547466411">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="661" height="238" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
-    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
-    <state width="1493" height="211" key="GridCell.Tab.1.center" timestamp="1584702548350">
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
+    <state width="1493" height="211" key="GridCell.Tab.1.center" timestamp="1584547466411">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="661" height="238" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
-    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
-    <state width="1493" height="211" key="GridCell.Tab.1.left" timestamp="1584702548350">
+    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
+    <state width="1493" height="211" key="GridCell.Tab.1.left" timestamp="1584547466411">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="661" height="238" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
-    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
-    <state width="1493" height="211" key="GridCell.Tab.1.right" timestamp="1584702548350">
+    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
+    <state width="1493" height="211" key="GridCell.Tab.1.right" timestamp="1584547466411">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="661" height="238" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1584273992527" />
-    <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584702548350" />
-=======
-    <state x="336" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1584538856661" />
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1584702635372">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1584702635372" />
-    <state x="186" y="153" key="FileChooserDialogImpl" timestamp="1584273209703">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="186" y="153" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584273209703" />
-    <state width="1323" height="382" key="GridCell.Tab.0.bottom" timestamp="1584702623323">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="382" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
-    <state width="1024" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
-    <state width="1323" height="382" key="GridCell.Tab.0.center" timestamp="1584702623323">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="382" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
-    <state width="1024" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
-    <state width="1323" height="382" key="GridCell.Tab.0.left" timestamp="1584702623323">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="382" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
-    <state width="1024" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
-    <state width="1323" height="382" key="GridCell.Tab.0.right" timestamp="1584702623323">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="382" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
-    <state width="1024" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584553595243" />
-    <state width="1323" height="382" key="GridCell.Tab.1.bottom" timestamp="1584702623323">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="382" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
-    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
-    <state width="1323" height="382" key="GridCell.Tab.1.center" timestamp="1584702623323">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="382" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
-    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
-    <state width="1323" height="382" key="GridCell.Tab.1.left" timestamp="1584702623323">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="382" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
-    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
-    <state width="1323" height="382" key="GridCell.Tab.1.right" timestamp="1584702623323">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="382" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1584702623323" />
     <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584547466411" />
->>>>>>> Stashed changes
     <state width="1323" height="211" key="GridCell.Tab.2.bottom" timestamp="1584273510715">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -552,63 +762,51 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="211" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1584273510714" />
-<<<<<<< Updated upstream
-    <state width="200" height="457" key="HiddenNamespacesPopup" timestamp="1584696364336">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="200" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1584696364336" />
-=======
-    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1584702420338">
+    <state x="23" y="58" width="1339" height="618" key="MergeDialog" timestamp="1589988334478">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1584702420338" />
->>>>>>> Stashed changes
-    <state x="483" y="129" key="MultipleFileMergeDialog" timestamp="1584538404218">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="23" y="58" width="1339" height="618" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1589988334478" />
+    <state x="430" y="114" key="MultipleFileMergeDialog" timestamp="1587217753925">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="430" y="114" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1587217753925" />
     <state x="483" y="129" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1584538404218" />
-    <state x="560" y="124" key="RollbackChangesDialog" timestamp="1584701153811">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="248" y="13" key="SettingsEditor" timestamp="1587804421398">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="560" y="124" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1584701153811" />
-    <state x="279" y="56" key="SettingsEditor" timestamp="1584524019798">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
+    <state x="248" y="13" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587804421398" />
     <state x="279" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584524019798" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1584649828357">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1589889205132">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1584224170276" />
-<<<<<<< Updated upstream
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584649828357" />
-    <state x="553" y="318" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584701161545">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1584273973218" />
-    <state x="553" y="318" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1584701161545" />
-=======
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589889205132" />
     <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584538860178" />
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584703310933">
+    <state x="263" y="19" key="com.intellij.database.dbimport.ImportDialog" timestamp="1589886790422">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1584703310933" />
+    <state x="263" y="19" key="com.intellij.database.dbimport.ImportDialog/0.0.1366.728@0.0.1366.728" timestamp="1589886790422" />
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592406776931">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1592406776931" />
     <state x="553" y="318" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1584538387299" />
->>>>>>> Stashed changes
-    <state x="379" y="96" width="607" height="536" key="find.popup" timestamp="1584225021603">
+    <state x="278" y="0" width="607" height="728" key="find.popup" timestamp="1590760409406">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="96" width="607" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1584225021603" />
+    <state x="278" y="0" width="607" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1590760409406" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1586943190642">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1586943190642" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1587804067016">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1587804067016" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/progetto@Development__progetto.rcov" NAME="Development: progetto Coverage Results" MODIFIED="1583243839704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="progetto" />
-<<<<<<< Updated upstream
-    <SUITE FILE_PATH="coverage/PassageOnRail@Production__PassageOnRail.rcov" NAME="Production: PassageOnRail Coverage Results" MODIFIED="1584636817033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
-    <SUITE FILE_PATH="coverage/PassageOnRail@Test.rcov" NAME="Test Coverage Results" MODIFIED="1584635732501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
-    <SUITE FILE_PATH="coverage/PassageOnRail@Development__PassageOnRail.rcov" NAME="Development: PassageOnRail Coverage Results" MODIFIED="1584702548337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
-=======
-    <SUITE FILE_PATH="coverage/PassageOnRail@Development__PassageOnRail.rcov" NAME="Development: PassageOnRail Coverage Results" MODIFIED="1584702430545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
     <SUITE FILE_PATH="coverage/PassageOnRail@Production__progetto.rcov" NAME="Production: progetto Coverage Results" MODIFIED="1584347594227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="passageonrail" />
->>>>>>> Stashed changes
     <SUITE FILE_PATH="coverage/PassageOnRail@Development__progetto.rcov" NAME="Development: progetto Coverage Results" MODIFIED="1584347875944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="passageonrail" />
+    <SUITE FILE_PATH="coverage/PassageOnRail@Development__PassageOnRail.rcov" NAME="Development: PassageOnRail Coverage Results" MODIFIED="1584538534675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PassageOnRail" />
+    <SUITE FILE_PATH="coverage/progetto@Development__progetto.rcov" NAME="Development: progetto Coverage Results" MODIFIED="1583243839704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="progetto" />
   </component>
 </project>

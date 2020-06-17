@@ -40,4 +40,6 @@ yarn-debug.log*
 
 .idea/workspace.xml
 
+test/test_helper.rb
+
 /test/test_helper.rb
