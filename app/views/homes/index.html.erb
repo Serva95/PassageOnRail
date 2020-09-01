@@ -8,7 +8,8 @@
   <section class="box special">
     <span class="image featured"><%= image_tag 'images/home1.2.jpg'%></span>
     <h3>Cerchi un viaggio?</h3>
-    <p>Sta a casa che c'è il coronavirus, imbecille</p>
+    <p>Tanti nuovi viaggi ogni giorno. <br> Trova il pi&ugrave; adatto a te!</p>
+    <br>
     <ul class="actions special">
       <li><div class="button alt"><%= link_to ' Cerca! ', new_search_path %></div></li>
     </ul>
@@ -21,6 +22,7 @@
         <span class="image featured"><%= image_tag 'images/home2.0.jpg' %></span>
         <h3>Hai un nuovo viaggio?</h3>
         <p>Aggiungi una nuova tratta!</p>
+        <br>
         <div class="button alt"><%= link_to 'Aggiungi!', new_driver_route_path(current_user.driver_id)%></div>
       </section>
     <%else %>
@@ -28,6 +30,7 @@
         <span class="image featured"><%= image_tag 'images/home2.jpg' %></span>
         <h3>Hai posti liberi in auto?</h3>
         <p>Condividi il viaggio e dimezza le spese!</p>
+        <br>
         <div class="button alt"><%= link_to 'Diventa Driver!', new_driver_path%></div>
       </section>
     <%end %>
