@@ -102,3 +102,16 @@ delete_driver:
   driver_id: 100
   deleted: false
 
+sign_up_flow:
+  id: 7
+  email: alice@test.it
+  username: test
+  encrypted_password: pwdtest
+  nome: nome
+  cognome: cognome
+  data_di_nascita: 1996-08-21
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
+  driver_id: nil
+  deleted: false
+
