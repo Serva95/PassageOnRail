@@ -12,12 +12,12 @@ describe "Registration flow", :integration do
 
     post "/users/",
          params: {user: {email: "email@test.it", password: "pwdtest", password_confirmaton: "pwdtest", username: "test",
-                         nome: "nome", cognome: "cognome", data_di_nascita: "1996-08-21" }}
+                         nome: "nome", cognome: "cognome", data_di_nascita: "1996-08-21",  }}
     assert_response :redirect
     follow_redirect!
-    assert_response :success
-    # verifico che mi chieda di confermare la mail e che di conseguenza la registrazione si avvenuta
-    assert_select "div", "Devi confermare il tuo indirizzo email per continuare."
+    assert_equal 302, status
+    follow_redirect!
+    assert_equal "/users/sign_in", path
 
     # utilizzo user sign_up_flow per verificare il resto del flusso
     # user = users(:sign_up_flow)
