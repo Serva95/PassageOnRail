@@ -23,8 +23,6 @@ accepted_nil_one:
   route_id: 1
   journey_id: 4
 
-
-
 accepted_nil_two:
   id: 5
   route_id: 2
@@ -35,11 +33,16 @@ verona_milano_nil:
   route_id: 12
   journey_id: 5
 
-
 milano_venezia_nil:
   id: 7
   route_id: 13
   journey_id: 5
+  accepted: true
+
+milano_venezia_lorenzo:
+  id: 8
+  route_id: 13
+  journey_id: 6
   accepted: true
 
 
