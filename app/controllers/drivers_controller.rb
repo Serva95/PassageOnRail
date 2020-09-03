@@ -16,7 +16,7 @@ class DriversController < ApplicationController
     @driver = Driver.new
     respond_to do |format|
       if @driver.save
-        current_user.update_attributes(driver_id: @driver.id)
+        current_user.update(driver_id: @driver.id)
         format.html { redirect_to new_driver_vehicle_path(current_user.driver_id) , notice: 'Driver was successfully created.' }
         format.json { render :confirm_destroy, status: :created, location: @driver }
       else
