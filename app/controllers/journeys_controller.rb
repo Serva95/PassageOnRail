@@ -55,21 +55,33 @@ class JourneysController < ApplicationController
   end
 
   #PATCH /routes/1/journeys/1
-  def update_accept
+  def update
     respond_to do |format|
 
       @route = Route.find(params[:route_id])
       @stage = @route.stages.where(journey_id: params[:id]).first
       @journey =  Journey.find(params[:id])
 
-      if @stage.update(accepted: true)
-        # crea la notifica una volta che la tratta è stata aggiornata correttamente
-        Notification.create_notifications_th(@journey.user_id, current_user, @route, @route, "accept_trip")
-        format.html { redirect_to root_path }
-        format.json { render :show, status: :ok, location: @journey }
+      if true?(params[:accept])
+	if @stage.update(accepted: true)
+          # crea la notifica una volta che la tratta è stata aggiornata correttamente
+          Notification.create_notifications_th(@journey.user_id, current_user, @route, @route, "accept_trip")
+          format.html { redirect_to root_path }
+          format.json { render :show, status: :ok, location: @journey }
+        else
+          format.html { render :edit }
+          format.json { render json: @journey.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @journey.errors, status: :unprocessable_entity }
+	if @stage.reject(@journey.n_prenotati)
+          # crea la notifica una volta che la tratta è stata aggiornata correttamente
+          Notification.create_notifications_th(@journey.user_id, current_user, @route, @route, "reject_trip")
+          format.html { redirect_to root_path }
+          format.json { render :show, status: :ok, location: @journey }
+        else
+          format.html { render :edit }
+          format.json { render json: @journey.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

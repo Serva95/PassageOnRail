@@ -43,3 +43,9 @@ yarn-debug.log*
 test/test_helper.rb
 
 /test/test_helper.rb
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

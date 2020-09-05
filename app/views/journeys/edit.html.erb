@@ -74,8 +74,8 @@
 <div class="row gtr-uniform">
   <div class="col-12 col-12-mobile">
 
-    <%= link_to 'Accetta', update_accept_route_journey_path(@route, @journey), method: :patch, class: "button", title: 'Accetta' %>
-    <%= link_to 'Rifiuta', update_reject_route_journey_path(@route, @journey), method: :patch, class: "button", title: 'Rifiuta'%>
+  <%= link_to 'Accetta', route_journey_path(@route, @journey, :accept => "true" ), method: :patch, class: "button", title: 'Accetta' %>
+  <%= link_to 'Rifiuta', route_journey_path(@route, @journey, :accept => "false"), method: :patch, class: "button", title: 'Rifiuta'%>
 
   </div>
 </div>

@@ -29,11 +29,11 @@ Rails.application.routes.draw do
   resources :searches
   resources :routes, only: [] do
     get 'detail', action: 'detail', on: :collection
-    resources :journeys, only: [:edit] do
-      patch 'update_accept', action: 'update_accept', on: :member
-      put 'update_accept', action: 'update_accept', on: :member
-      patch 'update_reject', action: 'update_reject', on: :member
-      put 'update_reject', action: 'update_reject', on: :member
+    resources :journeys, only: [:edit, :update] do
+      #patch 'update_accept', action: 'update_accept', on: :member
+      #put 'update_accept', action: 'update_accept', on: :member
+      #patch 'update_reject', action: 'update_reject', on: :member
+      #put 'update_reject', action: 'update_reject', on: :member
     end
   end
 
