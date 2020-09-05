@@ -5,8 +5,8 @@ one:
   email: MyStringOne
   username: MyString
   encrypted_password: MyString
-  nome: MyString
-  cognome: MyString
+  nome: Nome
+  cognome: Cognome
   data_di_nascita: 2020-02-14
   cellulare: MyString
   indirizzo: MyText
@@ -82,7 +82,7 @@ named:
   hitch_hiker_rating: 5
   confirmed_at: 2020-02-14 16:23:52
   confirmation_sent_at: 2020-02-14 16:23:53
-  driver_id: 4
+  driver_id: 5
   deleted: false
 
 delete_driver:
@@ -110,6 +110,19 @@ sign_up_flow:
   nome: nome
   cognome: cognome
   data_di_nascita: 1996-08-21
+  confirmed_at: 2020-02-14 16:23:52
+  confirmation_sent_at: 2020-02-14 16:23:53
+  driver_id: nil
+  deleted: false
+
+with_real_password:
+  id: 8
+  email: lorenzo@test.it
+  username: test
+  encrypted_password: $2a$11$SkPHnhBUBDG2UZwkjWs5CeHdGkgoelhiAwkcnygJ2RJ3QXcbyQ6H2
+  nome: lorenzo
+  cognome: servadei
+  data_di_nascita: 1995-08-06
   confirmed_at: 2020-02-14 16:23:52
   confirmation_sent_at: 2020-02-14 16:23:53
   driver_id: nil
