@@ -1,41 +1,83 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <title>Passage on Rails</title>
-</head>
-<body>
 <div class="col-6 col-12-narrower">
   <section class="box special">
     <span class="image featured"><%= image_tag 'images/home1.2.jpg'%></span>
     <h3>Cerchi un viaggio?</h3>
     <p>Tanti nuovi viaggi ogni giorno. <br> Trova il pi&ugrave; adatto a te!</p>
     <br>
-    <ul class="actions special">
-      <li><div class="button alt"><%= link_to ' Cerca! ', new_search_path %></div></li>
-    </ul>
+    <% if user_signed_in? %>
+      <ul class="actions special">
+        <li><div class="button alt"><%= link_to ' Cerca! ', new_search_path %></div></li>
+      </ul>
+    <%end %>
   </section>
 </div>
 <div class="col-6 col-12-narrower">
-  <% if user_signed_in? %>
-    <%if current_user.driver_id?%>
-      <section class="box special">
+  <section class="box special">
+    <% if user_signed_in? %>
+      <%if current_user.driver_id?%>
         <span class="image featured"><%= image_tag 'images/home2.0.jpg' %></span>
         <h3>Hai un nuovo viaggio?</h3>
         <p>Aggiungi una nuova tratta!</p>
         <br>
         <div class="button alt"><%= link_to 'Aggiungi!', new_driver_route_path(current_user.driver_id)%></div>
-      </section>
-    <%else %>
-      <section class="box special">
+      <%else %>
         <span class="image featured"><%= image_tag 'images/home2.jpg' %></span>
         <h3>Hai posti liberi in auto?</h3>
         <p>Condividi il viaggio e dimezza le spese!</p>
         <br>
         <div class="button alt"><%= link_to 'Diventa Driver!', new_driver_path%></div>
-      </section>
+      <%end %>
+    <%else %>
+      <span class="image featured"><%= image_tag 'images/home2.jpg' %></span>
+      <h3>Vuoi condividere un viaggio o hai posti liberi in auto?</h3>
+      <p>Condividi anche le spese. Il tuo prossimo viaggio sar&agrave; il pi&ugrave; conveniente di sempre.</p>
     <%end %>
-  <%end %>
-
+  </section>
 </div>
-</body>
-</html>
+<div class="col-12 col-12-narrower">
+  <section class="box special" style="background-color: rgb(93, 209, 103)">
+    <h3 class="align-left"><b style="font-size: 1.5em" class="white-txt">Dove vuoi andare?</b></h3>
+    <br>
+    <div class="row">
+      <div class="col-4 col-12-mobile">
+        <%= link_to 'Roma-Milano 25€', main_app.new_user_session_url, {class: 'button alt', style:"background-color: white"}%>
+        <br><br>
+      </div>
+      <div class="col-4 col-12-mobile">
+        <%= link_to 'Gwnova-Milano 7€', main_app.new_user_session_url, {class: 'button alt', style:"background-color: white"}%>
+        <br><br>
+      </div>
+      <div class="col-4 col-12-mobile">
+        <%= link_to 'Torino-Bologna 15€', main_app.new_user_session_url, {class: 'button alt', style:"background-color: white"}%>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="col-12 col-12-mobile">
+  <h3><b>Parti da dove vuoi. Arrivi ovunque. Letteralmente.</b></h3>
+</div>
+<br>
+<div class="col-4 col-12-mobile">
+  <section class="box special black-bg">
+    <h2 class="white-txt">Rapido</h2>
+    <p class="white-txt">Con milioni di viaggi disponibili, è facile trovare persone vicino a te che viaggiano nella tua stessa direzione.</p>
+  </section>
+</div>
+<div class="col-4 col-12-mobile">
+  <section class="box special black-bg">
+    <h2 class="white-txt">Semplice</h2>
+    <p class="white-txt">Inserisci un indirizzo specifico per trovare il passaggio perfetto. Scegli con chi viaggiare. E prenota!</p>
+  </section>
+</div>
+<div class="col-4 col-12-mobile">
+  <section class="box special black-bg">
+    <h2 class="white-txt">Diretto</h2>
+    <p class="white-txt" style="line-height: 2.75em;">Arriva direttamente a destinazione, senza stress. Senza code. Senza attese.</p>
+  </section>
+</div>
+<br>
+<div class="col-12 col-12-mobile">
+  <section class="box special">
+    <h4>Registrati o effettua il login per poter utilizzare appieno le funzionali&agrave; dell'applicazione.</h4>
+  </section>
+</div>
