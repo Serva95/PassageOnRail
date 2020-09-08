@@ -28,3 +28,8 @@ six:
   id: 6
   n_prenotati: 1
   user_id: 8
+
+seven:
+  id: 7
+  n_prenotati: 1
+  user_id: 8

@@ -1,7 +1,7 @@
 require 'test_helper'
 
-describe "Chat creation flow", :integration do
-  test "chat_creation_flow" do
+describe "Review creation flow", :integration do
+  test "review_creation_flow" do
     get "/"
     assert_equal 200, status
     assert_equal "/", path
@@ -20,14 +20,23 @@ describe "Chat creation flow", :integration do
     get "/users/8/bookings"
     assert_equal 200, status
 
-    get "/users/8/bookings/detail?j_id=6"
+    get "/users/8/bookings/detail?j_id=7"
     assert_equal 200, status
 
-    post "/chats",
-         params: {chat: {user_2_id: "1"}}
+    get "/users/1"
+    assert_equal 200, status
+
+    get "/reviews?user_id=1"
+    assert_equal 200, status
+
+    get "/reviews/new?user_id=1"
+    assert_equal 200, status
+
+    post "/reviews",
+         params: {review: {data: Date.today, vote: "5", commento: "Guida bene", user_id: "1"}}
     assert_response :redirect
     follow_redirect!
     assert_equal 200, status
-    assert_select "h3", "Chat con Nome Cognome"
+    assert_select "h2", "Recensioni guidatore"
   end
 end

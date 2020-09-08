@@ -3979,3 +3979,17 @@ input[type="button"].special:active,
 				padding: 2.5em 1em 3em 1em;
 			}
 	}
+
+/*black and white background*/
+.black-bg{
+    background-color: #2b2b2b;
+}
+.white-bg{
+    background-color: white;
+}
+/*end*/
+/*white text*/
+.white-txt{
+    color: white;
+}
+/*end*/

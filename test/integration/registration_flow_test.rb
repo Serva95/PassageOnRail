@@ -3,8 +3,11 @@ require 'test_helper'
 describe "Registration flow", :integration do
   test "sign_up" do
     get "/"
-    assert_response :redirect
-    follow_redirect!
+    assert_equal 200, status
+    assert_equal "/", path
+    assert_select "h3", "Cerchi un viaggio?"
+    get "/users/sign_in"
+    assert_equal 200, status
     assert_select "h2", "Log in"
 
     get "/users/sign_up"
@@ -17,9 +20,8 @@ describe "Registration flow", :integration do
     assert_emails 1
     assert_response :redirect
     follow_redirect!
-    assert_equal 302, status
-    follow_redirect!
-    assert_equal "/users/sign_in", path
+    assert_equal 200, status
+    assert_equal "/", path
   end
 
   # La conferma dell'email è una funzionalità implementata da devise e quindi già testata

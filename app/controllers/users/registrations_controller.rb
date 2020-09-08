@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.avatar = params[:avatar]
-    resource.save!
+    resource.save
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
@@ -61,7 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nome, :cognome, :username, :data_di_nascita, :cellulare,
-                                                       :indirizzo, :avatar])
+                                                       :indirizzo, :avatar, :deleted])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
