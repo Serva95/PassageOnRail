@@ -45,4 +45,10 @@ milano_venezia_lorenzo:
   journey_id: 6
   accepted: true
 
+tratta_passata_lorenzo:
+  id: 9
+  route_id: 14
+  journey_id: 7
+  accepted: true
+
 

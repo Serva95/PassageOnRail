@@ -134,3 +134,17 @@ milano_venezia:
   n_passeggeri: 1
   contanti: true
   deleted: false
+
+milano_parma:
+  id: 14
+  citta_partenza: Milano
+  luogo_ritrovo: piazza
+  data_ora_partenza: 2020-02-14 16:23:52
+  citta_arrivo: Parma
+  data_ora_arrivo: 2020-02-14 17:23:52
+  costo: 1.5
+  driver_id: 1
+  vehicle_id: 2
+  n_passeggeri: 1
+  contanti: true
+  deleted: false
