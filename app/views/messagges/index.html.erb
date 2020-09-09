@@ -29,13 +29,9 @@
         <div class="col-6 col-7-mobilep">
           <div class="message-content">
             <div class="align-right">
-              <p>
-                <%= messagge.testo %>
-              </p>
+              <b><p class="align-left white-txt"><%= messagge.testo %></p></b>
               <div>
-                <p>
-                  <%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %>
-                </p>
+                <p><%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %></p>
               </div>
             </div>
           </div>
@@ -43,13 +39,9 @@
       <%else %>
         <div class="col-6 col-7-mobilep">
           <div class="message-content">
-            <p>
-              <%=@chatter[0]+': '+messagge.testo %>
-            </p>
+            <b><p class="white-txt"><%=@chatter[0]+': '+messagge.testo %></p></b>
             <div class="align-right">
-              <small>
-                <%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %>
-              </small>
+              <small><%= messagge.data_ora.strftime("%d-%m-%Y %H:%M:%S") %></small>
             </div>
           </div>
         </div>

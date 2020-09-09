@@ -39,17 +39,31 @@
     <h3 class="align-left"><b style="font-size: 1.5em" class="white-txt">Dove vuoi andare?</b></h3>
     <br>
     <div class="row">
-      <div class="col-4 col-12-mobile">
-        <%= link_to 'Roma-Milano 25€', main_app.new_user_session_url, {class: 'button alt', style:"background-color: white"}%>
-        <br><br>
-      </div>
-      <div class="col-4 col-12-mobile">
-        <%= link_to 'Genova-Milano 7€', main_app.new_user_session_url, {class: 'button alt', style:"background-color: white"}%>
-        <br><br>
-      </div>
-      <div class="col-4 col-12-mobile">
-        <%= link_to 'Torino-Bologna 15€', main_app.new_user_session_url, {class: 'button alt', style:"background-color: white"}%>
-      </div>
+      <% if user_signed_in? %>
+        <div class="col-4 col-12-mobile">
+          <%= link_to "Roma-Milano 25€", new_search_path(c_part: "Roma", c_arr: "Milano", data_ora: (Date.today + 1).strftime("%m/%d/%Y")), {class: 'button alt', style:"background-color: white"}%>
+          <br><br>
+        </div>
+        <div class="col-4 col-12-mobile">
+          <%= link_to 'Genova-Milano 7€', new_search_path(c_part: "Genova", c_arr: "Milano", data_ora: (Date.today + 1).strftime("%m/%d/%Y")), {class: 'button alt', style:"background-color: white"}%>
+          <br><br>
+        </div>
+        <div class="col-4 col-12-mobile">
+          <%= link_to 'Torino-Bologna 15€', new_search_path(c_part: "Torino", c_arr: "Bologna", data_ora: (Date.today + 1).strftime("%m/%d/%Y")), {class: 'button alt', style:"background-color: white"}%>
+        </div>
+      <%else %>
+        <div class="col-4 col-12-mobile">
+          <%= link_to 'Roma-Milano 25€', main_app.new_user_session_url, {class: 'button alt', style:"background-color: white"}%>
+          <br><br>
+        </div>
+        <div class="col-4 col-12-mobile">
+          <%= link_to 'Genova-Milano 7€', main_app.new_user_session_url, {class: 'button alt', style:"background-color: white"}%>
+          <br><br>
+        </div>
+        <div class="col-4 col-12-mobile">
+          <%= link_to 'Torino-Bologna 15€', main_app.new_user_session_url, {class: 'button alt', style:"background-color: white"}%>
+        </div>
+      <%end %>
     </div>
   </section>
 </div>
@@ -76,8 +90,10 @@
   </section>
 </div>
 <br>
-<div class="col-12 col-12-mobile">
-  <section class="box special">
-    <h4>Registrati o effettua il login per poter utilizzare appieno le funzionali&agrave; dell'applicazione.</h4>
-  </section>
-</div>
+<% unless user_signed_in? %>
+  <div class="col-12 col-12-mobile">
+    <section class="box special">
+      <h4>Registrati o effettua il login per poter utilizzare appieno le funzionali&agrave; dell'applicazione.</h4>
+    </section>
+  </div>
+<% end %>
