@@ -148,3 +148,17 @@ milano_parma:
   n_passeggeri: 1
   contanti: true
   deleted: false
+
+da_prenotare:
+  id: 15
+  citta_partenza: Ferrara
+  luogo_ritrovo: piazza
+  data_ora_partenza: 2021-02-14 16:23:52
+  citta_arrivo: Bologna
+  data_ora_arrivo: 2021-02-14 17:23:52
+  costo: 1.5
+  driver_id: 1
+  vehicle_id: 2
+  n_passeggeri: 1
+  contanti: true
+  deleted: false
