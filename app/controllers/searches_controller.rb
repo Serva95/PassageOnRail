@@ -10,7 +10,6 @@ class SearchesController < ApplicationController
 
   def create
     @search = Search.new(search_params)
-    byebug
     if !params[:data].nil? && !params[:ora].nil?
       @search.data_ora = params[:data] + " " + params[:ora]
     elsif !params[:data].nil? && params[:ora].nil?
