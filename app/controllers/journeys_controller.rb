@@ -7,6 +7,7 @@ class JourneysController < ApplicationController
     @routes = Route.find(params[:ids])
     @seats = []
     @journey = Journey.new
+	byebug
 
     # vengono cercati i posti disponibili per le route selezionate
     # e vengono creati gli stage
@@ -25,6 +26,7 @@ class JourneysController < ApplicationController
     # creo un oggetto journey che contiene anche gli stages associati
     @journey = Journey.new(journey_params)
     respond_to do |format|
+	byebug
       if @journey.booking
         # la prenotazione ha avuto successo, crea le notifiche
         @journey.stages.each do |stage|

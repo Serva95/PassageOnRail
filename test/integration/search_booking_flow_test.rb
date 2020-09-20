@@ -23,11 +23,25 @@ describe "Search booking flow", :integration do
     assert_equal 200, status
 
     post "/searches",
-      params: {search: {c_partenza: "ferrara", c_arrivo: "bologna"}}
+      params: {search: {c_partenza: "Ferrara", c_arrivo: "Bologna"}}
     assert_response :redirect
     follow_redirect!
     assert_equal 200, status
     assert_select "th", "Città di partenza"
+
+    get "/routes/detail?ids%5B%5D=15"
+    assert_equal 200, status
+    assert_select "strong", "Dettagli percorso"
+
+    get "/journeys/new?ids%5B%5D=15"
+    assert_equal 200, status
+    assert_select "strong", "Prenota il viaggio"
+
+    post "/journeys",
+      params: {journey: {user_id: 8, n_prenotati: 1, stages_attributes: {"0": {route_id: 15}}}}
+    assert_response :redirect
+    follow_redirect!
+    assert_equal 200, status
 
   end
 

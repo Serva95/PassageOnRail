@@ -160,5 +160,6 @@ da_prenotare:
   driver_id: 1
   vehicle_id: 2
   n_passeggeri: 1
+  tempo_percorrenza: 59
   contanti: true
   deleted: false
