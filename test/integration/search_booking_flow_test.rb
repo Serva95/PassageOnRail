@@ -13,7 +13,7 @@ describe "Search booking flow", :integration do
     assert_select "h2", "Log in"
 
     post "/users/sign_in",
-         params: {user: {email: "lorenzo@test.it", password: "password", }}
+         params: {user: {email: "lorenzo@test.it", password: "password"}}
     assert_response :redirect
     follow_redirect!
     assert_equal 200, status

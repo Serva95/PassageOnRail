@@ -14,6 +14,7 @@ class RoutesController < ApplicationController
       @drivers << route.driver.user
       @seats   << route.posti_disponibili
     end
+    @time = @routes.sum {|x| + x.tempo_percorrenza}
 
   end
 

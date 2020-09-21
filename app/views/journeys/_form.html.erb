@@ -11,19 +11,24 @@
     </div>
   <% end %>
 
-  <div class="col-6 col-12-mobilep">
-    <%= f.label :pay_method_id, "Metodo di pagamento"%>
+  
+
+  <div class="action col-12 col-12-narrower"><hr></div>
+
+  <div class="col-4 col-12-narrower">
+	  <strong>Numero passeggeri</strong> 
+    <%= f.number_field(:n_prenotati, in: 1.. @seats.max(), placeholder: "Numero Passeggeri") %>
+    <br/>
+  </div>
+  <div class="col-4 col-12-narrow">
+    <strong>Metodo di pagamento</strong>
     <%= f.collection_select(:pay_method_id, @pay_methods, :id, :numero) %>
     <br/>
   </div>
-  <div class="col-6 col-12-mobilep">
-    <label><br/></label>
+  <div class="action col-12 col-12-narrow">
+	  <label><br/></label>
     <%= link_to 'Aggiungi metodo di pagamento',new_user_pay_method_path(user_id: current_user), class: 'button'%>
     <script src="app/assets/js/route.js">  </script>
-  </div>
-  <div class="col-6 col-12-mobilep">
-    <%= f.number_field(:n_prenotati, in: 1.. @seats.max(), placeholder: "Numero Passeggeri") %>
-    <br/>
   </div>
 
   <%= f.hidden_field :user_id, :value => current_user.id%>
@@ -32,8 +37,8 @@
     <%= f_stage.hidden_field :route_id %>
     <%= f_stage.hidden_field :journey_id %>
   <% end %>
-
-  <div class="col-6 col-12-mobilep">
+  <div><br></div>
+  <div class=" action col-12 col-12-narrow">
     <%= f.submit "Prenota"%>
   </div>
 <% end %>
