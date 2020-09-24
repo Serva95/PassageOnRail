@@ -39,11 +39,23 @@ class Journey < ApplicationRecord
 
 
 	# controlla se il viaggio è eliminabile secondo i vincoli temporali:
-	# 48 ore o prima rispetto alla partenza,
-	# sempre se il guidatore ha modificato il viaggio entro 48 dalla partenza
-	# si potrebbe modificare e accorciare in un'unica riga di codice
+	# 48 ore o prima rispetto alla partenza;
+	# sempre, se il guidatore ha modificato il viaggio entro 48 dalla partenza
+	# --- si potrebbe modificare e accorciare in un'unica riga di codice?
 	def self.journey_is_deletable(route)
-		route.data_ora_partenza - 2.day > DateTime.current || route.data_ora_partenza - 2.day < route.update_at
+		route.data_ora_partenza - 2.day > DateTime.current || route.data_ora_partenza - 2.day < route.updated_at
+	end
+
+	# controlla se entrambe i viaggi di un multitratta sono eliminabili secondo i vincoli temporali:
+	# 48 ore o prima rispetto alla partenza;
+	# sempre, se il guidatore ha modificato il viaggio entro 48 dalla partenza
+	def self.journey_both_deletable(journey, id)
+		unless journey.user_id == id
+			false
+		end
+		route_1 = Route.find(journey.stages[0].route_id)
+		route_2 = Route.find(journey.stages[1].route_id)
+		(route_1.data_ora_partenza - 2.day > DateTime.current || route_1.data_ora_partenza - 2.day < route_1.updated_at) && (route_2.data_ora_partenza - 2.day > DateTime.current || route_2.data_ora_partenza - 2.day < route_2.updated_at)
 	end
 
 

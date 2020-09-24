@@ -120,7 +120,7 @@ class JourneysController < ApplicationController
     route = Route.find(params[:r_id])
     is_deletable = Journey.journey_is_deletable(route)
     respond_to do |format|
-      if is_deletable && Stage.delete_stage(@journey, route)
+      if current_user.id == @journey.user_id && is_deletable && Stage.delete_stage(@journey, route)
         Notification.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
         format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione eliminata' }
         format.json { head :no_content }
@@ -138,9 +138,10 @@ class JourneysController < ApplicationController
     @journey.stages.sort_by { |x | x.route.data_ora_partenza  }.each do |stage|
       route << stage.route
     end
+    both_deletable = Journey.journey_both_deletable(@journey, current_user.id)
     notification = params[:notification]
     respond_to do |format|
-      if Journey.delete_journey(@journey, route)
+      if both_deletable && Journey.delete_journey(@journey, route)
         route.each do |r|
           Notification.create_notifications_td(r.driver_id, current_user, r, r, "cancel")
         end
@@ -151,6 +152,9 @@ class JourneysController < ApplicationController
           format.html { redirect_to user_bookings_path(current_user.id), notice: 'Entrambe i viaggi della multitratta sono stati eliminati' }
           format.json { head :no_content }
         end
+      else
+        format.html { redirect_to user_detail_booking_path(j_id:@journey.id), notice: 'Errore eliminazione, non puoi annullare un viaggio se mancano meno di 48 ore alla partenza' }
+        format.json { head :no_content }
       end
     end
   end
