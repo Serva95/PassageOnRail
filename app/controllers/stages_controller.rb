@@ -36,8 +36,7 @@ class StagesController < ApplicationController
     notification = params[:notification]
     respond_to do |format|
       if is_deletable && Stage.delete_stage(journey, route)
-        notifications = Notification.where(target: journey, second_target: route)
-        notifications.update_all(read_at: Time.zone.now)
+        Notification.where(target: route, second_target: journey).update_all(read_at: Time.zone.now)
         Notification.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
         #Journey.create_notifications_td(journey, current_user, "cancel")
         if notification
