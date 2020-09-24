@@ -5,7 +5,7 @@ class Notifications
       @getNewNotifications()
       setInterval (=>
         @getNewNotifications()
-      ), 50000
+      ), 60 * 1000
     $.ajaxSetup({
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')

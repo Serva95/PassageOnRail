@@ -11,6 +11,9 @@
     <div class="col-12 col-12-mobilep" style="overflow: auto;">
       <table>
         <caption><h3><strong>Prenotazioni Attive</strong></h3></caption>
+        <% if notice %>
+          <h2 class="error"><%= notice %></h2>
+        <% end %>
         <thead>
         <tr>
           <th>Città di Partenza</th>
