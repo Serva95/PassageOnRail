@@ -87,23 +87,6 @@ class JourneysController < ApplicationController
     end
   end
 
-  def update_reject
-    respond_to do |format|
-      @route = Route.find(params[:route_id])
-      @stage = @route.stages.where(journey_id: params[:id]).first
-      @journey =  Journey.find(params[:id])
-
-      if @stage.reject(@journey.n_prenotati)
-        # crea la notifica una volta che la tratta è stata aggiornata correttamente
-        Notification.create_notifications_th(@journey.user_id, current_user, @route, @route, "reject_trip")
-        format.html { redirect_to root_path }
-        format.json { render :show, status: :ok, location: @journey }
-      else
-        format.html { render :edit }
-        format.json { render json: @journey.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def manage_booking_delete
     @deleted_route =Route.find(params[:target])
