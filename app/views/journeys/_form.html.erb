@@ -18,7 +18,7 @@
   </div>
   <div class="col-4 col-12-narrow">
     <strong>Metodo di pagamento</strong>
-    <%= f.collection_select(:pay_method_id, @pay_methods, :id, :numero) %>
+    <%= f.collection_select :pay_method_id, @pay_methods, :id, :numero, {}, {required: true}%>
     <br/>
   </div>
   <div class="action col-12 col-12-narrow">

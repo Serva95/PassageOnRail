@@ -27,15 +27,17 @@
         <td colspan="1"></td>
       <% end %>
       <% i+=1 %>
-      <td><%= link_to 'Show', user_pay_method_path(current_user.id, pay_method.id) %></td>
-      <td><%= link_to 'Edit', edit_user_pay_method_path(current_user.id, pay_method.id) %></td>
-      <td><%= link_to 'Destroy', user_pay_method_path(current_user.id, pay_method.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Modifica', edit_user_pay_method_path(current_user.id, pay_method.id), class: "button"  %></td>
+      <td><%= link_to 'Elimina metodo', user_pay_method_path(current_user.id, pay_method.id), method: :delete, data: { confirm: 'Sciruo di voler eliminare questo metodo di pagamento?' }, class: "button special"  %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'Aggiungi un metodo di pagamento', new_user_pay_method_path %>
-<%= link_to 'Back', user_path(current_user) %>
+<div class="col-5 col-12-mobile">
+  <%= link_to 'Aggiungi un metodo di pagamento', new_user_pay_method_path, class: "button" %>
+</div>
+<div class="col-7 col-12-mobile">
+  <%= link_to 'Back', user_path(current_user), class: "button special" %>
+</div>
