@@ -1,10 +1,10 @@
 
 <%if @route.driver_id == current_user.driver_id and @route.deleted != true%>
-  <h1>Editing Route</h1>
+  <h2>Modifica questa tratta</h2>
   <%= render 'form', route: @route %>
-
-  <%= link_to 'Show', [@driver, @route] %> |
-  <%= link_to 'Back', driver_routes_path(@driver) %>
+  <div class="col-12 col-12-mobilep">
+    <%= link_to 'Annulla', driver_routes_path(@driver), class: "button special" %>
+  </div>
 <%else %>
   <h2 class="error">Non puoi modificare questa tratta!</h2>
 <%end %>

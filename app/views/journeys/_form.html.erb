@@ -10,11 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-  
-
   <div class="action col-12 col-12-narrower"><hr></div>
-
   <div class="col-4 col-12-narrower">
 	  <strong>Numero passeggeri</strong> 
     <%= f.number_field(:n_prenotati, in: 1.. @seats.max(), placeholder: "Numero Passeggeri") %>
