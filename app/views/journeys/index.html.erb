@@ -1,16 +1,12 @@
 
 <h2><strong>Richieste di prenotazione</strong></h2>
 <div class="row gtr-uniform">
-  <div class="col-8 col-12-mobilep">
-    <% @journeys.each do |journey| %>
-      <% journey.stages.each do |stage| %>
-        <tr>
-          <td>
-            <%= journey.user.username%> vorrebbe percorrere la tua tratta ! &nbsp;<%=link_to 'Vedi dettagli', edit_route_journey_path(stage.route, journey), class: "button"%>!
-          </td>
-        </tr>
-      <% end %>
+  <% @journeys.each do |journey| %>
+    <% journey.stages.each do |stage| %>
+      <div class="col-12 col-12-mobile">
+        <%= journey.user.username%> vorrebbe percorrere la tua tratta ! &nbsp;<%=link_to 'Vedi dettagli', edit_route_journey_path(stage.route, journey), class: "button"%>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>
 <br>
