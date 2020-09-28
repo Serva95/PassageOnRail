@@ -73,7 +73,7 @@ class Route < ApplicationRecord
   # estrae i metodi di pagamento di un utente controllando se è possibile pagare in contanti su tutte le tratte
   def self.find_pay_method(id, routes)
     if routes.inject(true) {|x,y| x && y.contanti}
-      where_clause = 'user_id = ? OR user_id = 0'
+      where_clause = 'user_id = ? OR id = 0'
     else
       where_clause = 'user_id = ?'
     end

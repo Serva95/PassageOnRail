@@ -16,6 +16,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles/new
   def new
     @vehicle = @driver.vehicles.build
+    session[:return_to] ||= request.referer
   end
 
   # GET /vehicles/1/edit

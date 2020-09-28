@@ -13,6 +13,8 @@ class Journey < ApplicationRecord
 	validates_with JourneyUSValidator
 	belongs_to :user
 	validates :n_prenotati, presence: true
+	validates :pay_method_id, presence: true
+	validates :user_id, presence: true
 
 	has_many :stages, inverse_of: :journey, dependent: :destroy
 	has_many :routes, through: :stages
