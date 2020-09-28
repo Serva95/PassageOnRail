@@ -1,7 +1,7 @@
 <div class="col-10 col-8-mobilep">
   <h2><strong>Prenota il viaggio</strong></h2>
 </div>
-
+  
 <div class="col-10 col-8-mobilep">
  <% @routes.each do |route| %>
   <div class="col-12 col-12-mobilep">
@@ -9,12 +9,13 @@
 	  <h4> partenza <%= route.data_ora_partenza.strftime("il %d-%m-%Y alle %H:%M:%S") %>, arrivo <%= route.data_ora_arrivo.strftime("il %d-%m-%Y alle %H:%M:%S")%> </h4>
   </div>
 
-  <div class="col-12 col-12-mobilep">
+  
+ <%end %>
+ <div class="col-12 col-12-mobilep">
 	  <strong> Durata totale: <%= @time/60 %> ore <%=@time%60%> minuti </strong>
 	  <p></p>
 	  <strong> Costo totale a persona: <%= @routes.sum {|x| + x.costo}%> </strong>
-  </div>
- <%end %>
+ </div>
 </div>
 
 <br>
