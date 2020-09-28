@@ -61,7 +61,8 @@
             <td><%= @route.luogo_ritrovo %></td>
             <td><%= @route.data_ora_partenza.strftime("%d/%m/%y, %H:%M") %></td>
             <td><%= @route.citta_arrivo %></td>
-            <td><%= link_to 'Dettagli', detail_routes_path(multitrip: false, id: @route.id, j_id: @journey.id), class: "button" %></td>
+
+            <td><%= link_to 'Dettagli', driver_route_path(current_user.driver_id, @route.id), class: "button" %></td>
           </tr>
         <tr>
           <td colspan="8"></td>

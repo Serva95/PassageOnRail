@@ -21,7 +21,7 @@ class PayMethodsController < ApplicationController
   # GET /users/:id/payMethods/new
   def new
     @pay_method = PayMethods.new
-    session[:return_to_pay] ||= request.referer
+    session[:return_to] ||= request.referer
   end
 
   # GET /users/:id/payMethods/edit
@@ -34,7 +34,7 @@ class PayMethodsController < ApplicationController
 
     respond_to do |format|
       if @pay_method.save
-        format.html { redirect_to (session.delete(:return_to_pay)|| user_pay_methods_path(@user)), notice: 'Pay method was successfully created.' }
+        format.html { redirect_to (session.delete(:return_to)|| user_pay_methods_path(@user)), notice: 'Pay method was successfully created.' }
         format.json { render :show, status: :created, location: @pay_method }
       else
         format.html { render :new }

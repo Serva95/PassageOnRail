@@ -4,12 +4,15 @@
   </div>
   <div class="col-6 col-12-mobilep">
     <%= render 'detail_route', route: @route, posti:@posti %>
-  <p>
-    <strong>Contanti:</strong>
-    <%= @route.contanti %>
-  </p>
+    <p>
+      <strong>Contanti:</strong>
+      <% if @route.contanti %>
+        Accettati
+      <%else %>
+        Non accettati
+      <%end %>
+    </p>
   </div>
-
   <div class="col-6 col-12-mobilep">
     <h1><strong>Passeggeri prenotati</strong></h1>
     <% if @empty %>
@@ -17,17 +20,16 @@
     <%else %>
       <% @passengers.each do |passenger| %>
         <div>
-        <%= link_to "#{passenger.username}", user_path(passenger) %>
+          <%= link_to "#{passenger.username}", user_path(passenger) %>
         </div>
-    <%end %>
       <%end %>
+    <%end %>
   </div>
-
+  <div class="col-12 col-12-mobilep"><hr></div>
   <div class="col-12 col-12-mobilep">
-<%= link_to 'Modifica tratta', edit_driver_route_path(@driver, @route), class: "button" %>
-<%= link_to 'Back', driver_routes_path(@driver), class: "button special" %>
+    <%= link_to 'Modifica tratta', edit_driver_route_path(@driver, @route), class: "button" %>
+    <%= link_to 'Back', driver_routes_path(@driver), class: "button special" %>
   </div>
 <%else %>
   <h2 class="error">Non puoi visualizzare questa tratta!</h2>
 <%end %>
-</div>
