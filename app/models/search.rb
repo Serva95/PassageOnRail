@@ -70,7 +70,7 @@ class Search < ApplicationRecord
                   SUM(Ms1.comfort+Ms2.comfort)/2 AS comfort_medio, SUM(Ms1.rating_medio+Ms2.rating_medio)/2 AS rat'
     from_clause = 'multitrip_search_results Ms1, multitrip_search_results as Ms2'
     if current_user.nil?
-      where_clause='Ms1.citta_partenza ILIKE ? AND Ms2.citta_arrivo ILIKE ? AND Ms1.citta_arrivo = Ms2.citta_partenza
+      where_clause='Ms1.citta_partenza ILIKE ? AND Ms2.citta_arrivo ILIKE ? AND Ms1.citta_arrivo ILIKE Ms2.citta_partenza
                     AND Ms1.id NOT IN (?) AND Ms2.id NOT IN (?)
                    AND Ms2.data_ora_partenza >= Ms1.data_ora_arrivo AND (EXTRACT(DAY FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo) * 24 + EXTRACT(HOUR FROM Ms2.data_ora_partenza - Ms1.data_ora_arrivo)) <= 5',"%#{c_partenza}","%#{c_arrivo}",booked_routes,booked_routes
     else

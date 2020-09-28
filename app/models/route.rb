@@ -32,7 +32,6 @@ class Route < ApplicationRecord
   validates :costo, presence: true
   validates_with RouteNPValidator
   validates_with RouteDateValidator
-  #validates :n_passeggeri, presence: true
 
 	belongs_to :driver
 	belongs_to :vehicle
@@ -65,11 +64,6 @@ class Route < ApplicationRecord
     Stage.joins(:journey).where("route_id = ? AND journeys.user_id = ? ", route_id,hitch_hiker_id)
   end
 
-  # # Carica il profilo del driver
-  # def self.find_driver(route)
-  #   User.find_by(driver_id: route.driver_id)
-  # end
-
   # estrae i metodi di pagamento di un utente controllando se è possibile pagare in contanti su tutte le tratte
   def self.find_pay_method(id, routes)
     if routes.inject(true) {|x,y| x && y.contanti}
@@ -97,15 +91,6 @@ class Route < ApplicationRecord
       return false
     end
   end
-
-  # # Decrementa il numero di passeggeri
-  # def self.decrease(route_id, n_passeggeri)
-  #   route = Route.find(route_id)
-  #   # route.decrement!(:n_passeggeri, n_passeggeri)
-  #   p = route.n_passeggeri - n_passeggeri
-  #   route.update!(n_passeggeri: p)
-  #   # route
-  # end
 
   # Elimina la route del driver e tutte le relative prenotazioni
   def self.destroy_route_and_stages(route,current_user)
