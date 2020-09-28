@@ -30,9 +30,9 @@
       <%end %>
       <td><%= vehicle.comfort %></td>
       <td><%= vehicle.posti %></td>
-      <td><%= link_to 'Show', driver_vehicle_path(@driver, vehicle) %></td>
-      <td><%= link_to 'Edit', edit_driver_vehicle_path(@driver, vehicle) %></td>
-      <td><%= link_to 'Destroy', [@driver, vehicle], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Dettagli', driver_vehicle_path(@driver, vehicle) %></td>
+      <td><%= link_to 'Modifica', edit_driver_vehicle_path(@driver, vehicle) %></td>
+      <td><%= link_to 'Elimina', [@driver, vehicle], method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>
