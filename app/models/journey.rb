@@ -41,7 +41,7 @@ class Journey < ApplicationRecord
 	# controlla se il viaggio è eliminabile secondo i vincoli temporali:
 	# 48 ore o prima rispetto alla partenza;
 	# sempre, se il guidatore ha modificato il viaggio entro 48 dalla partenza
-	# --- si potrebbe modificare e accorciare in un'unica riga di codice?
+	# 
 	def self.journey_is_deletable(route)
 		route.data_ora_partenza - 2.day > DateTime.current || route.data_ora_partenza - 2.day < route.updated_at
 	end

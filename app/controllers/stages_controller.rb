@@ -38,7 +38,6 @@ class StagesController < ApplicationController
       if is_deletable && Stage.delete_stage(journey, route)
         Notification.where(target: route, second_target: journey).update_all(read_at: Time.zone.now)
         Notification.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
-        #Journey.create_notifications_td(journey, current_user, "cancel")
         if notification
           format.html { redirect_to new_search_path(c_part: params[:c_part],c_arr: params[:c_arr],data_ora: params[:data]), notice: 'Prenotazione eliminata' }
           format.json { head :no_content }

@@ -116,20 +116,20 @@ class JourneysController < ApplicationController
   end
 
   # DELETE /journeys/1
-  def destroy_temp
-    route = Route.find(params[:r_id])
-    is_deletable = Journey.journey_is_deletable(route)
-    respond_to do |format|
-      if current_user.id == @journey.user_id && is_deletable && Stage.delete_stage(@journey, route)
-        Notification.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
-        format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione eliminata' }
-        format.json { head :no_content }
-      else
-        format.html { redirect_to detail_routes_path(multitrip: false, id: params[:r_id], j_id: params[:id]), notice: 'Errore eliminazione, non puoi annullare un viaggio se mancano meno di 48 ore alla partenza' }
-        format.json { head :no_content }
-      end
-    end
-  end
+  #def destroy_temp
+  #  route = Route.find(params[:r_id])
+  #  is_deletable = Journey.journey_is_deletable(route)
+  #  respond_to do |format|
+  #    if current_user.id == @journey.user_id && is_deletable && Stage.delete_stage(@journey, route)
+  #      Notification.create_notifications_td(route.driver_id, current_user, route, route, "cancel")
+  #      format.html { redirect_to user_bookings_path(current_user.id), notice: 'Prenotazione eliminata' }
+  #      format.json { head :no_content }
+  #    else
+  #      format.html { redirect_to detail_routes_path(multitrip: false, id: params[:r_id], j_id: params[:id]), notice: 'Errore eliminazione, non puoi annullare un viaggio se mancano meno di 48 ore alla partenza' }
+  #      format.json { head :no_content }
+  #    end
+  #  end
+  #end
 
   # DELETE /journeys/1
   # elimina entrambe gli stage
